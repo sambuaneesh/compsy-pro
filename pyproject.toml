@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "compsy"
+version = "0.1.0"
+description = "Counterfactual structural probing experiments for psycholinguistics and LLMs."
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "matplotlib",
+    "seaborn",
+    "statsmodels",
+    "tqdm",
+    "python-dotenv",
+    "torch",
+    "transformers",
+    "datasets",
+    "evaluate",
+    "accelerate",
+    "huggingface-hub",
+]
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "ty",
+    "pytest",
+    "pytest-cov",
+    "pre-commit",
+]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "N", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+line-ending = "lf"
+
+[tool.ty]
+
+[tool.ty.environment]
+python-version = "3.14"
+root = ["./src", "./tests", "."]
+
+[tool.ty.src]
+include = ["src", "tests", "scripts"]
+exclude = ["papers", "data", "outputs", "artifacts", "checkpoints"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-q --strict-markers --disable-warnings"
