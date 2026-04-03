@@ -1,0 +1,15 @@
+schema_version: css_pair_v1
+phenomenon: negation
+seed: 17
+n: 1500
+output_path: data/css_pairs/neg_1500.jsonl
+source: templated
+split_ratios:
+  train: 0.7
+  dev: 0.15
+  test: 0.15
+edit_types:
+  - insert_not
+  - remove_not
+pilot_n: 100
+pilot_output_path: data/css_pairs/neg_pilot_100.jsonl

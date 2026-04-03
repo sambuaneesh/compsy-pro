@@ -1,0 +1,18 @@
+experiment_name: css_probes_v1
+seed: 13
+datasets:
+  - data/css_pairs/role_pilot_100.jsonl
+  - data/css_pairs/neg_pilot_100.jsonl
+cache_root: cache
+results_root: results
+models:
+  - bert-base-uncased
+  - gpt2
+layers:
+  start: 0
+  end_inclusive: 12
+probe:
+  seeds: [11, 13, 17, 19, 23]
+  split_type: random
+  test_size: 0.2
+  dev_size: 0.1

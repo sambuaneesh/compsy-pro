@@ -1,0 +1,15 @@
+schema_version: css_pair_v1
+phenomenon: role_reversal
+seed: 13
+n: 1500
+output_path: data/css_pairs/role_1500.jsonl
+source: templated
+split_ratios:
+  train: 0.7
+  dev: 0.15
+  test: 0.15
+lexical_split:
+  enabled: true
+  holdout_nouns: 0.2
+pilot_n: 100
+pilot_output_path: data/css_pairs/role_pilot_100.jsonl

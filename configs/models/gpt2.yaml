@@ -1,0 +1,6 @@
+model_name: gpt2
+model_type: decoder_ar
+use_cls: false
+use_last_token: true
+max_length: 128
+dtype: float32

@@ -24,7 +24,11 @@ dependencies = [
     "evaluate",
     "accelerate",
     "huggingface-hub",
+    "pyyaml",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/compsy", "src/css"]
 
 [dependency-groups]
 dev = [

@@ -1,0 +1,7 @@
+experiment_name: css_surprisal_v1
+seed: 13
+dataset: data/css_pairs/pilot_all_300.jsonl
+model: gpt2
+max_length: 128
+batch_size: 16
+output_path: results/surprisal/gpt2_surprisal.csv

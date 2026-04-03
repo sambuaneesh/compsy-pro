@@ -1,0 +1,16 @@
+verb_past,verb_base,class,reversible
+praised,praise,social,1
+thanked,thank,social,1
+admired,admire,social,1
+criticized,criticize,social,1
+helped,help,social,1
+supported,support,social,1
+contacted,contact,communication,1
+called,call,communication,1
+visited,visit,motion,1
+greeted,greet,social,1
+ignored,ignore,social,1
+blamed,blame,social,1
+interviewed,interview,communication,1
+hired,hire,business,1
+promoted,promote,business,1
