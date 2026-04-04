@@ -1,0 +1,33 @@
+{
+  "config_hash": "e8f23448efbf9a834bfbc477d8fc088fa3b7e281209f965af1a5064a985d436e",
+  "config_path": "configs/experiments/pilot.yaml",
+  "datasets": [
+    {
+      "duplicate_id_excess": 0,
+      "issues_count": 0,
+      "issues_preview": [],
+      "path": "data/css_pairs/role_pilot_100.jsonl",
+      "rows": 100,
+      "sha256": "8bcc614fdd878bcbb02ce23d32ec4738267486c7a596ebec680acc0232ed2f81"
+    },
+    {
+      "duplicate_id_excess": 0,
+      "issues_count": 0,
+      "issues_preview": [],
+      "path": "data/css_pairs/neg_pilot_100.jsonl",
+      "rows": 100,
+      "sha256": "ec82b42d31c33acb44dd178d7c9a53ed2f33177729096576b6c31e8246a85d7a"
+    },
+    {
+      "duplicate_id_excess": 0,
+      "issues_count": 0,
+      "issues_preview": [],
+      "path": "data/css_pairs/attach_pilot_100.jsonl",
+      "rows": 100,
+      "sha256": "50d2f42b3e48199f637dc2a3c90c08c6b5ad72f2494902e34ad2a3e3c0d97ea4"
+    }
+  ],
+  "status": "ok",
+  "total_issues": 0,
+  "total_rows": 300
+}
