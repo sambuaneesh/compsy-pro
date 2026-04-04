@@ -1,0 +1,109 @@
+{
+  "n_results": 195,
+  "skipped": [
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 0,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 1,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 2,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 3,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 4,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 5,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 6,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 7,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 8,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 9,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 10,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 11,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "layer": 12,
+      "model": "gpt2",
+      "n": 200,
+      "reason": "insufficient_data"
+    }
+  ]
+}

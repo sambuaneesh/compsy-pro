@@ -1,0 +1,8 @@
+{
+  "mean_pairwise_spearman": 0.6518017016747522,
+  "median_pairwise_spearman": 0.6490833052274392,
+  "n_annotators": 3,
+  "n_pairs": 90,
+  "n_rows": 270,
+  "pct_pairs_range_ge_3": 0.0
+}
