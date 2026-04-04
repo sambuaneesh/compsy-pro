@@ -42,6 +42,8 @@ checkpoints/
 outputs/
 wandb/
 mlruns/
+cache/hidden/
+cache/tokenized/
 
 # Hugging Face / model caches (if redirected locally)
 .cache/
