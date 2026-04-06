@@ -183,7 +183,8 @@ def main() -> None:
     h4_corr = corr_df[corr_df["metric"] == "delta_frob"]["spearman_rho"].mean()
 
     with (out_dir / "hypothesis_tests.md").open("w", encoding="utf-8") as f:
-        f.write("# Pilot Hypothesis Summary\n\n")
+        experiment_name = str(cfg.get("experiment_name", "css_stats"))
+        f.write(f"# Hypothesis Summary ({experiment_name})\n\n")
         f.write(f"- H1 positive-correlation cells (delta_cos/delta_frob): {h1_support}\n")
         f.write(f"- H2 cells with positive delta_adj_r2 when adding delta_frob: {h2_support}\n")
         f.write(

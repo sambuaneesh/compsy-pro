@@ -5,3 +5,4 @@ model: gpt2
 max_length: 128
 batch_size: 16
 output_path: results/surprisal/gpt2_surprisal.csv
+coverage_path: results/surprisal/key_region_coverage_pilot.json

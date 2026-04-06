@@ -1,0 +1,15 @@
+experiment_name: css_salience_full_v1
+seed: 13
+metrics_path: results/metrics/layer_metrics_full.csv
+cache_root: cache
+datasets:
+  - data/css_pairs/role_1500.jsonl
+  - data/css_pairs/neg_1500.jsonl
+  - data/css_pairs/attach_1500.jsonl
+models:
+  - bert-base-uncased
+  - roberta-base
+  - gpt2
+top_k: [1, 3]
+output_contrib_path: results/salience/token_contributions_full.csv
+output_eval_path: results/salience/salience_eval_full.csv

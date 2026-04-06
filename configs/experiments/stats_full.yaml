@@ -1,0 +1,8 @@
+experiment_name: css_stats_full_v1
+seed: 13
+metrics_path: results/metrics/layer_metrics_full.csv
+surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+probe_path: results/probes/probe_results_full.csv
+annotation_raw_path: data/annotations/human_css_0_5_full.csv
+annotation_agg_path: data/annotations/human_css_aggregated_full.csv
+output_dir: results/stats/full

@@ -40,14 +40,31 @@ def _build_probe_data(
     raise ValueError(f"unsupported phenomenon {phenomenon}")
 
 
-def _fit_and_score(x: np.ndarray, y: np.ndarray, seed: int, test_size: float) -> dict[str, float]:
+def _fit_and_score(
+    x: np.ndarray,
+    y: np.ndarray,
+    *,
+    seed: int,
+    test_size: float,
+    solver: str,
+    max_iter: int,
+    c: float,
+) -> dict[str, float]:
     x_train, x_test, y_train, y_test = train_test_split(
         x, y, test_size=test_size, random_state=seed, stratify=y
     )
     clf = Pipeline(
         [
             ("scaler", StandardScaler()),
-            ("lr", LogisticRegression(max_iter=500, random_state=seed)),
+            (
+                "lr",
+                LogisticRegression(
+                    solver=solver,
+                    max_iter=max_iter,
+                    C=c,
+                    random_state=seed,
+                ),
+            ),
         ]
     )
     clf.fit(x_train, y_train)
@@ -62,7 +79,15 @@ def _fit_and_score(x: np.ndarray, y: np.ndarray, seed: int, test_size: float) ->
     ctrl = Pipeline(
         [
             ("scaler", StandardScaler()),
-            ("lr", LogisticRegression(max_iter=500, random_state=seed)),
+            (
+                "lr",
+                LogisticRegression(
+                    solver=solver,
+                    max_iter=max_iter,
+                    C=c,
+                    random_state=seed,
+                ),
+            ),
         ]
     )
     ctrl.fit(x_train, y_train_control)
@@ -87,12 +112,17 @@ def main() -> None:
     parser.add_argument("--config", required=True)
     parser.add_argument("--output", default="results/probes/probe_results.csv")
     parser.add_argument("--pred-output", default="results/probes/probe_predictions.csv")
+    parser.add_argument("--summary-output", default=None)
+    parser.add_argument("--summary-json-output", default=None)
     args = parser.parse_args()
 
     cfg = load_yaml(args.config)
     layers = range(int(cfg["layers"]["start"]), int(cfg["layers"]["end_inclusive"]) + 1)
     seeds = [int(s) for s in cfg["probe"]["seeds"]]
     test_size = float(cfg["probe"].get("test_size", 0.2))
+    solver = str(cfg["probe"].get("solver", "liblinear"))
+    max_iter = int(cfg["probe"].get("max_iter", 300))
+    c = float(cfg["probe"].get("C", 1.0))
     cache_root = str(cfg.get("cache_root", "cache"))
 
     rows_out: list[dict[str, Any]] = []
@@ -140,7 +170,15 @@ def main() -> None:
                     continue
 
                 for seed in seeds:
-                    scores = _fit_and_score(x, y, seed=seed, test_size=test_size)
+                    scores = _fit_and_score(
+                        x,
+                        y,
+                        seed=seed,
+                        test_size=test_size,
+                        solver=solver,
+                        max_iter=max_iter,
+                        c=c,
+                    )
                     rows_out.append(
                         {
                             "phenomenon": phenomenon,
@@ -164,6 +202,9 @@ def main() -> None:
                             "n_dev": 0,
                             "n_test": scores["n_test"],
                             "config_sha256": "pending",
+                            "solver": solver,
+                            "max_iter": max_iter,
+                            "C": c,
                         }
                     )
                 pred_rows.append(
@@ -194,12 +235,18 @@ def main() -> None:
         )
     else:
         summary = pd.DataFrame()
-    summary.to_csv("results/probes/selectivity_summary.csv", index=False)
-    write_json(
-        "results/probes/selectivity_summary.json", {"skipped": skipped, "n_results": len(df)}
+    default_summary_path = Path(args.output).with_name("selectivity_summary.csv")
+    default_summary_json_path = Path(args.output).with_name("selectivity_summary.json")
+    summary_output = Path(args.summary_output) if args.summary_output else default_summary_path
+    summary_json_output = (
+        Path(args.summary_json_output) if args.summary_json_output else default_summary_json_path
     )
+    summary.to_csv(summary_output, index=False)
+    write_json(summary_json_output, {"skipped": skipped, "n_results": len(df)})
     print(f"wrote {args.output} rows={len(df)}")
     print(f"wrote {args.pred_output} rows={len(pred_rows)}")
+    print(f"wrote {summary_output} rows={len(summary)}")
+    print(f"wrote {summary_json_output}")
 
 
 if __name__ == "__main__":
