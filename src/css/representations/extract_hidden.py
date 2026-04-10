@@ -40,10 +40,15 @@ def _word_index_map(
     for tok_idx, (start, end) in enumerate(offsets):
         if end <= start:
             continue
+        best_idx: int | None = None
+        best_overlap = 0
         for word_idx, (_, w_start, w_end) in enumerate(words):
-            if start >= w_start and start < w_end:
-                mapping[tok_idx] = word_idx
-                break
+            overlap = min(end, w_end) - max(start, w_start)
+            if overlap > best_overlap:
+                best_overlap = overlap
+                best_idx = word_idx
+        if best_idx is not None and best_overlap > 0:
+            mapping[tok_idx] = best_idx
     return [w for w, _, _ in words], [(s, e) for _, s, e in words], mapping
 
 
