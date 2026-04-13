@@ -26,7 +26,19 @@ uv run ty check
 uv run pytest
 ```
 
-## 4) Git Hooks
+## 4) External Dataset Sync (Role + Negation)
+
+```bash
+bash scripts/sync_external_dataset.sh
+```
+
+If already cloned, pull updates:
+
+```bash
+bash scripts/sync_external_dataset.sh
+```
+
+## 5) Git Hooks
 
 Install hooks:
 

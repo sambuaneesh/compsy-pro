@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+bash scripts/sync_external_dataset.sh
+uv run python -m css.data.import_extending_psycholinguistic_dataset --config configs/data/external_import.yaml
+uv run python -m css.data.generate_attachment --config configs/data/attachment.yaml
+
 uv run python -m css.data.merge_datasets \
   --inputs data/css_pairs/role_1500.jsonl data/css_pairs/neg_1500.jsonl data/css_pairs/attach_1500.jsonl \
   --output data/css_pairs/full_all_4500.jsonl

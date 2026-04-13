@@ -83,8 +83,7 @@ css-counterfactual-probing/
 **Responsibilities**
 
 - Implement:
-  - `src/css/data/generate_role.py`
-  - `src/css/data/generate_negation.py`
+  - `src/css/data/import_extending_psycholinguistic_dataset.py`
   - `src/css/data/generate_attachment.py`
   - `src/css/data/split_data.py`
   - `src/css/data/validate_schema.py`
@@ -103,7 +102,10 @@ css-counterfactual-probing/
 
 **Dependencies**
 
-- Lexicons in `data/lexicons/`.
+- External source dataset:
+  - `data/external/extending_psycholinguistic_dataset/data/ROLE-1500.txt`
+  - `data/external/extending_psycholinguistic_dataset/data/NEG-1500-SIMP-GEN.txt`
+- Lexicons in `data/lexicons/` (attachment generation).
 - Configs in `configs/data/`.
 
 **Outputs**
@@ -486,6 +488,7 @@ Every full run must archive:
 Use and cite the following references in the paper and README when their ideas are used:
 
 - Matrix norms for similarity: vor der Brück and Pouly 2019.
+- External role/negation source dataset: text-machine-lab extending_psycholinguistic_dataset.
 - Minimal-pair benchmark framing: Warstadt et al. 2020 BLiMP.
 - Semantic relatedness calibration: Abdalla et al. 2023 STR-2022.
 - Semantic similarity calibration: GLUE / STS-B and SemEval STS.
@@ -502,8 +505,8 @@ Use and cite the following references in the paper and README when their ideas a
 Pilot:
 
 ```bash
-python -m css.data.generate_role --config configs/data/role.yaml --n 100
-python -m css.data.generate_negation --config configs/data/negation.yaml --n 100
+bash scripts/sync_external_dataset.sh
+python -m css.data.import_extending_psycholinguistic_dataset --config configs/data/external_import.yaml
 python -m css.data.generate_attachment --config configs/data/attachment.yaml --n 100
 python -m css.data.validate_schema --config configs/experiments/pilot.yaml
 

@@ -37,10 +37,10 @@ Exit criteria:
 ## Phase 2: Lexicons and Dataset Generation Pipeline
 
 Objective:
-- Build generator scripts for role, negation, attachment with strict controls.
+- Build/ingest role, negation, and attachment datasets with strict controls.
 
 Deliverables:
-- `generate_role.py`, `generate_negation.py`, `generate_attachment.py`.
+- `import_extending_psycholinguistic_dataset.py`, `generate_attachment.py`.
 - `split_data.py`, `validate_schema.py`.
 - pilot data files: 100/100/100.
 

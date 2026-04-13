@@ -1,6 +1,7 @@
 # Working References (CSS Project)
 
 - Abdalla et al. (2023). STR-2022 shared task.
+- Text Machine Lab. Extending Psycholinguistic Dataset (GitHub repository).
 - Devlin et al. (2019). BERT.
 - Ettinger (2020). Probing BERT's linguistic limits.
 - Hewitt and Liang (2019). Designing and interpreting probes with controls.

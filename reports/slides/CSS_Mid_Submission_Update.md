@@ -29,6 +29,20 @@ Deliver a defensible mid-stage milestone:
 
 ---
 
+# Dataset Source Change (Major Update)
+
+Role and negation data source switched to:
+
+- `https://github.com/text-machine-lab/extending_psycholinguistic_dataset`
+- imported through `import_extending_psycholinguistic_dataset.py`
+
+Current module policy:
+
+- role + negation: external source import
+- attachment: internal controlled generation
+
+---
+
 # Problem Statement
 
 Do internal LM representations shift in linguistically meaningful ways under minimal structural counterfactual edits, and do those shifts align with human semantic-change judgments (0-5)?
@@ -87,6 +101,11 @@ Completed through full audit:
 - Salience + plots + paper packaging (Phases 12-13)
 - Final audit (Phase 14: conditionally complete)
 
+Update after source migration:
+
+- canonical pair JSONL regenerated + revalidated
+- full-model metrics/probes/stats should be rerun on migrated role/negation before final claims
+
 ---
 
 # Full Dataset Summary
@@ -118,7 +137,7 @@ Counts:
 
 ![w:1150](./assets/mid_edit_type_counts.png)
 
-Balanced generation design was preserved:
+Balanced dataset construction is preserved:
 
 - role swap 1500
 - neg insertion/removal 750/750
@@ -408,4 +427,3 @@ Mid-submission framing:
 - **Strong technical completion**
 - **Transparent scientific boundary**
 - **Clear, low-risk path to final submission**
-

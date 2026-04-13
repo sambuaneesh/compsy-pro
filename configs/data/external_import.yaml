@@ -1,0 +1,19 @@
+schema_version: css_pair_v1
+seed: 13
+source_repo_url: https://github.com/text-machine-lab/extending_psycholinguistic_dataset
+source_root: data/external/extending_psycholinguistic_dataset/data
+role_source_file: ROLE-1500.txt
+negation_source_file: NEG-1500-SIMP-GEN.txt
+
+output_role_path: data/css_pairs/role_1500.jsonl
+output_negation_path: data/css_pairs/neg_1500.jsonl
+pilot_n: 100
+pilot_role_output_path: data/css_pairs/role_pilot_100.jsonl
+pilot_neg_output_path: data/css_pairs/neg_pilot_100.jsonl
+
+split_ratios:
+  train: 0.7
+  dev: 0.15
+  test: 0.15
+
+manifest_output: results/data_validation/external_dataset_manifest.json

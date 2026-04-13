@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-uv run python -m css.data.generate_role --config configs/data/role.yaml
-uv run python -m css.data.generate_negation --config configs/data/negation.yaml
+bash scripts/sync_external_dataset.sh
+uv run python -m css.data.import_extending_psycholinguistic_dataset --config configs/data/external_import.yaml
 uv run python -m css.data.generate_attachment --config configs/data/attachment.yaml
 uv run python -m css.data.merge_datasets \
   --inputs data/css_pairs/role_pilot_100.jsonl data/css_pairs/neg_pilot_100.jsonl data/css_pairs/attach_pilot_100.jsonl \
