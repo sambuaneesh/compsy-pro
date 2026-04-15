@@ -1,9 +1,8 @@
-experiment_name: css_probes_full_v1
+experiment_name: css_probes_full_github_only_v1
 seed: 13
 datasets:
   - data/css_pairs/role_1500.jsonl
   - data/css_pairs/neg_1500.jsonl
-  - data/css_pairs/attach_1500.jsonl
 cache_root: cache
 results_root: results
 models:

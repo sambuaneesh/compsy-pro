@@ -8,13 +8,17 @@ Dataset migration note (2026-04-24):
 - Post-migration full rerun completed (2026-04-24): extraction, metrics, surprisal, probes, stats, salience, and plots were regenerated.
 
 - Phase 09: `reports/phases/phase_09.md` (full extraction/metrics scale-up)
-- Phase 10: `reports/phases/phase_10.md` (annotation fallback)
-- Phase 11: `reports/phases/phase_11.md` (full stats + mixed effects)
+- Phase 10: `reports/phases/phase_10.md` (legacy, not part of dataset-only gate)
+- Phase 11: `reports/phases/phase_11.md` (legacy human-annotation stats track)
 - Phase 12: `reports/phases/phase_12.md` (secondary salience)
 - Phase 13: `reports/phases/phase_13.md` (figures/tables/paper packaging)
 - Phase 14: `reports/phases/phase_14.md` (final audit)
 - Phase 15: `reports/phases/phase_15_dataset_source_migration.md` (role/negation source migration)
 - Phase 16: `reports/phases/phase_16_post_migration_full_rerun.md` (post-migration full recomputation)
+
+Dataset-only claim policy:
+- final claims use role + negation from the GitHub dataset only
+- no human-annotation dependency in primary results
 
 Core full artifacts:
 - Metrics: `results/metrics/layer_metrics_full.csv`

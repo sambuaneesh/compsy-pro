@@ -15,7 +15,7 @@ Dataset migration note (2026-04-24):
 - Phase 4: CSS metric computation
 - Phase 5: GPT-2 surprisal
 - Phase 6: probes with random-label controls
-- Phase 7: annotation pipeline pilot (currently simulated ratings)
+- Phase 7: dataset-only stats wiring
 - Phase 8: integrated pilot statistics and go/no-go summary
 
 ## Where To Look
@@ -27,13 +27,12 @@ Dataset migration note (2026-04-24):
 - Pilot metrics: `results/metrics/`
 - Pilot surprisal: `results/surprisal/`
 - Pilot probes: `results/probes/`
-- Pilot annotation artifacts: `data/annotations/` and `results/annotation/`
 - Pilot stats: `results/stats/`
 
 ## Current Limitation
 
-- `data/annotations/human_css_0_5.csv` is synthetic for pipeline continuity.
-- Replace with real human annotation before final paper claims on human alignment.
+- Pilot is constrained to role + negation from the external GitHub dataset.
+- Claims are dataset-only structural sensitivity claims.
 
 ## Re-run Pilot End-to-End
 
