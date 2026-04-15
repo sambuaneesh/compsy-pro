@@ -1,299 +1,299 @@
 batch_item_id,pair_id,phenomenon,s,s_cf,annotation_prompt_version
 1,attach_000192,attachment,The researcher saw the man with the telescope.,The researcher saw the man who had the telescope.,css_human_change_v1
-2,neg_000769,negation,The nurse helped the driver.,The nurse did not help the driver.,css_human_change_v1
-3,role_000514,role_reversal,The teacher contacted the coach.,The coach contacted the teacher.,css_human_change_v1
-4,neg_001275,negation,The passenger interviewed the driver.,The passenger did not interview the driver.,css_human_change_v1
+2,neg_000769,negation,A raccoon is an animal.,A raccoon is not a bird.,css_human_change_v1
+3,role_000514,role_reversal,The teacher asked which student the bully had threatened.,The teacher asked which bully the student had fought.,css_human_change_v1
+4,neg_001275,negation,An ox is an animal.,An ox is not a plant.,css_human_change_v1
 5,attach_000787,attachment,"With the flashlight, the student checked the driver.",The student checked the driver who had the flashlight.,css_human_change_v1
 6,attach_001091,attachment,The musician observed the scientist with the microscope.,"With the microscope, the musician observed the scientist.",css_human_change_v1
-7,role_000693,role_reversal,The lawyer ignored the engineer.,The engineer ignored the lawyer.,css_human_change_v1
-8,neg_000238,negation,The writer did not admire the student.,The writer admired the student.,css_human_change_v1
-9,role_000786,role_reversal,The scientist called the coach.,The coach called the scientist.,css_human_change_v1
-10,neg_001121,negation,The lawyer hired the scientist.,The lawyer did not hire the scientist.,css_human_change_v1
-11,neg_001320,negation,The waiter did not hire the chef.,The waiter hired the chef.,css_human_change_v1
+7,role_000693,role_reversal,The teacher knew which student the bully had pushed.,The teacher knew which bully the student had reported.,css_human_change_v1
+8,neg_000238,negation,A frog is not a reptile.,A frog is an amphibian.,css_human_change_v1
+9,role_000786,role_reversal,The poet showed which writer the novelist had admired.,The poet showed which novelist the writer had admired.,css_human_change_v1
+10,neg_001121,negation,A laptop is a computer.,A laptop is not a phone.,css_human_change_v1
+11,neg_001320,negation,A cout is not a plant.,A court is a building.,css_human_change_v1
 12,attach_000931,attachment,"With the microscope, the artist observed the scientist.",The artist observed the scientist who had the microscope.,css_human_change_v1
-13,role_001345,role_reversal,The musician thanked the engineer.,The engineer thanked the musician.,css_human_change_v1
+13,role_001345,role_reversal,The athlete remembered which teammate the coach had benched.,The athlete remembered which coach the teammate had berated.,css_human_change_v1
 14,attach_000098,attachment,The nurse showed the guide with the map.,"With the map, the nurse showed the guide.",css_human_change_v1
-15,role_001352,role_reversal,The writer praised the researcher.,The researcher praised the writer.,css_human_change_v1
+15,role_001352,role_reversal,The gangster recalled which locals the sheriff had robbed.,The gangster recalled which sheriff the locals had feared.,css_human_change_v1
 16,attach_000571,attachment,"With the badge, the musician questioned the officer.",The musician questioned the officer who had the badge.,css_human_change_v1
-17,role_001234,role_reversal,The engineer greeted the journalist.,The journalist greeted the engineer.,css_human_change_v1
+17,role_001234,role_reversal,Brianne realized which singer the musician had inspired.,Brianne realized which musician the singer had copied.,css_human_change_v1
 18,attach_001209,attachment,The chef met the student with the notebook.,The chef met the student who had the notebook.,css_human_change_v1
 19,attach_000603,attachment,The scientist photographed the tourist with the camera.,The scientist photographed the tourist who had the camera.,css_human_change_v1
-20,role_000846,role_reversal,The athlete visited the writer.,The writer visited the athlete.,css_human_change_v1
-21,role_000433,role_reversal,The lawyer visited the writer.,The writer visited the lawyer.,css_human_change_v1
-22,role_000108,role_reversal,The driver called the teacher.,The teacher called the driver.,css_human_change_v1
-23,neg_000808,negation,The coach did not praise the musician.,The coach praised the musician.,css_human_change_v1
-24,role_001289,role_reversal,The artist interviewed the scientist.,The scientist interviewed the artist.,css_human_change_v1
+20,role_000846,role_reversal,The predators remembered which naturalist the deer had avoided.,The predators remembered which deer the naturalist had eaten.,css_human_change_v1
+21,role_000433,role_reversal,The teacher asked which students the substitute had scolded.,The teacher asked which substitute the students had liked.,css_human_change_v1
+22,role_000108,role_reversal,The student read which writer the book had written.,The student read which book the writer had written.,css_human_change_v1
+23,neg_000808,negation,A squirrel is not an insect.,A squirrel is a mammal.,css_human_change_v1
+24,role_001289,role_reversal,The advisor guessed which president the committee had chosen.,The advisor guessed which committee the president had appointed.,css_human_change_v1
 25,attach_001028,attachment,The passenger noticed the teacher with the umbrella.,"With the umbrella, the passenger noticed the teacher.",css_human_change_v1
-26,role_000725,role_reversal,The musician contacted the nurse.,The nurse contacted the musician.,css_human_change_v1
-27,role_000524,role_reversal,The chef supported the athlete.,The athlete supported the chef.,css_human_change_v1
+26,role_000725,role_reversal,The teacher asked which students the principal had reported.,The teacher asked which principal the students had voted .,css_human_change_v1
+27,role_000524,role_reversal,The philanthropist knew which refugees the aid worker had helped.,The refugees knew which philanthropist the aid worker had thanked.,css_human_change_v1
 28,attach_000653,attachment,The judge observed the scientist with the microscope.,"With the microscope, the judge observed the scientist.",css_human_change_v1
-29,neg_001271,negation,The researcher visited the musician.,The researcher did not visit the musician.,css_human_change_v1
-30,neg_001125,negation,The chef hired the athlete.,The chef did not hire the athlete.,css_human_change_v1
+29,neg_001271,negation,A loom is a tool.,A loom is not a place.,css_human_change_v1
+30,neg_001125,negation,A castle is a building.,A castle is not a fish.,css_human_change_v1
 31,attach_001164,attachment,The teacher noticed the teacher with the umbrella.,The teacher noticed the teacher who had the umbrella.,css_human_change_v1
-32,neg_001448,negation,The lawyer did not greet the judge.,The lawyer greeted the judge.,css_human_change_v1
-33,role_000478,role_reversal,The manager supported the teacher.,The teacher supported the manager.,css_human_change_v1
-34,role_000566,role_reversal,The doctor interviewed the nurse.,The nurse interviewed the doctor.,css_human_change_v1
-35,role_000495,role_reversal,The nurse ignored the manager.,The manager ignored the nurse.,css_human_change_v1
+32,neg_001448,negation,An autobiography is not a chair.,An autobiography is a book.,css_human_change_v1
+33,role_000478,role_reversal,The cook noticed which waiter the guest had tipped.,The cook noticed which guest the waiter had served.,css_human_change_v1
+34,role_000566,role_reversal,The detective knew which suspect the policeman had arrested.,The detective knew which policeman the suspect had feared.,css_human_change_v1
+35,role_000495,role_reversal,The detective remembered which criminal the victim had identified.,The victim remembered which criminal the detective had arrested.,css_human_change_v1
 36,attach_001291,attachment,"With the badge, the passenger questioned the officer.",The passenger questioned the officer who had the badge.,css_human_change_v1
 37,attach_001251,attachment,The artist showed the guide with the map.,The artist showed the guide who had the map.,css_human_change_v1
-38,role_001467,role_reversal,The doctor praised the passenger.,The passenger praised the doctor.,css_human_change_v1
+38,role_001467,role_reversal,The babysitter knew which toddler the daycare teacher had disciplined.,The babysitter knew which daycare teacher the toddler had bitten.,css_human_change_v1
 39,attach_001077,attachment,The chef noticed the teacher with the umbrella.,The chef noticed the teacher who had the umbrella.,css_human_change_v1
 40,attach_000468,attachment,The doctor saw the man with the telescope.,The doctor saw the man who had the telescope.,css_human_change_v1
-41,role_001169,role_reversal,The passenger called the journalist.,The journalist called the passenger.,css_human_change_v1
-42,neg_001302,negation,The nurse did not greet the athlete.,The nurse greeted the athlete.,css_human_change_v1
-43,role_001465,role_reversal,The manager promoted the journalist.,The journalist promoted the manager.,css_human_change_v1
-44,neg_001259,negation,The manager contacted the athlete.,The manager did not contact the athlete.,css_human_change_v1
-45,neg_000040,negation,The lawyer did not admire the driver.,The lawyer admired the driver.,css_human_change_v1
+41,role_001169,role_reversal,The model identified which artist she had photographed.,The model identified which photograph the artist had taken.,css_human_change_v1
+42,neg_001302,negation,A telescope is not a toy.,A telescope is a device.,css_human_change_v1
+43,role_001465,role_reversal,The soldier remembered which officer the drill sergeant had captured.,The soldier remembered which drill sergeant the officer had promoted.,css_human_change_v1
+44,neg_001259,negation,A platypus is an animal.,A platypus is not a fish.,css_human_change_v1
+45,neg_000040,negation,A person is not a reptile.,A person is a mammal.,css_human_change_v1
 46,attach_000826,attachment,"With the telescope, the writer saw the man.",The writer saw the man who had the telescope.,css_human_change_v1
-47,neg_001030,negation,The athlete did not thank the student.,The athlete thanked the student.,css_human_change_v1
-48,neg_000907,negation,The coach helped the passenger.,The coach did not help the passenger.,css_human_change_v1
+47,neg_001030,negation,A library is not a drink.,A library is a building.,css_human_change_v1
+48,neg_000907,negation,A methane is a gas.,A methane is not a liquid.,css_human_change_v1
 49,attach_000961,attachment,"With the camera, the student photographed the tourist.",The student photographed the tourist who had the camera.,css_human_change_v1
-50,role_000645,role_reversal,The student helped the journalist.,The journalist helped the student.,css_human_change_v1
-51,neg_000657,negation,The student visited the nurse.,The student did not visit the nurse.,css_human_change_v1
+50,role_000645,role_reversal,The waitress forgot which customer the restaurant owner had invited.,The waitress forgot which restaurant owner the customer had seen.,css_human_change_v1
+51,neg_000657,negation,A hamburger is a food.,A hamburger is not a clothing.,css_human_change_v1
 52,attach_000109,attachment,"With the flashlight, the student checked the driver.",The student checked the driver who had the flashlight.,css_human_change_v1
-53,role_000856,role_reversal,The writer visited the engineer.,The engineer visited the writer.,css_human_change_v1
-54,neg_000832,negation,The scientist did not visit the journalist.,The scientist visited the journalist.,css_human_change_v1
-55,role_000208,role_reversal,The lawyer criticized the chef.,The chef criticized the lawyer.,css_human_change_v1
-56,neg_001096,negation,The researcher did not contact the waiter.,The researcher contacted the waiter.,css_human_change_v1
+53,role_000856,role_reversal,The salesclerk understood which blouse the shopper had selected.,The salesclerk understood which shopper the blouse had fit.,css_human_change_v1
+54,neg_000832,negation,A lever is not a toy.,A lever is a machine.,css_human_change_v1
+55,role_000208,role_reversal,The girl reported which woods the monster had been.,The girl reported which monster she had seen.,css_human_change_v1
+56,neg_001096,negation,A saw is not a place.,A saw is an instrument.,css_human_change_v1
 57,attach_000347,attachment,The musician photographed the tourist with the camera.,"With the camera, the musician photographed the tourist.",css_human_change_v1
-58,role_000707,role_reversal,The musician promoted the passenger.,The passenger promoted the musician.,css_human_change_v1
-59,neg_000056,negation,The artist did not support the lawyer.,The artist supported the lawyer.,css_human_change_v1
+58,role_000707,role_reversal,The teacher asked which student the teacher had scolded.,The teacher asked which teacher the student had reported.,css_human_change_v1
+59,neg_000056,negation,A squirrel is not a mineral.,A squirrel is an animal.,css_human_change_v1
 60,attach_000612,attachment,The researcher photographed the tourist with the camera.,The researcher photographed the tourist who had the camera.,css_human_change_v1
 61,attach_000156,attachment,The scientist showed the guide with the map.,The scientist showed the guide who had the map.,css_human_change_v1
-62,role_000245,role_reversal,The artist called the teacher.,The teacher called the artist.,css_human_change_v1
-63,role_001076,role_reversal,The doctor supported the judge.,The judge supported the doctor.,css_human_change_v1
-64,neg_000788,negation,The lawyer did not criticize the driver.,The lawyer criticized the driver.,css_human_change_v1
-65,neg_000129,negation,The scientist praised the researcher.,The scientist did not praise the researcher.,css_human_change_v1
-66,neg_000336,negation,The musician did not visit the athlete.,The musician visited the athlete.,css_human_change_v1
-67,neg_000868,negation,The coach did not greet the teacher.,The coach greeted the teacher.,css_human_change_v1
-68,role_000342,role_reversal,The scientist praised the musician.,The musician praised the scientist.,css_human_change_v1
-69,neg_000128,negation,The artist did not praise the chef.,The artist praised the chef.,css_human_change_v1
-70,neg_000723,negation,The teacher greeted the artist.,The teacher did not greet the artist.,css_human_change_v1
-71,neg_000240,negation,The waiter did not contact the manager.,The waiter contacted the manager.,css_human_change_v1
+62,role_000245,role_reversal,The hunter was saddened to find which animal the dogs had killed.,The hunter was saddened to find which dogs the animal had killed.,css_human_change_v1
+63,role_001076,role_reversal,The advisor guessed which president the committee member had appointed.,The advisor guessed which committee member the president had chosen.,css_human_change_v1
+64,neg_000788,negation,A panther is not a toy.,A panther is an animal.,css_human_change_v1
+65,neg_000129,negation,A snowflake is a crystal.,A snowflake is not a liquid.,css_human_change_v1
+66,neg_000336,negation,A fish is not an invertebrate.,A fish is a vertebrate.,css_human_change_v1
+67,neg_000868,negation,A ship is not a toy.,A ship is a vehicle.,css_human_change_v1
+68,role_000342,role_reversal,The musician recognized which producer the record had entertained.,The musician recognized which record the producer had liked.,css_human_change_v1
+69,neg_000128,negation,A pencil is not a tree.,A pencil is a tool.,css_human_change_v1
+70,neg_000723,negation,A piano is an instrument.,A piano is not a drink.,css_human_change_v1
+71,neg_000240,negation,A diamond is not a toy.,A diamond is a mineral.,css_human_change_v1
 72,attach_001025,attachment,The waiter checked the driver with the flashlight.,"With the flashlight, the waiter checked the driver.",css_human_change_v1
-73,role_000977,role_reversal,The scientist hired the engineer.,The engineer hired the scientist.,css_human_change_v1
-74,role_000993,role_reversal,The doctor helped the teacher.,The teacher helped the doctor.,css_human_change_v1
-75,role_000143,role_reversal,The driver contacted the artist.,The artist contacted the driver.,css_human_change_v1
-76,role_001150,role_reversal,The teacher greeted the musician.,The musician greeted the teacher.,css_human_change_v1
+73,role_000977,role_reversal,The child learned which custodian the teacher had appointed.,The child learned which teacher the custodian had disciplined.,css_human_change_v1
+74,role_000993,role_reversal,The zookeeper mentioned which wildlife curator the ape had liked.,The zookeeper mentioned which ape the wildlife curator had fed.,css_human_change_v1
+75,role_000143,role_reversal,The robber threatened which cashier the customer had counted.,The robber threatened which customer the cashier had counted.,css_human_change_v1
+76,role_001150,role_reversal,The researcher learned which biologist the whale had eaten.,The researcher learned which whale the biologist had studied.,css_human_change_v1
 77,attach_000275,attachment,The driver met the student with the notebook.,"With the notebook, the driver met the student.",css_human_change_v1
-78,role_001229,role_reversal,The driver supported the engineer.,The engineer supported the driver.,css_human_change_v1
-79,role_000458,role_reversal,The journalist supported the lawyer.,The lawyer supported the journalist.,css_human_change_v1
-80,neg_000078,negation,The lawyer did not interview the nurse.,The lawyer interviewed the nurse.,css_human_change_v1
-81,neg_000602,negation,The musician did not support the doctor.,The musician supported the doctor.,css_human_change_v1
+78,role_001229,role_reversal,The nanny knew which housekeeper the billionaire had hired.,The nanny knew which billionaire the housekeeper had served.,css_human_change_v1
+79,role_000458,role_reversal,The conductor observed which passenger the conductor had removed.,The conductor observed which passenger Jack had seen.,css_human_change_v1
+80,neg_000078,negation,A mice is not a toy.,A mice is a rodent.,css_human_change_v1
+81,neg_000602,negation,A carrot is not a building.,A carrot is a root.,css_human_change_v1
 82,attach_000497,attachment,The passenger met the student with the notebook.,"With the notebook, the passenger met the student.",css_human_change_v1
-83,neg_000660,negation,The athlete did not hire the lawyer.,The athlete hired the lawyer.,css_human_change_v1
-84,neg_000625,negation,The researcher greeted the scientist.,The researcher did not greet the scientist.,css_human_change_v1
-85,neg_001180,negation,The nurse did not promote the lawyer.,The nurse promoted the lawyer.,css_human_change_v1
-86,neg_000824,negation,The judge did not greet the musician.,The judge greeted the musician.,css_human_change_v1
-87,role_000172,role_reversal,The passenger blamed the driver.,The driver blamed the passenger.,css_human_change_v1
+83,neg_000660,negation,A bean is not a mineral.,A bean is a food.,css_human_change_v1
+84,neg_000625,negation,A glock is a gun.,A glock is not a toy.,css_human_change_v1
+85,neg_001180,negation,A petz is not a toy.,A petz is an animal.,css_human_change_v1
+86,neg_000824,negation,A pencil is not an animal.,A pencil is an instrument.,css_human_change_v1
+87,role_000172,role_reversal,The zookeeper guessed which zookeeper the animal had hurt.,The zookeeper guessed which animal the zookeeper had fed.,css_human_change_v1
 88,attach_001235,attachment,The artist questioned the officer with the badge.,"With the badge, the artist questioned the officer.",css_human_change_v1
 89,attach_000444,attachment,The scientist saw the man with the telescope.,The scientist saw the man who had the telescope.,css_human_change_v1
-90,neg_001163,negation,The scientist greeted the researcher.,The scientist did not greet the researcher.,css_human_change_v1
+90,neg_001163,negation,A map is a paper.,A map is not a toy.,css_human_change_v1
 91,attach_001441,attachment,"With the umbrella, the waiter noticed the teacher.",The waiter noticed the teacher who had the umbrella.,css_human_change_v1
 92,attach_000332,attachment,The manager saw the man with the telescope.,"With the telescope, the manager saw the man.",css_human_change_v1
 93,attach_000407,attachment,The student saw the man with the telescope.,"With the telescope, the student saw the man.",css_human_change_v1
 94,attach_000973,attachment,"With the microscope, the student observed the scientist.",The student observed the scientist who had the microscope.,css_human_change_v1
-95,role_000710,role_reversal,The coach praised the judge.,The judge praised the coach.,css_human_change_v1
-96,role_000130,role_reversal,The musician promoted the teacher.,The teacher promoted the musician.,css_human_change_v1
+95,role_000710,role_reversal,The contestant liked which broadcaster the judge had hired.,The contestant liked which judge the broadcaster had explained.,css_human_change_v1
+96,role_000130,role_reversal,The editor decided which reporter the headline had suited.,The editor decided which headline the reporter had written.,css_human_change_v1
 97,attach_001248,attachment,The researcher noticed the teacher with the umbrella.,The researcher noticed the teacher who had the umbrella.,css_human_change_v1
-98,neg_000846,negation,The chef did not contact the artist.,The chef contacted the artist.,css_human_change_v1
-99,neg_001313,negation,The judge called the driver.,The judge did not call the driver.,css_human_change_v1
-100,neg_000889,negation,The chef praised the doctor.,The chef did not praise the doctor.,css_human_change_v1
+98,neg_000846,negation,A brick is not a flower.,A brick is a material.,css_human_change_v1
+99,neg_001313,negation,A cap is a clothing.,A cap is not a person.,css_human_change_v1
+100,neg_000889,negation,A koala is an animal.,A koala is not a mineral.,css_human_change_v1
 101,attach_000554,attachment,The teacher observed the scientist with the microscope.,"With the microscope, the teacher observed the scientist.",css_human_change_v1
-102,neg_000480,negation,The driver did not interview the scientist.,The driver interviewed the scientist.,css_human_change_v1
-103,role_000807,role_reversal,The waiter visited the manager.,The manager visited the waiter.,css_human_change_v1
+102,neg_000480,negation,A vase is not a bird.,A vase is a container.,css_human_change_v1
+103,role_000807,role_reversal,The artist realized which musician the crowd had cheered.,The artist realized which crowd the musician had played.,css_human_change_v1
 104,attach_001107,attachment,The judge saw the man with the telescope.,The judge saw the man who had the telescope.,css_human_change_v1
 105,attach_000169,attachment,"With the camera, the judge photographed the tourist.",The judge photographed the tourist who had the camera.,css_human_change_v1
-106,neg_001377,negation,The teacher praised the scientist.,The teacher did not praise the scientist.,css_human_change_v1
-107,neg_001098,negation,The judge did not promote the musician.,The judge promoted the musician.,css_human_change_v1
-108,role_000768,role_reversal,The artist contacted the student.,The student contacted the artist.,css_human_change_v1
-109,neg_000291,negation,The scientist visited the judge.,The scientist did not visit the judge.,css_human_change_v1
-110,role_001125,role_reversal,The waiter praised the lawyer.,The lawyer praised the waiter.,css_human_change_v1
-111,neg_001289,negation,The manager visited the musician.,The manager did not visit the musician.,css_human_change_v1
-112,role_000912,role_reversal,The chef praised the researcher.,The researcher praised the chef.,css_human_change_v1
-113,role_000200,role_reversal,The coach helped the athlete.,The athlete helped the coach.,css_human_change_v1
-114,role_001157,role_reversal,The chef praised the manager.,The manager praised the chef.,css_human_change_v1
-115,neg_001011,negation,The lawyer blamed the athlete.,The lawyer did not blame the athlete.,css_human_change_v1
-116,role_001007,role_reversal,The scientist hired the writer.,The writer hired the scientist.,css_human_change_v1
-117,neg_001418,negation,The doctor did not ignore the athlete.,The doctor ignored the athlete.,css_human_change_v1
-118,neg_000656,negation,The scientist did not greet the coach.,The scientist greeted the coach.,css_human_change_v1
-119,role_000093,role_reversal,The musician promoted the waiter.,The waiter promoted the musician.,css_human_change_v1
-120,neg_000945,negation,The manager blamed the chef.,The manager did not blame the chef.,css_human_change_v1
+106,neg_001377,negation,A basenji is a dog.,A basenji is not a cat.,css_human_change_v1
+107,neg_001098,negation,A dove is not a reptile.,A dove is a bird.,css_human_change_v1
+108,role_000768,role_reversal,The soccer coach realized which referee the players had bribed.,The soccer coach realized which players the referee had penalized.,css_human_change_v1
+109,neg_000291,negation,A man is a mammal.,A man is not a reptile.,css_human_change_v1
+110,role_001125,role_reversal,The police officer guessed which civilian the suspect had threatened.,The police officer guessed which suspect the civilian had seen.,css_human_change_v1
+111,neg_001289,negation,A console is a furniture.,A console is not a building.,css_human_change_v1
+112,role_000912,role_reversal,The doctor explained which patient the illness had affected.,The doctor explained which illness the patient had contracted.,css_human_change_v1
+113,role_000200,role_reversal,The children saw which bees the flowers had attracted.,The children saw which flowers the bees had pollinated.,css_human_change_v1
+114,role_001157,role_reversal,The actress admitted which director the casting agent had scolded.,The actress admitted which casting agent the director had fired.,css_human_change_v1
+115,neg_001011,negation,A bowl is a utensil.,A bowl is not a toy.,css_human_change_v1
+116,role_001007,role_reversal,The prince documented which historian the assassin had hired.,The prince documented which assassin the historian had killed.,css_human_change_v1
+117,neg_001418,negation,A race is not a party.,A race is a competition.,css_human_change_v1
+118,neg_000656,negation,A credit-card is not a coin.,A credit-card is a plastic.,css_human_change_v1
+119,role_000093,role_reversal,The athlete trained which sport the coach had supported.,The athlete trained which coach the sport had played.,css_human_change_v1
+120,neg_000945,negation,A tugboat is a vessel.,A tugboat is not a toy.,css_human_change_v1
 121,attach_001321,attachment,"With the camera, the athlete photographed the tourist.",The athlete photographed the tourist who had the camera.,css_human_change_v1
-122,role_001449,role_reversal,The lawyer helped the artist.,The artist helped the lawyer.,css_human_change_v1
-123,neg_000318,negation,The researcher did not admire the lawyer.,The researcher admired the lawyer.,css_human_change_v1
-124,role_001411,role_reversal,The lawyer contacted the musician.,The musician contacted the lawyer.,css_human_change_v1
-125,role_001138,role_reversal,The doctor hired the student.,The student hired the doctor.,css_human_change_v1
+122,role_001449,role_reversal,The assassin documented which historian the queen had hired.,The assassin documented which queen the historian had hired.,css_human_change_v1
+123,neg_000318,negation,A hawk is not a fish.,A hawk is a bird.,css_human_change_v1
+124,role_001411,role_reversal,The warden guessed which inmate the jailer had beaten.,The warden guessed which jailer the inmate had stabbed.,css_human_change_v1
+125,role_001138,role_reversal,The four-year-old knew which hero the dragon had killed.,The four-year-old knew which dragon the hero had slain.,css_human_change_v1
 126,attach_001228,attachment,"With the flashlight, the lawyer checked the driver.",The lawyer checked the driver who had the flashlight.,css_human_change_v1
-127,neg_001328,negation,The writer did not promote the passenger.,The writer promoted the passenger.,css_human_change_v1
-128,role_001215,role_reversal,The passenger helped the writer.,The writer helped the passenger.,css_human_change_v1
-129,role_000829,role_reversal,The researcher criticized the nurse.,The nurse criticized the researcher.,css_human_change_v1
+127,neg_001328,negation,A goat is not a person.,A goat is an animal.,css_human_change_v1
+128,role_001215,role_reversal,The children recalled which gangsters the police had feared.,The children recalled which police the gangsters had robbed.,css_human_change_v1
+129,role_000829,role_reversal,The athlete remembered which coach the other athletes had respected.,The athlete remembered which other athletes the coach had disciplined.,css_human_change_v1
 130,attach_000360,attachment,The chef noticed the teacher with the umbrella.,The chef noticed the teacher who had the umbrella.,css_human_change_v1
 131,attach_000664,attachment,"With the umbrella, the athlete noticed the teacher.",The athlete noticed the teacher who had the umbrella.,css_human_change_v1
-132,neg_000521,negation,The waiter visited the doctor.,The waiter did not visit the doctor.,css_human_change_v1
-133,role_001351,role_reversal,The journalist thanked the musician.,The musician thanked the journalist.,css_human_change_v1
-134,role_000094,role_reversal,The chef blamed the student.,The student blamed the chef.,css_human_change_v1
-135,neg_000655,negation,The journalist praised the driver.,The journalist did not praise the driver.,css_human_change_v1
-136,neg_001345,negation,The researcher called the teacher.,The researcher did not call the teacher.,css_human_change_v1
-137,neg_000865,negation,The lawyer praised the researcher.,The lawyer did not praise the researcher.,css_human_change_v1
-138,role_001004,role_reversal,The writer criticized the teacher.,The teacher criticized the writer.,css_human_change_v1
-139,neg_000094,negation,The driver did not thank the judge.,The driver thanked the judge.,css_human_change_v1
+132,neg_000521,negation,A pizza is a food.,A pizza is not a drink.,css_human_change_v1
+133,role_001351,role_reversal,The gangster recalled which sheriff the locals had feared.,The gangster recalled which locals the sheriff had robbed.,css_human_change_v1
+134,role_000094,role_reversal,The athlete trained which coach the sport had played.,The athlete trained which sport the coach had supported.,css_human_change_v1
+135,neg_000655,negation,A credit-card is a plastic.,A credit-card is not a coin.,css_human_change_v1
+136,neg_001345,negation,A limousine is a vehicle.,A limousine is not a flower.,css_human_change_v1
+137,neg_000865,negation,A soup is a food.,A soup is not a plant.,css_human_change_v1
+138,role_001004,role_reversal,The thief knew which policeman the homeowner had called.,The thief knew which homeowner the policeman had interrogated.,css_human_change_v1
+139,neg_000094,negation,A deer is not a plant.,A deer is an animal.,css_human_change_v1
 140,attach_000668,attachment,The nurse questioned the officer with the badge.,"With the badge, the nurse questioned the officer.",css_human_change_v1
 141,attach_000352,attachment,"With the map, the journalist showed the guide.",The journalist showed the guide who had the map.,css_human_change_v1
-142,role_000051,role_reversal,The musician praised the waiter.,The waiter praised the musician.,css_human_change_v1
-143,role_000591,role_reversal,The artist criticized the lawyer.,The lawyer criticized the artist.,css_human_change_v1
-144,role_000994,role_reversal,The musician visited the student.,The student visited the musician.,css_human_change_v1
-145,neg_000586,negation,The musician did not thank the athlete.,The musician thanked the athlete.,css_human_change_v1
+142,role_000051,role_reversal,The monk remembered which lama the monk had seen.,The monk remembered which monk the lama had seen.,css_human_change_v1
+143,role_000591,role_reversal,The breeder recorded which farmhand the goats had lived.,The breeder recorded which goats the farmhand had bred.,css_human_change_v1
+144,role_000994,role_reversal,The zookeeper mentioned which ape the wildlife curator had fed.,The zookeeper mentioned which wildlife curator the ape had liked.,css_human_change_v1
+145,neg_000586,negation,A car is not a horse.,A car is a transport.,css_human_change_v1
 146,attach_001021,attachment,"With the flashlight, the engineer checked the driver.",The engineer checked the driver who had the flashlight.,css_human_change_v1
-147,neg_000623,negation,The doctor helped the journalist.,The doctor did not help the journalist.,css_human_change_v1
-148,role_001219,role_reversal,The passenger thanked the teacher.,The teacher thanked the passenger.,css_human_change_v1
+147,neg_000623,negation,A ruby is a gem.,A ruby is not a metal.,css_human_change_v1
+148,role_001219,role_reversal,The guests recorded which innkeeper the travel agent had checked-in.,The guests recorded which travel agent the innkeeper had seen.,css_human_change_v1
 149,attach_000121,attachment,"With the camera, the doctor photographed the tourist.",The doctor photographed the tourist who had the camera.,css_human_change_v1
-150,role_000607,role_reversal,The musician blamed the manager.,The manager blamed the musician.,css_human_change_v1
-151,neg_000732,negation,The judge did not support the researcher.,The judge supported the researcher.,css_human_change_v1
-152,neg_001148,negation,The researcher did not greet the engineer.,The researcher greeted the engineer.,css_human_change_v1
+150,role_000607,role_reversal,The teacher asked which student the bully had hit.,The teacher asked which bully the student had punched.,css_human_change_v1
+151,neg_000732,negation,A pronoun is not a verb.,A pronoun is a word.,css_human_change_v1
+152,neg_001148,negation,A soldier is not a gun.,A soldier is a person.,css_human_change_v1
 153,attach_000414,attachment,The engineer questioned the officer with the badge.,The engineer questioned the officer who had the badge.,css_human_change_v1
-154,role_001484,role_reversal,The researcher hired the passenger.,The passenger hired the researcher.,css_human_change_v1
+154,role_001484,role_reversal,The journalist documented which celebrities the TV reporter had interviewed.,The journalist documented which TV reporter the celebrities had avoided.,css_human_change_v1
 155,attach_000296,attachment,The musician saw the man with the telescope.,"With the telescope, the musician saw the man.",css_human_change_v1
 156,attach_000466,attachment,"With the camera, the scientist photographed the tourist.",The scientist photographed the tourist who had the camera.,css_human_change_v1
-157,neg_001317,negation,The nurse called the writer.,The nurse did not call the writer.,css_human_change_v1
+157,neg_001317,negation,A court is a room.,A court is not a tree.,css_human_change_v1
 158,attach_000382,attachment,"With the camera, the researcher photographed the tourist.",The researcher photographed the tourist who had the camera.,css_human_change_v1
 159,attach_000641,attachment,The chef showed the guide with the map.,"With the map, the chef showed the guide.",css_human_change_v1
 160,attach_001470,attachment,The researcher noticed the teacher with the umbrella.,The researcher noticed the teacher who had the umbrella.,css_human_change_v1
 161,attach_000115,attachment,"With the camera, the teacher photographed the tourist.",The teacher photographed the tourist who had the camera.,css_human_change_v1
 162,attach_000279,attachment,The engineer showed the guide with the map.,The engineer showed the guide who had the map.,css_human_change_v1
-163,neg_000348,negation,The driver did not criticize the chef.,The driver criticized the chef.,css_human_change_v1
+163,neg_000348,negation,A rat is not a bird.,A rat is a mammal.,css_human_change_v1
 164,attach_000493,attachment,"With the flashlight, the teacher checked the driver.",The teacher checked the driver who had the flashlight.,css_human_change_v1
-165,neg_001456,negation,The nurse did not promote the researcher.,The nurse promoted the researcher.,css_human_change_v1
-166,neg_000578,negation,The teacher did not visit the researcher.,The teacher visited the researcher.,css_human_change_v1
-167,role_000160,role_reversal,The student praised the waiter.,The waiter praised the student.,css_human_change_v1
-168,neg_000021,negation,The chef criticized the athlete.,The chef did not criticize the athlete.,css_human_change_v1
-169,neg_000023,negation,The judge supported the writer.,The judge did not support the writer.,css_human_change_v1
-170,neg_000592,negation,The writer did not support the student.,The writer supported the student.,css_human_change_v1
-171,role_000462,role_reversal,The scientist hired the teacher.,The teacher hired the scientist.,css_human_change_v1
+165,neg_001456,negation,A cape is not a drink.,A cape is a clothing.,css_human_change_v1
+166,neg_000578,negation,An elephant is not a plant.,An elephant is a herbivore.,css_human_change_v1
+167,role_000160,role_reversal,The student graded which teacher the paper had assigned.,The student graded which paper the teacher had written.,css_human_change_v1
+168,neg_000021,negation,A house is a building.,A house is not a plant.,css_human_change_v1
+169,neg_000023,negation,A school is a building.,A school is not a toy.,css_human_change_v1
+170,neg_000592,negation,A wolf is not a person.,A wolf is an animal.,css_human_change_v1
+171,role_000462,role_reversal,The assailant recognized which defender the judo master had attacked.,The assailant recognized which judo master the defender had defeated.,css_human_change_v1
 172,attach_000563,attachment,The driver showed the guide with the map.,"With the map, the driver showed the guide.",css_human_change_v1
 173,attach_001303,attachment,"With the umbrella, the engineer noticed the teacher.",The engineer noticed the teacher who had the umbrella.,css_human_change_v1
-174,role_001038,role_reversal,The writer thanked the researcher.,The researcher thanked the writer.,css_human_change_v1
-175,role_000548,role_reversal,The nurse helped the manager.,The manager helped the nurse.,css_human_change_v1
-176,role_000598,role_reversal,The writer greeted the researcher.,The researcher greeted the writer.,css_human_change_v1
-177,role_000159,role_reversal,The chef blamed the student.,The student blamed the chef.,css_human_change_v1
+174,role_001038,role_reversal,The author wrote which publisher the books had offended.,The author wrote which books the publisher had banned.,css_human_change_v1
+175,role_000548,role_reversal,The clown saw which friend the boy had scared.,The clown saw which boy the friend had hired.,css_human_change_v1
+176,role_000598,role_reversal,The girl reported which camper the bear had eaten.,The girl reported which bear the camper had seen.,css_human_change_v1
+177,role_000159,role_reversal,The student graded which paper the teacher had written.,The student graded which teacher the paper had assigned.,css_human_change_v1
 178,attach_001487,attachment,The athlete saw the man with the telescope.,"With the telescope, the athlete saw the man.",css_human_change_v1
-179,role_000616,role_reversal,The lawyer visited the researcher.,The researcher visited the lawyer.,css_human_change_v1
+179,role_000616,role_reversal,The teacher discovered which principal the student had insulted.,The teacher discovered which student the principal had suspended.,css_human_change_v1
 180,attach_001104,attachment,The coach met the student with the notebook.,The coach met the student who had the notebook.,css_human_change_v1
-181,neg_000636,negation,The journalist did not admire the chef.,The journalist admired the chef.,css_human_change_v1
-182,neg_000493,negation,The lawyer greeted the driver.,The lawyer did not greet the driver.,css_human_change_v1
-183,neg_000477,negation,The coach praised the manager.,The coach did not praise the manager.,css_human_change_v1
-184,neg_000864,negation,The musician did not support the doctor.,The musician supported the doctor.,css_human_change_v1
+181,neg_000636,negation,A valley is not a house.,A valley is a landform.,css_human_change_v1
+182,neg_000493,negation,A trumpet is an instrument.,A trumpet is not a rock.,css_human_change_v1
+183,neg_000477,negation,A rose is a plant.,A rose is not a bird.,css_human_change_v1
+184,neg_000864,negation,A rice is not a fish.,A rice is a grain.,css_human_change_v1
 185,attach_001109,attachment,The journalist photographed the tourist with the camera.,"With the camera, the journalist photographed the tourist.",css_human_change_v1
 186,attach_001471,attachment,"With the telescope, the chef saw the man.",The chef saw the man who had the telescope.,css_human_change_v1
 187,attach_001162,attachment,"With the camera, the scientist photographed the tourist.",The scientist photographed the tourist who had the camera.,css_human_change_v1
-188,neg_000025,negation,The driver blamed the lawyer.,The driver did not blame the lawyer.,css_human_change_v1
-189,neg_000327,negation,The artist criticized the scientist.,The artist did not criticize the scientist.,css_human_change_v1
-190,neg_000415,negation,The student blamed the driver.,The student did not blame the driver.,css_human_change_v1
-191,role_000551,role_reversal,The chef admired the researcher.,The researcher admired the chef.,css_human_change_v1
-192,role_000858,role_reversal,The engineer interviewed the artist.,The artist interviewed the engineer.,css_human_change_v1
+188,neg_000025,negation,A phone is a device.,A phone is not a rock.,css_human_change_v1
+189,neg_000327,negation,A lion is a carnivore.,A lion is not a herbivore.,css_human_change_v1
+190,neg_000415,negation,A blender is a machine.,A blender is not a toy.,css_human_change_v1
+191,role_000551,role_reversal,The soldiers knew which general the military man had respected.,The soldiers knew which military man the general had promoted.,css_human_change_v1
+192,role_000858,role_reversal,The cashier saw which security guard the shopper had eluded.,The cashier saw which shopper the security guard had stopped.,css_human_change_v1
 193,attach_000996,attachment,The journalist met the student with the notebook.,The journalist met the student who had the notebook.,css_human_change_v1
-194,neg_000089,negation,The waiter supported the passenger.,The waiter did not support the passenger.,css_human_change_v1
+194,neg_000089,negation,A rabbit is a mammal.,A rabbit is not a bird.,css_human_change_v1
 195,attach_001015,attachment,"With the flashlight, the artist checked the driver.",The artist checked the driver who had the flashlight.,css_human_change_v1
-196,role_000264,role_reversal,The artist praised the manager.,The manager praised the artist.,css_human_change_v1
-197,role_001315,role_reversal,The nurse admired the athlete.,The athlete admired the nurse.,css_human_change_v1
+196,role_000264,role_reversal,The butler heard which family the guests had come.,The butler heard which guests the family had invited.,css_human_change_v1
+197,role_001315,role_reversal,The applicant announced which columnist the celebrity had met.,The applicant announced which celebrity the columnist had interviewed.,css_human_change_v1
 198,attach_001024,attachment,"With the flashlight, the teacher checked the driver.",The teacher checked the driver who had the flashlight.,css_human_change_v1
-199,neg_000347,negation,The writer supported the teacher.,The writer did not support the teacher.,css_human_change_v1
-200,neg_000178,negation,The coach did not contact the doctor.,The coach contacted the doctor.,css_human_change_v1
-201,neg_000574,negation,The driver did not help the coach.,The driver helped the coach.,css_human_change_v1
+199,neg_000347,negation,A rat is a mammal.,A rat is not a bird.,css_human_change_v1
+200,neg_000178,negation,A book is not a furniture.,A book is a literature.,css_human_change_v1
+201,neg_000574,negation,A cloud is not a ground.,A cloud is a sky.,css_human_change_v1
 202,attach_000388,attachment,"With the microscope, the engineer observed the scientist.",The engineer observed the scientist who had the microscope.,css_human_change_v1
-203,role_000411,role_reversal,The journalist admired the athlete.,The athlete admired the journalist.,css_human_change_v1
-204,role_001018,role_reversal,The driver criticized the judge.,The judge criticized the driver.,css_human_change_v1
-205,role_000700,role_reversal,The passenger helped the nurse.,The nurse helped the passenger.,css_human_change_v1
-206,role_000033,role_reversal,The coach promoted the driver.,The driver promoted the coach.,css_human_change_v1
-207,role_000074,role_reversal,The musician thanked the teacher.,The teacher thanked the musician.,css_human_change_v1
-208,role_001433,role_reversal,The nurse thanked the driver.,The driver thanked the nurse.,css_human_change_v1
+203,role_000411,role_reversal,The cashier knew which customer the robber had chosen.,The cashier knew which robber the customer had chosen.,css_human_change_v1
+204,role_001018,role_reversal,The cashier knew which robber the customer had reported.,The cashier knew which customer the robber had chosen.,css_human_change_v1
+205,role_000700,role_reversal,The gangsters recalled which sheriff the locals had robbed.,The gangsters recalled which locals the sheriff had feared.,css_human_change_v1
+206,role_000033,role_reversal,The biologist concluded that the dog the cat had bitten.,The biologist concluded that the cat the dog had chased.,css_human_change_v1
+207,role_000074,role_reversal,The nurse took care of which doctor the patient had talked.,The nurse took care of which patient the doctor had visited.,css_human_change_v1
+208,role_001433,role_reversal,The bird watcher saw which hawk the photographer had photographed.,The bird watcher saw which photographer the hawk had attacked.,css_human_change_v1
 209,attach_001386,attachment,The doctor saw the man with the telescope.,The doctor saw the man who had the telescope.,css_human_change_v1
-210,role_000427,role_reversal,The judge hired the artist.,The artist hired the judge.,css_human_change_v1
+210,role_000427,role_reversal,The athlete thanked which fans the journalist had interviewed.,The journalist interviewed which fans the athlete had thanked.,css_human_change_v1
 211,attach_000162,attachment,The writer met the student with the notebook.,The writer met the student who had the notebook.,css_human_change_v1
-212,role_000175,role_reversal,The nurse admired the driver.,The driver admired the nurse.,css_human_change_v1
-213,role_000604,role_reversal,The doctor hired the athlete.,The athlete hired the doctor.,css_human_change_v1
+212,role_000175,role_reversal,The policeman arrested which thief the victim had caught.,The policeman arrested which victim the thief had robbed.,css_human_change_v1
+213,role_000604,role_reversal,The farmer guessed which cowboy the bull had gored.,The farmer guessed which bull the cowboy had ridden.,css_human_change_v1
 214,attach_000320,attachment,The researcher questioned the officer with the badge.,"With the badge, the researcher questioned the officer.",css_human_change_v1
 215,attach_000576,attachment,The coach saw the man with the telescope.,The coach saw the man who had the telescope.,css_human_change_v1
-216,role_000805,role_reversal,The engineer criticized the lawyer.,The lawyer criticized the engineer.,css_human_change_v1
-217,neg_000987,negation,The journalist visited the coach.,The journalist did not visit the coach.,css_human_change_v1
+216,role_000805,role_reversal,The novelist showed which writer the poet had admired.,The novelist showed which poet the writer had admired.,css_human_change_v1
+217,neg_000987,negation,A grapefruit is a fruit.,A grapefruit is not a color.,css_human_change_v1
 218,attach_000345,attachment,The lawyer checked the driver with the flashlight.,The lawyer checked the driver who had the flashlight.,css_human_change_v1
-219,neg_000095,negation,The coach ignored the passenger.,The coach did not ignore the passenger.,css_human_change_v1
-220,neg_001047,negation,The researcher contacted the lawyer.,The researcher did not contact the lawyer.,css_human_change_v1
-221,role_000573,role_reversal,The student hired the writer.,The writer hired the student.,css_human_change_v1
+219,neg_000095,negation,A whale is a mammal.,A whale is not a reptile.,css_human_change_v1
+220,neg_001047,negation,A continent is a landmass.,A continent is not a liquid.,css_human_change_v1
+221,role_000573,role_reversal,The customer asked the restaurant owner which waitress had served.,The customer asked the waitress which restaurant owner had tipped.,css_human_change_v1
 222,attach_000754,attachment,"With the umbrella, the artist noticed the teacher.",The artist noticed the teacher who had the umbrella.,css_human_change_v1
-223,role_001189,role_reversal,The teacher called the artist.,The artist called the teacher.,css_human_change_v1
+223,role_001189,role_reversal,The landlady remembered which tenant the plumber had helped.,The landlady remembered which plumber the tenant had hired.,css_human_change_v1
 224,attach_000553,attachment,"With the microscope, the doctor observed the scientist.",The doctor observed the scientist who had the microscope.,css_human_change_v1
 225,attach_001488,attachment,The musician photographed the tourist with the camera.,The musician photographed the tourist who had the camera.,css_human_change_v1
-226,neg_000466,negation,The musician did not interview the coach.,The musician interviewed the coach.,css_human_change_v1
+226,neg_000466,negation,A carnation is not a bee.,A carnation is a flower.,css_human_change_v1
 227,attach_000824,attachment,The chef photographed the tourist with the camera.,"With the camera, the chef photographed the tourist.",css_human_change_v1
-228,role_000942,role_reversal,The musician greeted the student.,The student greeted the musician.,css_human_change_v1
+228,role_000942,role_reversal,The athlete wondered which trainer the coach had interviewed.,The athlete wondered which coach the trainer had selected.,css_human_change_v1
 229,attach_001206,attachment,The doctor questioned the officer with the badge.,The doctor questioned the officer who had the badge.,css_human_change_v1
 230,attach_000692,attachment,The coach showed the guide with the map.,"With the map, the coach showed the guide.",css_human_change_v1
-231,neg_000822,negation,The athlete did not admire the musician.,The athlete admired the musician.,css_human_change_v1
-232,neg_000709,negation,The lawyer criticized the waiter.,The lawyer did not criticize the waiter.,css_human_change_v1
+231,neg_000822,negation,A bed is not a toy.,A bed is a furniture.,css_human_change_v1
+232,neg_000709,negation,A spy is a person.,A spy is not a thing.,css_human_change_v1
 233,attach_000991,attachment,"With the telescope, the teacher saw the man.",The teacher saw the man who had the telescope.,css_human_change_v1
 234,attach_000035,attachment,The nurse observed the scientist with the microscope.,"With the microscope, the nurse observed the scientist.",css_human_change_v1
-235,role_001070,role_reversal,The engineer helped the teacher.,The teacher helped the engineer.,css_human_change_v1
-236,role_000554,role_reversal,The student praised the doctor.,The doctor praised the student.,css_human_change_v1
-237,role_000096,role_reversal,The driver supported the doctor.,The doctor supported the driver.,css_human_change_v1
-238,neg_001368,negation,The scientist did not help the engineer.,The scientist helped the engineer.,css_human_change_v1
-239,neg_000142,negation,The athlete did not call the researcher.,The athlete called the researcher.,css_human_change_v1
-240,neg_000670,negation,The researcher did not blame the judge.,The researcher blamed the judge.,css_human_change_v1
-241,role_001418,role_reversal,The judge visited the athlete.,The athlete visited the judge.,css_human_change_v1
-242,neg_000380,negation,The journalist did not visit the lawyer.,The journalist visited the lawyer.,css_human_change_v1
+235,role_001070,role_reversal,The costume designer confirmed which actor the barber had shaved.,The costume designer confirmed which barber the actor had used.,css_human_change_v1
+236,role_000554,role_reversal,The ghost remembered which villager the old widower had haunted.,The ghost remembered which old widower the villager had seen.,css_human_change_v1
+237,role_000096,role_reversal,The director produced which producer the film had financed.,The director produced which film the producer had distributed.,css_human_change_v1
+238,neg_001368,negation,A worm is not a vertebrate.,A worm is an invertebrate.,css_human_change_v1
+239,neg_000142,negation,A duck is not a fish.,A duck is a bird.,css_human_change_v1
+240,neg_000670,negation,A book is not a fruit.,A book is a story.,css_human_change_v1
+241,role_001418,role_reversal,The teacher remembered which bully the child had reported.,The teacher remembered which child the bully had harassed.,css_human_change_v1
+242,neg_000380,negation,A sunflower is not a fruit.,A sunflower is a flower.,css_human_change_v1
 243,attach_000093,attachment,The journalist questioned the officer with the badge.,The journalist questioned the officer who had the badge.,css_human_change_v1
-244,role_001448,role_reversal,The journalist criticized the chef.,The chef criticized the journalist.,css_human_change_v1
-245,role_000242,role_reversal,The scientist blamed the waiter.,The waiter blamed the scientist.,css_human_change_v1
+244,role_001448,role_reversal,The farmer recorded which goats the breeder had bred.,The farmer recorded which farmhand the goats had belonged.,css_human_change_v1
+245,role_000242,role_reversal,The mother was happy to hear which teacher the child had praised.,The mother was happy to hear which child the teacher had praised.,css_human_change_v1
 246,attach_001193,attachment,The scientist noticed the teacher with the umbrella.,"With the umbrella, the scientist noticed the teacher.",css_human_change_v1
 247,attach_001076,attachment,The judge photographed the tourist with the camera.,"With the camera, the judge photographed the tourist.",css_human_change_v1
-248,role_000729,role_reversal,The student hired the engineer.,The engineer hired the student.,css_human_change_v1
-249,neg_000258,negation,The passenger did not thank the nurse.,The passenger thanked the nurse.,css_human_change_v1
+248,role_000729,role_reversal,The parrot knew which Teresa the neighbor had bought.,The parrot knew which neighbor the Teresa had bitten.,css_human_change_v1
+249,neg_000258,negation,A lamp is not a food.,A lamp is a lighting.,css_human_change_v1
 250,attach_001013,attachment,The writer showed the guide with the map.,"With the map, the writer showed the guide.",css_human_change_v1
 251,attach_000305,attachment,The doctor met the student with the notebook.,"With the notebook, the doctor met the student.",css_human_change_v1
-252,neg_000606,negation,The engineer did not blame the athlete.,The engineer blamed the athlete.,css_human_change_v1
+252,neg_000606,negation,A carrot is not a pest.,A carrot is a herb.,css_human_change_v1
 253,attach_000828,attachment,The musician observed the scientist with the microscope.,The musician observed the scientist who had the microscope.,css_human_change_v1
 254,attach_001050,attachment,The engineer showed the guide with the map.,The engineer showed the guide who had the map.,css_human_change_v1
-255,neg_001424,negation,The artist did not thank the athlete.,The artist thanked the athlete.,css_human_change_v1
+255,neg_001424,negation,A carp is not a reptile.,A carp is a fish.,css_human_change_v1
 256,attach_001035,attachment,The doctor observed the scientist with the microscope.,The doctor observed the scientist who had the microscope.,css_human_change_v1
-257,role_001003,role_reversal,The manager admired the waiter.,The waiter admired the manager.,css_human_change_v1
-258,role_000065,role_reversal,The waiter ignored the chef.,The chef ignored the waiter.,css_human_change_v1
-259,role_001111,role_reversal,The manager hired the teacher.,The teacher hired the manager.,css_human_change_v1
-260,neg_001303,negation,The musician praised the scientist.,The musician did not praise the scientist.,css_human_change_v1
+257,role_001003,role_reversal,The thief knew which homeowner the policeman had interrogated.,The thief knew which policeman the homeowner had called.,css_human_change_v1
+258,role_000065,role_reversal,The doctor documented which patient the doctor had examined.,The doctor documented which doctor the patient had seen.,css_human_change_v1
+259,role_001111,role_reversal,The athlete remembered which game the coach had benched.,The athlete remembered which coach the game had coached.,css_human_change_v1
+260,neg_001303,negation,A mango is a fruit.,A mango is not a vegetable.,css_human_change_v1
 261,attach_001397,attachment,The student checked the driver with the flashlight.,"With the flashlight, the student checked the driver.",css_human_change_v1
-262,neg_000668,negation,The journalist did not criticize the waiter.,The journalist criticized the waiter.,css_human_change_v1
-263,role_000581,role_reversal,The artist contacted the athlete.,The athlete contacted the artist.,css_human_change_v1
-264,role_001252,role_reversal,The student interviewed the teacher.,The teacher interviewed the student.,css_human_change_v1
+262,neg_000668,negation,A map is not a story.,A map is a document.,css_human_change_v1
+263,role_000581,role_reversal,The pirate kidnapped which singer the opera composer had revealed.,The pirate kidnapped which opera composer had revealed.,css_human_change_v1
+264,role_001252,role_reversal,The athlete remembered which team the coach had coached.,The athlete remembered which coach the team had hired.,css_human_change_v1
 265,attach_000204,attachment,The musician observed the scientist with the microscope.,The musician observed the scientist who had the microscope.,css_human_change_v1
 266,attach_000801,attachment,The musician observed the scientist with the microscope.,The musician observed the scientist who had the microscope.,css_human_change_v1
-267,neg_001194,negation,The student did not help the waiter.,The student helped the waiter.,css_human_change_v1
-268,neg_001278,negation,The coach did not help the teacher.,The coach helped the teacher.,css_human_change_v1
-269,neg_000121,negation,The artist visited the scientist.,The artist did not visit the scientist.,css_human_change_v1
-270,role_000491,role_reversal,The teacher ignored the artist.,The artist ignored the teacher.,css_human_change_v1
+267,neg_001194,negation,A lemon is not a drink.,A lemon is a fruit.,css_human_change_v1
+268,neg_001278,negation,A railroad is not a bus.,A railroad is a transportation.,css_human_change_v1
+269,neg_000121,negation,A lamp is a light.,A lamp is not a clock.,css_human_change_v1
+270,role_000491,role_reversal,The neighbor knew which parrot Teresa had bought.,The neighbor knew which Teresa the parrot had bitten.,css_human_change_v1
 271,attach_000154,attachment,"With the camera, the driver photographed the tourist.",The driver photographed the tourist who had the camera.,css_human_change_v1
 272,attach_001196,attachment,The passenger observed the scientist with the microscope.,"With the microscope, the passenger observed the scientist.",css_human_change_v1
-273,neg_001279,negation,The manager greeted the artist.,The manager did not greet the artist.,css_human_change_v1
-274,neg_001115,negation,The engineer helped the passenger.,The engineer did not help the passenger.,css_human_change_v1
-275,neg_000339,negation,The researcher greeted the driver.,The researcher did not greet the driver.,css_human_change_v1
-276,role_000134,role_reversal,The doctor blamed the driver.,The driver blamed the doctor.,css_human_change_v1
-277,role_000908,role_reversal,The passenger interviewed the manager.,The manager interviewed the passenger.,css_human_change_v1
-278,neg_000618,negation,The artist did not criticize the judge.,The artist criticized the judge.,css_human_change_v1
-279,neg_001369,negation,The lawyer contacted the athlete.,The lawyer did not contact the athlete.,css_human_change_v1
+273,neg_001279,negation,A mower is a machine.,A mower is not a phone.,css_human_change_v1
+274,neg_001115,negation,A jade is a gem.,A jade is not a place.,css_human_change_v1
+275,neg_000339,negation,A cathedral is a building.,A cathedral is not a bird.,css_human_change_v1
+276,role_000134,role_reversal,The teacher graded which student the principal had praised.,The teacher graded which student the principal had accused.,css_human_change_v1
+277,role_000908,role_reversal,The boss asked which whistleblower the underling had spoken.,The boss asked which underling the whistleblower had spoken.,css_human_change_v1
+278,neg_000618,negation,A plant is not a mineral.,A plant is a lifeform.,css_human_change_v1
+279,neg_001369,negation,A mother is a person.,A mother is not a computer.,css_human_change_v1
 280,attach_000064,attachment,"With the telescope, the passenger saw the man.",The passenger saw the man who had the telescope.,css_human_change_v1
-281,neg_000912,negation,The coach did not admire the engineer.,The coach admired the engineer.,css_human_change_v1
+281,neg_000912,negation,A cup is not a tool.,A cup is a container.,css_human_change_v1
 282,attach_000100,attachment,"With the map, the scientist showed the guide.",The scientist showed the guide who had the map.,css_human_change_v1
-283,role_000218,role_reversal,The coach praised the lawyer.,The lawyer praised the coach.,css_human_change_v1
-284,role_000911,role_reversal,The waiter praised the researcher.,The researcher praised the waiter.,css_human_change_v1
-285,role_000882,role_reversal,The lawyer blamed the chef.,The chef blamed the lawyer.,css_human_change_v1
-286,neg_001117,negation,The chef criticized the student.,The chef did not criticize the student.,css_human_change_v1
-287,role_000244,role_reversal,The lawyer ignored the manager.,The manager ignored the lawyer.,css_human_change_v1
+283,role_000218,role_reversal,The chef heard which family the guests had come.,The chef heard which guests the family had invited.,css_human_change_v1
+284,role_000911,role_reversal,The doctor explained which illness the patient had contracted.,The doctor explained which patient the illness had affected.,css_human_change_v1
+285,role_000882,role_reversal,The doctor diagnosed which nurse the patient had seen.,The doctor diagnosed which patient the nurse had treated.,css_human_change_v1
+286,neg_001117,negation,A cat is an organism.,A cat is not a mammal.,css_human_change_v1
+287,role_000244,role_reversal,The nurse was alarmed to find which doctor the patient had forgotten.,The nurse was alarmed to find which patient the doctor had forgotten.,css_human_change_v1
 288,attach_000779,attachment,The chef checked the driver with the flashlight.,"With the flashlight, the chef checked the driver.",css_human_change_v1
-289,role_001368,role_reversal,The manager interviewed the journalist.,The journalist interviewed the manager.,css_human_change_v1
+289,role_001368,role_reversal,The lord asked which cook the chef had served.,The lord asked which chef the cook had requested.,css_human_change_v1
 290,attach_001099,attachment,"With the umbrella, the waiter noticed the teacher.",The waiter noticed the teacher who had the umbrella.,css_human_change_v1
-291,neg_001103,negation,The nurse promoted the chef.,The nurse did not promote the chef.,css_human_change_v1
+291,neg_001103,negation,A pipe is a tool.,A pipe is not a drink.,css_human_change_v1
 292,attach_001037,attachment,The artist checked the driver with the flashlight.,"With the flashlight, the artist checked the driver.",css_human_change_v1
 293,attach_001464,attachment,The manager noticed the teacher with the umbrella.,The manager noticed the teacher who had the umbrella.,css_human_change_v1
 294,attach_000675,attachment,The athlete photographed the tourist with the camera.,The athlete photographed the tourist who had the camera.,css_human_change_v1
-295,neg_000561,negation,The judge visited the scientist.,The judge did not visit the scientist.,css_human_change_v1
+295,neg_000561,negation,A mouse is a pest.,A mouse is not a fish.,css_human_change_v1
 296,attach_000982,attachment,"With the map, the scientist showed the guide.",The scientist showed the guide who had the map.,css_human_change_v1
 297,attach_001159,attachment,"With the microscope, the journalist observed the scientist.",The journalist observed the scientist who had the microscope.,css_human_change_v1
 298,attach_000935,attachment,The scientist questioned the officer with the badge.,"With the badge, the scientist questioned the officer.",css_human_change_v1

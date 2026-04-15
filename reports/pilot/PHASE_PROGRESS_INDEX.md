@@ -4,7 +4,7 @@ Last updated: `2026-04-24`
 
 Dataset migration note (2026-04-24):
 - Role + negation pilot/full pair files are now imported from `extending_psycholinguistic_dataset`.
-- Pilot outputs produced before the migration are historical and should be recomputed for final claims.
+- Pilot/full regeneration completed post-migration; current artifacts reflect imported role/negation sources.
 
 ## Completed Phases
 
@@ -22,6 +22,7 @@ Dataset migration note (2026-04-24):
 
 - Phase reports: `reports/phases/phase_03.md` ... `reports/phases/phase_08.md`
 - Migration report: `reports/phases/phase_15_dataset_source_migration.md`
+- Post-migration full rerun: `reports/phases/phase_16_post_migration_full_rerun.md`
 - Incremental logs: `logs/incremental/phase_00.jsonl` ... `phase_08.jsonl`
 - Pilot metrics: `results/metrics/`
 - Pilot surprisal: `results/surprisal/`

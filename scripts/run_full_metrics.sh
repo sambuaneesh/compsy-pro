@@ -14,7 +14,8 @@ uv run python -m css.data.validate_schema \
   --output results/data_validation/full_schema_validation.json
 
 uv run python -m css.representations.extract_hidden \
-  --config configs/experiments/full.yaml
+  --config configs/experiments/full.yaml \
+  --force
 
 uv run python -m css.metrics.compute_all_metrics \
   --config configs/experiments/full.yaml \
