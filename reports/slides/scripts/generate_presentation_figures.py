@@ -53,19 +53,41 @@ def make_metric_means(out_dir: Path) -> None:
     summary["phenomenon"] = summary["phenomenon"].map(
         {"role_reversal": "Role Reversal", "negation": "Negation"}
     )
-    fig, ax = plt.subplots(figsize=(9, 4.2))
+    small = summary[summary["metric"] != "delta_l2"].copy()
+    large = summary[summary["metric"] == "delta_l2"].copy()
+
+    fig, axes = plt.subplots(1, 2, figsize=(10.2, 4.2), gridspec_kw={"width_ratios": [3.5, 1.2]})
+    ax_left, ax_right = axes
+
     sns.barplot(
-        data=summary,
+        data=small,
         x="metric",
         y="mean_value",
         hue="phenomenon",
         palette=["#2A9D8F", "#E76F51"],
-        ax=ax,
+        ax=ax_left,
     )
-    ax.set_xlabel("")
-    ax.set_ylabel("Mean Shift")
-    ax.set_title("Mean Shift Magnitude by Metric and Phenomenon")
-    ax.tick_params(axis="x", rotation=12)
+    ax_left.set_xlabel("")
+    ax_left.set_ylabel("Mean Shift")
+    ax_left.set_title("Cosine / Frobenius / Token-Aligned")
+    ax_left.tick_params(axis="x", rotation=12)
+    ax_left.legend(title="phenomenon", loc="upper left")
+
+    sns.barplot(
+        data=large,
+        x="metric",
+        y="mean_value",
+        hue="phenomenon",
+        palette=["#2A9D8F", "#E76F51"],
+        ax=ax_right,
+    )
+    ax_right.set_xlabel("")
+    ax_right.set_ylabel("Mean Shift")
+    ax_right.set_title("L2")
+    ax_right.tick_params(axis="x", rotation=12)
+    ax_right.legend_.remove()
+
+    fig.suptitle("Mean Shift Magnitude by Metric and Phenomenon", y=0.99)
     fig.tight_layout()
     fig.savefig(out_dir / "metric_means_by_phenomenon.pdf")
     plt.close(fig)
