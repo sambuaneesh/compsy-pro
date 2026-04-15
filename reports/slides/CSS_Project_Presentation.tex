@@ -3,10 +3,12 @@
 \usetheme{Madrid}
 \usecolortheme{seagull}
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
 
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{multirow}
 \usepackage{hyperref}
 
 \graphicspath{{../../results/figures/}{assets/}}
@@ -16,11 +18,24 @@
 \setbeamercolor{title}{fg=CSSBlue}
 \setbeamercolor{frametitle}{fg=CSSBlue}
 \setbeamercolor{structure}{fg=CSSAccent}
+\setbeamercolor{author in head/foot}{bg=black!5,fg=black}
+\setbeamercolor{date in head/foot}{bg=black!5,fg=black}
+
+\setbeamertemplate{footline}{
+  \leavevmode
+  \hbox{
+    \begin{beamercolorbox}[wd=.85\paperwidth,ht=2.8ex,dp=1.2ex,leftskip=1em]{author in head/foot}
+      \usebeamerfont{author in head/foot}V. Rathore \& S. Aneesh
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.8ex,dp=1.2ex,rightskip=1em]{date in head/foot}
+      \usebeamerfont{date in head/foot}\hfill\insertframenumber
+    \end{beamercolorbox}
+  }
+}
 
 \title{Counterfactual Structural Sensitivity (CSS)}
-\subtitle{Dataset-Only Probing under Minimal Linguistic Edits}
+\subtitle{Probing Language Model Representations under Minimal Linguistic Edits}
 \author[V. Rathore \& S. Aneesh]{Vidhi Rathore (2023121002) \and Sambu Aneesh (2023121012)}
-\institute{Computational Psycholinguistics Project}
 \date{Spring 2026}
 
 \begin{document}
@@ -29,89 +44,112 @@
   \titlepage
 \end{frame}
 
-\begin{frame}{Presentation Roadmap}
+\begin{frame}{Roadmap}
 \begin{enumerate}
-  \item Problem framing
-  \item CSS protocol and math
-  \item Datasets, models, and setup
-  \item Results and completion status
-  \item Remaining work and finalization plan
+  \item Problem and motivation
+  \item CSS protocol and metrics
+  \item Experimental setup
+  \item Results and interpretation
+  \item Validity, limitations, and completion status
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Problem Framing}
+\begin{frame}{Motivation}
 \begin{itemize}
-  \item Minimal edits can flip sentence meaning (role swap, negation insertion/removal).
-  \item We test whether hidden-state geometry reacts to these edits in a structured way.
-  \item Current project track is strictly dataset-only and does not use human annotation.
+  \item Minimal edits can change event structure without large lexical change.
+  \item We test whether internal representations track these structural edits.
+  \item Focused phenomena: role reversal and negation.
 \end{itemize}
-\begin{block}{Core Question}
-Do representation-shift metrics and probe signals systematically track counterfactual structural edits?
+\vspace{0.4em}
+\begin{table}
+\centering
+\small
+\begin{tabular}{p{0.26\linewidth}p{0.30\linewidth}p{0.36\linewidth}}
+\toprule
+\textbf{Phenomenon} & \textbf{Sentence \(s\)} & \textbf{Counterfactual \(s_{cf}\)} \\
+\midrule
+Role reversal & The chef praised the waiter. & The waiter praised the chef. \\
+Negation & The pilot saw the signal. & The pilot did not see the signal. \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Research Questions}
+\begin{block}{RQ1}
+Do representation-shift metrics respond consistently to minimal structural edits across layers and models?
+\end{block}
+\begin{block}{RQ2}
+Does matrix-norm (Frobenius) shift provide complementary signal beyond centroid cosine?
+\end{block}
+\begin{block}{RQ3}
+How do probe selectivity and surprisal interact with representation-shift diagnostics?
 \end{block}
 \end{frame}
 
 \begin{frame}{CSS Protocol}
 \small
 \[
-\text{sentence } s
+\text{Sentence Pair}
 \rightarrow
-\text{counterfactual } s_{cf}
+\text{Transformer Hidden States (layers 0--12)}
 \rightarrow
-\text{hidden states}
+\text{Shift Metrics}
 \rightarrow
-\Delta\text{-metrics}
-\]
-\[
+\text{Probes + Surprisal}
 \rightarrow
-\text{probes}
-\rightarrow
-\text{GPT-2 surprisal}
-\rightarrow
-\text{dataset-level statistical summary}
+\text{Statistical Summary}
 \]
 \normalsize
 \vspace{0.4em}
 \begin{itemize}
-  \item Representation extraction at embedding + layers \(1\ldots 12\).
-  \item One row per pair, model, layer, and metric.
+  \item One paired comparison per item.
+  \item All outputs computed per model and per layer.
+  \item Fully config-driven and reproducible execution.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Dataset Scope (GitHub-Only)}
-\begin{table}
-\centering
-\begin{tabular}{lcc}
-\toprule
-\textbf{Module} & \textbf{Pairs} & \textbf{Source} \\
-\midrule
-Role reversal & 1500 & Extending Psycholinguistic Dataset \\
-Negation & 1500 & Extending Psycholinguistic Dataset \\
-\midrule
-\textbf{Total} & \textbf{3000} & GitHub dataset only \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{frame}{Data Source and Scale}
 \begin{itemize}
-  \item Active merged file: \texttt{full\_all\_3000.jsonl}.
-  \item Attachment and human-annotation tracks are excluded from this run.
+  \item Role and negation pairs are imported from a public psycholinguistic corpus.
+  \item Source link:
+  \href{https://github.com/text-machine-lab/extending_psycholinguistic_dataset}{Public corpus repository (GitHub)}.
+  \item Final analysis set contains 3000 paired edits.
 \end{itemize}
+\vspace{0.3em}
+\centering
+\includegraphics[width=0.74\linewidth]{dataset_counts.pdf}
 \end{frame}
 
-\begin{frame}{Models and Representations}
+\begin{frame}{Modeling Setup}
 \begin{itemize}
   \item Models:
-  \texttt{bert-base-uncased}, \texttt{roberta-base}, \texttt{gpt2}.
+  \href{https://aclanthology.org/N19-1423/}{BERT-base},
+  \href{https://arxiv.org/abs/1907.11692}{RoBERTa-base},
+  \href{https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf}{GPT-2}.
+  \item Hidden-state extraction:
+  embedding layer + transformer layers \(1\ldots12\).
   \item Primary representation units:
-  \begin{itemize}
-    \item mean-pooled sentence vectors,
-    \item token matrices with subword-to-word pooling.
-  \end{itemize}
+  mean-pooled sentence vectors and token matrices.
   \item Secondary ablations:
-  CLS (BERT/RoBERTa), last-token (GPT-2).
+  CLS vector (BERT/RoBERTa) and last-token vector (GPT-2).
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Primary Metrics}
+\begin{frame}{Metric Intuition (What Each Metric Captures)}
+\begin{itemize}
+  \item \(\Delta_{\cos}\): direction change of sentence-level representation.
+  \item \(\Delta_{\text{frob}}\): structural change in token-token interaction geometry.
+  \item \(\Delta_{L2}\): absolute displacement magnitude in embedding space.
+  \item \(\Delta_{\text{token}}\): average local token-level perturbation across aligned positions.
+\end{itemize}
+\vspace{0.3em}
+\begin{block}{Interpretation Principle}
+Large shifts indicate stronger representational response to a minimal counterfactual edit.
+\end{block}
+\end{frame}
+
+\begin{frame}{Metric Definitions}
 \small
 \[
 \Delta_{\cos}^{(l)} = 1 - \cos\!\big(\mu_l(s),\mu_l(s_{cf})\big)
@@ -120,139 +158,189 @@ Negation & 1500 & Extending Psycholinguistic Dataset \\
 \text{sim}_{\text{frob}}^{(l)} =
 \frac{\lVert K(\widehat{A}_l,\widehat{B}_l)\rVert_F}
 {\sqrt{\lVert K(\widehat{A}_l,\widehat{A}_l)\rVert_F\lVert K(\widehat{B}_l,\widehat{B}_l)\rVert_F + \varepsilon}}
+,\quad
+\Delta_{\text{frob}}^{(l)} = 1 - \text{sim}_{\text{frob}}^{(l)}
 \]
 \[
-\Delta_{\text{frob}}^{(l)} = 1 - \text{sim}_{\text{frob}}^{(l)},
-\quad
 \Delta_{L2}^{(l)} = \lVert \mu_l(s)-\mu_l(s_{cf}) \rVert_2
 \]
 \[
 \Delta_{\text{token}}^{(l)} =
 \frac{1}{|M|}\sum_{(i,j)\in M}\left(1-\cos\!\big(h^{(l)}_{i},h^{(l)}_{j,cf}\big)\right)
 \]
+\normalsize
 \end{frame}
 
-\begin{frame}{Probes and Surprisal}
+\begin{frame}{Probes and Controls}
 \begin{itemize}
   \item Linear probes by layer:
   role (\(agent/patient\)) and negation (\(0/1\)).
-  \item Selectivity controls:
-  random-label control, reported as task minus control.
-  \item GPT-2 autoregressive surprisal:
+  \item Random-label baseline used for selectivity controls
+  (\href{https://aclanthology.org/D19-1275/}{Hewitt \& Liang, 2019}).
+  \item Selectivity:
   \[
-  \text{surprisal}(t_i) = -\log P(t_i \mid t_{<i})
+  \text{Selectivity} = \text{Task Macro-F1} - \text{Control Macro-F1}
   \]
-  \item Reported features:
-  total/average surprisal and counterfactual deltas.
+  \item Multi-seed evaluation for stability.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Dataset-Only Statistical Targets}
+\begin{frame}{Surprisal Signal}
 \begin{itemize}
-  \item D1: per-layer correlation of each CSS metric with
-  \( |\Delta \text{avg surprisal}| \).
-  \item D2: incremental value of \(\Delta_{\text{frob}}\) over \(\Delta_{\cos}\)
-  for surprisal-target regression.
-  \item D3: phenomenon/model-specific layer profile differences.
-  \item D4: probe selectivity stability across layers.
+  \item Primary probabilistic signal is autoregressive GPT-2 surprisal.
+  \item Formal definition:
+  \[
+  \text{surprisal}(t_i) = - \log P(t_i \mid t_1,\ldots,t_{i-1})
+  \]
+  \item Features used:
+  total surprisal, average surprisal, and absolute counterfactual deltas.
+  \item Key region coverage in this run: \(100\%\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Execution Coverage}
+\begin{frame}{Statistical Objectives}
+\small
+\textbf{D1:} layer-wise metric--surprisal correlations (Spearman primary, Pearson secondary).\\
+\textbf{D2:} incremental value of \(\Delta_{\text{frob}}\) beyond \(\Delta_{\cos}\).\\
+\textbf{D3:} layer-profile differences by model and phenomenon.\\
+\textbf{D4:} probe selectivity stability across layers.
+\vspace{0.4em}
+\[
+z(y) \sim z(\Delta_{\cos}) + z(\Delta_{\text{frob}}) + z(\text{length}) + z(\text{overlap})
+\]
+\normalsize
+\vspace{0.3em}
+\begin{itemize}
+  \item Bootstrap confidence intervals.
+  \item Benjamini--Hochberg FDR correction on layer-wise tests.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Experiment Matrix and Coverage}
 \begin{table}
 \centering
+\small
 \begin{tabular}{lc}
 \toprule
-\textbf{Component} & \textbf{Status} \\
+\textbf{Component} & \textbf{Count} \\
 \midrule
-Data import + schema validation & \(\checkmark\) complete \\
-Hidden-state extraction (3 models) & \(\checkmark\) complete \\
-Metrics (all layers) & \(\checkmark\) complete \\
-Probes + selectivity controls & \(\checkmark\) complete \\
-GPT-2 surprisal & \(\checkmark\) complete \\
-Dataset-only stats (D1--D4) & \(\checkmark\) complete \\
-Salience extension + plots & \(\checkmark\) complete \\
+Counterfactual pairs & 3000 \\
+Models & 3 \\
+Layers per model & 13 \\
+Primary metrics & 4 \\
+Metric rows & 117000 \\
+Surprisal rows & 3000 \\
+Probe result rows & 390 \\
 \bottomrule
 \end{tabular}
 \end{table}
+\vspace{0.2em}
+\centering
+\includegraphics[width=0.78\linewidth]{metric_means_by_phenomenon.pdf}
 \end{frame}
 
-\begin{frame}{Layer Correlation Curves}
+\begin{frame}{Layer-Wise Correlation Curves}
 \centering
-\includegraphics[width=0.92\linewidth]{layer_correlation_curves.pdf}
-\vspace{0.4em}
+\includegraphics[width=0.93\linewidth]{layer_correlation_curves.pdf}
+\vspace{0.35em}
 
 \small Spearman correlation of representation shifts with surprisal deltas.
 \end{frame}
 
-\begin{frame}{Probe Selectivity Curves}
+\begin{frame}{Frobenius Heatmap Across Layers}
 \centering
-\includegraphics[width=0.92\linewidth]{probe_selectivity_curves.pdf}
-\vspace{0.4em}
+\includegraphics[width=0.96\linewidth]{frob_layer_heatmap.pdf}
+\vspace{0.35em}
 
-\small Selectivity \(=\) task macro-F1 minus random-label macro-F1.
+\small Layer-wise \(\rho\) values for \(\Delta_{\text{frob}}\) by model and phenomenon.
+\end{frame}
+
+\begin{frame}{Probe Selectivity Across Layers}
+\centering
+\includegraphics[width=0.93\linewidth]{probe_selectivity_curves.pdf}
+\vspace{0.35em}
+
+\small Selectivity remains positive across most model-layer settings.
 \end{frame}
 
 \begin{frame}{Frobenius Shift vs Surprisal Delta}
 \centering
-\includegraphics[width=0.88\linewidth]{surprisal_vs_shift.pdf}
-\vspace{0.4em}
+\includegraphics[width=0.78\linewidth,height=0.62\textheight,keepaspectratio]{surprisal_vs_shift.pdf}
+\vspace{0.2em}
 
-\small Pair-level aggregation over models/phenomena: \(\Delta_{\text{frob}}\) vs \( |\Delta \text{avg surprisal}| \).
+\small Pair-level association between \(\Delta_{\text{frob}}\) and \(|\Delta\) average surprisal\(|\).
 \end{frame}
 
-\begin{frame}{Current Interpretation}
-\begin{itemize}
-  \item Pipeline is fully executable and reproducible with modern toolchain (\texttt{uv}, config-driven scripts, cached artifacts).
-  \item Frobenius, cosine, token-aligned, and L2 metrics are all available per layer and per model.
-  \item Final claims are strictly dataset-only structural sensitivity claims.
-\end{itemize}
+\begin{frame}{Incremental Value of Frobenius}
+\centering
+\includegraphics[width=0.82\linewidth]{h2_delta_adj_r2_distribution.pdf}
+\vspace{0.25em}
+
+\small Distribution of \(\Delta\) adjusted-\(R^2\) when adding \(\Delta_{\text{frob}}\) over cosine baseline.
 \end{frame}
 
-\begin{frame}{What Is Left}
-\begin{enumerate}
-  \item Final write-up polish for dataset-only claim language.
-  \item Final table curation for D1--D4 summary.
-  \item Submission packaging and presentation rehearsal.
-\end{enumerate}
-\end{frame}
-
-\begin{frame}{Final Timeline}
+\begin{frame}{Key Quantitative Summary}
 \begin{table}
 \centering
-\begin{tabular}{ll}
+\small
+\begin{tabular}{lc}
 \toprule
-\textbf{Week} & \textbf{Milestone} \\
+\textbf{Result} & \textbf{Value} \\
 \midrule
-Week 1 & Final tables/plots lock and narrative freeze \\
-Week 2 & Paper text polish and appendix cleanup \\
-Week 3 & Final presentation rehearsal and submission \\
+Significant positive cells (\(\Delta_{\cos}\) and \(\Delta_{\text{frob}}\), FDR \(< 0.05\)) & 102 \\
+Positive \(\Delta\)adj-\(R^2\) cells for Frobenius incremental test & 70 \\
+Mean Frobenius incremental gain (\(\Delta\)adj-\(R^2\)) & 0.0114 \\
+Mean probe selectivity (macro-F1 gap) & 0.5096 \\
+Frobenius metric warnings & 0 \\
 \bottomrule
 \end{tabular}
 \end{table}
 \end{frame}
 
+\begin{frame}{Claim Boundary and Validity}
+\begin{block}{What this project supports}
+Robust dataset-level evidence for structural sensitivity diagnostics across layers, models, metrics, and controls.
+\end{block}
+\begin{block}{What this project does not claim}
+Direct claims about human cognitive processing, since this run does not include human-rating collection.
+\end{block}
+\vspace{0.3em}
+\begin{itemize}
+  \item Methodologically valid for representation-level probing.
+  \item Scientifically clear when claims remain within this boundary.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Remaining Work}
+\begin{itemize}
+  \item Final manuscript polish with consistent claim language.
+  \item Curate final table set for D1--D4 in the report.
+  \item Presentation rehearsal and submission packaging.
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Conclusion}
 \begin{itemize}
-  \item CSS pipeline is complete on role + negation GitHub data.
-  \item Full model set (BERT, RoBERTa, GPT-2) and full metric set are executed.
-  \item Remaining work is packaging and final communication, not core computation.
+  \item End-to-end CSS pipeline is complete for role-reversal and negation counterfactuals.
+  \item All three model families and all primary metrics are executed across all layers.
+  \item Frobenius-based structural shift adds measurable complementary signal in this setup.
 \end{itemize}
-\vspace{0.6em}
+\vspace{0.5em}
 \centering
 \Large Thank you.
 \end{frame}
 
-\begin{frame}{References (Core)}
+\begin{frame}{References}
 \footnotesize
 \begin{itemize}
-  \item Devlin et al. (2019), BERT.
-  \item Liu et al. (2019), RoBERTa.
-  \item Radford et al. (2019), GPT-2.
-  \item Warstadt et al. (2020), BLiMP.
-  \item Hewitt and Liang (2019), probe controls.
-  \item Levy (2008), surprisal.
-  \item vor der Bruck and Pouly (2019), matrix norms for similarity.
+  \item \href{https://aclanthology.org/N19-1423/}{Devlin et al. (2019), BERT}.
+  \item \href{https://arxiv.org/abs/1907.11692}{Liu et al. (2019), RoBERTa}.
+  \item \href{https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf}{Radford et al. (2019), GPT-2}.
+  \item \href{https://aclanthology.org/2020.tacl-1.25/}{Warstadt et al. (2020), BLiMP}.
+  \item \href{https://aclanthology.org/D19-1275/}{Hewitt and Liang (2019), probe controls}.
+  \item \href{https://link.springer.com/article/10.1007/s10988-008-9031-0}{Levy (2008), surprisal theory}.
+  \item \href{https://aclanthology.org/N19-1181/}{vor der Br\"uck and Pouly (2019), matrix norms}.
+  \item \href{https://github.com/text-machine-lab/extending_psycholinguistic_dataset}{Public source corpus (GitHub)}.
 \end{itemize}
 \end{frame}
 
