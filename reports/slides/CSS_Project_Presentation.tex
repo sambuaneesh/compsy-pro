@@ -49,7 +49,7 @@
   \item Problem and motivation
   \item CSS protocol and metrics
   \item Experimental setup
-  \item Results and interpretation
+  \item Results and research-question answers
   \item Validity, limitations, and completion status
 \end{enumerate}
 \end{frame}
@@ -285,6 +285,69 @@ Probe result rows & 390 \\
 \vspace{0.25em}
 
 \small Distribution of \(\Delta\) adjusted-\(R^2\) when adding \(\Delta_{\text{frob}}\) over cosine baseline.
+\end{frame}
+
+\begin{frame}{RQ1 Answer: Structural Sensitivity Consistency}
+\centering
+\includegraphics[width=0.86\linewidth]{rq1_significance_profile.pdf}
+\vspace{0.25em}
+
+\small
+\begin{itemize}
+  \item Cosine/Frobenius/L2 show broad positive significant coverage.
+  \item Frobenius has the highest positive significant fraction (\(52/78\) cells).
+  \item Token-aligned shift is more mixed and phenomenon-sensitive.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RQ2 Answer: Frobenius Complementarity}
+\begin{columns}[T,totalwidth=\textwidth]
+\begin{column}{0.58\textwidth}
+\centering
+\includegraphics[width=\linewidth]{rq2_positive_rate_heatmap.pdf}
+\end{column}
+\begin{column}{0.42\textwidth}
+\small
+\begin{itemize}
+  \item Positive incremental cells:
+  \(70/78\).
+  \item Mean \(\Delta\)adj-\(R^2\):
+  \(0.0114\).
+  \item FDR-significant Frobenius coefficient:
+  \(54/78\) cells.
+  \item Strongest consistency appears in role-reversal settings.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{RQ3 Answer: Probes vs Metric-Correlation Coupling}
+\centering
+\includegraphics[width=0.86\linewidth]{rq3_interaction_bars.pdf}
+\vspace{0.25em}
+
+\small
+\begin{itemize}
+  \item Probe selectivity is consistently positive (mean \(0.5096\)).
+  \item Coupling between selectivity and metric-correlation strength is weak.
+  \item Interpretation: probe signal and metric-surprisal alignment are complementary diagnostics.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Research Questions: Final Answers}
+\small
+\begin{table}
+\centering
+\begin{tabular}{p{0.18\linewidth}p{0.74\linewidth}}
+\toprule
+\textbf{RQ} & \textbf{Answer} \\
+\midrule
+RQ1 & Yes. Structural sensitivity is consistent for cosine/Frobenius/L2 across many model-layer cells. \\
+RQ2 & Yes. Frobenius adds measurable value beyond cosine in most cells (\(70/78\)). \\
+RQ3 & Partly. Probe selectivity is strong, but its coupling with metric-surprisal correlation strength is weak. \\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{frame}
 
 \begin{frame}{Key Quantitative Summary}

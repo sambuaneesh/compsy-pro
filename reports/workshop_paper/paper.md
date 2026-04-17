@@ -78,7 +78,51 @@ Primary analyses:
 - BH-FDR correction across layer-wise tests.
 - incremental value test for `delta_frob` beyond `delta_cos`.
 
-## 8. Secondary Salience Experiment
+## 8. Results and Research-Question Answers
+
+### RQ1: Do shift metrics respond consistently across layers/models?
+
+Yes, with clear metric dependence.
+
+- Positive significant cells (FDR<0.05):
+  - `delta_cos`: `50/78`
+  - `delta_frob`: `52/78`
+  - `delta_l2`: `47/78`
+  - `delta_token_aligned`: `32/78`
+- Role reversal shows stronger and broader positive alignment than negation for most metrics.
+- Frobenius peak layers:
+  - Negation peaks at layer `0` for all three models.
+  - Role reversal peaks in middle-to-late layers (`7` for BERT/RoBERTa, `10` for GPT-2).
+
+Interpretation:
+- Cosine/Frobenius/L2 are robust structural-sensitivity diagnostics in this setup.
+- Token-aligned shift is informative but less stable across all cells.
+
+### RQ2: Does Frobenius add value beyond cosine?
+
+Yes, in most cells.
+
+- Positive `delta_adj_r2` when adding Frobenius: `70/78` cells.
+- Mean incremental gain: `0.0114` adjusted-`R^2`.
+- FDR-significant Frobenius coefficient cells: `54/78`.
+
+Interpretation:
+- Matrix-geometry information contributes predictive signal beyond centroid-only shifts.
+- Complementarity is strongest for role-reversal conditions.
+
+### RQ3: How do probes and surprisal interact with shift diagnostics?
+
+Probe selectivity is consistently positive, but coupling to metric-surprisal correlation strength is weak.
+
+- Mean selectivity: `0.5096` (macro-F1 gap vs random-label control).
+- Selectivity vs metric-correlation coupling:
+  - `delta_frob`: Spearman `-0.0112`, Pearson `0.0126` (near zero).
+
+Interpretation:
+- Probes and metric-surprisal alignment provide complementary diagnostics.
+- Neither signal is a direct substitute for the other.
+
+## 9. Secondary Salience Experiment
 
 Exploratory salience ranks edited spans using:
 - Frobenius cross-matrix contribution
@@ -91,13 +135,13 @@ Evaluation:
 - MRR
 - AUC (when label density permits)
 
-## 9. Limitations
+## 10. Limitations
 
 - This project does not include human annotation.
 - Claims are restricted to dataset-only structural sensitivity diagnostics.
 - Findings should not be interpreted as evidence of human-like language processing.
 
-## 10. Reproducibility
+## 11. Reproducibility
 
 All runs are config-driven and traceable by dataset hash, config hash, model ID, seed, and package versions. Incremental JSONL logs track all meaningful execution blocks.
 

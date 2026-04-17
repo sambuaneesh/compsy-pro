@@ -75,3 +75,13 @@ Run secondary salience + figures/tables:
 ```bash
 bash scripts/run_salience_and_plots.sh
 ```
+
+Run final RQ analysis summaries:
+
+```bash
+uv run python scripts/analyze_results_for_rq.py
+```
+
+Key interpretation output:
+
+- `reports/full/RESULTS_INTERPRETATION.md`

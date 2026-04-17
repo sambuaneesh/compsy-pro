@@ -1,0 +1,3 @@
+index,phenomenon,mean_abs_delta_avg_surprisal,median_abs_delta_avg_surprisal,std_abs_delta_avg_surprisal
+0,negation,0.4918448527654012,0.4161555767059326,0.3956225786771892
+1,role_reversal,0.4030737908681234,0.326427936553955,0.32942772675695453
