@@ -93,12 +93,12 @@ How do probe selectivity and surprisal interact with representation-shift diagno
 \begin{aligned}
 \text{Sentence Pair}
 &\rightarrow
-\text{Transformer Hidden States (layers 0--12)}
+\text{Hidden States (layers 0--12)}
 \rightarrow
 \text{Shift Metrics}
 \\
 &\rightarrow
-\text{Probes + Surprisal}
+\text{Probes \& Surprisal}
 \rightarrow
 \text{Statistical Summary}
 \end{aligned}
@@ -249,7 +249,7 @@ Probe result rows & 390 \\
 
 \begin{frame}{Layer-Wise Correlation Curves}
 \centering
-\includegraphics[width=0.93\linewidth]{layer_correlation_curves.pdf}
+\includegraphics[width=0.90\linewidth,height=0.68\textheight,keepaspectratio]{layer_correlation_curves.pdf}
 \vspace{0.35em}
 
 \small Spearman correlation of representation shifts with surprisal deltas.
@@ -257,7 +257,7 @@ Probe result rows & 390 \\
 
 \begin{frame}{Frobenius Heatmap Across Layers}
 \centering
-\includegraphics[width=0.96\linewidth]{frob_layer_heatmap.pdf}
+\includegraphics[width=0.92\linewidth,height=0.68\textheight,keepaspectratio]{frob_layer_heatmap.pdf}
 \vspace{0.35em}
 
 \small Layer-wise \(\rho\) values for \(\Delta_{\text{frob}}\) by model and phenomenon.
@@ -265,7 +265,7 @@ Probe result rows & 390 \\
 
 \begin{frame}{Probe Selectivity Across Layers}
 \centering
-\includegraphics[width=0.93\linewidth]{probe_selectivity_curves.pdf}
+\includegraphics[width=0.90\linewidth,height=0.68\textheight,keepaspectratio]{probe_selectivity_curves.pdf}
 \vspace{0.35em}
 
 \small Selectivity remains positive across most model-layer settings.
@@ -273,7 +273,7 @@ Probe result rows & 390 \\
 
 \begin{frame}{Frobenius Shift vs Surprisal Delta}
 \centering
-\includegraphics[width=0.78\linewidth,height=0.62\textheight,keepaspectratio]{surprisal_vs_shift.pdf}
+\includegraphics[width=0.85\linewidth,height=0.56\textheight,keepaspectratio]{surprisal_vs_shift.pdf}
 \vspace{0.2em}
 
 \small Pair-level association between \(\Delta_{\text{frob}}\) and \(|\Delta\) average surprisal\(|\).
@@ -291,7 +291,7 @@ Probe result rows & 390 \\
 \begin{columns}[T,totalwidth=\textwidth]
 \begin{column}{0.64\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=0.64\textheight,keepaspectratio]{rq1_significance_profile.pdf}
+\includegraphics[width=\linewidth,height=0.60\textheight,keepaspectratio]{rq1_significance_profile.pdf}
 \end{column}
 \begin{column}{0.36\textwidth}
 \footnotesize
@@ -309,7 +309,7 @@ Probe result rows & 390 \\
 \begin{columns}[T,totalwidth=\textwidth]
 \begin{column}{0.58\textwidth}
 \centering
-\includegraphics[width=\linewidth]{rq2_positive_rate_heatmap.pdf}
+\includegraphics[width=\linewidth,height=0.63\textheight,keepaspectratio]{rq2_positive_rate_heatmap.pdf}
 \end{column}
 \begin{column}{0.42\textwidth}
 \small
