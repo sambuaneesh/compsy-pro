@@ -1,413 +1,785 @@
-# CSS Project Presentation Transcript
+# CSS Project Presentation Transcript (Detailed Concept Version)
 
-This transcript is aligned to `CSS_Project_Presentation.tex` slide order.
-Use it as a speaking script during presentation and Q&A.
+This document is a **presenter script** for `CSS_Project_Presentation.tex`.
+It is intentionally detailed so you can present from first principles, not just read slide bullets.
+
+How to use this script:
+- For each slide, start with **Core message**.
+- Use **Concept explanation** to teach the idea clearly.
+- Use **Figure reading** on plot slides to narrate what viewers should look at.
+- Use **Reviewer defense** lines when challenged.
+
+---
 
 ## Slide 1: Title
 
-Script:
-Today we present **Counterfactual Structural Sensitivity (CSS)**, a controlled framework for testing how language-model representations respond to minimal linguistic edits. The core question is not whether models are human-like, but whether internal representation shifts are systematic and interpretable under structural counterfactuals.
+### Core message
+We are presenting a controlled representational analysis project: **Counterfactual Structural Sensitivity (CSS)**.
 
-Reviewer defense:
-This framing is intentionally conservative. We are making representation-level claims with reproducible diagnostics, not broad cognitive claims.
+### Concept explanation (say this clearly)
+The project is about checking what changes **inside** a language model when we make minimal edits to a sentence.  
+We are not asking “does the model output the right final answer?” alone.  
+We are asking: when meaning changes structurally, does internal geometry move in a meaningful and measurable way?
+
+### Speaking script
+“Our project is Counterfactual Structural Sensitivity, or CSS. We use sentence pairs where one sentence is minimally edited into a counterfactual form. Then, layer by layer, we measure representation shifts. The core framing is representational diagnostics under controlled edits.”
+
+### Reviewer defense
+“Our claims are bounded to representation-level evidence and statistical consistency. We do not overclaim cognitive equivalence with humans in this run.”
+
+---
 
 ## Slide 2: Roadmap
 
-Script:
-The talk flows in five steps: motivation, protocol and metrics, setup, results by research question, and claim boundary. This structure is deliberate: each major claim appears only after we show the exact measurement and statistical gate used to support it.
+### Core message
+The talk is structured as a rigorous chain: motivation -> protocol -> setup -> results -> claim boundary.
 
-Reviewer defense:
-We separate method from result to reduce post-hoc interpretation risk.
+### Concept explanation
+Many reviewer objections come from “results-first storytelling.”  
+This slide prevents that by showing method and statistical gates before interpretations.
+
+### Speaking script
+“I’ll first define the linguistic problem, then the CSS protocol and metrics, then the experimental setup, then the RQ-based results, and finally what we can and cannot claim.”
+
+### Reviewer defense
+“This order reduces post-hoc narrative bias because each claim is attached to predeclared analysis objectives.”
+
+---
 
 ## Slide 3: Motivation
 
-Script:
-This slide defines the core linguistic pressure test: tiny edits can alter event structure while keeping most words the same. The table shows two archetypes:
-- Role reversal: same lexical items, swapped semantic roles.
-- Negation: same proposition skeleton, polarity changed.
+### Core message
+Minimal edits can produce major semantic changes even when lexical overlap is high.
 
-Why this matters:
-If representation shifts are meaningful, these minimal edits should create measurable internal movement. If models are mostly surface-driven, shifts may be weak, noisy, or inconsistent across layers.
+### Concept explanation
+Two phenomena:
+- **Role reversal**: same words, different who-did-what-to-whom.
+- **Negation**: proposition polarity flips with minimal surface edit.
 
-Reviewer defense:
-The pair design controls lexical overlap and isolates structural perturbation better than unconstrained sentence comparisons.
+Example:
+- “The chef praised the waiter.”
+- “The waiter praised the chef.”
+
+Lexical bag is nearly unchanged, but event semantics is inverted.
+
+### Speaking script
+“This motivates CSS. If representations encode structure, then these minimal edits should induce reliable internal shifts. If representations are mostly surface-driven, we expect weak, unstable, or inconsistent movement.”
+
+### Reviewer defense
+“Counterfactual minimal pairs control lexical confounds better than unconstrained sentence pairs.”
+
+---
 
 ## Slide 4: Research Questions
 
-Script:
-RQ1 asks whether representation-shift metrics consistently react to structural edits.
-RQ2 asks whether Frobenius/matrix-norm shift adds information beyond centroid cosine.
-RQ3 asks whether probe selectivity and shift-surprisal correlation capture the same signal or complementary signals.
+### Core message
+RQ1 checks consistency, RQ2 checks incremental utility of Frobenius, RQ3 checks relation between probes and shift-surprisal diagnostics.
 
-Why these three:
-They partition the project into robustness (RQ1), incremental utility (RQ2), and diagnostic interaction (RQ3).
+### Concept explanation
+- **RQ1 (robustness)**: do shift metrics respond consistently across models/layers?
+- **RQ2 (incremental value)**: does Frobenius add information after cosine is already included?
+- **RQ3 (diagnostic relation)**: are probe selectivity and metric-surprisal alignment the same thing or complementary?
 
-Reviewer defense:
-Each RQ has a dedicated quantitative output and significance gate. No claim is based on visual inspection alone.
+### Speaking script
+“These RQs are deliberately orthogonal: sensitivity existence, additional value, and diagnostic interaction.”
+
+### Reviewer defense
+“Each RQ has a dedicated result artifact and explicit statistics, not qualitative interpretation only.”
+
+---
 
 ## Slide 5: CSS Protocol
 
-Script:
-This equation-style pipeline is the full protocol:
-sentence pair -> layer-wise hidden states -> shift metrics -> probes and surprisal -> statistics.
-The important point is that all analysis remains pairwise and layer-indexed. We do not collapse prematurely to a single model score.
+### Core message
+Pipeline: sentence pair -> hidden states -> shift metrics -> probes + surprisal -> statistical summary.
 
-Why this design:
-It preserves where effects happen, not just whether they happen. Layer locality is essential for interpretability and for checking phenomenon-specific behavior.
+### Concept explanation
+Let original sentence be \(s\), counterfactual be \(s_{cf}\).  
+For each model and each layer \(l\), extract hidden states \(h_l(s)\) and \(h_l(s_{cf})\).  
+Compute multiple shifts from these states.  
+Then run:
+- probing diagnostics,
+- surprisal diagnostics,
+- statistical tests and corrections.
 
-Reviewer defense:
-The protocol is config-driven and reproducible; every artifact is traceable to model, seed, hashes, and script path.
+Why layer-wise:
+Different layers encode different abstractions. If we collapse early, we lose that structure.
+
+### Speaking script
+“The key design choice is to keep analysis pairwise and layer-indexed from start to finish. We do not flatten early to one score per model.”
+
+### Reviewer defense
+“All steps are config-driven and reproducible, so each result row can be traced back to data hash, config hash, model, seed, and code path.”
+
+---
 
 ## Slide 6: Data Source and Scale
 
-Script:
-We use a public psycholinguistic dataset source with exactly two primary phenomena: role reversal and negation, totaling **3000 counterfactual pairs**.  
-In the figure:
-- Left panel shows balanced totals: 1500 negation, 1500 role reversal.
-- Right panel shows split composition:
-  - Negation: train 1049, dev 234, test 217
-  - Role reversal: train 1045, dev 261, test 194
+### Core message
+Dataset-only track with a public source and 3000 total pairs.
 
-What this means:
-The dataset is balanced by phenomenon, with slight split-level asymmetry that is small and visible, not hidden.
+### Concept explanation
+We use only:
+- role reversal pairs (1500),
+- negation pairs (1500),
+from the public psycholinguistic source repository.
 
-Reviewer defense:
-Using a public source improves auditability and avoids introducing unverifiable custom data artifacts.
+This preserves transparency and reproducibility.
+
+### Figure reading (how it looks)
+- **Left panel**: two bars of equal height (1500 each), confirming balanced phenomenon counts.
+- **Right panel**: grouped bars by split (`train`, `dev`, `test`) and phenomenon.
+  - Negation: train 1049, dev 234, test 217.
+  - Role reversal: train 1045, dev 261, test 194.
+
+### Interpretation
+Balanced phenomenon counts reduce class-skew bias in aggregate comparisons.  
+Split-level mismatch is minor and explicitly visible.
+
+### Speaking script
+“The dataset is balanced by phenomenon, and split composition is transparent. This improves fairness of cross-phenomenon comparisons.”
+
+### Reviewer defense
+“Public-source data makes the pipeline independently auditable.”
+
+---
 
 ## Slide 7: Modeling Setup
 
-Script:
-We intentionally use three canonical model families:
-- BERT-base (bidirectional encoder baseline),
-- RoBERTa-base (optimized BERT-family baseline),
-- GPT-2 (autoregressive baseline, also used for surprisal).
+### Core message
+Three fixed model families: BERT, RoBERTa, GPT-2; all layers analyzed.
 
-For each model we extract hidden states from layer 0 through 12 and evaluate both pooled sentence vectors and token-level matrices. CLS and GPT-2 last-token vectors are included as secondary ablations, not primary claims.
+### Concept explanation
+- **BERT-base**: bidirectional masked-LM encoder.
+- **RoBERTa-base**: stronger BERT-family training recipe.
+- **GPT-2**: autoregressive LM, also used for surprisal.
 
-Why this is defensible:
-These models are stable, widely understood, and still strong enough to test representational diagnostics without confounding from very large proprietary architectures.
+Layer extraction:
+- Layer 0 (embedding) + layers 1..12.
 
-## Slide 8: Metric Intuition
+Representation units:
+- sentence pooled vectors (primary),
+- token matrices (primary),
+- CLS / last-token (secondary ablations).
 
-Script:
-This slide gives the conceptual role of each metric:
-- Delta_cos: directional shift.
-- Delta_frob: relational geometry shift across token matrices.
-- Delta_L2: absolute displacement magnitude.
-- Delta_token: local aligned token perturbation.
+### Speaking script
+“This gives architecture diversity while keeping compute reproducible and controlled.”
 
-Why multiple metrics:
-A single metric can be blind to important change types. Direction, magnitude, and token-structure geometry are different views of sensitivity.
+### Reviewer defense
+“The objective is representational mechanism testing, not leaderboard chasing with large opaque models.”
 
-Reviewer defense:
-We do not cherry-pick one metric. We report all four and expose disagreement when it exists.
+---
 
-## Slide 9: Metric Definitions
+## Slide 8: Metric Intuition (What each metric means)
 
-Script:
-Here we formalize each metric at layer \(l\).  
-Delta_cos and Delta_L2 are sentence-level pooled-vector distances.  
-Delta_frob is a matrix-norm similarity adaptation over normalized token matrices, then converted to shift by \(1-\text{sim}\).  
-Delta_token is average aligned token cosine shift.
+### Core message
+Each metric captures a different type of representational movement.
 
-Why Frobenius is introduced:
-Centroid cosine compresses token structure into one vector. Frobenius preserves pairwise token interaction structure through matrix geometry.
+### Concept explanation with intuition
+- **\(\Delta_{cos}\)**: directional change between pooled vectors.
+  - If two vectors point similarly, cosine shift is small.
+  - Think: “semantic direction changed or not?”
+- **\(\Delta_{frob}\)**: change in token-level interaction geometry.
+  - Operates on token matrices, not only centroids.
+  - Think: “did relational structure inside the sentence representation change?”
+- **\(\Delta_{L2}\)**: absolute displacement magnitude.
+  - Think: “how far did we move in vector space?”
+- **\(\Delta_{token}\)**: average local token perturbation after alignment.
+  - Think: “how much local token representations changed at corresponding positions?”
 
-Reviewer defense:
-We explicitly frame Frobenius as an adaptation for contextual token matrices, not a claim of identical semantics to older static-word settings.
+### Why all four are needed
+One metric can miss effects another captures.  
+Example: two vectors may keep direction (small cosine shift) but move far in magnitude (large L2), or token relations may change even when pooled vectors look similar.
+
+### Reviewer defense
+“Using multiple metrics avoids single-view overfitting of interpretation.”
+
+---
+
+## Slide 9: Metric Definitions (math slide)
+
+### Core message
+Formal definitions make claims testable and non-ambiguous.
+
+### Concept explanation line by line
+1. \[
+\Delta_{\cos}^{(l)} = 1 - \cos(\mu_l(s), \mu_l(s_{cf}))
+\]
+\(\mu_l(\cdot)\) is mean-pooled sentence representation at layer \(l\).  
+Range intuition: closer to 0 means very similar direction; larger means stronger directional change.
+
+2. Frobenius similarity and shift:
+\[
+\text{sim}_{frob}^{(l)} = \frac{\|K(\hat A_l,\hat B_l)\|_F}
+{\sqrt{\|K(\hat A_l,\hat A_l)\|_F\|K(\hat B_l,\hat B_l)\|_F+\epsilon}},
+\quad
+\Delta_{frob}^{(l)} = 1-\text{sim}_{frob}^{(l)}
+\]
+Here \(A_l,B_l\) are normalized token matrices for \(s,s_{cf}\).  
+\(\|\cdot\|_F\) measures matrix energy.  
+Intuition: compares relational token geometry, not just one averaged vector.
+
+3. \[
+\Delta_{L2}^{(l)}=\|\mu_l(s)-\mu_l(s_{cf})\|_2
+\]
+Pure Euclidean movement magnitude.
+
+4. \[
+\Delta_{token}^{(l)}=\frac{1}{|M|}\sum_{(i,j)\in M}\left(1-\cos(h_i^{(l)},h_{j,cf}^{(l)})\right)
+\]
+\(M\) is alignment map of corresponding positions/spans.
+
+### Speaking script
+“This slide is where we convert intuition into computable definitions. It also prevents ambiguity about what exactly is being measured.”
+
+### Reviewer defense
+“Frobenius is framed as an adaptation to contextual token matrices, not as a direct copy of static embedding document scoring.”
+
+---
 
 ## Slide 10: Probes and Controls
 
-Script:
-Probes are linear, layer-wise, and phenomenon-specific (role and negation).  
-The critical control is random-label selectivity:
+### Core message
+We evaluate recoverability of linguistic signals with linear probes, but use selectivity controls to avoid overclaiming.
+
+### Concept explanation
+Probe tasks:
+- Role: agent vs patient.
+- Negation: negation presence.
+
+Danger with probes:
+High probe score can come from memorization, spurious lexical cues, or probe capacity.
+
+Control solution:
 \[
-\text{selectivity} = \text{task F1} - \text{control F1}
+\text{Selectivity}=\text{Task Macro-F1}-\text{Random-label Macro-F1}
 \]
-This directly follows probe-selectivity caution from Hewitt and Liang.
+If selectivity is high, there is real task signal beyond trivial fitting.
 
-Why this matters:
-Raw probe accuracy can overstate representational encoding if the probe memorizes artifacts. Selectivity corrects for that.
+Multi-seed evaluation:
+Shows stability and avoids single-seed luck.
 
-Reviewer defense:
-We report multi-seed behavior to ensure stability rather than a single favorable run.
+### Speaking script
+“Probe accuracy alone is not enough; selectivity is our anti-memorization control.”
+
+### Reviewer defense
+“This directly follows the critique in Hewitt & Liang, so we are not using naive probe methodology.”
+
+---
 
 ## Slide 11: Surprisal Signal
 
-Script:
-Surprisal is computed from GPT-2 autoregressive probabilities:
-\[
--\log P(t_i \mid t_1,\dots,t_{i-1})
-\]
-We use total, average, and absolute deltas between original and counterfactual sentences.
-Key region coverage is 100%, so edited zones are fully represented in the surprisal analysis table.
+### Core message
+Surprisal provides a probabilistic processing signal from GPT-2.
 
-Why GPT-2 surprisal:
-It gives a clean left-to-right probabilistic signal and avoids mixing it with bidirectional pseudo-likelihood constructs in the primary track.
+### Concept explanation
+\[
+\text{surprisal}(t_i)=-\log P(t_i|t_1,\dots,t_{i-1})
+\]
+Interpretation:
+- low probability token -> high surprisal,
+- high probability token -> low surprisal.
+
+Derived sentence features:
+- total surprisal,
+- average surprisal,
+- absolute delta between original and counterfactual.
+
+Why this complements representation shift:
+Shift metrics measure geometry movement; surprisal measures predictive expectation.
+
+### Speaking script
+“Surprisal is not a replacement for representation shift. It is a complementary signal about prediction difficulty.”
+
+### Reviewer defense
+“Primary surprisal remains autoregressive GPT-2, avoiding construct mixing with bidirectional pseudo-likelihood.”
+
+---
 
 ## Slide 12: Statistical Objectives
 
-Script:
-We define four objectives:
-- D1 correlation structure,
-- D2 incremental value of Frobenius over cosine,
-- D3 layer-profile characterization,
-- D4 probe selectivity stability.
+### Core message
+We predefine objective families and inferential controls.
 
-The linear form shown is the controlled regression template with normalized variables and covariates such as length and overlap. We use bootstrap intervals and BH-FDR correction for multiplicity.
+### Concept explanation
+- **D1**: correlation between shift metrics and surprisal by layer/model/phenomenon.
+- **D2**: incremental regression gain from adding \(\Delta_{frob}\) to cosine baseline.
+- **D3**: layer-profile differences.
+- **D4**: selectivity stability.
 
-Reviewer defense:
-This is important for reviewers concerned about multiple layer tests and inflated false positives. We apply explicit correction.
+Regression form:
+\[
+z(y)\sim z(\Delta_{cos})+z(\Delta_{frob})+z(length)+z(overlap)
+\]
+Standardizing variables improves coefficient comparability.
+
+Inference controls:
+- bootstrap CIs for uncertainty,
+- BH-FDR correction for multiple comparisons across cells/layers.
+
+### Speaking script
+“Without correction, layer-wise analysis can inflate false positives. So we control multiplicity explicitly.”
+
+### Reviewer defense
+“This statistical discipline is a core reason our claims are robust.”
+
+---
 
 ## Slide 13: Experiment Matrix and Coverage
 
-Script:
-This table gives coverage scope:
+### Core message
+Coverage is full and systematic, not selective.
+
+### Concept explanation
+Counts:
 - 3000 pairs,
 - 3 models,
-- 13 layers each,
-- 4 primary metrics,
+- 13 layers,
+- 4 metrics,
 - 117000 metric rows,
 - 3000 surprisal rows,
 - 390 probe rows.
 
 Why this matters:
-Claims are not based on a tiny pilot slice. The matrix is full and combinatorial across model, layer, metric, and phenomenon.
+Results come from broad combinatorial coverage, reducing risk of cherry-picked snapshots.
+
+### Speaking script
+“This table demonstrates execution completeness for the dataset-only scope.”
+
+---
 
 ## Slide 14: Mean Shift Magnitude by Phenomenon
 
-Script:
-This three-panel figure is intentionally structured to avoid misleading scale effects:
-- Left: raw means for cosine, Frobenius, token-aligned.
-- Middle: raw L2 alone (because L2 scale is much larger).
-- Right: within-metric normalization for cross-metric comparison.
+### Core message
+Negation induces larger average representation shifts than role reversal, but scale handling matters.
 
-What we see:
-- Negation has larger mean shifts than role reversal for all metrics.
-- Numeric means:
-  - Negation: Delta_cos 0.0478, Delta_frob 0.0584, Delta_L2 27.8753, Delta_token 0.0502
-  - Role reversal: Delta_cos 0.0124, Delta_frob 0.0197, Delta_L2 4.1960, Delta_token 0.0408
+### Figure reading (what it looks like)
+Three panels:
+- Left: grouped bars for \(\Delta_{cos}, \Delta_{frob}, \Delta_{token}\) raw means.
+- Middle: single grouped bar for \(\Delta_{L2}\) raw means (separate scale).
+- Right: normalized bars (each metric scaled within itself) for fair visual comparison.
 
-Why this pattern is plausible:
-Negation inserts lexical and compositional polarity signals, producing broad representational movement. Role reversal is structurally strong but often lexically symmetric, which can produce smaller average geometric displacement in pooled space.
+Color coding:
+- Negation bars are consistently taller than role reversal across panels.
 
-Reviewer defense:
-We separate raw and normalized views to avoid overinterpreting L2 due to unit scale.
+### Exact values to mention
+- Negation means:
+  - \(\Delta_{cos}=0.0478\)
+  - \(\Delta_{frob}=0.0584\)
+  - \(\Delta_{L2}=27.8753\)
+  - \(\Delta_{token}=0.0502\)
+- Role reversal means:
+  - \(\Delta_{cos}=0.0124\)
+  - \(\Delta_{frob}=0.0197\)
+  - \(\Delta_{L2}=4.1960\)
+  - \(\Delta_{token}=0.0408\)
+
+### Interpretation
+Negation often inserts explicit polarity cues (e.g., “not”), creating broad movement across embedding geometry.  
+Role reversal can still be semantically major while requiring subtler redistribution of relational structure.
+
+### Important nuance (say this)
+“Larger mean shift does not automatically imply stronger coupling with surprisal or better diagnostic utility. We test those separately in later slides.”
+
+### Reviewer defense
+“Separating L2 scale and normalized view prevents visual misinterpretation from metric unit differences.”
+
+---
 
 ## Slide 15: Layer-Wise Correlation Curves
 
-Script:
-This figure has six panels: 2 phenomena x 3 models. Each panel plots Spearman rho across layers for Delta_cos and Delta_frob.
+### Core message
+Correlation patterns are strongly phenomenon-dependent and layer-structured.
 
-What it shows:
-- Role reversal panels are strongly positive (roughly 0.2 to 0.37).
-- Negation panels are weaker and mixed, with near-zero and some negative segments.
-- The two metrics often track closely, but Frobenius slightly leads in some regions.
+### Figure reading (what it looks like)
+Six panels: top row negation (BERT/GPT-2/RoBERTa), bottom row role reversal (same model order).  
+Two lines in each panel:
+- blue = \(\Delta_{cos}\),
+- orange = \(\Delta_{frob}\).
 
-Why this matters:
-Sensitivity is clearly phenomenon-dependent and layer-dependent. We are not seeing a single universal curve, which supports the need for structured per-phenomenon analysis.
+X-axis: layer 0..12.  
+Y-axis: Spearman rho with surprisal delta.
 
-Reviewer defense:
-Plotting per phenomenon avoids the averaging artifact that can hide divergent behavior.
+### What to point out
+- Bottom row (role reversal): curves are clearly positive and relatively high (~0.2 to ~0.37).
+- Top row (negation): curves are weak/mixed, near zero and sometimes negative.
+- In several panels orange slightly exceeds blue, hinting Frobenius advantage in some regions.
+
+### Interpretation
+Role reversal yields a stronger monotonic relation between representation shift and surprisal than negation does.  
+This suggests phenomenon-specific representational dynamics rather than one universal behavior.
+
+### Reviewer defense
+“We show per-phenomenon panels specifically to avoid averaging away opposite trends.”
+
+---
 
 ## Slide 16: Frobenius Heatmap Across Layers
 
-Script:
-This heatmap isolates Delta_frob correlations by model/layer/phenomenon. Dot markers indicate FDR-significant cells.
+### Core message
+Frobenius behavior is detailed by model/layer/phenomenon with significance overlay.
 
-Visual interpretation:
-- Role reversal side is broadly warm (positive) with dense significance dots.
-- Negation side is mixed: some warm regions, some cool (negative) regions depending on model and layer.
+### Figure reading (what it looks like)
+Two side-by-side heatmaps:
+- Left = role reversal.
+- Right = negation.
 
-What this means:
-Frobenius is highly informative for role reversal and selectively informative for negation. The significance overlay prevents color-only interpretation errors.
+Rows = models (BERT, GPT-2, RoBERTa).  
+Columns = layers 0..12.  
+Color map centered at 0:
+- warm colors = positive correlation,
+- cool colors = negative correlation.
 
-Reviewer defense:
-We combine effect magnitude and corrected significance in one view to avoid “bright color equals claim” mistakes.
+Black dots on cells indicate FDR-significant rho.
+
+### What to emphasize
+- Role reversal map is mostly warm with many dots: broad significant positive alignment.
+- Negation map has mixed warm/cool regions and fewer clustered positives.
+
+### Interpretation
+Frobenius is especially informative for role reversal and conditionally informative for negation.
+
+### Reviewer defense
+“Significance markers prevent color-only claims and keep effect-size and inferential validity tied together.”
+
+---
 
 ## Slide 17: Probe Selectivity Across Layers
 
-Script:
-This figure shows three model panels, each with negation and role curves plus seed-level 95% ribbons.
+### Core message
+Probe selectivity is positive and stable across models/layers/phenomena.
 
-What we see:
-- Curves stay near 0.50 selectivity across layers.
-- Overall mean selectivity is 0.5096.
-- Model means are tightly clustered: BERT 0.5078, GPT-2 0.5112, RoBERTa 0.5099.
-- Phenomenon means are similarly close: negation 0.5102, role 0.5090.
+### Figure reading (what it looks like)
+Three panels by model (BERT, GPT-2, RoBERTa).  
+Each panel has two lines:
+- negation,
+- role reversal,
+with shaded 95% seed-level intervals.
 
-Interpretation:
-Probe signal is robust and stable across models/layers, not a single-point anomaly.
+Y-axis range is narrow around ~0.44 to ~0.57, which visually highlights stability.
 
-Reviewer defense:
-The ribbon widths show variance transparently; this is not a hidden single-seed report.
+### Exact numbers
+- Overall mean selectivity: **0.5096**.
+- By model:
+  - BERT: 0.5078
+  - GPT-2: 0.5112
+  - RoBERTa: 0.5099
+- By phenomenon:
+  - Negation: 0.5102
+  - Role reversal: 0.5090
+
+### Interpretation
+Selectivity is consistently positive and tightly clustered, supporting genuine recoverable signal with control-adjusted robustness.
+
+### Reviewer defense
+“We show uncertainty ribbons and multi-seed variation explicitly; this is not single-seed reporting.”
+
+---
 
 ## Slide 18: Frobenius Shift vs Surprisal Delta
 
-Script:
-This is a density plot (hexbin) with per-phenomenon regression lines.
-- Left panel (role reversal): clear positive slope.
-- Right panel (negation): near-flat trend.
+### Core message
+Association between Frobenius shift and surprisal delta differs sharply by phenomenon.
 
-Supporting stats:
-- Role reversal Pearson ~0.3599, Spearman ~0.3400.
-- Negation Pearson ~0.0474, Spearman ~-0.0169.
+### Figure reading (what it looks like)
+Two hexbin panels:
+- Left = role reversal.
+- Right = negation.
 
-Interpretation:
-The shift-surprisal relationship is phenomenon-specific. Frobenius aligns with surprisal strongly for role reversal but weakly for negation, indicating that probabilistic difficulty and representational geometry are related but not interchangeable.
+Axes:
+- X = mean \(\Delta_{frob}\),
+- Y = \(|\Delta\) average surprisal\(|\).
 
-Reviewer defense:
-We use density instead of raw scatter to avoid overplotting distortion with thousands of points.
+Hexagon shading indicates point density (darker = more pairs).  
+Red regression line shown per panel.
+
+### What to point out
+- Role reversal: visibly positive slope.
+- Negation: near-flat slope.
+
+### Supporting statistics
+- Role reversal:
+  - Pearson ~0.3599
+  - Spearman ~0.3400
+- Negation:
+  - Pearson ~0.0474
+  - Spearman ~-0.0169
+
+### Interpretation
+Frobenius-shift and surprisal relationship is strong for role reversal, weak for negation.  
+This indicates heterogeneity: not all structural edit types map to surprisal in the same way.
+
+### Reviewer defense
+“Hexbin avoids overplotting artifacts that standard scatter would introduce for dense pair clouds.”
+
+---
 
 ## Slide 19: Incremental Value of Frobenius
 
-Script:
-This histogram shows \(\Delta\) adjusted-\(R^2\) when adding Delta_frob on top of a cosine baseline.
-- Dashed line at zero is the no-gain threshold.
-- Most mass lies to the right of zero.
-- Summary box: positive in 70/78 cells, mean gain 0.0114, median 0.0069.
+### Core message
+Adding Frobenius to cosine baseline improves explanatory performance in most cells.
 
-Interpretation:
-Frobenius adds small but consistent explanatory value beyond cosine.
+### Figure reading (what it looks like)
+Histogram of \(\Delta\) adjusted-\(R^2\) across 78 cells:
+- dashed vertical line at 0 (no incremental gain),
+- most bars lie right of 0,
+- KDE curve overlays distribution.
 
-Reviewer defense:
-The claim is incremental, not dominant. We explicitly present gain size and distribution, not just count of positive cells.
+Summary box on the plot:
+- positive cells: **70/78**
+- mean gain: **0.0114**
+- median gain: **0.0069**
 
-## Slide 20: RQ1 Answer
+### Interpretation
+Frobenius gives **consistent but moderate** incremental value.  
+Claim is complementarity, not replacement of cosine.
 
-Script:
-This stacked-bar figure decomposes positive and negative significant fractions per metric (FDR-corrected).
+### Reviewer defense
+“We report full distribution and effect size, not just a binary positive-count claim.”
 
-Key counts:
-- Delta_cos: +50 / -6
-- Delta_frob: +52 / -6
-- Delta_L2: +47 / -5
-- Delta_token: +32 / -32
+---
 
-Interpretation:
-Cosine, Frobenius, and L2 show broad positive sensitivity. Token-aligned is intentionally more mixed, likely because local alignment can react differently than pooled/global geometry.
+## Slide 20: RQ1 Answer (Structural Sensitivity Consistency)
 
-Reviewer defense:
-We do not hide the mixed token-aligned result; it is shown explicitly and discussed as a diagnostic difference, not a failure.
+### Core message
+Cosine, Frobenius, and L2 show broad positive significant sensitivity; token-aligned is mixed.
 
-## Slide 21: RQ2 Answer
+### Figure reading (what it looks like)
+Stacked bars by metric:
+- teal = positive significant fraction,
+- orange = negative significant fraction,
+FDR < 0.05.
 
-Script:
-This slide has two heatmaps:
-- Left: positive-rate of incremental gain.
-- Right: mean \(\Delta\) adjusted-\(R^2\) gain by model and phenomenon.
+Labels above bars show +count/-count.
 
-Values:
-- Overall positive cells: 70/78.
-- Overall mean gain: 0.0114.
-- FDR-significant Frobenius coefficient in 54/78 cells.
-- Perfect positive-rate cells in role reversal for GPT-2 and RoBERTa (1.00 each).
+### Exact counts
+- \(\Delta_{cos}\): +50 / -6
+- \(\Delta_{frob}\): +52 / -6
+- \(\Delta_{L2}\): +47 / -5
+- \(\Delta_{token}\): +32 / -32
 
-Interpretation:
-Complementarity is broad and strongest in role-reversal settings.
+### Interpretation
+Global metrics show robust directional sensitivity.  
+Token-aligned metric is balanced positive/negative, indicating local perturbation behavior is more context-sensitive and not always aligned with global trends.
 
-Reviewer defense:
-We provide both sign consistency and effect magnitude; either alone can mislead.
+### Reviewer defense
+“The mixed token-aligned result is explicitly reported; we do not suppress inconvenient diagnostics.”
 
-## Slide 22: RQ3 Answer
+---
 
-Script:
-Bars show correlation between probe selectivity and metric-correlation strength, with 95% bootstrap CIs.
+## Slide 21: RQ2 Answer (Frobenius Complementarity)
 
-What we see:
-- Point estimates are near zero for most metrics.
-- CIs mostly cross zero.
-- Token-aligned Pearson is slightly positive but still uncertainty-overlapping zero.
+### Core message
+Frobenius complementarity is widespread across model-phenomenon groups.
 
-Interpretation:
-Probe selectivity and shift-surprisal correlation are largely complementary rather than redundant diagnostics.
+### Figure reading (what it looks like)
+Two heatmaps:
+- Left heatmap: positive-rate of \(\Delta\)adj-\(R^2 > 0\).
+- Right heatmap: mean \(\Delta\)adj-\(R^2\).
 
-Reviewer defense:
-We explicitly avoid claiming strong coupling when uncertainty intervals do not support it.
+Rows = models, columns = phenomena.
+
+### Values to state
+Overall:
+- positive cells: **70/78**
+- mean gain: **0.0114**
+- FDR-significant Frobenius coefficient cells: **54/78**
+
+By group (mean gain):
+- Negation/BERT: 0.008
+- Negation/GPT-2: 0.006
+- Negation/RoBERTa: 0.018
+- Role/BERT: 0.006
+- Role/GPT-2: 0.018
+- Role/RoBERTa: 0.012
+
+Positive-rate highlights:
+- GPT-2 role reversal: 1.00
+- RoBERTa role reversal: 1.00
+
+### Interpretation
+Frobenius adds value across most settings and is especially consistent in role reversal groups.
+
+### Reviewer defense
+“We show both sign robustness and magnitude. Either metric alone can be misleading.”
+
+---
+
+## Slide 22: RQ3 Answer (Probe vs Metric-Correlation Coupling)
+
+### Core message
+Probe selectivity is strong, but coupling to metric-surprisal rho is weak.
+
+### Figure reading (what it looks like)
+Grouped bars by metric for Spearman and Pearson coupling values with vertical bootstrap CI bars.
+Horizontal zero-line helps see direction.
+
+### Values
+Point estimates:
+- \(\Delta_{cos}\): Spearman -0.0523, Pearson -0.0483
+- \(\Delta_{frob}\): Spearman -0.0112, Pearson 0.0126
+- \(\Delta_{L2}\): Spearman -0.0345, Pearson -0.0384
+- \(\Delta_{token}\): Spearman 0.0421, Pearson 0.1126
+
+Bootstrap 95% CIs generally include zero.
+
+### Interpretation
+High selectivity does not necessarily imply strong metric-surprisal correlation.  
+These diagnostics capture related but distinct aspects of model behavior.
+
+### Reviewer defense
+“We explicitly treat this as partial evidence and avoid overinterpreting near-zero correlations.”
+
+---
 
 ## Slide 23: Research Questions Final Answers
 
-Script:
-This table is the concise take-home:
-- RQ1: yes, consistent structural sensitivity for cosine/Frobenius/L2.
-- RQ2: yes, Frobenius provides measurable incremental value.
-- RQ3: partial, strong probes but weak coupling with correlation strength.
+### Core message
+Concise conclusion table tied directly to RQ definitions.
 
-Why this slide exists:
-It ties the earlier evidence chain directly back to the predeclared questions.
+### Speaking script
+“RQ1: yes, robust sensitivity for cosine/Frobenius/L2.  
+RQ2: yes, Frobenius adds incremental value in most cells.  
+RQ3: partial, probes are strong but coupling is weak, so diagnostics are complementary.”
+
+### Reviewer defense
+“This summary is evidence-linked; each line is backed by prior plots/tables in the deck.”
+
+---
 
 ## Slide 24: Key Quantitative Summary
 
-Script:
-This is a reviewer-friendly audit table:
-- 102 significant positive cells (Delta_cos + Delta_frob combined),
-- 70 positive Frobenius incremental cells,
-- Mean incremental gain 0.0114,
-- Mean probe selectivity 0.5096,
-- Frobenius metric warnings: 0.
+### Core message
+Single-slide numeric audit of project outcomes.
 
-Interpretation:
-The pipeline is numerically stable and the primary findings are supported by multiple, independent summaries.
+### Numbers to state clearly
+- Significant positive cells (\(\Delta_{cos}\)+\(\Delta_{frob}\)): **102**
+- Positive incremental cells for Frobenius: **70**
+- Mean incremental gain: **0.0114**
+- Mean probe selectivity: **0.5096**
+- Frobenius metric warnings: **0**
+
+### Interpretation
+The pipeline is both statistically productive and numerically stable.
+
+### Reviewer defense
+“Combining inferential counts, effect sizes, and QA status gives a complete reliability snapshot.”
+
+---
 
 ## Slide 25: Claim Boundary and Validity
 
-Script:
-This is a deliberate boundary slide.
-What we support: robust dataset-level structural sensitivity diagnostics.
-What we do not claim: direct human cognitive equivalence in this run.
+### Core message
+Strong claims inside scope, explicit non-claims outside scope.
 
-Why this is important:
-A strong presentation is not just strong results; it also has precise claim boundaries. This protects scientific validity and avoids overclaiming.
+### Concept explanation
+Supported:
+- dataset-level representational sensitivity diagnostics.
 
-Reviewer defense:
-By stating limitations explicitly, we pre-empt the common critique that representation studies overinterpret cognitive alignment.
+Not claimed:
+- direct human cognition equivalence in this dataset-only run.
+
+Why this improves quality:
+Scientific strength is not maximum ambition; it is accurate claim-scope matching.
+
+### Speaking script
+“This boundary is deliberate and protects validity. We claim exactly what the evidence supports.”
+
+### Reviewer defense
+“Boundary precision is a strength, not a weakness.”
+
+---
 
 ## Slide 26: Remaining Work
 
-Script:
-Remaining work is presentation and manuscript packaging:
-- final claim-language consistency,
-- final D1-D4 table curation,
-- submission packaging and rehearsal.
+### Core message
+Core experiments are done; remaining work is synthesis and packaging.
 
-Why modest remaining scope:
-Core computation and analysis are already complete. Remaining tasks are synthesis and communication, not foundational reruns.
+### Speaking script
+“Remaining steps are manuscript polish, final curation of D1-D4 result tables, and submission/presentation packaging.”
+
+### Interpretation
+No fundamental pipeline gap is pending for this scope.
+
+---
 
 ## Slide 27: Conclusion
 
-Script:
-The project has completed the full CSS pipeline for role reversal and negation across BERT, RoBERTa, and GPT-2 with four primary metrics and full layer coverage.
-The central empirical conclusion is that Frobenius-based structural shift contributes complementary information beyond cosine in most model-layer cells.
+### Core message
+Project completion for dataset-only CSS scope is achieved with consistent evidence.
 
-Closing line:
-The framework is now ready for external review as a reproducible, bounded, dataset-only representational analysis.
+### Speaking script
+“We completed the full CSS pipeline on role reversal and negation across BERT, RoBERTa, and GPT-2 over all layers and four primary metrics. The central result is that Frobenius shift provides measurable complementary signal beyond cosine in most settings.”
+
+### Closing line
+“So this project contributes a reproducible and statistically grounded structural-sensitivity diagnostic framework.”
+
+---
 
 ## Slide 28: References
 
-Script:
-Use this slide to anchor method lineage:
-- model foundations (BERT, RoBERTa, GPT-2),
-- benchmarking/probing context (BLiMP, Hewitt & Liang),
-- psycholinguistic grounding (Levy surprisal),
-- matrix-norm motivation (vor der Br\"uck & Pouly),
-- and public dataset source.
+### Core message
+Methodological components are grounded in standard literature.
 
-Reviewer defense:
-Every core component has a citation basis; no critical method component is uncited.
+### Speaking script
+“These references cover model foundations, probing caveats, surprisal theory, matrix-norm motivation, and dataset source. They define the methodological lineage of the whole pipeline.”
 
-## Optional Q&A Anchors (Use If Challenged)
+### Reviewer defense
+“Every core method element in our pipeline has an explicit citation anchor.”
 
-Q1: Why no human annotation in this version?  
-A: This track is intentionally dataset-only to keep scope reproducible within timeline. Claims are restricted to representation diagnostics and are stated with that boundary.
+---
 
-Q2: Why should Frobenius be trusted beyond cosine?  
-A: We do not ask for trust by assertion. We show incremental tests over cosine with 70/78 positive cells and nontrivial mean \(\Delta\) adjusted-\(R^2\), plus corrected significance counts.
+## Expanded Concept Notes (for difficult questions)
 
-Q3: Why only three base models?  
-A: They provide architecture diversity (bidirectional encoders + autoregressive LM) with stable, reproducible compute. This is a controlled baseline suite, not an exhaustive leaderboard.
+### 1. Why can negation have larger mean shifts but weaker correlation with surprisal?
+Because **mean shift magnitude** and **correlation with surprisal deltas** are different statistics.  
+Negation may cause broad representation movement from polarity cues, but that movement may not scale monotonically with surprisal differences across items.  
+Role reversal may create more orderly ranking behavior relative to surprisal, producing stronger rho despite smaller average shift.
 
-Q4: Why is negation weaker than role reversal in several plots?  
-A: Negation effects can distribute across lexical cue and scope patterns, so pooled geometric/surprisal relationships are less uniformly monotonic. That heterogeneity is shown transparently.
+### 2. Why use Spearman as primary correlation?
+Spearman tests monotonic rank association and is robust to nonlinear scaling and heavy tails.  
+Pearson is reported as secondary for linear sensitivity check.
 
-Q5: Is token-aligned instability a problem?  
-A: It is expected for a local metric under varied edit locality. We treat it as complementary and explicitly report both positive and negative significant fractions.
+### 3. Why not use only one “best” metric?
+Different metrics capture different geometry:
+- direction (\(\Delta_{cos}\)),
+- magnitude (\(\Delta_{L2}\)),
+- relational token structure (\(\Delta_{frob}\)),
+- local perturbation (\(\Delta_{token}\)).
+Single-metric reporting would undercharacterize representation dynamics.
+
+### 4. What exactly does “incremental value” mean here?
+We fit a baseline model with cosine and controls, then add Frobenius.  
+\(\Delta\) adjusted-\(R^2\) > 0 means explanatory improvement after complexity penalty.  
+So positive rate 70/78 means this improvement generalizes across most model-layer-phenomenon cells.
+
+### 5. Why linear probes?
+Linear probes keep interpretation cleaner: if a simple decoder can recover the signal, representation likely encodes it explicitly enough for linear readout.  
+High-capacity nonlinear probes can blur representation-vs-probe-capacity attribution.
+
+### 6. Why not claim human alignment in this final deck?
+Because this run does not include fresh human annotation as a primary evidence source.  
+Claim discipline keeps the project scientifically defensible in review.
+
+### 7. How to answer “Why only base models?”
+Base models provide architecture diversity and reproducible compute budget with established literature baselines.  
+This is appropriate for protocol validation and diagnostic comparison.
+
+### 8. If asked whether Frobenius “wins” cosine
+Do not say “wins.” Say:
+“Frobenius is complementary. It adds consistent incremental signal over cosine in most cells, with moderate effect size.”
+
+### 9. If asked about token-aligned mixed behavior
+Say:
+“Token-local sensitivity is inherently context-dependent and can diverge from global sentence-level geometry; that is why we keep it as a complementary diagnostic rather than sole criterion.”
+
+### 10. If asked about reproducibility
+Say:
+“All stages are script-generated, config-driven, and hash/seed traceable; figures are generated from tables, not manually edited.”
+
+---
+
+## Fast 30-Second Summary (backup close)
+
+“We built a reproducible CSS pipeline to test representational sensitivity under minimal counterfactual edits. Across 3000 pairs, 3 models, 13 layers, and 4 metrics, we find robust structural sensitivity for cosine/Frobenius/L2, broad incremental value of Frobenius over cosine (70/78 cells), strong and stable probe selectivity (~0.51), and weak coupling between probe selectivity and metric-surprisal correlation. Claims are intentionally bounded to dataset-level representational diagnostics.”
+
