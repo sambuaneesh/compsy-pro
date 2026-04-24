@@ -1,0 +1,16 @@
+experiment_name: css_full_gpt2_refresh_v1
+seed: 13
+datasets:
+  - data/css_pairs/role_1500.jsonl
+  - data/css_pairs/neg_1500.jsonl
+  - data/css_pairs/attach_1500.jsonl
+models:
+  - gpt2
+layers:
+  start: 0
+  end_inclusive: 12
+cache_root: cache
+results_root: results
+batch_size: 16
+max_length: 128
+force: true

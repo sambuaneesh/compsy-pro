@@ -24,6 +24,14 @@ def _char_span_to_word_index(
     return None
 
 
+def _label_side_suffix(side: str) -> str:
+    if side == "s":
+        return "s"
+    if side == "s_cf":
+        return "cf"
+    raise ValueError(f"unsupported side: {side}")
+
+
 def build_role_probe_dataset(cache_payload: dict[str, Any], layer: int) -> ProbeDataset:
     xs: list[np.ndarray] = []
     ys: list[int] = []
@@ -82,7 +90,8 @@ def build_negation_probe_dataset(cache_payload: dict[str, Any], layer: int) -> P
             continue
         gold = item.get("gold_label", {})
         for side in ("s", "s_cf"):
-            label = gold.get(f"negation_{side}")
+            suffix = _label_side_suffix(side)
+            label = gold.get(f"negation_{suffix}")
             if label is None:
                 continue
             vec = item["layers"][layer_k][f"{side}_mean"].astype(np.float32)
@@ -124,7 +133,8 @@ def build_attachment_probe_dataset(cache_payload: dict[str, Any], layer: int) ->
             continue
         gold = item.get("gold_label", {})
         for side in ("s", "s_cf"):
-            label_text = gold.get(f"attachment_{side}")
+            suffix = _label_side_suffix(side)
+            label_text = gold.get(f"attachment_{suffix}")
             if label_text not in mapping:
                 continue
             vec = item["layers"][layer_k][f"{side}_mean"].astype(np.float32)

@@ -61,33 +61,51 @@ def _fit_layer(df_layer: pd.DataFrame) -> dict[str, Any]:
     frame["pair_group"] = frame["pair_id"].astype(str)
     frame["annotator_group"] = frame["annotator_id"].astype(str)
 
-    formula = (
-        "human_change ~ z_delta_cos + z_delta_frob + z_abs_surprisal + z_probe_conf + "
-        "C(phenomenon) + C(model) + z_len + z_jacc"
-    )
-    model = smf.mixedlm(
-        formula,
-        data=frame,
-        groups=frame["pair_group"],
-        vc_formula={"annotator": "0 + C(annotator_group)"},
-        re_formula="1",
-    )
-    fit = model.fit(reml=False, method="lbfgs", maxiter=300, disp=False)
-    out = {
-        "n": len(frame),
-        "llf": float(fit.llf),
-        "aic": float(fit.aic),
-        "bic": float(fit.bic),
-        "converged": bool(fit.converged),
-    }
-    for name in [
+    numeric_terms = [
         "z_delta_cos",
         "z_delta_frob",
         "z_abs_surprisal",
         "z_probe_conf",
         "z_len",
         "z_jacc",
-    ]:
+    ]
+    active_terms = [t for t in numeric_terms if frame[t].std(ddof=0) > 0]
+
+    fit = None
+    used_terms: list[str] = []
+    last_error: Exception | None = None
+    # Retry by progressively dropping numeric predictors if the mixed model is singular.
+    for n_keep in range(len(active_terms), -1, -1):
+        trial_terms = active_terms[:n_keep]
+        rhs = [*trial_terms, "C(phenomenon)", "C(model)"]
+        formula = "human_change ~ " + " + ".join(rhs)
+        model = smf.mixedlm(
+            formula,
+            data=frame,
+            groups=frame["pair_group"],
+            vc_formula={"annotator": "0 + C(annotator_group)"},
+            re_formula="1",
+        )
+        try:
+            fit = model.fit(reml=False, method="lbfgs", maxiter=300, disp=False)
+            used_terms = trial_terms
+            break
+        except Exception as exc:  # pragma: no cover - runtime robustness path
+            last_error = exc
+            continue
+
+    if fit is None:
+        raise RuntimeError(f"mixedlm_failed: {last_error}") from last_error
+
+    out = {
+        "n": len(frame),
+        "llf": float(fit.llf),
+        "aic": float(fit.aic),
+        "bic": float(fit.bic),
+        "converged": bool(fit.converged),
+        "used_terms": ",".join(used_terms),
+    }
+    for name in numeric_terms:
         out[f"beta_{name}"] = float(fit.params.get(name, np.nan))
         out[f"p_{name}"] = float(fit.pvalues.get(name, np.nan))
     return out
