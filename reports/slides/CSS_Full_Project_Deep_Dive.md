@@ -4,7 +4,7 @@ theme: default
 paginate: true
 size: 16:9
 title: Counterfactual Structural Sensitivity (CSS)
-author: Compsy Project Repository (commit 76ee726)
+author: Compsy Project Repository (post-migration rerun snapshot)
 description: End-to-end deep technical walkthrough with methods, math, implementation, results, caveats, and references.
 ---
 
@@ -14,7 +14,7 @@ description: End-to-end deep technical walkthrough with methods, math, implement
 Deep technical walkthrough (full repository implementation and experiment artifacts)
 
 - Project repo: `/home/srinath/Shyshtum/compsy`
-- Snapshot commit: `76ee726`
+- Snapshot: post-migration full rerun artifacts (2026-04-24)
 - Date: 2026-04-24
 
 ---
@@ -42,7 +42,7 @@ Major change adopted:
 Impact on this deck:
 
 - data-provenance sections are updated
-- any model outputs produced pre-migration should be rerun before final submission claims
+- post-migration rerun is complete; outputs shown are from migrated data artifacts
 
 ---
 

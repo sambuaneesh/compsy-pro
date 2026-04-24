@@ -104,7 +104,7 @@ Completed through full audit:
 Update after source migration:
 
 - canonical pair JSONL regenerated + revalidated
-- full-model metrics/probes/stats should be rerun on migrated role/negation before final claims
+- post-migration rerun completed for metrics/probes/stats/salience/plots
 
 ---
 

@@ -32,4 +32,4 @@ Adopt `text-machine-lab/extending_psycholinguistic_dataset` as the canonical sou
 ## Notes
 
 - Role/negation model outputs generated before migration should be considered pre-migration artifacts.
-- Full extraction/metrics/probes/stats should be rerun on migrated data before final submission claims.
+- Post-migration full rerun was completed on 2026-04-24; current full artifacts are aligned to migrated data.
