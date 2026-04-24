@@ -1,0 +1,91 @@
+batch_item_id,pair_id,phenomenon,s,s_cf,annotation_prompt_version
+1,attach_000037,attachment,"With the camera, the artist photographed the tourist.",The artist photographed the tourist who had the camera.,css_human_change_v1
+2,attach_000067,attachment,"With the flashlight, the artist checked the driver.",The artist checked the driver who had the flashlight.,css_human_change_v1
+3,neg_000030,negation,The scientist did not interview the researcher.,The scientist interviewed the researcher.,css_human_change_v1
+4,role_000067,role_reversal,The engineer contacted the journalist.,The journalist contacted the engineer.,css_human_change_v1
+5,role_000030,role_reversal,The waiter admired the judge.,The judge admired the waiter.,css_human_change_v1
+6,attach_000016,attachment,"With the notebook, the student met the student.",The student met the student who had the notebook.,css_human_change_v1
+7,role_000051,role_reversal,The musician praised the waiter.,The waiter praised the musician.,css_human_change_v1
+8,attach_000068,attachment,The judge photographed the tourist with the camera.,"With the camera, the judge photographed the tourist.",css_human_change_v1
+9,role_000002,role_reversal,The student ignored the judge.,The judge ignored the student.,css_human_change_v1
+10,role_000088,role_reversal,The journalist thanked the waiter.,The waiter thanked the journalist.,css_human_change_v1
+11,attach_000057,attachment,The coach photographed the tourist with the camera.,The coach photographed the tourist who had the camera.,css_human_change_v1
+12,attach_000005,attachment,The teacher met the student with the notebook.,"With the notebook, the teacher met the student.",css_human_change_v1
+13,neg_000071,negation,The manager helped the chef.,The manager did not help the chef.,css_human_change_v1
+14,neg_000023,negation,The judge supported the writer.,The judge did not support the writer.,css_human_change_v1
+15,attach_000031,attachment,"With the umbrella, the nurse noticed the teacher.",The nurse noticed the teacher who had the umbrella.,css_human_change_v1
+16,neg_000049,negation,The driver admired the scientist.,The driver did not admire the scientist.,css_human_change_v1
+17,role_000003,role_reversal,The teacher ignored the judge.,The judge ignored the teacher.,css_human_change_v1
+18,attach_000085,attachment,"With the map, the chef showed the guide.",The chef showed the guide who had the map.,css_human_change_v1
+19,role_000077,role_reversal,The waiter visited the musician.,The musician visited the waiter.,css_human_change_v1
+20,attach_000027,attachment,The coach saw the man with the telescope.,The coach saw the man who had the telescope.,css_human_change_v1
+21,attach_000015,attachment,The scientist noticed the teacher with the umbrella.,The scientist noticed the teacher who had the umbrella.,css_human_change_v1
+22,role_000087,role_reversal,The athlete hired the waiter.,The waiter hired the athlete.,css_human_change_v1
+23,attach_000059,attachment,The artist checked the driver with the flashlight.,"With the flashlight, the artist checked the driver.",css_human_change_v1
+24,role_000011,role_reversal,The driver hired the musician.,The musician hired the driver.,css_human_change_v1
+25,attach_000021,attachment,The engineer showed the guide with the map.,The engineer showed the guide who had the map.,css_human_change_v1
+26,neg_000061,negation,The journalist greeted the judge.,The journalist did not greet the judge.,css_human_change_v1
+27,neg_000002,negation,The passenger did not help the musician.,The passenger helped the musician.,css_human_change_v1
+28,neg_000099,negation,The passenger contacted the doctor.,The passenger did not contact the doctor.,css_human_change_v1
+29,role_000053,role_reversal,The engineer visited the journalist.,The journalist visited the engineer.,css_human_change_v1
+30,attach_000020,attachment,The engineer photographed the tourist with the camera.,"With the camera, the engineer photographed the tourist.",css_human_change_v1
+31,attach_000022,attachment,"With the camera, the student photographed the tourist.",The student photographed the tourist who had the camera.,css_human_change_v1
+32,attach_000001,attachment,"With the microscope, the passenger observed the scientist.",The passenger observed the scientist who had the microscope.,css_human_change_v1
+33,role_000052,role_reversal,The artist admired the researcher.,The researcher admired the artist.,css_human_change_v1
+34,neg_000007,negation,The writer ignored the artist.,The writer did not ignore the artist.,css_human_change_v1
+35,neg_000070,negation,The journalist did not call the researcher.,The journalist called the researcher.,css_human_change_v1
+36,neg_000066,negation,The writer did not criticize the chef.,The writer criticized the chef.,css_human_change_v1
+37,neg_000051,negation,The engineer contacted the scientist.,The engineer did not contact the scientist.,css_human_change_v1
+38,attach_000071,attachment,The judge showed the guide with the map.,"With the map, the judge showed the guide.",css_human_change_v1
+39,neg_000098,negation,The scientist did not interview the teacher.,The scientist interviewed the teacher.,css_human_change_v1
+40,neg_000068,negation,The student did not call the manager.,The student called the manager.,css_human_change_v1
+41,role_000070,role_reversal,The teacher thanked the waiter.,The waiter thanked the teacher.,css_human_change_v1
+42,attach_000062,attachment,The journalist questioned the officer with the badge.,"With the badge, the journalist questioned the officer.",css_human_change_v1
+43,neg_000040,negation,The lawyer did not admire the driver.,The lawyer admired the driver.,css_human_change_v1
+44,attach_000060,attachment,The student checked the driver with the flashlight.,The student checked the driver who had the flashlight.,css_human_change_v1
+45,role_000064,role_reversal,The doctor interviewed the researcher.,The researcher interviewed the doctor.,css_human_change_v1
+46,role_000033,role_reversal,The coach promoted the driver.,The driver promoted the coach.,css_human_change_v1
+47,role_000061,role_reversal,The passenger criticized the coach.,The coach criticized the passenger.,css_human_change_v1
+48,role_000027,role_reversal,The musician thanked the teacher.,The teacher thanked the musician.,css_human_change_v1
+49,attach_000006,attachment,The driver showed the guide with the map.,The driver showed the guide who had the map.,css_human_change_v1
+50,role_000060,role_reversal,The musician greeted the judge.,The judge greeted the musician.,css_human_change_v1
+51,neg_000041,negation,The nurse praised the lawyer.,The nurse did not praise the lawyer.,css_human_change_v1
+52,neg_000058,negation,The scientist did not visit the researcher.,The scientist visited the researcher.,css_human_change_v1
+53,role_000012,role_reversal,The judge promoted the engineer.,The engineer promoted the judge.,css_human_change_v1
+54,attach_000079,attachment,"With the badge, the coach questioned the officer.",The coach questioned the officer who had the badge.,css_human_change_v1
+55,attach_000087,attachment,The passenger noticed the teacher with the umbrella.,The passenger noticed the teacher who had the umbrella.,css_human_change_v1
+56,attach_000090,attachment,The artist photographed the tourist with the camera.,The artist photographed the tourist who had the camera.,css_human_change_v1
+57,neg_000004,negation,The driver did not promote the nurse.,The driver promoted the nurse.,css_human_change_v1
+58,role_000032,role_reversal,The driver blamed the student.,The student blamed the driver.,css_human_change_v1
+59,neg_000013,negation,The nurse helped the doctor.,The nurse did not help the doctor.,css_human_change_v1
+60,attach_000025,attachment,"With the microscope, the scientist observed the scientist.",The scientist observed the scientist who had the microscope.,css_human_change_v1
+61,role_000035,role_reversal,The musician blamed the writer.,The writer blamed the musician.,css_human_change_v1
+62,neg_000054,negation,The manager did not call the doctor.,The manager called the doctor.,css_human_change_v1
+63,attach_000070,attachment,"With the microscope, the journalist observed the scientist.",The journalist observed the scientist who had the microscope.,css_human_change_v1
+64,role_000090,role_reversal,The musician contacted the journalist.,The journalist contacted the musician.,css_human_change_v1
+65,role_000049,role_reversal,The driver greeted the scientist.,The scientist greeted the driver.,css_human_change_v1
+66,neg_000043,negation,The artist praised the researcher.,The artist did not praise the researcher.,css_human_change_v1
+67,attach_000007,attachment,"With the notebook, the chef met the student.",The chef met the student who had the notebook.,css_human_change_v1
+68,role_000066,role_reversal,The passenger called the lawyer.,The lawyer called the passenger.,css_human_change_v1
+69,role_000075,role_reversal,The musician called the engineer.,The engineer called the musician.,css_human_change_v1
+70,neg_000047,negation,The journalist visited the doctor.,The journalist did not visit the doctor.,css_human_change_v1
+71,role_000076,role_reversal,The scientist contacted the researcher.,The researcher contacted the scientist.,css_human_change_v1
+72,role_000072,role_reversal,The passenger greeted the researcher.,The researcher greeted the passenger.,css_human_change_v1
+73,neg_000062,negation,The artist did not admire the musician.,The artist admired the musician.,css_human_change_v1
+74,role_000095,role_reversal,The chef visited the nurse.,The nurse visited the chef.,css_human_change_v1
+75,attach_000003,attachment,The coach checked the driver with the flashlight.,The coach checked the driver who had the flashlight.,css_human_change_v1
+76,neg_000096,negation,The lawyer did not support the engineer.,The lawyer supported the engineer.,css_human_change_v1
+77,neg_000097,negation,The teacher visited the lawyer.,The teacher did not visit the lawyer.,css_human_change_v1
+78,neg_000016,negation,The coach did not promote the writer.,The coach promoted the writer.,css_human_change_v1
+79,attach_000074,attachment,The athlete saw the man with the telescope.,"With the telescope, the athlete saw the man.",css_human_change_v1
+80,neg_000087,negation,The chef interviewed the writer.,The chef did not interview the writer.,css_human_change_v1
+81,neg_000042,negation,The journalist did not interview the passenger.,The journalist interviewed the passenger.,css_human_change_v1
+82,neg_000026,negation,The researcher did not visit the journalist.,The researcher visited the journalist.,css_human_change_v1
+83,role_000025,role_reversal,The journalist greeted the judge.,The judge greeted the journalist.,css_human_change_v1
+84,attach_000076,attachment,"With the telescope, the lawyer saw the man.",The lawyer saw the man who had the telescope.,css_human_change_v1
+85,role_000092,role_reversal,The passenger thanked the driver.,The driver thanked the passenger.,css_human_change_v1
+86,attach_000032,attachment,The passenger questioned the officer with the badge.,"With the badge, the passenger questioned the officer.",css_human_change_v1
+87,neg_000060,negation,The artist did not admire the scientist.,The artist admired the scientist.,css_human_change_v1
+88,neg_000089,negation,The waiter supported the passenger.,The waiter did not support the passenger.,css_human_change_v1
+89,role_000093,role_reversal,The musician promoted the waiter.,The waiter promoted the musician.,css_human_change_v1
+90,attach_000014,attachment,The lawyer saw the man with the telescope.,"With the telescope, the lawyer saw the man.",css_human_change_v1

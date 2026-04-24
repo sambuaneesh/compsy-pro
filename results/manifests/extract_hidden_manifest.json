@@ -1,0 +1,44 @@
+{
+  "config_path": "configs/experiments/pilot.yaml",
+  "config_sha256": "e8f23448efbf9a834bfbc477d8fc088fa3b7e281209f965af1a5064a985d436e",
+  "experiment_name": "css_pilot_v1",
+  "runs": [
+    {
+      "cache_path": "cache/hidden/bert-base-uncased/role_pilot_100/hidden_cache.pkl",
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "metadata_path": "cache/hidden/bert-base-uncased/role_pilot_100/metadata.json",
+      "model_name": "bert-base-uncased"
+    },
+    {
+      "cache_path": "cache/hidden/bert-base-uncased/neg_pilot_100/hidden_cache.pkl",
+      "dataset_path": "data/css_pairs/neg_pilot_100.jsonl",
+      "metadata_path": "cache/hidden/bert-base-uncased/neg_pilot_100/metadata.json",
+      "model_name": "bert-base-uncased"
+    },
+    {
+      "cache_path": "cache/hidden/bert-base-uncased/attach_pilot_100/hidden_cache.pkl",
+      "dataset_path": "data/css_pairs/attach_pilot_100.jsonl",
+      "metadata_path": "cache/hidden/bert-base-uncased/attach_pilot_100/metadata.json",
+      "model_name": "bert-base-uncased"
+    },
+    {
+      "cache_path": "cache/hidden/gpt2/role_pilot_100/hidden_cache.pkl",
+      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "metadata_path": "cache/hidden/gpt2/role_pilot_100/metadata.json",
+      "model_name": "gpt2"
+    },
+    {
+      "cache_path": "cache/hidden/gpt2/neg_pilot_100/hidden_cache.pkl",
+      "dataset_path": "data/css_pairs/neg_pilot_100.jsonl",
+      "metadata_path": "cache/hidden/gpt2/neg_pilot_100/metadata.json",
+      "model_name": "gpt2"
+    },
+    {
+      "cache_path": "cache/hidden/gpt2/attach_pilot_100/hidden_cache.pkl",
+      "dataset_path": "data/css_pairs/attach_pilot_100.jsonl",
+      "metadata_path": "cache/hidden/gpt2/attach_pilot_100/metadata.json",
+      "model_name": "gpt2"
+    }
+  ],
+  "seed": 13
+}

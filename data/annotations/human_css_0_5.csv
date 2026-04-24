@@ -1,0 +1,271 @@
+pair_id,phenomenon,s,s_cf,annotator_id,batch_id,human_change_0_5,confidence_1_5,fluency_s_1_5,fluency_cf_1_5,plausibility_s_1_5,plausibility_cf_1_5,changed_words,attention_check,created_at
+attach_000037,attachment,"With the camera, the artist photographed the tourist.",The artist photographed the tourist who had the camera.,sim_1,pilot_simulated_v1,2.41,4.17,5.0,5.0,4.29,4.36,,True,simulated
+attach_000037,attachment,"With the camera, the artist photographed the tourist.",The artist photographed the tourist who had the camera.,sim_2,pilot_simulated_v1,2.3,3.26,5.0,5.0,3.44,3.36,,True,simulated
+attach_000037,attachment,"With the camera, the artist photographed the tourist.",The artist photographed the tourist who had the camera.,sim_3,pilot_simulated_v1,3.17,3.06,5.0,5.0,4.05,3.34,,True,simulated
+attach_000067,attachment,"With the flashlight, the artist checked the driver.",The artist checked the driver who had the flashlight.,sim_1,pilot_simulated_v1,2.47,3.66,5.0,5.0,4.54,3.97,,True,simulated
+attach_000067,attachment,"With the flashlight, the artist checked the driver.",The artist checked the driver who had the flashlight.,sim_2,pilot_simulated_v1,2.02,3.35,5.0,5.0,3.43,4.39,,True,simulated
+attach_000067,attachment,"With the flashlight, the artist checked the driver.",The artist checked the driver who had the flashlight.,sim_3,pilot_simulated_v1,3.3,4.41,5.0,5.0,4.52,4.19,,True,simulated
+neg_000030,negation,The scientist did not interview the researcher.,The scientist interviewed the researcher.,sim_1,pilot_simulated_v1,4.32,4.39,5.0,5.0,3.61,4.36,,True,simulated
+neg_000030,negation,The scientist did not interview the researcher.,The scientist interviewed the researcher.,sim_2,pilot_simulated_v1,3.58,4.31,5.0,5.0,4.1,3.69,,True,simulated
+neg_000030,negation,The scientist did not interview the researcher.,The scientist interviewed the researcher.,sim_3,pilot_simulated_v1,3.38,3.66,5.0,5.0,3.7,3.19,,True,simulated
+role_000067,role_reversal,The engineer contacted the journalist.,The journalist contacted the engineer.,sim_1,pilot_simulated_v1,4.71,4.4,5.0,5.0,4.78,4.11,,True,simulated
+role_000067,role_reversal,The engineer contacted the journalist.,The journalist contacted the engineer.,sim_2,pilot_simulated_v1,4.29,4.3,5.0,5.0,3.42,4.08,,True,simulated
+role_000067,role_reversal,The engineer contacted the journalist.,The journalist contacted the engineer.,sim_3,pilot_simulated_v1,4.11,3.15,5.0,5.0,3.52,3.84,,True,simulated
+role_000030,role_reversal,The waiter admired the judge.,The judge admired the waiter.,sim_1,pilot_simulated_v1,3.81,3.72,5.0,5.0,4.17,3.63,,True,simulated
+role_000030,role_reversal,The waiter admired the judge.,The judge admired the waiter.,sim_2,pilot_simulated_v1,3.61,3.78,5.0,5.0,3.58,3.38,,True,simulated
+role_000030,role_reversal,The waiter admired the judge.,The judge admired the waiter.,sim_3,pilot_simulated_v1,3.71,3.53,5.0,5.0,3.32,4.04,,True,simulated
+attach_000016,attachment,"With the notebook, the student met the student.",The student met the student who had the notebook.,sim_1,pilot_simulated_v1,3.53,3.58,5.0,5.0,4.35,4.49,,True,simulated
+attach_000016,attachment,"With the notebook, the student met the student.",The student met the student who had the notebook.,sim_2,pilot_simulated_v1,2.07,3.08,5.0,5.0,4.49,4.34,,True,simulated
+attach_000016,attachment,"With the notebook, the student met the student.",The student met the student who had the notebook.,sim_3,pilot_simulated_v1,3.02,3.12,5.0,5.0,3.86,4.39,,True,simulated
+role_000051,role_reversal,The musician praised the waiter.,The waiter praised the musician.,sim_1,pilot_simulated_v1,4.82,4.41,5.0,5.0,3.52,4.37,,True,simulated
+role_000051,role_reversal,The musician praised the waiter.,The waiter praised the musician.,sim_2,pilot_simulated_v1,4.0,4.23,5.0,5.0,3.42,4.55,,True,simulated
+role_000051,role_reversal,The musician praised the waiter.,The waiter praised the musician.,sim_3,pilot_simulated_v1,4.37,4.25,5.0,5.0,3.54,3.99,,True,simulated
+attach_000068,attachment,The judge photographed the tourist with the camera.,"With the camera, the judge photographed the tourist.",sim_1,pilot_simulated_v1,2.93,3.98,5.0,5.0,3.77,4.16,,True,simulated
+attach_000068,attachment,The judge photographed the tourist with the camera.,"With the camera, the judge photographed the tourist.",sim_2,pilot_simulated_v1,2.55,3.39,5.0,5.0,3.46,4.09,,True,simulated
+attach_000068,attachment,The judge photographed the tourist with the camera.,"With the camera, the judge photographed the tourist.",sim_3,pilot_simulated_v1,2.18,3.25,5.0,5.0,3.31,4.03,,True,simulated
+role_000002,role_reversal,The student ignored the judge.,The judge ignored the student.,sim_1,pilot_simulated_v1,4.29,3.89,5.0,5.0,3.26,3.7,,True,simulated
+role_000002,role_reversal,The student ignored the judge.,The judge ignored the student.,sim_2,pilot_simulated_v1,3.95,2.99,5.0,5.0,3.2,4.6,,True,simulated
+role_000002,role_reversal,The student ignored the judge.,The judge ignored the student.,sim_3,pilot_simulated_v1,3.59,3.4,5.0,5.0,3.63,3.96,,True,simulated
+role_000088,role_reversal,The journalist thanked the waiter.,The waiter thanked the journalist.,sim_1,pilot_simulated_v1,3.52,3.74,5.0,5.0,3.79,4.34,,True,simulated
+role_000088,role_reversal,The journalist thanked the waiter.,The waiter thanked the journalist.,sim_2,pilot_simulated_v1,3.41,3.47,5.0,5.0,3.99,4.55,,True,simulated
+role_000088,role_reversal,The journalist thanked the waiter.,The waiter thanked the journalist.,sim_3,pilot_simulated_v1,4.23,3.75,5.0,5.0,4.27,3.47,,True,simulated
+attach_000057,attachment,The coach photographed the tourist with the camera.,The coach photographed the tourist who had the camera.,sim_1,pilot_simulated_v1,2.05,3.8,5.0,5.0,4.66,4.18,,True,simulated
+attach_000057,attachment,The coach photographed the tourist with the camera.,The coach photographed the tourist who had the camera.,sim_2,pilot_simulated_v1,2.41,4.17,5.0,5.0,4.56,3.41,,True,simulated
+attach_000057,attachment,The coach photographed the tourist with the camera.,The coach photographed the tourist who had the camera.,sim_3,pilot_simulated_v1,2.94,3.51,5.0,5.0,3.59,3.46,,True,simulated
+attach_000005,attachment,The teacher met the student with the notebook.,"With the notebook, the teacher met the student.",sim_1,pilot_simulated_v1,2.33,3.5,5.0,5.0,3.26,3.64,,True,simulated
+attach_000005,attachment,The teacher met the student with the notebook.,"With the notebook, the teacher met the student.",sim_2,pilot_simulated_v1,2.14,4.32,5.0,5.0,4.16,3.01,,True,simulated
+attach_000005,attachment,The teacher met the student with the notebook.,"With the notebook, the teacher met the student.",sim_3,pilot_simulated_v1,3.24,3.18,5.0,5.0,3.97,3.89,,True,simulated
+neg_000071,negation,The manager helped the chef.,The manager did not help the chef.,sim_1,pilot_simulated_v1,3.33,3.38,5.0,5.0,3.9,3.22,,True,simulated
+neg_000071,negation,The manager helped the chef.,The manager did not help the chef.,sim_2,pilot_simulated_v1,4.18,3.02,5.0,5.0,4.52,3.35,,True,simulated
+neg_000071,negation,The manager helped the chef.,The manager did not help the chef.,sim_3,pilot_simulated_v1,3.29,3.58,5.0,5.0,3.25,3.21,,True,simulated
+neg_000023,negation,The judge supported the writer.,The judge did not support the writer.,sim_1,pilot_simulated_v1,3.38,3.68,5.0,5.0,4.6,4.58,,True,simulated
+neg_000023,negation,The judge supported the writer.,The judge did not support the writer.,sim_2,pilot_simulated_v1,2.87,3.87,5.0,5.0,3.41,4.29,,True,simulated
+neg_000023,negation,The judge supported the writer.,The judge did not support the writer.,sim_3,pilot_simulated_v1,3.32,4.59,5.0,5.0,4.07,3.2,,True,simulated
+attach_000031,attachment,"With the umbrella, the nurse noticed the teacher.",The nurse noticed the teacher who had the umbrella.,sim_1,pilot_simulated_v1,2.01,3.3,5.0,5.0,4.59,3.24,,True,simulated
+attach_000031,attachment,"With the umbrella, the nurse noticed the teacher.",The nurse noticed the teacher who had the umbrella.,sim_2,pilot_simulated_v1,2.77,3.54,5.0,5.0,3.75,4.28,,True,simulated
+attach_000031,attachment,"With the umbrella, the nurse noticed the teacher.",The nurse noticed the teacher who had the umbrella.,sim_3,pilot_simulated_v1,2.34,4.24,5.0,5.0,4.27,4.5,,True,simulated
+neg_000049,negation,The driver admired the scientist.,The driver did not admire the scientist.,sim_1,pilot_simulated_v1,3.63,4.64,5.0,5.0,3.9,3.92,,True,simulated
+neg_000049,negation,The driver admired the scientist.,The driver did not admire the scientist.,sim_2,pilot_simulated_v1,3.79,4.48,5.0,5.0,4.64,3.18,,True,simulated
+neg_000049,negation,The driver admired the scientist.,The driver did not admire the scientist.,sim_3,pilot_simulated_v1,3.02,3.87,5.0,5.0,4.5,3.85,,True,simulated
+role_000003,role_reversal,The teacher ignored the judge.,The judge ignored the teacher.,sim_1,pilot_simulated_v1,3.88,4.72,5.0,5.0,3.68,3.14,,True,simulated
+role_000003,role_reversal,The teacher ignored the judge.,The judge ignored the teacher.,sim_2,pilot_simulated_v1,3.48,2.86,5.0,5.0,4.36,3.17,,True,simulated
+role_000003,role_reversal,The teacher ignored the judge.,The judge ignored the teacher.,sim_3,pilot_simulated_v1,4.55,4.53,5.0,5.0,4.8,4.29,,True,simulated
+attach_000085,attachment,"With the map, the chef showed the guide.",The chef showed the guide who had the map.,sim_1,pilot_simulated_v1,2.68,4.04,5.0,5.0,4.53,4.15,,True,simulated
+attach_000085,attachment,"With the map, the chef showed the guide.",The chef showed the guide who had the map.,sim_2,pilot_simulated_v1,2.46,4.32,5.0,5.0,3.38,3.49,,True,simulated
+attach_000085,attachment,"With the map, the chef showed the guide.",The chef showed the guide who had the map.,sim_3,pilot_simulated_v1,3.59,3.74,5.0,5.0,3.63,4.26,,True,simulated
+role_000077,role_reversal,The waiter visited the musician.,The musician visited the waiter.,sim_1,pilot_simulated_v1,4.12,2.81,5.0,5.0,3.25,3.41,,True,simulated
+role_000077,role_reversal,The waiter visited the musician.,The musician visited the waiter.,sim_2,pilot_simulated_v1,3.93,4.67,5.0,5.0,3.6,4.36,,True,simulated
+role_000077,role_reversal,The waiter visited the musician.,The musician visited the waiter.,sim_3,pilot_simulated_v1,4.77,3.63,5.0,5.0,4.79,4.22,,True,simulated
+attach_000027,attachment,The coach saw the man with the telescope.,The coach saw the man who had the telescope.,sim_1,pilot_simulated_v1,2.77,3.32,5.0,5.0,3.94,4.44,,True,simulated
+attach_000027,attachment,The coach saw the man with the telescope.,The coach saw the man who had the telescope.,sim_2,pilot_simulated_v1,2.86,3.19,5.0,5.0,3.8,3.76,,True,simulated
+attach_000027,attachment,The coach saw the man with the telescope.,The coach saw the man who had the telescope.,sim_3,pilot_simulated_v1,2.31,3.95,5.0,5.0,3.25,4.31,,True,simulated
+attach_000015,attachment,The scientist noticed the teacher with the umbrella.,The scientist noticed the teacher who had the umbrella.,sim_1,pilot_simulated_v1,2.29,3.01,5.0,5.0,4.14,3.49,,True,simulated
+attach_000015,attachment,The scientist noticed the teacher with the umbrella.,The scientist noticed the teacher who had the umbrella.,sim_2,pilot_simulated_v1,3.42,3.79,5.0,5.0,4.03,4.34,,True,simulated
+attach_000015,attachment,The scientist noticed the teacher with the umbrella.,The scientist noticed the teacher who had the umbrella.,sim_3,pilot_simulated_v1,2.34,4.29,5.0,5.0,4.24,3.69,,True,simulated
+role_000087,role_reversal,The athlete hired the waiter.,The waiter hired the athlete.,sim_1,pilot_simulated_v1,4.93,2.84,5.0,5.0,4.58,3.23,,True,simulated
+role_000087,role_reversal,The athlete hired the waiter.,The waiter hired the athlete.,sim_2,pilot_simulated_v1,4.74,3.11,5.0,5.0,3.29,3.8,,True,simulated
+role_000087,role_reversal,The athlete hired the waiter.,The waiter hired the athlete.,sim_3,pilot_simulated_v1,4.88,3.31,5.0,5.0,3.98,3.97,,True,simulated
+attach_000059,attachment,The artist checked the driver with the flashlight.,"With the flashlight, the artist checked the driver.",sim_1,pilot_simulated_v1,2.39,3.86,5.0,5.0,3.22,3.72,,True,simulated
+attach_000059,attachment,The artist checked the driver with the flashlight.,"With the flashlight, the artist checked the driver.",sim_2,pilot_simulated_v1,3.22,3.48,5.0,5.0,3.55,3.08,,True,simulated
+attach_000059,attachment,The artist checked the driver with the flashlight.,"With the flashlight, the artist checked the driver.",sim_3,pilot_simulated_v1,3.12,3.65,5.0,5.0,4.66,4.18,,True,simulated
+role_000011,role_reversal,The driver hired the musician.,The musician hired the driver.,sim_1,pilot_simulated_v1,3.56,4.63,5.0,5.0,4.69,4.31,,True,simulated
+role_000011,role_reversal,The driver hired the musician.,The musician hired the driver.,sim_2,pilot_simulated_v1,4.73,4.16,5.0,5.0,4.35,4.07,,True,simulated
+role_000011,role_reversal,The driver hired the musician.,The musician hired the driver.,sim_3,pilot_simulated_v1,4.35,3.31,5.0,5.0,3.41,4.16,,True,simulated
+attach_000021,attachment,The engineer showed the guide with the map.,The engineer showed the guide who had the map.,sim_1,pilot_simulated_v1,2.95,2.91,5.0,5.0,4.23,3.98,,True,simulated
+attach_000021,attachment,The engineer showed the guide with the map.,The engineer showed the guide who had the map.,sim_2,pilot_simulated_v1,2.82,4.35,5.0,5.0,4.6,3.61,,True,simulated
+attach_000021,attachment,The engineer showed the guide with the map.,The engineer showed the guide who had the map.,sim_3,pilot_simulated_v1,3.3,3.8,5.0,5.0,4.12,3.66,,True,simulated
+neg_000061,negation,The journalist greeted the judge.,The journalist did not greet the judge.,sim_1,pilot_simulated_v1,4.29,3.69,5.0,5.0,4.72,3.54,,True,simulated
+neg_000061,negation,The journalist greeted the judge.,The journalist did not greet the judge.,sim_2,pilot_simulated_v1,3.88,4.63,5.0,5.0,4.29,3.6,,True,simulated
+neg_000061,negation,The journalist greeted the judge.,The journalist did not greet the judge.,sim_3,pilot_simulated_v1,2.92,3.76,5.0,5.0,3.86,4.3,,True,simulated
+neg_000002,negation,The passenger did not help the musician.,The passenger helped the musician.,sim_1,pilot_simulated_v1,4.05,4.77,5.0,5.0,3.92,3.66,,True,simulated
+neg_000002,negation,The passenger did not help the musician.,The passenger helped the musician.,sim_2,pilot_simulated_v1,3.7,4.3,5.0,5.0,3.33,3.34,,True,simulated
+neg_000002,negation,The passenger did not help the musician.,The passenger helped the musician.,sim_3,pilot_simulated_v1,3.03,3.45,5.0,5.0,3.68,4.55,,True,simulated
+neg_000099,negation,The passenger contacted the doctor.,The passenger did not contact the doctor.,sim_1,pilot_simulated_v1,3.13,4.67,5.0,5.0,3.67,3.33,,True,simulated
+neg_000099,negation,The passenger contacted the doctor.,The passenger did not contact the doctor.,sim_2,pilot_simulated_v1,4.36,2.98,5.0,5.0,3.38,3.21,,True,simulated
+neg_000099,negation,The passenger contacted the doctor.,The passenger did not contact the doctor.,sim_3,pilot_simulated_v1,2.91,3.57,5.0,5.0,3.54,3.25,,True,simulated
+role_000053,role_reversal,The engineer visited the journalist.,The journalist visited the engineer.,sim_1,pilot_simulated_v1,3.43,4.2,5.0,5.0,3.28,3.37,,True,simulated
+role_000053,role_reversal,The engineer visited the journalist.,The journalist visited the engineer.,sim_2,pilot_simulated_v1,4.3,4.57,5.0,5.0,4.26,4.13,,True,simulated
+role_000053,role_reversal,The engineer visited the journalist.,The journalist visited the engineer.,sim_3,pilot_simulated_v1,4.52,4.39,5.0,5.0,4.56,3.25,,True,simulated
+attach_000020,attachment,The engineer photographed the tourist with the camera.,"With the camera, the engineer photographed the tourist.",sim_1,pilot_simulated_v1,2.09,4.04,5.0,5.0,4.03,3.83,,True,simulated
+attach_000020,attachment,The engineer photographed the tourist with the camera.,"With the camera, the engineer photographed the tourist.",sim_2,pilot_simulated_v1,3.25,3.15,5.0,5.0,4.33,3.68,,True,simulated
+attach_000020,attachment,The engineer photographed the tourist with the camera.,"With the camera, the engineer photographed the tourist.",sim_3,pilot_simulated_v1,2.67,3.29,5.0,5.0,3.65,3.93,,True,simulated
+attach_000022,attachment,"With the camera, the student photographed the tourist.",The student photographed the tourist who had the camera.,sim_1,pilot_simulated_v1,2.89,4.61,5.0,5.0,3.65,4.15,,True,simulated
+attach_000022,attachment,"With the camera, the student photographed the tourist.",The student photographed the tourist who had the camera.,sim_2,pilot_simulated_v1,2.16,4.1,5.0,5.0,3.46,4.37,,True,simulated
+attach_000022,attachment,"With the camera, the student photographed the tourist.",The student photographed the tourist who had the camera.,sim_3,pilot_simulated_v1,3.54,3.31,5.0,5.0,4.49,3.35,,True,simulated
+attach_000001,attachment,"With the microscope, the passenger observed the scientist.",The passenger observed the scientist who had the microscope.,sim_1,pilot_simulated_v1,2.49,3.01,5.0,5.0,3.91,3.17,,True,simulated
+attach_000001,attachment,"With the microscope, the passenger observed the scientist.",The passenger observed the scientist who had the microscope.,sim_2,pilot_simulated_v1,3.13,3.95,5.0,5.0,3.87,4.14,,True,simulated
+attach_000001,attachment,"With the microscope, the passenger observed the scientist.",The passenger observed the scientist who had the microscope.,sim_3,pilot_simulated_v1,2.37,3.46,5.0,5.0,3.78,3.0,,True,simulated
+role_000052,role_reversal,The artist admired the researcher.,The researcher admired the artist.,sim_1,pilot_simulated_v1,4.82,2.98,5.0,5.0,3.36,4.28,,True,simulated
+role_000052,role_reversal,The artist admired the researcher.,The researcher admired the artist.,sim_2,pilot_simulated_v1,4.71,3.7,5.0,5.0,3.87,3.22,,True,simulated
+role_000052,role_reversal,The artist admired the researcher.,The researcher admired the artist.,sim_3,pilot_simulated_v1,3.4,3.84,5.0,5.0,3.59,3.24,,True,simulated
+neg_000007,negation,The writer ignored the artist.,The writer did not ignore the artist.,sim_1,pilot_simulated_v1,4.25,2.84,5.0,5.0,3.78,4.2,,True,simulated
+neg_000007,negation,The writer ignored the artist.,The writer did not ignore the artist.,sim_2,pilot_simulated_v1,3.99,3.01,5.0,5.0,4.39,3.9,,True,simulated
+neg_000007,negation,The writer ignored the artist.,The writer did not ignore the artist.,sim_3,pilot_simulated_v1,3.81,4.69,5.0,5.0,4.48,3.96,,True,simulated
+neg_000070,negation,The journalist did not call the researcher.,The journalist called the researcher.,sim_1,pilot_simulated_v1,4.03,3.78,5.0,5.0,4.08,4.31,,True,simulated
+neg_000070,negation,The journalist did not call the researcher.,The journalist called the researcher.,sim_2,pilot_simulated_v1,3.79,3.55,5.0,5.0,3.23,4.26,,True,simulated
+neg_000070,negation,The journalist did not call the researcher.,The journalist called the researcher.,sim_3,pilot_simulated_v1,3.34,3.66,5.0,5.0,3.66,3.89,,True,simulated
+neg_000066,negation,The writer did not criticize the chef.,The writer criticized the chef.,sim_1,pilot_simulated_v1,3.44,4.47,5.0,5.0,4.15,3.89,,True,simulated
+neg_000066,negation,The writer did not criticize the chef.,The writer criticized the chef.,sim_2,pilot_simulated_v1,4.05,3.68,5.0,5.0,4.06,4.2,,True,simulated
+neg_000066,negation,The writer did not criticize the chef.,The writer criticized the chef.,sim_3,pilot_simulated_v1,3.96,4.29,5.0,5.0,4.63,3.89,,True,simulated
+neg_000051,negation,The engineer contacted the scientist.,The engineer did not contact the scientist.,sim_1,pilot_simulated_v1,3.69,3.18,5.0,5.0,3.59,3.7,,True,simulated
+neg_000051,negation,The engineer contacted the scientist.,The engineer did not contact the scientist.,sim_2,pilot_simulated_v1,3.6,4.6,5.0,5.0,3.27,3.56,,True,simulated
+neg_000051,negation,The engineer contacted the scientist.,The engineer did not contact the scientist.,sim_3,pilot_simulated_v1,3.98,3.72,5.0,5.0,4.56,3.26,,True,simulated
+attach_000071,attachment,The judge showed the guide with the map.,"With the map, the judge showed the guide.",sim_1,pilot_simulated_v1,3.23,3.66,5.0,5.0,4.11,3.09,,True,simulated
+attach_000071,attachment,The judge showed the guide with the map.,"With the map, the judge showed the guide.",sim_2,pilot_simulated_v1,2.64,4.41,5.0,5.0,4.38,3.9,,True,simulated
+attach_000071,attachment,The judge showed the guide with the map.,"With the map, the judge showed the guide.",sim_3,pilot_simulated_v1,2.68,2.88,5.0,5.0,4.32,3.71,,True,simulated
+neg_000098,negation,The scientist did not interview the teacher.,The scientist interviewed the teacher.,sim_1,pilot_simulated_v1,3.96,4.02,5.0,5.0,3.84,4.4,,True,simulated
+neg_000098,negation,The scientist did not interview the teacher.,The scientist interviewed the teacher.,sim_2,pilot_simulated_v1,3.01,4.72,5.0,5.0,3.34,4.55,,True,simulated
+neg_000098,negation,The scientist did not interview the teacher.,The scientist interviewed the teacher.,sim_3,pilot_simulated_v1,3.74,3.7,5.0,5.0,4.7,3.82,,True,simulated
+neg_000068,negation,The student did not call the manager.,The student called the manager.,sim_1,pilot_simulated_v1,3.61,2.92,5.0,5.0,4.48,4.02,,True,simulated
+neg_000068,negation,The student did not call the manager.,The student called the manager.,sim_2,pilot_simulated_v1,3.18,3.03,5.0,5.0,3.87,4.5,,True,simulated
+neg_000068,negation,The student did not call the manager.,The student called the manager.,sim_3,pilot_simulated_v1,4.19,3.73,5.0,5.0,3.26,4.33,,True,simulated
+role_000070,role_reversal,The teacher thanked the waiter.,The waiter thanked the teacher.,sim_1,pilot_simulated_v1,3.72,4.26,5.0,5.0,4.0,4.54,,True,simulated
+role_000070,role_reversal,The teacher thanked the waiter.,The waiter thanked the teacher.,sim_2,pilot_simulated_v1,3.64,4.39,5.0,5.0,4.35,3.03,,True,simulated
+role_000070,role_reversal,The teacher thanked the waiter.,The waiter thanked the teacher.,sim_3,pilot_simulated_v1,4.3,3.39,5.0,5.0,4.31,4.54,,True,simulated
+attach_000062,attachment,The journalist questioned the officer with the badge.,"With the badge, the journalist questioned the officer.",sim_1,pilot_simulated_v1,3.07,3.79,5.0,5.0,4.17,3.4,,True,simulated
+attach_000062,attachment,The journalist questioned the officer with the badge.,"With the badge, the journalist questioned the officer.",sim_2,pilot_simulated_v1,2.75,3.03,5.0,5.0,4.35,3.11,,True,simulated
+attach_000062,attachment,The journalist questioned the officer with the badge.,"With the badge, the journalist questioned the officer.",sim_3,pilot_simulated_v1,2.84,3.16,5.0,5.0,4.1,3.09,,True,simulated
+neg_000040,negation,The lawyer did not admire the driver.,The lawyer admired the driver.,sim_1,pilot_simulated_v1,2.84,4.05,5.0,5.0,4.35,4.42,,True,simulated
+neg_000040,negation,The lawyer did not admire the driver.,The lawyer admired the driver.,sim_2,pilot_simulated_v1,3.88,4.79,5.0,5.0,3.43,4.01,,True,simulated
+neg_000040,negation,The lawyer did not admire the driver.,The lawyer admired the driver.,sim_3,pilot_simulated_v1,3.82,3.15,5.0,5.0,3.42,3.38,,True,simulated
+attach_000060,attachment,The student checked the driver with the flashlight.,The student checked the driver who had the flashlight.,sim_1,pilot_simulated_v1,2.84,4.37,5.0,5.0,4.34,3.91,,True,simulated
+attach_000060,attachment,The student checked the driver with the flashlight.,The student checked the driver who had the flashlight.,sim_2,pilot_simulated_v1,2.12,4.24,5.0,5.0,4.02,3.27,,True,simulated
+attach_000060,attachment,The student checked the driver with the flashlight.,The student checked the driver who had the flashlight.,sim_3,pilot_simulated_v1,2.99,3.29,5.0,5.0,3.69,3.72,,True,simulated
+role_000064,role_reversal,The doctor interviewed the researcher.,The researcher interviewed the doctor.,sim_1,pilot_simulated_v1,4.6,3.01,5.0,5.0,3.91,3.38,,True,simulated
+role_000064,role_reversal,The doctor interviewed the researcher.,The researcher interviewed the doctor.,sim_2,pilot_simulated_v1,4.47,4.43,5.0,5.0,3.62,4.15,,True,simulated
+role_000064,role_reversal,The doctor interviewed the researcher.,The researcher interviewed the doctor.,sim_3,pilot_simulated_v1,4.14,3.24,5.0,5.0,3.64,3.86,,True,simulated
+role_000033,role_reversal,The coach promoted the driver.,The driver promoted the coach.,sim_1,pilot_simulated_v1,4.69,4.0,5.0,5.0,3.2,4.25,,True,simulated
+role_000033,role_reversal,The coach promoted the driver.,The driver promoted the coach.,sim_2,pilot_simulated_v1,4.33,3.65,5.0,5.0,3.59,3.71,,True,simulated
+role_000033,role_reversal,The coach promoted the driver.,The driver promoted the coach.,sim_3,pilot_simulated_v1,4.51,3.34,5.0,5.0,3.42,4.41,,True,simulated
+role_000061,role_reversal,The passenger criticized the coach.,The coach criticized the passenger.,sim_1,pilot_simulated_v1,4.11,2.94,5.0,5.0,4.63,3.18,,True,simulated
+role_000061,role_reversal,The passenger criticized the coach.,The coach criticized the passenger.,sim_2,pilot_simulated_v1,3.98,4.04,5.0,5.0,4.26,4.44,,True,simulated
+role_000061,role_reversal,The passenger criticized the coach.,The coach criticized the passenger.,sim_3,pilot_simulated_v1,3.68,3.94,5.0,5.0,4.61,3.75,,True,simulated
+role_000027,role_reversal,The musician thanked the teacher.,The teacher thanked the musician.,sim_1,pilot_simulated_v1,4.54,3.73,5.0,5.0,4.35,4.53,,True,simulated
+role_000027,role_reversal,The musician thanked the teacher.,The teacher thanked the musician.,sim_2,pilot_simulated_v1,3.94,4.27,5.0,5.0,3.75,4.42,,True,simulated
+role_000027,role_reversal,The musician thanked the teacher.,The teacher thanked the musician.,sim_3,pilot_simulated_v1,4.62,4.52,5.0,5.0,4.6,3.95,,True,simulated
+attach_000006,attachment,The driver showed the guide with the map.,The driver showed the guide who had the map.,sim_1,pilot_simulated_v1,3.52,3.11,5.0,5.0,4.12,3.12,,True,simulated
+attach_000006,attachment,The driver showed the guide with the map.,The driver showed the guide who had the map.,sim_2,pilot_simulated_v1,2.93,4.17,5.0,5.0,3.66,4.3,,True,simulated
+attach_000006,attachment,The driver showed the guide with the map.,The driver showed the guide who had the map.,sim_3,pilot_simulated_v1,2.67,3.19,5.0,5.0,3.51,3.92,,True,simulated
+role_000060,role_reversal,The musician greeted the judge.,The judge greeted the musician.,sim_1,pilot_simulated_v1,4.01,2.89,5.0,5.0,3.69,4.56,,True,simulated
+role_000060,role_reversal,The musician greeted the judge.,The judge greeted the musician.,sim_2,pilot_simulated_v1,4.16,4.17,5.0,5.0,3.88,3.11,,True,simulated
+role_000060,role_reversal,The musician greeted the judge.,The judge greeted the musician.,sim_3,pilot_simulated_v1,4.38,3.22,5.0,5.0,3.4,3.99,,True,simulated
+neg_000041,negation,The nurse praised the lawyer.,The nurse did not praise the lawyer.,sim_1,pilot_simulated_v1,3.88,2.82,5.0,5.0,4.71,3.03,,True,simulated
+neg_000041,negation,The nurse praised the lawyer.,The nurse did not praise the lawyer.,sim_2,pilot_simulated_v1,3.07,3.46,5.0,5.0,4.48,4.19,,True,simulated
+neg_000041,negation,The nurse praised the lawyer.,The nurse did not praise the lawyer.,sim_3,pilot_simulated_v1,3.99,3.66,5.0,5.0,4.66,3.21,,True,simulated
+neg_000058,negation,The scientist did not visit the researcher.,The scientist visited the researcher.,sim_1,pilot_simulated_v1,4.34,2.9,5.0,5.0,3.45,4.2,,True,simulated
+neg_000058,negation,The scientist did not visit the researcher.,The scientist visited the researcher.,sim_2,pilot_simulated_v1,4.03,4.15,5.0,5.0,3.6,4.39,,True,simulated
+neg_000058,negation,The scientist did not visit the researcher.,The scientist visited the researcher.,sim_3,pilot_simulated_v1,3.62,3.21,5.0,5.0,3.35,4.58,,True,simulated
+role_000012,role_reversal,The judge promoted the engineer.,The engineer promoted the judge.,sim_1,pilot_simulated_v1,3.49,3.24,5.0,5.0,3.77,4.43,,True,simulated
+role_000012,role_reversal,The judge promoted the engineer.,The engineer promoted the judge.,sim_2,pilot_simulated_v1,4.73,4.48,5.0,5.0,4.21,3.02,,True,simulated
+role_000012,role_reversal,The judge promoted the engineer.,The engineer promoted the judge.,sim_3,pilot_simulated_v1,4.58,3.18,5.0,5.0,4.72,4.55,,True,simulated
+attach_000079,attachment,"With the badge, the coach questioned the officer.",The coach questioned the officer who had the badge.,sim_1,pilot_simulated_v1,2.11,4.26,5.0,5.0,3.59,3.17,,True,simulated
+attach_000079,attachment,"With the badge, the coach questioned the officer.",The coach questioned the officer who had the badge.,sim_2,pilot_simulated_v1,3.4,3.68,5.0,5.0,3.67,3.9,,True,simulated
+attach_000079,attachment,"With the badge, the coach questioned the officer.",The coach questioned the officer who had the badge.,sim_3,pilot_simulated_v1,2.1,3.65,5.0,5.0,4.24,4.38,,True,simulated
+attach_000087,attachment,The passenger noticed the teacher with the umbrella.,The passenger noticed the teacher who had the umbrella.,sim_1,pilot_simulated_v1,2.2,4.59,5.0,5.0,3.37,3.33,,True,simulated
+attach_000087,attachment,The passenger noticed the teacher with the umbrella.,The passenger noticed the teacher who had the umbrella.,sim_2,pilot_simulated_v1,2.53,3.14,5.0,5.0,3.35,4.05,,True,simulated
+attach_000087,attachment,The passenger noticed the teacher with the umbrella.,The passenger noticed the teacher who had the umbrella.,sim_3,pilot_simulated_v1,2.64,3.18,5.0,5.0,4.02,3.2,,True,simulated
+attach_000090,attachment,The artist photographed the tourist with the camera.,The artist photographed the tourist who had the camera.,sim_1,pilot_simulated_v1,3.09,4.73,5.0,5.0,3.95,3.67,,True,simulated
+attach_000090,attachment,The artist photographed the tourist with the camera.,The artist photographed the tourist who had the camera.,sim_2,pilot_simulated_v1,2.64,3.53,5.0,5.0,3.86,3.29,,True,simulated
+attach_000090,attachment,The artist photographed the tourist with the camera.,The artist photographed the tourist who had the camera.,sim_3,pilot_simulated_v1,2.47,4.18,5.0,5.0,3.97,3.11,,True,simulated
+neg_000004,negation,The driver did not promote the nurse.,The driver promoted the nurse.,sim_1,pilot_simulated_v1,3.03,4.48,5.0,5.0,3.76,4.33,,True,simulated
+neg_000004,negation,The driver did not promote the nurse.,The driver promoted the nurse.,sim_2,pilot_simulated_v1,3.79,4.05,5.0,5.0,3.77,3.93,,True,simulated
+neg_000004,negation,The driver did not promote the nurse.,The driver promoted the nurse.,sim_3,pilot_simulated_v1,3.46,3.83,5.0,5.0,4.71,3.17,,True,simulated
+role_000032,role_reversal,The driver blamed the student.,The student blamed the driver.,sim_1,pilot_simulated_v1,3.74,4.61,5.0,5.0,4.68,4.3,,True,simulated
+role_000032,role_reversal,The driver blamed the student.,The student blamed the driver.,sim_2,pilot_simulated_v1,4.78,3.01,5.0,5.0,4.35,3.2,,True,simulated
+role_000032,role_reversal,The driver blamed the student.,The student blamed the driver.,sim_3,pilot_simulated_v1,4.76,3.59,5.0,5.0,3.98,3.83,,True,simulated
+neg_000013,negation,The nurse helped the doctor.,The nurse did not help the doctor.,sim_1,pilot_simulated_v1,3.13,3.93,5.0,5.0,4.58,3.72,,True,simulated
+neg_000013,negation,The nurse helped the doctor.,The nurse did not help the doctor.,sim_2,pilot_simulated_v1,3.5,3.53,5.0,5.0,3.5,3.46,,True,simulated
+neg_000013,negation,The nurse helped the doctor.,The nurse did not help the doctor.,sim_3,pilot_simulated_v1,4.14,4.73,5.0,5.0,3.8,3.46,,True,simulated
+attach_000025,attachment,"With the microscope, the scientist observed the scientist.",The scientist observed the scientist who had the microscope.,sim_1,pilot_simulated_v1,2.54,4.53,5.0,5.0,3.62,3.29,,True,simulated
+attach_000025,attachment,"With the microscope, the scientist observed the scientist.",The scientist observed the scientist who had the microscope.,sim_2,pilot_simulated_v1,2.5,2.97,5.0,5.0,3.44,3.37,,True,simulated
+attach_000025,attachment,"With the microscope, the scientist observed the scientist.",The scientist observed the scientist who had the microscope.,sim_3,pilot_simulated_v1,3.04,4.66,5.0,5.0,3.61,3.47,,True,simulated
+role_000035,role_reversal,The musician blamed the writer.,The writer blamed the musician.,sim_1,pilot_simulated_v1,4.34,2.86,5.0,5.0,3.34,3.92,,True,simulated
+role_000035,role_reversal,The musician blamed the writer.,The writer blamed the musician.,sim_2,pilot_simulated_v1,4.14,3.5,5.0,5.0,3.86,3.03,,True,simulated
+role_000035,role_reversal,The musician blamed the writer.,The writer blamed the musician.,sim_3,pilot_simulated_v1,3.82,3.15,5.0,5.0,3.58,3.11,,True,simulated
+neg_000054,negation,The manager did not call the doctor.,The manager called the doctor.,sim_1,pilot_simulated_v1,4.11,2.83,5.0,5.0,3.86,3.28,,True,simulated
+neg_000054,negation,The manager did not call the doctor.,The manager called the doctor.,sim_2,pilot_simulated_v1,3.13,4.32,5.0,5.0,4.74,4.54,,True,simulated
+neg_000054,negation,The manager did not call the doctor.,The manager called the doctor.,sim_3,pilot_simulated_v1,3.33,3.88,5.0,5.0,3.89,3.13,,True,simulated
+attach_000070,attachment,"With the microscope, the journalist observed the scientist.",The journalist observed the scientist who had the microscope.,sim_1,pilot_simulated_v1,2.68,4.02,5.0,5.0,3.84,4.26,,True,simulated
+attach_000070,attachment,"With the microscope, the journalist observed the scientist.",The journalist observed the scientist who had the microscope.,sim_2,pilot_simulated_v1,2.71,3.39,5.0,5.0,4.63,3.91,,True,simulated
+attach_000070,attachment,"With the microscope, the journalist observed the scientist.",The journalist observed the scientist who had the microscope.,sim_3,pilot_simulated_v1,2.41,4.61,5.0,5.0,3.97,3.96,,True,simulated
+role_000090,role_reversal,The musician contacted the journalist.,The journalist contacted the musician.,sim_1,pilot_simulated_v1,4.15,4.52,5.0,5.0,4.37,3.71,,True,simulated
+role_000090,role_reversal,The musician contacted the journalist.,The journalist contacted the musician.,sim_2,pilot_simulated_v1,3.98,4.34,5.0,5.0,4.54,3.96,,True,simulated
+role_000090,role_reversal,The musician contacted the journalist.,The journalist contacted the musician.,sim_3,pilot_simulated_v1,4.8,3.86,5.0,5.0,3.86,3.51,,True,simulated
+role_000049,role_reversal,The driver greeted the scientist.,The scientist greeted the driver.,sim_1,pilot_simulated_v1,3.83,3.11,5.0,5.0,4.68,3.88,,True,simulated
+role_000049,role_reversal,The driver greeted the scientist.,The scientist greeted the driver.,sim_2,pilot_simulated_v1,3.53,3.22,5.0,5.0,3.88,4.29,,True,simulated
+role_000049,role_reversal,The driver greeted the scientist.,The scientist greeted the driver.,sim_3,pilot_simulated_v1,4.77,4.32,5.0,5.0,3.67,3.68,,True,simulated
+neg_000043,negation,The artist praised the researcher.,The artist did not praise the researcher.,sim_1,pilot_simulated_v1,4.32,3.58,5.0,5.0,4.24,3.08,,True,simulated
+neg_000043,negation,The artist praised the researcher.,The artist did not praise the researcher.,sim_2,pilot_simulated_v1,3.57,3.81,5.0,5.0,4.66,4.54,,True,simulated
+neg_000043,negation,The artist praised the researcher.,The artist did not praise the researcher.,sim_3,pilot_simulated_v1,4.0,3.46,5.0,5.0,4.6,4.46,,True,simulated
+attach_000007,attachment,"With the notebook, the chef met the student.",The chef met the student who had the notebook.,sim_1,pilot_simulated_v1,2.12,3.65,5.0,5.0,4.08,3.49,,True,simulated
+attach_000007,attachment,"With the notebook, the chef met the student.",The chef met the student who had the notebook.,sim_2,pilot_simulated_v1,2.39,4.37,5.0,5.0,3.54,3.89,,True,simulated
+attach_000007,attachment,"With the notebook, the chef met the student.",The chef met the student who had the notebook.,sim_3,pilot_simulated_v1,2.03,3.72,5.0,5.0,4.74,3.01,,True,simulated
+role_000066,role_reversal,The passenger called the lawyer.,The lawyer called the passenger.,sim_1,pilot_simulated_v1,3.57,4.6,5.0,5.0,4.66,3.81,,True,simulated
+role_000066,role_reversal,The passenger called the lawyer.,The lawyer called the passenger.,sim_2,pilot_simulated_v1,3.87,3.4,5.0,5.0,4.37,3.93,,True,simulated
+role_000066,role_reversal,The passenger called the lawyer.,The lawyer called the passenger.,sim_3,pilot_simulated_v1,4.11,4.18,5.0,5.0,3.36,3.62,,True,simulated
+role_000075,role_reversal,The musician called the engineer.,The engineer called the musician.,sim_1,pilot_simulated_v1,4.81,4.62,5.0,5.0,3.98,4.25,,True,simulated
+role_000075,role_reversal,The musician called the engineer.,The engineer called the musician.,sim_2,pilot_simulated_v1,4.82,3.84,5.0,5.0,3.43,3.17,,True,simulated
+role_000075,role_reversal,The musician called the engineer.,The engineer called the musician.,sim_3,pilot_simulated_v1,4.47,3.48,5.0,5.0,4.04,3.07,,True,simulated
+neg_000047,negation,The journalist visited the doctor.,The journalist did not visit the doctor.,sim_1,pilot_simulated_v1,4.32,3.36,5.0,5.0,4.21,4.0,,True,simulated
+neg_000047,negation,The journalist visited the doctor.,The journalist did not visit the doctor.,sim_2,pilot_simulated_v1,3.37,3.22,5.0,5.0,4.1,3.52,,True,simulated
+neg_000047,negation,The journalist visited the doctor.,The journalist did not visit the doctor.,sim_3,pilot_simulated_v1,2.92,3.15,5.0,5.0,3.26,4.44,,True,simulated
+role_000076,role_reversal,The scientist contacted the researcher.,The researcher contacted the scientist.,sim_1,pilot_simulated_v1,3.72,4.64,5.0,5.0,4.19,4.53,,True,simulated
+role_000076,role_reversal,The scientist contacted the researcher.,The researcher contacted the scientist.,sim_2,pilot_simulated_v1,4.15,3.31,5.0,5.0,3.33,3.99,,True,simulated
+role_000076,role_reversal,The scientist contacted the researcher.,The researcher contacted the scientist.,sim_3,pilot_simulated_v1,4.51,4.16,5.0,5.0,4.66,3.16,,True,simulated
+role_000072,role_reversal,The passenger greeted the researcher.,The researcher greeted the passenger.,sim_1,pilot_simulated_v1,4.43,4.21,5.0,5.0,4.71,3.4,,True,simulated
+role_000072,role_reversal,The passenger greeted the researcher.,The researcher greeted the passenger.,sim_2,pilot_simulated_v1,4.89,2.85,5.0,5.0,4.14,3.52,,True,simulated
+role_000072,role_reversal,The passenger greeted the researcher.,The researcher greeted the passenger.,sim_3,pilot_simulated_v1,4.23,3.15,5.0,5.0,3.82,3.56,,True,simulated
+neg_000062,negation,The artist did not admire the musician.,The artist admired the musician.,sim_1,pilot_simulated_v1,3.54,3.61,5.0,5.0,3.55,3.27,,True,simulated
+neg_000062,negation,The artist did not admire the musician.,The artist admired the musician.,sim_2,pilot_simulated_v1,3.55,4.78,5.0,5.0,4.56,3.24,,True,simulated
+neg_000062,negation,The artist did not admire the musician.,The artist admired the musician.,sim_3,pilot_simulated_v1,3.81,3.09,5.0,5.0,3.72,4.59,,True,simulated
+role_000095,role_reversal,The chef visited the nurse.,The nurse visited the chef.,sim_1,pilot_simulated_v1,3.94,3.0,5.0,5.0,4.1,3.94,,True,simulated
+role_000095,role_reversal,The chef visited the nurse.,The nurse visited the chef.,sim_2,pilot_simulated_v1,4.22,4.69,5.0,5.0,4.02,3.58,,True,simulated
+role_000095,role_reversal,The chef visited the nurse.,The nurse visited the chef.,sim_3,pilot_simulated_v1,3.73,3.96,5.0,5.0,4.39,3.81,,True,simulated
+attach_000003,attachment,The coach checked the driver with the flashlight.,The coach checked the driver who had the flashlight.,sim_1,pilot_simulated_v1,2.62,3.3,5.0,5.0,4.55,4.59,,True,simulated
+attach_000003,attachment,The coach checked the driver with the flashlight.,The coach checked the driver who had the flashlight.,sim_2,pilot_simulated_v1,2.94,4.22,5.0,5.0,3.72,3.25,,True,simulated
+attach_000003,attachment,The coach checked the driver with the flashlight.,The coach checked the driver who had the flashlight.,sim_3,pilot_simulated_v1,2.09,4.03,5.0,5.0,4.67,4.1,,True,simulated
+neg_000096,negation,The lawyer did not support the engineer.,The lawyer supported the engineer.,sim_1,pilot_simulated_v1,3.88,4.52,5.0,5.0,3.86,3.69,,True,simulated
+neg_000096,negation,The lawyer did not support the engineer.,The lawyer supported the engineer.,sim_2,pilot_simulated_v1,3.22,4.46,5.0,5.0,4.3,3.84,,True,simulated
+neg_000096,negation,The lawyer did not support the engineer.,The lawyer supported the engineer.,sim_3,pilot_simulated_v1,4.05,4.63,5.0,5.0,3.27,3.35,,True,simulated
+neg_000097,negation,The teacher visited the lawyer.,The teacher did not visit the lawyer.,sim_1,pilot_simulated_v1,3.55,4.23,5.0,5.0,3.59,3.71,,True,simulated
+neg_000097,negation,The teacher visited the lawyer.,The teacher did not visit the lawyer.,sim_2,pilot_simulated_v1,3.86,3.39,5.0,5.0,4.27,3.1,,True,simulated
+neg_000097,negation,The teacher visited the lawyer.,The teacher did not visit the lawyer.,sim_3,pilot_simulated_v1,3.46,4.08,5.0,5.0,4.58,3.82,,True,simulated
+neg_000016,negation,The coach did not promote the writer.,The coach promoted the writer.,sim_1,pilot_simulated_v1,3.86,4.13,5.0,5.0,4.24,3.72,,True,simulated
+neg_000016,negation,The coach did not promote the writer.,The coach promoted the writer.,sim_2,pilot_simulated_v1,3.31,3.06,5.0,5.0,4.62,4.24,,True,simulated
+neg_000016,negation,The coach did not promote the writer.,The coach promoted the writer.,sim_3,pilot_simulated_v1,3.84,4.31,5.0,5.0,3.7,3.28,,True,simulated
+attach_000074,attachment,The athlete saw the man with the telescope.,"With the telescope, the athlete saw the man.",sim_1,pilot_simulated_v1,2.85,3.74,5.0,5.0,4.24,4.4,,True,simulated
+attach_000074,attachment,The athlete saw the man with the telescope.,"With the telescope, the athlete saw the man.",sim_2,pilot_simulated_v1,2.63,3.55,5.0,5.0,4.33,4.41,,True,simulated
+attach_000074,attachment,The athlete saw the man with the telescope.,"With the telescope, the athlete saw the man.",sim_3,pilot_simulated_v1,2.91,3.99,5.0,5.0,4.63,4.47,,True,simulated
+neg_000087,negation,The chef interviewed the writer.,The chef did not interview the writer.,sim_1,pilot_simulated_v1,2.87,4.75,5.0,5.0,3.35,3.88,,True,simulated
+neg_000087,negation,The chef interviewed the writer.,The chef did not interview the writer.,sim_2,pilot_simulated_v1,3.6,4.76,5.0,5.0,3.57,3.07,,True,simulated
+neg_000087,negation,The chef interviewed the writer.,The chef did not interview the writer.,sim_3,pilot_simulated_v1,4.33,3.71,5.0,5.0,3.93,3.68,,True,simulated
+neg_000042,negation,The journalist did not interview the passenger.,The journalist interviewed the passenger.,sim_1,pilot_simulated_v1,3.24,2.86,5.0,5.0,4.09,3.35,,True,simulated
+neg_000042,negation,The journalist did not interview the passenger.,The journalist interviewed the passenger.,sim_2,pilot_simulated_v1,3.6,4.79,5.0,5.0,4.77,3.49,,True,simulated
+neg_000042,negation,The journalist did not interview the passenger.,The journalist interviewed the passenger.,sim_3,pilot_simulated_v1,3.34,3.04,5.0,5.0,4.17,3.29,,True,simulated
+neg_000026,negation,The researcher did not visit the journalist.,The researcher visited the journalist.,sim_1,pilot_simulated_v1,3.0,4.63,5.0,5.0,4.09,4.42,,True,simulated
+neg_000026,negation,The researcher did not visit the journalist.,The researcher visited the journalist.,sim_2,pilot_simulated_v1,3.14,3.15,5.0,5.0,4.12,4.11,,True,simulated
+neg_000026,negation,The researcher did not visit the journalist.,The researcher visited the journalist.,sim_3,pilot_simulated_v1,3.09,3.8,5.0,5.0,4.1,3.8,,True,simulated
+role_000025,role_reversal,The journalist greeted the judge.,The judge greeted the journalist.,sim_1,pilot_simulated_v1,3.9,3.69,5.0,5.0,3.38,3.16,,True,simulated
+role_000025,role_reversal,The journalist greeted the judge.,The judge greeted the journalist.,sim_2,pilot_simulated_v1,3.49,4.47,5.0,5.0,3.6,4.08,,True,simulated
+role_000025,role_reversal,The journalist greeted the judge.,The judge greeted the journalist.,sim_3,pilot_simulated_v1,3.58,4.57,5.0,5.0,3.25,4.29,,True,simulated
+attach_000076,attachment,"With the telescope, the lawyer saw the man.",The lawyer saw the man who had the telescope.,sim_1,pilot_simulated_v1,2.85,4.62,5.0,5.0,4.62,3.02,,True,simulated
+attach_000076,attachment,"With the telescope, the lawyer saw the man.",The lawyer saw the man who had the telescope.,sim_2,pilot_simulated_v1,2.08,3.3,5.0,5.0,3.27,4.38,,True,simulated
+attach_000076,attachment,"With the telescope, the lawyer saw the man.",The lawyer saw the man who had the telescope.,sim_3,pilot_simulated_v1,2.23,4.15,5.0,5.0,4.71,4.12,,True,simulated
+role_000092,role_reversal,The passenger thanked the driver.,The driver thanked the passenger.,sim_1,pilot_simulated_v1,4.99,4.1,5.0,5.0,3.82,4.56,,True,simulated
+role_000092,role_reversal,The passenger thanked the driver.,The driver thanked the passenger.,sim_2,pilot_simulated_v1,3.75,3.91,5.0,5.0,3.86,3.87,,True,simulated
+role_000092,role_reversal,The passenger thanked the driver.,The driver thanked the passenger.,sim_3,pilot_simulated_v1,3.88,4.72,5.0,5.0,4.79,4.12,,True,simulated
+attach_000032,attachment,The passenger questioned the officer with the badge.,"With the badge, the passenger questioned the officer.",sim_1,pilot_simulated_v1,2.8,4.7,5.0,5.0,4.72,3.08,,True,simulated
+attach_000032,attachment,The passenger questioned the officer with the badge.,"With the badge, the passenger questioned the officer.",sim_2,pilot_simulated_v1,3.42,3.02,5.0,5.0,3.35,3.4,,True,simulated
+attach_000032,attachment,The passenger questioned the officer with the badge.,"With the badge, the passenger questioned the officer.",sim_3,pilot_simulated_v1,2.59,3.77,5.0,5.0,4.73,3.24,,True,simulated
+neg_000060,negation,The artist did not admire the scientist.,The artist admired the scientist.,sim_1,pilot_simulated_v1,3.83,3.81,5.0,5.0,3.4,4.59,,True,simulated
+neg_000060,negation,The artist did not admire the scientist.,The artist admired the scientist.,sim_2,pilot_simulated_v1,4.27,3.49,5.0,5.0,4.59,3.72,,True,simulated
+neg_000060,negation,The artist did not admire the scientist.,The artist admired the scientist.,sim_3,pilot_simulated_v1,3.88,4.66,5.0,5.0,4.22,3.58,,True,simulated
+neg_000089,negation,The waiter supported the passenger.,The waiter did not support the passenger.,sim_1,pilot_simulated_v1,2.88,3.73,5.0,5.0,4.13,3.44,,True,simulated
+neg_000089,negation,The waiter supported the passenger.,The waiter did not support the passenger.,sim_2,pilot_simulated_v1,3.72,2.83,5.0,5.0,3.6,3.77,,True,simulated
+neg_000089,negation,The waiter supported the passenger.,The waiter did not support the passenger.,sim_3,pilot_simulated_v1,3.57,4.21,5.0,5.0,3.57,3.45,,True,simulated
+role_000093,role_reversal,The musician promoted the waiter.,The waiter promoted the musician.,sim_1,pilot_simulated_v1,4.57,3.37,5.0,5.0,3.44,4.0,,True,simulated
+role_000093,role_reversal,The musician promoted the waiter.,The waiter promoted the musician.,sim_2,pilot_simulated_v1,3.96,3.98,5.0,5.0,4.75,4.55,,True,simulated
+role_000093,role_reversal,The musician promoted the waiter.,The waiter promoted the musician.,sim_3,pilot_simulated_v1,4.67,4.75,5.0,5.0,4.47,3.58,,True,simulated
+attach_000014,attachment,The lawyer saw the man with the telescope.,"With the telescope, the lawyer saw the man.",sim_1,pilot_simulated_v1,3.49,3.05,5.0,5.0,3.53,3.81,,True,simulated
+attach_000014,attachment,The lawyer saw the man with the telescope.,"With the telescope, the lawyer saw the man.",sim_2,pilot_simulated_v1,2.2,4.01,5.0,5.0,4.07,3.33,,True,simulated
+attach_000014,attachment,The lawyer saw the man with the telescope.,"With the telescope, the lawyer saw the man.",sim_3,pilot_simulated_v1,3.19,2.97,5.0,5.0,3.98,3.44,,True,simulated
