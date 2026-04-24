@@ -1,0 +1,16 @@
+schema_version: css_pair_v1
+phenomenon: attachment
+seed: 23
+n: 1500
+output_path: data/css_pairs/attach_1500.jsonl
+source: templated
+split_ratios:
+  train: 0.7
+  dev: 0.15
+  test: 0.15
+edit_types:
+  - vp_to_np
+  - ambiguous_to_vp
+  - ambiguous_to_np
+pilot_n: 100
+pilot_output_path: data/css_pairs/attach_pilot_100.jsonl

@@ -1,0 +1,6 @@
+model_name: roberta-base
+model_type: encoder_mlm
+use_cls: true
+use_last_token: false
+max_length: 128
+dtype: float32
