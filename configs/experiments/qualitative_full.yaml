@@ -1,0 +1,6 @@
+metrics_path: results/metrics/layer_metrics_full.csv
+surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+pairs_path: data/css_pairs/full_all_3000.jsonl
+output_dir: results/qualitative
+report_path: reports/full/QUALITATIVE_ANALYSIS.md
+

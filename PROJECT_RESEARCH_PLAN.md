@@ -59,12 +59,15 @@ Primary psycholinguistic signal:
 - D2: incremental value of `delta_frob` beyond `delta_cos`
 - D3: model/phenomenon-specific layer profiles
 - D4: probe selectivity stability across layers
+- D5: qualitative case-study audit for high/low shift and surprisal dissociations
 
 Outputs:
 - `results/stats/full/correlations.csv`
 - `results/stats/full/bootstrap_cis.csv`
 - `results/stats/full/h2_incremental.csv`
 - `results/stats/full/hypothesis_tests.md`
+- `results/qualitative/qualitative_cases.csv`
+- `reports/full/QUALITATIVE_ANALYSIS.md`
 
 ## Reproducibility Requirements
 
@@ -86,5 +89,6 @@ Incremental serialized logs are mandatory:
 1. Full extraction/metrics/surprisal run on role+negation.
 2. Full probe/selectivity run for all models and layers.
 3. Dataset-only stats and figures.
-4. Slides and paper narrative aligned to dataset-only claims.
-5. Reproducibility checklist and run manifests complete.
+4. Qualitative case-study audit explaining aggregate patterns with actual sentence pairs.
+5. Slides and paper narrative aligned to dataset-only claims.
+6. Reproducibility checklist and run manifests complete.
