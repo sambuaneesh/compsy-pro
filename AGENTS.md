@@ -241,6 +241,21 @@ Exploratory:
 - extra datasets not in the GitHub source
 - additional models beyond the three fixed baselines
 
+Regular-paper extension track:
+- Keep the three baseline models as the primary CSS comparison set.
+- Add modern decoder-only LLMs only as an extension layer for regular-paper claims.
+- Candidate modern decoders:
+  - `mistralai/Mistral-7B-Instruct-v0.3`
+  - `Qwen/Qwen3-8B`
+  - `Qwen/Qwen3-4B` as a practical public fallback for 16GB GPUs
+  - `google/gemma-3-4b-it` only if gated Hugging Face access is available
+  - `meta-llama/Llama-3.1-8B` only if gated Hugging Face access is available
+- Output-level counterfactual consistency is an extension experiment, not a replacement for hidden-state CSS:
+  identical sentence control -> expected `yes`
+  counterfactual edit pair -> expected `no`
+- Treat output-level results as forced-choice behavioral diagnostics. Do not overclaim them as full logical reasoning or human-aligned semantic judgments.
+- If 7B/8B models exceed GPU memory, prefer config-driven `device_map: auto` and documented CPU offload over ad-hoc code edits.
+
 ## Final definition of done
 
 Repository is complete when:

@@ -24,11 +24,18 @@ sentence -> counterfactual edit -> hidden states -> representation shift
 
 ## Models
 
+Primary baseline models:
 - `bert-base-uncased`
 - `roberta-base`
 - `gpt2`
 
 Layers: embedding + transformer layers 1..12 (indexed 0..12 in outputs).
+
+Regular-paper extension models:
+- `mistralai/Mistral-7B-Instruct-v0.3` as the preferred modern instruction decoder if accessible and computationally feasible.
+- `Qwen/Qwen3-8B` as the stronger Qwen target, with `device_map: auto`/CPU offload required on 16GB GPUs.
+- `Qwen/Qwen3-4B` as a practical public fallback when 8B hidden-state extraction is too slow or memory constrained.
+- `google/gemma-3-4b-it` and `meta-llama/Llama-3.1-8B` are configured only if the available Hugging Face token has gated-model access.
 
 ## Primary Metrics
 
@@ -60,6 +67,10 @@ Primary psycholinguistic signal:
 - D3: model/phenomenon-specific layer profiles
 - D4: probe selectivity stability across layers
 - D5: qualitative case-study audit for high/low shift and surprisal dissociations
+- D6: output-level counterfactual consistency for regular-paper positioning:
+  identical sentence controls should receive `yes`;
+  counterfactual role/negation pairs should receive `no`;
+  report accuracy, yes-rate bias, and forced-choice score margins.
 
 Outputs:
 - `results/stats/full/correlations.csv`
@@ -67,6 +78,8 @@ Outputs:
 - `results/stats/full/h2_incremental.csv`
 - `results/stats/full/hypothesis_tests.md`
 - `results/qualitative/qualitative_cases.csv`
+- `results/consistency/*counterfactual_consistency.csv`
+- `results/consistency/summary/consistency_report.md`
 - `reports/full/QUALITATIVE_ANALYSIS.md`
 
 ## Reproducibility Requirements
@@ -90,5 +103,6 @@ Incremental serialized logs are mandatory:
 2. Full probe/selectivity run for all models and layers.
 3. Dataset-only stats and figures.
 4. Qualitative case-study audit explaining aggregate patterns with actual sentence pairs.
-5. Slides and paper narrative aligned to dataset-only claims.
-6. Reproducibility checklist and run manifests complete.
+5. Regular-paper extension results for at least one modern decoder or one output-level consistency experiment.
+6. Slides and paper narrative aligned to dataset-only claims.
+7. Reproducibility checklist and run manifests complete.

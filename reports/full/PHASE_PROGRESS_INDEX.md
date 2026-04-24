@@ -16,6 +16,7 @@ Dataset migration note (2026-04-24):
 - Phase 15: `reports/phases/phase_15_dataset_source_migration.md` (role/negation source migration)
 - Phase 16: `reports/phases/phase_16_post_migration_full_rerun.md` (post-migration full recomputation)
 - Phase 17: `reports/phases/phase_17_qualitative_review_response.md` (qualitative review response)
+- Phase 18: `reports/phases/phase_18_regular_paper_extension.md` (modern decoders and output-level consistency)
 
 Dataset-only claim policy:
 - final claims use role + negation from the GitHub dataset only
@@ -27,5 +28,6 @@ Core full artifacts:
 - Probes: `results/probes/probe_results_full.csv`
 - Stats: `results/stats/full/`
 - Qualitative analysis: `results/qualitative/`
+- Output consistency: `results/consistency/`
 - Salience: `results/salience/`
 - Figures: `results/figures/`
