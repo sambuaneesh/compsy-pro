@@ -28,6 +28,7 @@ uv run pytest
 - Commit every logical chunk (small, reviewable, reversible).
 - Avoid large mixed commits.
 - Include docs updates in the same commit when relevant.
+- After each logical chunk, append an incremental JSONL log event in `logs/incremental/`.
 
 ## Environment and Secrets
 
@@ -40,3 +41,14 @@ uv run pytest
 - Start long downloads (models/datasets) early when planning experiments.
 - Document source, version, and checksum when available.
 - Keep large binaries out of Git and use tracked metadata instead.
+
+## Incremental Logging Command
+
+```bash
+uv run python scripts/log_event.py \
+  --phase 0 \
+  --event-type chore \
+  --summary "ran tooling checks and committed baseline" \
+  --artifact pyproject.toml \
+  --artifact uv.lock
+```

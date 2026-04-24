@@ -57,4 +57,7 @@ papers/**/*.pdf
 
 # Logs
 *.log
-logs/
+logs/*
+!logs/incremental/
+!logs/incremental/*.jsonl
+!logs/incremental/README.md
