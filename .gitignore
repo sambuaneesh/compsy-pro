@@ -1,0 +1,60 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python / build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dylib
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+dist/
+build/
+site/
+
+# Virtual envs and local tooling
+.venv/
+.uv/
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ML artifacts and caches
+artifacts/
+checkpoints/
+outputs/
+wandb/
+mlruns/
+
+# Hugging Face / model caches (if redirected locally)
+.cache/
+
+# Data folders (store scripts + metadata in git, not raw/generated binaries)
+data/raw/
+data/interim/
+data/processed/
+downloads/
+
+# Local paper binaries
+papers/**/*.pdf
+
+# Logs
+*.log
+logs/
