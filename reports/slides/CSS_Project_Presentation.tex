@@ -88,17 +88,20 @@ How do probe selectivity and surprisal interact with representation-shift diagno
 \end{frame}
 
 \begin{frame}{CSS Protocol}
-\small
+\footnotesize
 \[
+\begin{aligned}
 \text{Sentence Pair}
-\rightarrow
+&\rightarrow
 \text{Transformer Hidden States (layers 0--12)}
 \rightarrow
 \text{Shift Metrics}
-\rightarrow
+\\
+&\rightarrow
 \text{Probes + Surprisal}
 \rightarrow
 \text{Statistical Summary}
+\end{aligned}
 \]
 \normalsize
 \vspace{0.4em}
@@ -234,9 +237,14 @@ Probe result rows & 390 \\
 \bottomrule
 \end{tabular}
 \end{table}
-\vspace{0.2em}
+\end{frame}
+
+\begin{frame}{Mean Shift Magnitude by Phenomenon}
 \centering
-\includegraphics[width=0.78\linewidth]{metric_means_by_phenomenon.pdf}
+\includegraphics[width=0.88\linewidth,height=0.72\textheight,keepaspectratio]{metric_means_by_phenomenon.pdf}
+\vspace{0.3em}
+
+\small Aggregate mean shift values for the four primary metrics across role and negation edits.
 \end{frame}
 
 \begin{frame}{Layer-Wise Correlation Curves}

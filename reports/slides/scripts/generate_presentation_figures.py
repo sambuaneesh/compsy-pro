@@ -97,7 +97,7 @@ def make_frob_heatmap(out_dir: Path) -> None:
             "gpt2": "GPT-2",
         }
     )
-    fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.2), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.5), sharey=True)
     for ax, ph in zip(axes, ["Role Reversal", "Negation"], strict=True):
         sub = corr[corr["phenomenon"] == ph].pivot(
             index="model", columns="layer", values="spearman_rho"
@@ -114,9 +114,9 @@ def make_frob_heatmap(out_dir: Path) -> None:
         ax.set_title(ph)
         ax.set_xlabel("Layer")
         ax.set_ylabel("" if ph == "Negation" else "Model")
-    fig.suptitle("Layer-wise Spearman Correlation for Frobenius Shift", y=1.02)
-    fig.tight_layout()
-    fig.savefig(out_dir / "frob_layer_heatmap.pdf")
+    fig.suptitle("Layer-wise Spearman Correlation for Frobenius Shift", y=0.98)
+    fig.tight_layout(rect=[0.0, 0.0, 1.0, 0.93])
+    fig.savefig(out_dir / "frob_layer_heatmap.pdf", bbox_inches="tight")
     plt.close(fig)
 
 
