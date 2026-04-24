@@ -1,0 +1,12 @@
+{
+  "negation_source_file": "data/external/extending_psycholinguistic_dataset/data/NEG-1500-SIMP-GEN.txt",
+  "negation_source_sha256": "7de18476cafce323bdb8a912170fd52a98b36122ed9fb32800fb6fff196a9c0f",
+  "output_negation_path": "data/css_pairs/neg_1500.jsonl",
+  "output_negation_rows": 1500,
+  "output_role_path": "data/css_pairs/role_1500.jsonl",
+  "output_role_rows": 1500,
+  "role_source_file": "data/external/extending_psycholinguistic_dataset/data/ROLE-1500.txt",
+  "role_source_sha256": "446b77ef5700d8e32981673d38e843506633a92d2808e7cd1561f49bd5fb8165",
+  "source_repo_url": "https://github.com/text-machine-lab/extending_psycholinguistic_dataset",
+  "source_root": "data/external/extending_psycholinguistic_dataset/data"
+}

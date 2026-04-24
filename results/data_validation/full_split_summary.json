@@ -1,0 +1,43 @@
+{
+  "by_edit_type": {
+    "ambiguous_to_np": 500,
+    "ambiguous_to_vp": 500,
+    "insert_not": 750,
+    "remove_not": 750,
+    "swap_agent_patient_external": 1500,
+    "vp_to_np": 500
+  },
+  "by_phenomenon": {
+    "attachment": 1500,
+    "negation": 1500,
+    "role_reversal": 1500
+  },
+  "by_split": {
+    "dev": 697,
+    "test": 634,
+    "train": 3169
+  },
+  "by_template_id": {
+    "attach_pp_v01": 1500,
+    "neg_ext_psycholing_v1": 1500,
+    "role_ext_psycholing_v1": 1500
+  },
+  "split_by_phenomenon": {
+    "attachment": {
+      "dev": 202,
+      "test": 223,
+      "train": 1075
+    },
+    "negation": {
+      "dev": 234,
+      "test": 217,
+      "train": 1049
+    },
+    "role_reversal": {
+      "dev": 261,
+      "test": 194,
+      "train": 1045
+    }
+  },
+  "total_rows": 4500
+}

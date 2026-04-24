@@ -32,6 +32,20 @@ This deck is intentionally exhaustive and includes:
 
 ---
 
+# Dataset Migration Update
+
+Major change adopted:
+
+- role + negation now imported from `extending_psycholinguistic_dataset`
+- attachment remains internally generated
+
+Impact on this deck:
+
+- data-provenance sections are updated
+- any model outputs produced pre-migration should be rerun before final submission claims
+
+---
+
 # Reading Guide
 
 Sections:
@@ -232,14 +246,18 @@ Project runtime snapshot (`uv` env):
 
 # Data Modules (Primary)
 
-Generated files:
+Canonical files:
 
 - `data/css_pairs/role_1500.jsonl`
 - `data/css_pairs/neg_1500.jsonl`
 - `data/css_pairs/attach_1500.jsonl`
 - merged full set: `data/css_pairs/full_all_4500.jsonl`
 
-Pilot files also generated (100/100/100 + merged pilot 300).
+Construction policy:
+
+- role + negation imported from `extending_psycholinguistic_dataset`
+- attachment generated locally via templates
+- pilot files derived from canonical full modules (100/100/100 + merged 300)
 
 ---
 
@@ -287,28 +305,32 @@ Lexicon sources:
 - `verbs_roles.csv`: 15 verb entries
 - `pp_instruments_attributes.csv`: 8 PP templates
 
-These feed templated generation scripts:
+Role/negation source:
 
-- `generate_role.py`
-- `generate_negation.py`
+- `data/external/extending_psycholinguistic_dataset/data/ROLE-1500.txt`
+- `data/external/extending_psycholinguistic_dataset/data/NEG-1500-SIMP-GEN.txt`
+- imported with `import_extending_psycholinguistic_dataset.py`
+
+Attachment remains templated:
+
 - `generate_attachment.py`
 
 ---
 
-# Role Dataset Generation Logic
+# Role Dataset Import Logic
 
-Template:
+Source:
 
-- `The {agent} {verb_past} the {patient}.`
-- Counterfactual swaps agent/patient.
+- Adjacent line minimal pairs from `ROLE-1500.txt`
+- Bidirectional conversion -> 1,500 canonical records
 
 Edit type:
 
-- `swap_agent_patient`
+- `swap_agent_patient_external`
 
 Metadata fields include:
 
-- agent/patient identities (s and s_cf), verb base/past, animacy class, lexical groups.
+- source file, source pair index, conversion direction, heuristic span extraction.
 
 ---
 
@@ -316,8 +338,8 @@ Metadata fields include:
 
 ID: `role_000001`
 
-- `s`: The driver ignored the passenger.
-- `s_cf`: The passenger ignored the driver.
+- `s`: The journalist investigated which athlete the team had recruited.
+- `s_cf`: The journalist investigated which team the athlete had joined.
 
 Edited spans:
 
@@ -470,8 +492,8 @@ Outcome (`results/data_validation/full_schema_validation.json`):
 
 From full schema validation:
 
-- role_1500 SHA256: `5f2a31dc7097b798f12dab87f84972368ee684c7e747ca0f60ec647e5213d58b`
-- neg_1500 SHA256: `4b2678fdb81e8c897e52e15e821030f07b133ef4681f9713d64d4559714142e2`
+- role_1500 SHA256: `0fcc00c210c663331f7e19695856675d9ef402bdbb6df4c3ba8271bc7836a108`
+- neg_1500 SHA256: `0072466f99e6dad91abf3dae1722ec35d4544e7a31706c8838524ca95d7b9962`
 - attach_1500 SHA256: `5b34d13cbc620d71c6244c45be6248183172f5c28a58efe0b7294d756f44c08d`
 
 Full config hash:
@@ -1487,8 +1509,7 @@ Core modules:
 
 - `src/css/data/schema.py`
 - `src/css/data/build_pair.py`
-- `src/css/data/generate_role.py`
-- `src/css/data/generate_negation.py`
+- `src/css/data/import_extending_psycholinguistic_dataset.py`
 - `src/css/data/generate_attachment.py`
 - `src/css/data/split_data.py`
 - `src/css/data/validate_schema.py`
@@ -1863,4 +1884,3 @@ Scientific objective pending finalization:
 - Real human annotations + probe fixes + rerun are required before final workshop claims.
 
 This repository is now structured to make that final pass straightforward and auditable.
-

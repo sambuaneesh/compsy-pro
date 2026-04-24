@@ -11,6 +11,12 @@ uv sync --all-groups
 
 2. Implement feature in small increments.
 
+2a. If dataset-dependent work is planned, sync/import external role+negation data first:
+```bash
+bash scripts/sync_external_dataset.sh
+uv run python -m css.data.import_extending_psycholinguistic_dataset --config configs/data/external_import.yaml
+```
+
 3. Run gates:
 ```bash
 uv run ruff check .

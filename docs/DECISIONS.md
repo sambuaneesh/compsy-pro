@@ -22,3 +22,9 @@
 
 - **Chosen**: keep access tokens only in `.env` with gitignore protection.
 - **Reason**: avoid accidental secret exposure in source control.
+
+### Decision: Migrate role and negation to external psycholinguistic dataset
+
+- **Chosen**: use `text-machine-lab/extending_psycholinguistic_dataset` as canonical source for role and negation.
+- **Implementation**: `src/css/data/import_extending_psycholinguistic_dataset.py` converts source text files into `css_pair_v1` JSONL (`role_1500.jsonl`, `neg_1500.jsonl`), while attachment remains generated locally.
+- **Reason**: align project data with requested upstream psycholinguistic resource and keep downstream CSS pipeline unchanged.

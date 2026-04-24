@@ -28,6 +28,7 @@ Last updated: `2026-04-24`
 - Run everything via `uv run` / `uvx`.
 - Keep dependencies in `pyproject.toml` + `uv.lock`.
 - Keep secrets outside Git (`.env`).
+- Keep external role/negation source under `data/external/extending_psycholinguistic_dataset` and import into canonical JSONL.
 
 ## Recommended Next Adoptions (After Baseline Pipeline)
 

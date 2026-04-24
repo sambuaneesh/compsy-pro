@@ -1,5 +1,17 @@
 # Counterfactual Structural Sensitivity (CSS): Research Plan
 
+## Dataset Source Update (2026-04-24)
+
+- Role and negation were migrated to the external repository:
+  - `https://github.com/text-machine-lab/extending_psycholinguistic_dataset`
+- Canonical CSS files are still:
+  - `data/css_pairs/role_1500.jsonl`
+  - `data/css_pairs/neg_1500.jsonl`
+  - `data/css_pairs/attach_1500.jsonl`
+- Migration path:
+  - `src/css/data/import_extending_psycholinguistic_dataset.py` imports `ROLE-1500.txt` and `NEG-1500-SIMP-GEN.txt` into `css_pair_v1`.
+  - Attachment remains generated locally from `generate_attachment.py`.
+
 ## 1. Refined title and abstract-level framing
 
 **Refined title:**  
@@ -54,7 +66,7 @@ CSS effects should remain detectable under length, lexical-overlap, tokenization
 ### Caveats
 
 - The project evaluates **alignment with human semantic judgments**, not human real-time processing or neural activity.
-- The generated datasets are controlled and useful for causal comparisons, but they may not represent naturalistic distributional language use.
+- Role and negation come from an external psycholinguistic source and remain controlled; attachment is generated. All three modules still require caution for naturalistic generalization.
 - Probing accuracy is not interpreted as direct evidence that a model “knows” a linguistic structure unless it survives selectivity and lexical controls.
 - Attachment ambiguity is the riskiest phenomenon and should be interpreted with the strongest caveats if template artifacts remain.
 
@@ -78,7 +90,7 @@ CSS effects should remain detectable under length, lexical-overlap, tokenization
 
 ### 6.1 Role reversal data: `role_1500.jsonl`
 
-**Goal:** Create high-lexical-overlap pairs where agent and patient/theme roles are reversed.
+**Goal:** Use externally curated high-overlap role-reversal minimal pairs and convert them to canonical `css_pair_v1`.
 
 Example:
 
@@ -91,23 +103,21 @@ Required metadata: `agent_s`, `patient_s`, `agent_cf`, `patient_cf`, `verb`, `vo
 
 Design:
 
-- 1,500 generated pairs.
-- Active transitive templates as the core CSS set.
-- Additional passive/cleft variants for role-probe controls.
-- Verb classes balanced across communication, transfer, perception, contact, emotion, and social-action verbs.
-- Noun lexicons split across train/dev/test to prevent lexical leakage.
-- Plausibility controlled by pairing reversible events separately from asymmetric events.
+- Source file: `ROLE-1500.txt` from `extending_psycholinguistic_dataset`.
+- 1,500 canonical records created by bidirectional conversion of adjacent minimal-pair lines.
+- Source provenance is stored in `linguistic_metadata` and `results/data_validation/external_dataset_manifest.json`.
+- Agent/patient spans are derived with deterministic token-level heuristics to support probe extraction and schema validity.
 
 Primary label:
 
 ```text
 role_direction = agent_patient_mapping
-edit_type = swap_agent_patient
+edit_type = swap_agent_patient_external
 ```
 
 ### 6.2 Negation data: `neg_1500.jsonl`
 
-**Goal:** Create minimal edits that insert, remove, or alter sentential/predicate negation.
+**Goal:** Use externally curated minimal negation pairs and convert them to canonical `css_pair_v1`.
 
 Example:
 
@@ -118,15 +128,13 @@ s_cf: The judge did not approve the request.
 
 Design:
 
-- 1,500 pairs.
+- Source file: `NEG-1500-SIMP-GEN.txt` from `extending_psycholinguistic_dataset`.
+- 1,500 canonical records created by bidirectional conversion of adjacent line pairs.
 - Balanced edit types:
   - `insert_not`
   - `remove_not`
-  - `replace_affirmative_with_negative_aux`
-  - optional `never` / `no longer` subset
-- Keep tense, subject, object, and main predicate constant where possible.
-- Store negation cue span and scope span.
-- Include no-negator pooling ablation to test whether shift/probes rely only on the explicit token.
+- Predicate + negation-cue spans are stored for each side.
+- External source hash and file path are archived in `external_dataset_manifest.json`.
 
 Primary labels:
 
@@ -238,50 +246,43 @@ Each line in `data/css_pairs/{phenomenon}_1500.jsonl`:
   "id": "role_000001",
   "schema_version": "css_pair_v1",
   "phenomenon": "role_reversal",
-  "s": "The chef praised the waiter.",
-  "s_cf": "The waiter praised the chef.",
-  "edit_type": "swap_agent_patient",
-  "source": "templated",
-  "template_id": "role_active_transitive_v01",
+  "s": "The journalist investigated which athlete the team had recruited.",
+  "s_cf": "The journalist investigated which team the athlete had joined.",
+  "edit_type": "swap_agent_patient_external",
+  "source": "extending_psycholinguistic_dataset",
+  "template_id": "role_ext_psycholing_v1",
   "split": "train",
   "gold_label": {
-    "role_direction_s": "chef_agent_waiter_patient",
-    "role_direction_cf": "waiter_agent_chef_patient",
+    "role_direction_s": "team_agent_athlete_patient",
+    "role_direction_cf": "athlete_agent_team_patient",
     "negation_s": null,
     "negation_cf": null,
     "attachment_s": null,
     "attachment_cf": null
   },
   "linguistic_metadata": {
-    "agent_s": "chef",
-    "patient_s": "waiter",
-    "agent_cf": "waiter",
-    "patient_cf": "chef",
-    "verb_s": "praised",
-    "verb_cf": "praised",
-    "voice_s": "active",
-    "voice_cf": "active",
-    "tense": "past",
-    "animacy": "animate_animate",
-    "plausibility_class": "reversible_plausible"
+    "source_file": "ROLE-1500.txt",
+    "source_pair_index": 1,
+    "direction": "forward",
+    "parse_strategy": "token_heuristic"
   },
   "edited_spans": {
     "s": [
-      {"label": "agent", "text": "chef", "char_start": 4, "char_end": 8},
-      {"label": "patient", "text": "waiter", "char_start": 20, "char_end": 26}
+      {"label": "agent", "text": "team", "char_start": 46, "char_end": 50},
+      {"label": "patient", "text": "athlete", "char_start": 34, "char_end": 41}
     ],
     "s_cf": [
-      {"label": "agent", "text": "waiter", "char_start": 4, "char_end": 10},
-      {"label": "patient", "text": "chef", "char_start": 22, "char_end": 26}
+      {"label": "agent", "text": "athlete", "char_start": 43, "char_end": 50},
+      {"label": "patient", "text": "team", "char_start": 34, "char_end": 38}
     ]
   },
   "surface_controls": {
-    "token_len_s": 5,
-    "token_len_cf": 5,
-    "char_len_s": 27,
-    "char_len_cf": 27,
-    "lexical_jaccard": 1.0,
-    "levenshtein_distance": 12
+    "token_len_s": 9,
+    "token_len_cf": 9,
+    "char_len_s": 61,
+    "char_len_cf": 58,
+    "lexical_jaccard": 0.8,
+    "levenshtein_distance": 18
   },
   "human_change": null,
   "notes": ""
@@ -804,6 +805,7 @@ css-counterfactual-probing/
       role.yaml
       negation.yaml
       attachment.yaml
+      external_import.yaml
     models/
       bert_base_uncased.yaml
       roberta_base.yaml
@@ -833,6 +835,7 @@ css-counterfactual-probing/
   src/
     css/
       data/
+        import_extending_psycholinguistic_dataset.py
         generate_role.py
         generate_negation.py
         generate_attachment.py

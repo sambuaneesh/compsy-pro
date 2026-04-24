@@ -4,7 +4,7 @@
     "ambiguous_to_vp": 33,
     "insert_not": 50,
     "remove_not": 50,
-    "swap_agent_patient": 100,
+    "swap_agent_patient_external": 100,
     "vp_to_np": 34
   },
   "by_phenomenon": {
@@ -19,8 +19,8 @@
   },
   "by_template_id": {
     "attach_pp_v01": 100,
-    "neg_aux_not_v01": 100,
-    "role_active_transitive_v01": 100
+    "neg_ext_psycholing_v1": 100,
+    "role_ext_psycholing_v1": 100
   },
   "split_by_phenomenon": {
     "attachment": {

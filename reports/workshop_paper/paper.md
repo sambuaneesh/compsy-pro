@@ -32,6 +32,10 @@ Primary datasets:
 - `neg_1500.jsonl`
 - `attach_1500.jsonl`
 
+Current source split:
+- role + negation imported from `text-machine-lab/extending_psycholinguistic_dataset`
+- attachment generated locally with controlled templates
+
 ## 4. Models and Representations
 
 Models:
