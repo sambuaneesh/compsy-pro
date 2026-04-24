@@ -1,8 +1,6 @@
-experiment_name: css_stats_v1
+experiment_name: css_stats_dataset_only_pilot_v1
 seed: 13
 metrics_path: results/metrics/layer_metrics.csv
 surprisal_path: results/surprisal/gpt2_surprisal.csv
 probe_path: results/probes/probe_results.csv
-annotation_raw_path: data/annotations/human_css_0_5.csv
-annotation_agg_path: data/annotations/human_css_aggregated.csv
 output_dir: results/stats

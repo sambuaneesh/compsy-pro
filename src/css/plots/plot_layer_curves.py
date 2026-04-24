@@ -66,19 +66,24 @@ def _plot_probe_selectivity(probe_path: str, out_dir: Path) -> None:
     plt.close(g.figure)
 
 
-def _plot_surprisal_vs_human(surprisal_path: str, ann_path: str, out_dir: Path) -> None:
+def _plot_surprisal_vs_shift(metrics_path: str, surprisal_path: str, out_dir: Path) -> None:
+    metrics = pd.read_csv(metrics_path)
     surprisal = pd.read_csv(surprisal_path)
-    ann = pd.read_csv(ann_path)
-    merged = surprisal.merge(
-        ann[["pair_id", "phenomenon", "mean_change"]], on=["pair_id", "phenomenon"], how="inner"
+    merged = metrics.merge(
+        surprisal[["pair_id", "phenomenon", "abs_delta_avg_surprisal"]],
+        on=["pair_id", "phenomenon"],
+        how="inner",
     )
+    merged = merged.groupby(["model", "phenomenon", "pair_id"], as_index=False)[
+        ["delta_frob", "abs_delta_avg_surprisal"]
+    ].mean()
     if merged.empty:
         return
     fig, ax = plt.subplots(figsize=(6, 5))
     sns.scatterplot(
         data=merged,
-        x="abs_delta_avg_surprisal",
-        y="mean_change",
+        x="delta_frob",
+        y="abs_delta_avg_surprisal",
         hue="phenomenon",
         alpha=0.75,
         s=30,
@@ -86,16 +91,16 @@ def _plot_surprisal_vs_human(surprisal_path: str, ann_path: str, out_dir: Path) 
     )
     sns.regplot(
         data=merged,
-        x="abs_delta_avg_surprisal",
-        y="mean_change",
+        x="delta_frob",
+        y="abs_delta_avg_surprisal",
         scatter=False,
         color="black",
         ax=ax,
     )
-    ax.set_xlabel("|delta avg surprisal| (GPT-2)")
-    ax.set_ylabel("Mean human change (0-5)")
+    ax.set_xlabel("Mean delta_frob")
+    ax.set_ylabel("|delta avg surprisal| (GPT-2)")
     fig.tight_layout()
-    fig.savefig(out_dir / "surprisal_vs_human.pdf")
+    fig.savefig(out_dir / "surprisal_vs_shift.pdf")
     plt.close(fig)
 
 
@@ -108,7 +113,7 @@ def main() -> None:
     out_dir = ensure_dir(str(cfg["output_dir"]))
     _plot_correlations(str(cfg["correlations_path"]), out_dir)
     _plot_probe_selectivity(str(cfg["probe_summary_path"]), out_dir)
-    _plot_surprisal_vs_human(str(cfg["surprisal_path"]), str(cfg["annotation_agg_path"]), out_dir)
+    _plot_surprisal_vs_shift(str(cfg["metrics_path"]), str(cfg["surprisal_path"]), out_dir)
     print(f"wrote figures to {out_dir}")
 
 

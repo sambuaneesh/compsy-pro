@@ -1,5 +1,5 @@
 {
-  "config_hash": "d8164e97ab119a8fe9dec5ac4d7bac564d9c30e65154fc2b8c592b417c172805",
+  "config_hash": "da62dc33b6d69a661621770f43838f83aa073315f182bbe96f7eaf8e74355041",
   "config_path": "configs/experiments/full.yaml",
   "datasets": [
     {
@@ -17,17 +17,9 @@
       "path": "data/css_pairs/neg_1500.jsonl",
       "rows": 1500,
       "sha256": "0072466f99e6dad91abf3dae1722ec35d4544e7a31706c8838524ca95d7b9962"
-    },
-    {
-      "duplicate_id_excess": 0,
-      "issues_count": 0,
-      "issues_preview": [],
-      "path": "data/css_pairs/attach_1500.jsonl",
-      "rows": 1500,
-      "sha256": "5b34d13cbc620d71c6244c45be6248183172f5c28a58efe0b7294d756f44c08d"
     }
   ],
   "status": "ok",
   "total_issues": 0,
-  "total_rows": 4500
+  "total_rows": 3000
 }

@@ -1,8 +1,8 @@
-# Counterfactual Structural Sensitivity: Human-Aligned Probing of Language Model Representations under Minimal Linguistic Edits
+# Counterfactual Structural Sensitivity: Dataset-Only Probing of Language Model Representations under Minimal Linguistic Edits
 
 ## Abstract
 
-We present Counterfactual Structural Sensitivity (CSS), a controlled protocol for testing whether layer-wise hidden-state shifts under minimal structural edits align with human semantic-change judgments. CSS targets role reversal, negation, and attachment edits with paired sentences and evaluates representation shifts using cosine, Frobenius-style matrix norms, L2, and token-aligned metrics across BERT, RoBERTa, and GPT-2 layers. We combine these shifts with linear probes (including random-label selectivity controls) and GPT-2 surprisal features. The primary claim is human alignment of representational sensitivity, not equivalence to human language processing.
+We present Counterfactual Structural Sensitivity (CSS), a controlled protocol for testing whether layer-wise hidden-state shifts under minimal structural edits are systematic and model-consistent under a strict dataset-only setup. CSS targets role reversal and negation edits with paired sentences and evaluates representation shifts using cosine, Frobenius-style matrix norms, L2, and token-aligned metrics across BERT, RoBERTa, and GPT-2 layers. We combine these shifts with linear probes (including random-label selectivity controls) and GPT-2 surprisal features. The primary claim is structural sensitivity and metric behavior under controlled edits.
 
 ## 1. Introduction
 
@@ -20,21 +20,18 @@ Language models succeed on many benchmarks, but it is still unclear whether inte
 
 Pipeline:
 
-`sentence -> counterfactual edit -> hidden states -> representation shift -> probes + surprisal -> human alignment`
+`sentence -> counterfactual edit -> hidden states -> representation shift -> probes + surprisal -> dataset-level analysis`
 
 Phenomena:
 - role reversal
 - negation
-- attachment ambiguity
 
 Primary datasets:
 - `role_1500.jsonl`
 - `neg_1500.jsonl`
-- `attach_1500.jsonl`
 
 Current source split:
 - role + negation imported from `text-machine-lab/extending_psycholinguistic_dataset`
-- attachment generated locally with controlled templates
 
 ## 4. Models and Representations
 
@@ -59,23 +56,23 @@ Primary per-layer metrics:
 - `delta_l2`
 - `delta_token_aligned`
 
-Human target:
-- 0-5 semantic-change ratings.
+Primary target:
+- structural shift behavior under controlled edits.
 
 ## 6. Probes and Surprisal
 
 Probes:
-- linear probes by layer for role/negation/attachment.
+- linear probes by layer for role/negation.
 - random-label controls with selectivity reporting.
 
 Surprisal:
 - GPT-2 autoregressive token surprisal.
 - sentence-level and edited-region deltas.
 
-## 7. Human Alignment and Statistics
+## 7. Dataset-Only Statistics
 
 Primary analyses:
-- Spearman correlation between mean human change and per-layer CSS metrics.
+- Spearman correlation between per-layer CSS metrics and surprisal deltas.
 - Pearson as secondary.
 - bootstrap confidence intervals.
 - BH-FDR correction across layer-wise tests.
@@ -96,9 +93,9 @@ Evaluation:
 
 ## 9. Limitations
 
-- Human cognition claims are out of scope; results are framed as alignment with semantic judgments only.
-- Attachment may remain noisier than role and negation.
-- Synthetic annotation fallbacks are for pipeline validation and not final scientific claims.
+- This project does not include human annotation.
+- Claims are restricted to dataset-only structural sensitivity diagnostics.
+- Findings should not be interpreted as evidence of human-like language processing.
 
 ## 10. Reproducibility
 

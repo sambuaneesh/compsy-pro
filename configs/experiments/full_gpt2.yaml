@@ -3,7 +3,6 @@ seed: 13
 datasets:
   - data/css_pairs/role_1500.jsonl
   - data/css_pairs/neg_1500.jsonl
-  - data/css_pairs/attach_1500.jsonl
 models:
   - gpt2
 layers:

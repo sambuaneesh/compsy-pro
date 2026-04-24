@@ -5,7 +5,6 @@ cache_root: cache
 datasets:
   - data/css_pairs/role_1500.jsonl
   - data/css_pairs/neg_1500.jsonl
-  - data/css_pairs/attach_1500.jsonl
 models:
   - bert-base-uncased
   - roberta-base

@@ -1,204 +1,87 @@
-# CSS Execution Phases
+# CSS Execution Phases (Dataset-Only)
 
 Last updated: `2026-04-24`
 
-This is the canonical phase order for implementing:
-**Counterfactual Structural Sensitivity: Human-Aligned Probing of Language Model Representations under Minimal Linguistic Edits**.
+This phase plan is locked to role + negation from the GitHub source dataset.
 
-## Phase 0: Governance, Tooling, and Reproducibility Baseline
-
-Objective:
-- Lock repo process and experiment hygiene before model work.
-
-Deliverables:
-- `AGENTS.md` finalized and enforced.
-- `pyproject.toml` + `uv.lock` synced.
-- pre-commit hooks installed and passing.
-- incremental log system initialized.
-
-Exit criteria:
-- `uv run ruff check .`, `uv run ty check`, `uv run pytest` all pass.
-- logging command can append structured entries.
-
-## Phase 1: Schema and Config Freeze (v1)
+## Phase 0: Tooling and Reproducibility Baseline
 
 Objective:
-- Implement and freeze `css_pair_v1`, cache metadata schema, metric schema.
-
-Deliverables:
-- schema validators and tests.
-- `configs/data/*.yaml`, `configs/experiments/pilot.yaml`.
-- schema changelog and hash utility.
+- lock `uv` environment, lint/type/test gates, and incremental logging.
 
 Exit criteria:
-- schema validator passes on sample files.
-- config hash + dataset hash emitted in run manifests.
+- `uv run ruff check .`
+- `uv run ty check`
+- `uv run pytest`
 
-## Phase 2: Lexicons and Dataset Generation Pipeline
+## Phase 1: Schema and Config Freeze
 
 Objective:
-- Build/ingest role, negation, and attachment datasets with strict controls.
-
-Deliverables:
-- `import_extending_psycholinguistic_dataset.py`, `generate_attachment.py`.
-- `split_data.py`, `validate_schema.py`.
-- pilot data files: 100/100/100.
+- freeze `css_pair_v1`, cache metadata schema, and experiment configs.
 
 Exit criteria:
-- no duplicate IDs, full required metadata, surface controls complete.
-- lexical/template split diagnostics generated.
+- schema validation passes on pilot and full configs.
 
-## Phase 3: Representation Extraction and Caching
+## Phase 2: Data Import and Validation
 
 Objective:
-- Extract hidden states for BERT, RoBERTa, GPT-2 (embedding + 12 layers).
-
-Deliverables:
-- extraction, pooling, token-alignment, cache I/O modules.
-- cache metadata with versions/hashes/seeds/dtype.
+- import role and negation from external GitHub dataset.
 
 Exit criteria:
-- cache reload works without re-tokenization.
-- word-level aggregation validated.
+- `role_1500.jsonl` and `neg_1500.jsonl` validated.
 
-## Phase 4: Core CSS Metrics
+## Phase 3: Hidden-State Extraction
 
 Objective:
-- Compute `delta_cos`, `sim_frob`, `delta_frob`, `delta_l2`, `delta_token_aligned`.
-
-Deliverables:
-- metric modules + `compute_all_metrics.py`.
-- anomaly report for out-of-range Frobenius values.
+- extract and cache hidden states for BERT, RoBERTa, GPT-2 (layers 0..12).
 
 Exit criteria:
-- deterministic reruns with identical outputs.
-- unit tests for matrix norm math pass.
+- cache manifests complete and reloadable.
 
-## Phase 5: GPT-2 Surprisal Pipeline
+## Phase 4: Metrics
 
 Objective:
-- Compute primary autoregressive surprisal features.
-
-Deliverables:
-- token-level and sentence-level surprisal outputs.
-- key-region surprisal extraction.
+- compute cosine/Frobenius/L2/token-aligned shifts for all pairs/layers/models.
 
 Exit criteria:
-- >=98% key-region coverage or documented failures.
-- primary stats-ready surprisal table generated.
+- metrics table complete, deterministic rerun verified.
 
-## Phase 6: Probe System With Selectivity Controls
+## Phase 5: GPT-2 Surprisal
 
 Objective:
-- Train linear probes for role/negation/attachment with robust controls.
-
-Deliverables:
-- probe dataset builder, trainer, selectivity controls.
-- 5-seed results for random/template/lexical splits.
+- compute AR surprisal features and edited-region coverage.
 
 Exit criteria:
-- each probe result has matching control score.
-- selectivity summary exported.
+- full surprisal table generated with coverage report.
 
-## Phase 7: Human Annotation Pilot and Calibration
+## Phase 6: Probes and Selectivity
 
 Objective:
-- Run pilot annotation to validate prompt and agreement.
-
-Deliverables:
-- 60-90 annotated items, 3 annotators/item.
-- agreement report and prompt revision decision.
+- train role and negation probes with random-label controls and 5 seeds.
 
 Exit criteria:
-- agreement sufficient for full collection or revised prompt frozen.
+- selectivity summaries complete.
 
-## Phase 8: Pilot Integration and Go/No-Go
+## Phase 7: Dataset-Only Statistics
 
 Objective:
-- Test H1-H4 signal viability on pilot end-to-end.
-
-Deliverables:
-- pilot correlations by layer/model/phenomenon.
-- preliminary mixed-model fit.
-- pilot figures/tables.
+- run metric-surprisal correlations, bootstrap CIs, FDR correction, and Frobenius incremental tests.
 
 Exit criteria:
-- interpretable layer curves.
-- stable metric computation and reproducible rerun.
+- `results/stats/full/*` complete.
 
-## Phase 9: Full Data and Full Cache Build
+## Phase 8: Salience and Figures
 
 Objective:
-- Scale to 1,500 x 3 phenomena and all 3 models.
-
-Deliverables:
-- full pair datasets validated.
-- full hidden-state caches and metrics.
+- generate salience outputs and all figures/tables from scripts.
 
 Exit criteria:
-- full manifests with hashes and environment metadata.
-- storage/runtime report documented.
+- figures/tables reproducibly generated from current outputs.
 
-## Phase 10: Full Human Annotation
+## Phase 9: Packaging
 
 Objective:
-- Produce primary human target set (minimum 300 balanced pairs).
-
-Deliverables:
-- raw annotation CSV + aggregated CSV.
-- agreement diagnostics and disagreement flags.
+- finalize report/slides language for dataset-only claims and submission readiness.
 
 Exit criteria:
-- minimum annotator coverage met.
-- quality checks pass.
-
-## Phase 11: Final Statistics for H1-H5
-
-Objective:
-- Run final hypothesis tests with controls and corrections.
-
-Deliverables:
-- Spearman/Pearson tables by layer.
-- mixed-effects models with random intercepts.
-- bootstrap CIs and BH-FDR corrected results.
-
-Exit criteria:
-- H1-H5 status table complete.
-- incremental value test (`Delta_frob` over `Delta_cos`) complete.
-
-## Phase 12: Secondary Salience Experiment
-
-Objective:
-- Evaluate token/span salience ranking from CSS metrics.
-
-Deliverables:
-- salience contribution files.
-- Recall@1, Recall@3, MRR (AUC optional).
-
-Exit criteria:
-- explicitly labeled exploratory in outputs.
-
-## Phase 13: Paper and Artifact Packaging
-
-Objective:
-- Produce workshop-ready manuscript and reproducibility package.
-
-Deliverables:
-- main paper draft, appendix, figures, tables, references.
-- reproducibility checklist and runbook.
-
-Exit criteria:
-- all claims map to traceable scripts and logged runs.
-- limitations and non-overclaim framing included.
-
-## Phase 14: Final Audit and Submission Readiness
-
-Objective:
-- Validate completeness, consistency, and workshop fit.
-
-Deliverables:
-- final gap report, checklist closure, submission bundle.
-
-Exit criteria:
-- all primary deliverables complete.
-- repo can rerun core pipeline from clean checkout.
+- no human-annotation dependency in claims or required pipeline steps.
