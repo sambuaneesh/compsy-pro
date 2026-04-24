@@ -4,6 +4,9 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+from dotenv import load_dotenv
+
+load_dotenv(override=False)
 
 
 def load_yaml(path: str | Path) -> dict[str, Any]:
