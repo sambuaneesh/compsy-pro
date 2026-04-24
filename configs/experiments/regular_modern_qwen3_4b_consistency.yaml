@@ -1,0 +1,14 @@
+experiment_name: css_regular_qwen3_4b_counterfactual_consistency_v1
+seed: 13
+dataset: data/css_pairs/full_all_3000.jsonl
+model: Qwen/Qwen3-4B
+output_path: results/consistency/qwen3_4b_counterfactual_consistency.csv
+summary_path: results/consistency/qwen3_4b_counterfactual_consistency_summary.csv
+max_length: 256
+torch_dtype: float16
+trust_remote_code: false
+device_map: auto
+max_memory:
+  "0": 13GiB
+  cpu: 96GiB
+low_cpu_mem_usage: true

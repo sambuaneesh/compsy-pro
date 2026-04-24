@@ -1,0 +1,10 @@
+experiment_name: css_regular_gpt2_counterfactual_consistency_v1
+seed: 13
+dataset: data/css_pairs/full_all_3000.jsonl
+model: gpt2
+output_path: results/consistency/gpt2_counterfactual_consistency.csv
+summary_path: results/consistency/gpt2_counterfactual_consistency_summary.csv
+max_length: 256
+torch_dtype: float32
+trust_remote_code: false
+

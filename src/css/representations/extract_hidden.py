@@ -9,7 +9,7 @@ from typing import Any
 import numpy as np
 import torch
 import transformers
-from transformers import AutoModel, AutoTokenizer
+from transformers import AutoConfig, AutoModel, AutoTokenizer
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from css.common.config import load_yaml
@@ -30,6 +30,25 @@ def _set_seed(seed: int) -> None:
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+
+
+def _device_from_model(model: Any) -> torch.device:
+    try:
+        return next(model.parameters()).device
+    except StopIteration:
+        return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+def _max_memory_from_config(cfg: dict[str, Any]) -> dict[int | str, str] | None:
+    raw = cfg.get("max_memory")
+    if raw is None:
+        return None
+    if not isinstance(raw, dict):
+        raise TypeError("max_memory must be a mapping such as {'0': '14GiB', 'cpu': '64GiB'}")
+    parsed: dict[int | str, str] = {}
+    for key, value in raw.items():
+        parsed[int(key) if str(key).isdigit() else str(key)] = str(value)
+    return parsed
 
 
 def _word_index_map(
@@ -139,21 +158,41 @@ def _extract_dataset_for_model(
     max_length: int,
     seed: int,
     config_hash: str,
+    torch_dtype: torch.dtype | None,
+    trust_remote_code: bool,
+    device_map: str | None,
+    max_memory: dict[int | str, str] | None,
+    low_cpu_mem_usage: bool | None,
 ) -> tuple[str, str]:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name, use_fast=True, trust_remote_code=trust_remote_code
+    )
     tokenizer = tokenizer if isinstance(tokenizer, PreTrainedTokenizerBase) else None
     if tokenizer is None:
         raise ValueError(f"tokenizer for {model_name} is not a PreTrainedTokenizerBase")
     if tokenizer.pad_token_id is None and tokenizer.eos_token_id is not None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    model = AutoModel.from_pretrained(model_name)
+    model_config = AutoConfig.from_pretrained(model_name, trust_remote_code=trust_remote_code)
+    model_kwargs: dict[str, Any] = {"trust_remote_code": trust_remote_code}
+    if torch_dtype is not None:
+        model_kwargs["torch_dtype"] = torch_dtype
+    if device_map is not None:
+        model_kwargs["device_map"] = device_map
+    if max_memory is not None:
+        model_kwargs["max_memory"] = max_memory
+    if low_cpu_mem_usage is not None:
+        model_kwargs["low_cpu_mem_usage"] = low_cpu_mem_usage
+    model = AutoModel.from_pretrained(model_name, **model_kwargs)
     model.eval()
-    model.to(device)
+    if device_map is None:
+        model.to(device)
+    else:
+        device = _device_from_model(model)
 
     has_cls = tokenizer.cls_token_id is not None
-    has_last = "gpt2" in model_name.lower()
+    has_last = bool(getattr(model_config, "is_decoder", False)) or not has_cls
 
     rows = read_jsonl(dataset_path)
     items: list[dict[str, Any]] = []
@@ -243,6 +282,7 @@ def _extract_dataset_for_model(
         "torch_version": torch.__version__,
         "transformers_version": transformers.__version__,
         "device": str(device),
+        "model_torch_dtype": str(torch_dtype) if torch_dtype is not None else "default",
         "cache_path": cache_path,
     }
     write_cache_metadata(metadata_path, metadata)
@@ -270,6 +310,26 @@ def main() -> None:
     datasets = [str(d) for d in cfg["datasets"]]
     cache_root = str(cfg.get("cache_root", "cache"))
     max_length = int(cfg.get("max_length", 128))
+    dtype_name = str(cfg.get("torch_dtype", "default")).lower()
+    dtype_map = {
+        "default": None,
+        "auto": None,
+        "float32": torch.float32,
+        "fp32": torch.float32,
+        "float16": torch.float16,
+        "fp16": torch.float16,
+        "bfloat16": torch.bfloat16,
+        "bf16": torch.bfloat16,
+    }
+    if dtype_name not in dtype_map:
+        raise ValueError(f"Unsupported torch_dtype={dtype_name}")
+    torch_dtype = dtype_map[dtype_name]
+    trust_remote_code = bool(cfg.get("trust_remote_code", False))
+    device_map = str(cfg["device_map"]) if cfg.get("device_map") is not None else None
+    max_memory = _max_memory_from_config(cfg)
+    low_cpu_mem_usage = (
+        bool(cfg["low_cpu_mem_usage"]) if cfg.get("low_cpu_mem_usage") is not None else None
+    )
     config_hash = sha256_json(cfg)
 
     manifest = {
@@ -295,6 +355,11 @@ def main() -> None:
                 max_length=max_length,
                 seed=seed,
                 config_hash=config_hash,
+                torch_dtype=torch_dtype,
+                trust_remote_code=trust_remote_code,
+                device_map=device_map,
+                max_memory=max_memory,
+                low_cpu_mem_usage=low_cpu_mem_usage,
             )
             manifest["runs"].append(
                 {

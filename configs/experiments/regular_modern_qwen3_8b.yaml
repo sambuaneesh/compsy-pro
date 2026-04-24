@@ -1,0 +1,22 @@
+experiment_name: css_regular_modern_qwen3_8b_v1
+seed: 13
+datasets:
+  - data/css_pairs/role_1500.jsonl
+  - data/css_pairs/neg_1500.jsonl
+models:
+  - Qwen/Qwen3-8B
+layers:
+  start: 0
+  end_inclusive: 99
+cache_root: cache
+results_root: results
+batch_size: 1
+max_length: 128
+torch_dtype: float16
+trust_remote_code: false
+device_map: auto
+max_memory:
+  "0": 13GiB
+  cpu: 96GiB
+low_cpu_mem_usage: true
+force: false
