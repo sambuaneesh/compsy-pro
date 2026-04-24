@@ -1,108 +1,420 @@
 {
-  "n_results": 195,
+  "n_results": 325,
   "skipped": [
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 0,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 1,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 2,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 3,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 4,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 5,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 6,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 7,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 8,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 9,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 10,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 11,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 12,
+      "model": "bert-base-uncased",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 0,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 1,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 2,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 3,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 4,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 5,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 6,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 7,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 8,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 9,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 10,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 11,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 12,
+      "model": "roberta-base",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 0,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 1,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 2,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 3,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 4,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 5,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 6,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 7,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 8,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 9,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 10,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 11,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
       "reason": "insufficient_data"
     },
     {
       "classes": 1,
-      "dataset_path": "data/css_pairs/role_pilot_100.jsonl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
       "layer": 12,
       "model": "gpt2",
-      "n": 200,
+      "n": 3000,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 0,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 1,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 2,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 3,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 4,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 5,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 6,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 7,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 8,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 9,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 10,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 11,
+      "model": "gpt2",
+      "n": 500,
+      "reason": "insufficient_data"
+    },
+    {
+      "classes": 1,
+      "dataset_path": "data/css_pairs/attach_1500.jsonl",
+      "layer": 12,
+      "model": "gpt2",
+      "n": 500,
       "reason": "insufficient_data"
     }
   ]
