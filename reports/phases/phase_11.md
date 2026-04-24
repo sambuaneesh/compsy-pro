@@ -14,8 +14,9 @@ Outputs:
 - `results/stats/full/hypothesis_tests.md`
 
 Key run notes:
-- Constant-input warnings occurred for some layer/metric subsets with near-constant predictors.
-- Mixed-effects fits completed for all 13 layers with repeated boundary warnings from `statsmodels`.
+- Spearman/Pearson FDR-corrected tables regenerated after full probe coverage refresh.
+- Mixed-effects runner now applies robust predictor fallback when singularity is detected; all 13 layers fit with `converged=True`.
+- Boundary convergence warnings from `statsmodels` remain but no layer-level fit failures persisted.
 
 Interpretation boundary:
 - Results are pipeline-valid and traceable.

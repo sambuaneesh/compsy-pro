@@ -1,44 +1,8 @@
 {
-  "config_path": "configs/experiments/full.yaml",
-  "config_sha256": "d8164e97ab119a8fe9dec5ac4d7bac564d9c30e65154fc2b8c592b417c172805",
-  "experiment_name": "css_full_v1",
+  "config_path": "configs/experiments/full_gpt2.yaml",
+  "config_sha256": "fc6672d8d283e0ffe2d74223b102675a60067f4cfe3ca93542fb86507af03539",
+  "experiment_name": "css_full_gpt2_refresh_v1",
   "runs": [
-    {
-      "cache_path": "cache/hidden/bert-base-uncased/role_1500/hidden_cache.pkl",
-      "dataset_path": "data/css_pairs/role_1500.jsonl",
-      "metadata_path": "cache/hidden/bert-base-uncased/role_1500/metadata.json",
-      "model_name": "bert-base-uncased"
-    },
-    {
-      "cache_path": "cache/hidden/bert-base-uncased/neg_1500/hidden_cache.pkl",
-      "dataset_path": "data/css_pairs/neg_1500.jsonl",
-      "metadata_path": "cache/hidden/bert-base-uncased/neg_1500/metadata.json",
-      "model_name": "bert-base-uncased"
-    },
-    {
-      "cache_path": "cache/hidden/bert-base-uncased/attach_1500/hidden_cache.pkl",
-      "dataset_path": "data/css_pairs/attach_1500.jsonl",
-      "metadata_path": "cache/hidden/bert-base-uncased/attach_1500/metadata.json",
-      "model_name": "bert-base-uncased"
-    },
-    {
-      "cache_path": "cache/hidden/roberta-base/role_1500/hidden_cache.pkl",
-      "dataset_path": "data/css_pairs/role_1500.jsonl",
-      "metadata_path": "cache/hidden/roberta-base/role_1500/metadata.json",
-      "model_name": "roberta-base"
-    },
-    {
-      "cache_path": "cache/hidden/roberta-base/neg_1500/hidden_cache.pkl",
-      "dataset_path": "data/css_pairs/neg_1500.jsonl",
-      "metadata_path": "cache/hidden/roberta-base/neg_1500/metadata.json",
-      "model_name": "roberta-base"
-    },
-    {
-      "cache_path": "cache/hidden/roberta-base/attach_1500/hidden_cache.pkl",
-      "dataset_path": "data/css_pairs/attach_1500.jsonl",
-      "metadata_path": "cache/hidden/roberta-base/attach_1500/metadata.json",
-      "model_name": "roberta-base"
-    },
     {
       "cache_path": "cache/hidden/gpt2/role_1500/hidden_cache.pkl",
       "dataset_path": "data/css_pairs/role_1500.jsonl",

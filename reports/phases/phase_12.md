@@ -7,15 +7,15 @@ What ran:
 - `uv run python -m css.salience.evaluate_salience --config configs/experiments/salience_full.yaml`
 
 Outputs:
-- `results/salience/token_contributions_full.csv` (135000 rows)
+- `results/salience/token_contributions_full.csv` (174000 rows)
 - `results/salience/salience_eval_full.csv` (16 summary rows)
 
 Overall salience snapshot:
-- Recall@1: `0.0989`
-- Recall@3: `0.5696`
-- MRR: `0.3974`
-- AUC: `0.1883`
+- Recall@1: `0.1336`
+- Recall@3: `0.5063`
+- MRR: `0.3965`
+- AUC: `0.2423`
 
 Notes:
 - Salience remains secondary/exploratory.
-- GPT-2 token-word alignment mismatch required robust truncation logic in this phase.
+- GPT-2 token-word alignment was corrected in cache extraction and salience was rerun end-to-end.
