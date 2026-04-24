@@ -1,0 +1,9 @@
+experiment_name: css_annotation_full_v1
+seed: 13
+dataset: data/css_pairs/full_all_4500.jsonl
+n_per_phenomenon: 100
+annotators: 3
+batch_output: data/annotations/annotation_batch_full.csv
+raw_output: data/annotations/human_css_0_5_full.csv
+agg_output: data/annotations/human_css_aggregated_full.csv
+agreement_output: results/annotation/agreement_report_full.json

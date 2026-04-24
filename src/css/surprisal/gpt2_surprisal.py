@@ -83,6 +83,7 @@ def main() -> None:
     )
     parser.add_argument("--config", required=True)
     parser.add_argument("--output", default=None)
+    parser.add_argument("--coverage-output", default=None)
     parser.add_argument("--seed", type=int, default=None)
     args = parser.parse_args()
 
@@ -93,6 +94,13 @@ def main() -> None:
     model_name = str(cfg.get("model", "gpt2"))
     max_length = int(cfg.get("max_length", 128))
     output_path = str(args.output or cfg.get("output_path", "results/surprisal/gpt2_surprisal.csv"))
+    coverage_output = str(
+        args.coverage_output
+        or cfg.get(
+            "coverage_path",
+            str(Path(output_path).with_name(Path(output_path).stem + "_coverage.json")),
+        )
+    )
 
     device = torch.device("cpu")
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
@@ -135,7 +143,7 @@ def main() -> None:
     df.to_csv(output_path, index=False)
 
     coverage_rate = coverage / max(len(rows), 1)
-    report_path = Path("results/surprisal/key_region_coverage.json")
+    report_path = Path(coverage_output)
     ensure_dir(report_path.parent)
     pd.Series(
         {"coverage_rate": coverage_rate, "covered_pairs": coverage, "total_pairs": len(rows)}

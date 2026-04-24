@@ -37,3 +37,29 @@ Run the end-to-end pilot (Phases 2-8):
 ```bash
 bash scripts/run_pilot.sh
 ```
+
+## Full Pipeline
+
+Run full extraction/metrics/surprisal:
+
+```bash
+bash scripts/run_full_metrics.sh
+```
+
+Run full probes:
+
+```bash
+bash scripts/run_probes.sh
+```
+
+Run annotation fallback + stats:
+
+```bash
+bash scripts/run_stats.sh
+```
+
+Run secondary salience + figures/tables:
+
+```bash
+bash scripts/run_salience_and_plots.sh
+```

@@ -1,0 +1,7 @@
+experiment_name: css_plots_full_v1
+correlations_path: results/stats/full/correlations.csv
+probe_summary_path: results/probes/selectivity_summary_full.csv
+surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+annotation_agg_path: data/annotations/human_css_aggregated_full.csv
+h2_path: results/stats/full/h2_incremental.csv
+output_dir: results/figures
