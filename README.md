@@ -29,3 +29,11 @@ uv run pytest
 ## Core Principle
 
 Use `uv` and the Astral toolchain (`ruff`, `ty`) by default for all Python workflows.
+
+## Pilot Pipeline
+
+Run the end-to-end pilot (Phases 2-8):
+
+```bash
+bash scripts/run_pilot.sh
+```
