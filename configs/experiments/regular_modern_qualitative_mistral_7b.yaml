@@ -1,5 +1,7 @@
 experiment_name: css_regular_modern_mistral_7b_qualitative_v1
 metrics_path: results/metrics/modern_mistral_7b_metrics.csv
 surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+pairs_path: data/css_pairs/full_all_3000.jsonl
 output_dir: results/analysis/qualitative_mistral_7b
+report_path: reports/full/QUALITATIVE_ANALYSIS_MISTRAL_7B.md
 top_k: 20

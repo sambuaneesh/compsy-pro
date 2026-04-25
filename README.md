@@ -93,6 +93,27 @@ Run qualitative case-study analysis:
 bash scripts/run_qualitative_analysis.sh
 ```
 
+## Regular-Paper Extension
+
+Run output-level counterfactual consistency:
+
+```bash
+bash scripts/run_counterfactual_consistency.sh
+```
+
+Run the completed modern-decoder representation extension:
+
+```bash
+bash scripts/run_modern_mistral_7b.sh
+```
+
+Key extension outputs:
+
+- `results/consistency/summary/consistency_report.md`
+- `results/metrics/modern_mistral_7b_metrics.csv`
+- `results/stats/modern_mistral_7b/hypothesis_tests.md`
+- `reports/full/QUALITATIVE_ANALYSIS_MISTRAL_7B.md`
+
 Future-scope note (including attachment/PP re-entry and human-eval conditions):
 
 - `reports/full/FUTURE_WORK.md`

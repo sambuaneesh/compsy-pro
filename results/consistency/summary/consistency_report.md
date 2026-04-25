@@ -10,6 +10,10 @@ This report evaluates whether a causal language model assigns higher forced-choi
 | gpt2 | negation | identity_control | 1500 | 0.2187 | 0.2187 | -0.2346 |
 | gpt2 | role_reversal | counterfactual | 1500 | 0.9760 | 0.0240 | -0.5579 |
 | gpt2 | role_reversal | identity_control | 1500 | 0.0393 | 0.0393 | -0.4427 |
+| mistralai/Mistral-7B-Instruct-v0.3 | negation | counterfactual | 1500 | 0.6520 | 0.3480 | -2.7357 |
+| mistralai/Mistral-7B-Instruct-v0.3 | negation | identity_control | 1500 | 1.0000 | 1.0000 | 20.6563 |
+| mistralai/Mistral-7B-Instruct-v0.3 | role_reversal | counterfactual | 1500 | 0.7340 | 0.2660 | -4.7608 |
+| mistralai/Mistral-7B-Instruct-v0.3 | role_reversal | identity_control | 1500 | 1.0000 | 1.0000 | 19.3145 |
 
 ## CSS Shift Versus Output Discrimination
 
@@ -41,3 +45,27 @@ For counterfactual rows, `no_margin = score(no) - score(yes)`. Positive correlat
 | gpt2 | roberta-base | role_reversal | delta_frob | 1500 | -0.0168 | 0.516 |
 | gpt2 | roberta-base | role_reversal | delta_l2 | 1500 | -0.0002 | 0.992 |
 | gpt2 | roberta-base | role_reversal | delta_token_aligned | 1500 | 0.0754 | 0.00348 |
+| mistralai/Mistral-7B-Instruct-v0.3 | bert-base-uncased | negation | delta_cos | 1500 | 0.1735 | 1.33e-11 |
+| mistralai/Mistral-7B-Instruct-v0.3 | bert-base-uncased | negation | delta_frob | 1500 | 0.1710 | 2.65e-11 |
+| mistralai/Mistral-7B-Instruct-v0.3 | bert-base-uncased | negation | delta_l2 | 1500 | 0.2300 | 1.87e-19 |
+| mistralai/Mistral-7B-Instruct-v0.3 | bert-base-uncased | negation | delta_token_aligned | 1500 | 0.1922 | 6.1e-14 |
+| mistralai/Mistral-7B-Instruct-v0.3 | bert-base-uncased | role_reversal | delta_cos | 1500 | 0.2895 | 2.35e-30 |
+| mistralai/Mistral-7B-Instruct-v0.3 | bert-base-uncased | role_reversal | delta_frob | 1500 | 0.2692 | 2.56e-26 |
+| mistralai/Mistral-7B-Instruct-v0.3 | bert-base-uncased | role_reversal | delta_l2 | 1500 | 0.3030 | 3.23e-33 |
+| mistralai/Mistral-7B-Instruct-v0.3 | bert-base-uncased | role_reversal | delta_token_aligned | 1500 | 0.2350 | 2.84e-20 |
+| mistralai/Mistral-7B-Instruct-v0.3 | gpt2 | negation | delta_cos | 1500 | 0.0983 | 0.000137 |
+| mistralai/Mistral-7B-Instruct-v0.3 | gpt2 | negation | delta_frob | 1500 | 0.1969 | 1.41e-14 |
+| mistralai/Mistral-7B-Instruct-v0.3 | gpt2 | negation | delta_l2 | 1500 | 0.0258 | 0.319 |
+| mistralai/Mistral-7B-Instruct-v0.3 | gpt2 | negation | delta_token_aligned | 1500 | 0.0098 | 0.703 |
+| mistralai/Mistral-7B-Instruct-v0.3 | gpt2 | role_reversal | delta_cos | 1500 | 0.1048 | 4.77e-05 |
+| mistralai/Mistral-7B-Instruct-v0.3 | gpt2 | role_reversal | delta_frob | 1500 | 0.0713 | 0.00574 |
+| mistralai/Mistral-7B-Instruct-v0.3 | gpt2 | role_reversal | delta_l2 | 1500 | 0.0542 | 0.0357 |
+| mistralai/Mistral-7B-Instruct-v0.3 | gpt2 | role_reversal | delta_token_aligned | 1500 | -0.0205 | 0.427 |
+| mistralai/Mistral-7B-Instruct-v0.3 | roberta-base | negation | delta_cos | 1500 | 0.2487 | 1.38e-22 |
+| mistralai/Mistral-7B-Instruct-v0.3 | roberta-base | negation | delta_frob | 1500 | 0.2515 | 4.54e-23 |
+| mistralai/Mistral-7B-Instruct-v0.3 | roberta-base | negation | delta_l2 | 1500 | 0.3005 | 1.1e-32 |
+| mistralai/Mistral-7B-Instruct-v0.3 | roberta-base | negation | delta_token_aligned | 1500 | 0.2760 | 1.25e-27 |
+| mistralai/Mistral-7B-Instruct-v0.3 | roberta-base | role_reversal | delta_cos | 1500 | 0.2390 | 6.29e-21 |
+| mistralai/Mistral-7B-Instruct-v0.3 | roberta-base | role_reversal | delta_frob | 1500 | 0.2260 | 7.84e-19 |
+| mistralai/Mistral-7B-Instruct-v0.3 | roberta-base | role_reversal | delta_l2 | 1500 | 0.2449 | 6.25e-22 |
+| mistralai/Mistral-7B-Instruct-v0.3 | roberta-base | role_reversal | delta_token_aligned | 1500 | 0.1900 | 1.18e-13 |

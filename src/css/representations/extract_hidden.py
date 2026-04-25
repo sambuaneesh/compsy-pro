@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import gc
 import random
 import sys
 from pathlib import Path
@@ -9,6 +10,7 @@ from typing import Any
 import numpy as np
 import torch
 import transformers
+from tqdm.auto import tqdm
 from transformers import AutoConfig, AutoModel, AutoTokenizer
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
@@ -196,7 +198,7 @@ def _extract_dataset_for_model(
 
     rows = read_jsonl(dataset_path)
     items: list[dict[str, Any]] = []
-    for row in rows:
+    for row in tqdm(rows, desc=f"extract:{model_name}:{Path(dataset_path).stem}"):
         side_s = _extract_side(
             text=str(row["s"]),
             tokenizer=tokenizer,
@@ -290,6 +292,12 @@ def _extract_dataset_for_model(
         tokenized_metadata_path,
         {"model_name": model_name, "dataset_path": dataset_path, "rows": len(rows)},
     )
+
+    del model
+    del tokenizer
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
 
     return cache_path, metadata_path
 

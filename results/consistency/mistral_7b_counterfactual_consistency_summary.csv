@@ -1,0 +1,5 @@
+model,phenomenon,condition,n,accuracy,yes_rate,mean_margin_yes_minus_no
+mistralai/Mistral-7B-Instruct-v0.3,negation,counterfactual,1500,0.652,0.348,-2.735671875
+mistralai/Mistral-7B-Instruct-v0.3,negation,identity_control,1500,1.0,1.0,20.656255208333334
+mistralai/Mistral-7B-Instruct-v0.3,role_reversal,counterfactual,1500,0.734,0.266,-4.7607760416666665
+mistralai/Mistral-7B-Instruct-v0.3,role_reversal,identity_control,1500,1.0,1.0,19.314520833333333
