@@ -85,3 +85,7 @@ uv run python scripts/analyze_results_for_rq.py
 Key interpretation output:
 
 - `reports/full/RESULTS_INTERPRETATION.md`
+
+Future-scope note (including attachment/PP re-entry and human-eval conditions):
+
+- `reports/full/FUTURE_WORK.md`
