@@ -34,6 +34,7 @@ def _plot_correlations(corr_path: str, out_dir: Path) -> None:
         ax.set_title(str(model))
         ax.set_xlabel("Layer")
         ax.set_ylabel("Spearman rho")
+    fig.suptitle("Mean across phenomena (role reversal + negation)", y=1.03, fontsize=11)
     fig.tight_layout()
     fig.savefig(out_dir / "layer_correlation_curves.pdf")
     plt.close(fig)
@@ -111,6 +112,10 @@ def main() -> None:
 
     cfg = load_yaml(args.config)
     out_dir = ensure_dir(str(cfg["output_dir"]))
+    # Remove legacy artifact from earlier human-alignment pipeline runs.
+    legacy = out_dir / "surprisal_vs_human.pdf"
+    if legacy.exists():
+        legacy.unlink()
     _plot_correlations(str(cfg["correlations_path"]), out_dir)
     _plot_probe_selectivity(str(cfg["probe_summary_path"]), out_dir)
     _plot_surprisal_vs_shift(str(cfg["metrics_path"]), str(cfg["surprisal_path"]), out_dir)
