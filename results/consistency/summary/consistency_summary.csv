@@ -1,4 +1,8 @@
 model,phenomenon,condition,n,accuracy,yes_rate,mean_margin_yes_minus_no,median_margin_yes_minus_no
+google/gemma-3-4b-it,negation,counterfactual,1500,0.814,0.186,-6.218666666666667,-9.625
+google/gemma-3-4b-it,negation,identity_control,1500,1.0,1.0,24.70075,24.875
+google/gemma-3-4b-it,role_reversal,counterfactual,1500,0.9686666666666667,0.03133333333333333,-10.09925,-10.875
+google/gemma-3-4b-it,role_reversal,identity_control,1500,0.9993333333333333,0.9993333333333333,24.377083333333335,25.25
 gpt2,negation,counterfactual,1500,0.938,0.062,-0.44680969524383546,-0.4451446533203125
 gpt2,negation,identity_control,1500,0.21866666666666668,0.21866666666666668,-0.2346239554087321,-0.23339080810546875
 gpt2,role_reversal,counterfactual,1500,0.976,0.024,-0.5579045877456665,-0.5543136596679688

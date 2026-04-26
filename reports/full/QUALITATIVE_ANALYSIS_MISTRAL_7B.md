@@ -2,7 +2,7 @@
 ## Purpose
 This addendum responds to the need for deeper qualitative interpretation of the CSS results. It connects the aggregate statistics to actual counterfactual sentence pairs and explains why role reversal and negation behave differently under the same metric pipeline.
 ## How cases were selected
-All cases below are selected reproducibly from the current full result tables. For each pair, metric values are averaged across the three primary models and all 13 layers. Pairs are then ranked within each phenomenon by mean Frobenius shift and by absolute GPT-2 average-surprisal delta. Four diagnostic buckets are reported per phenomenon: high/high, high/low, low/high, and low/low.
+All cases below are selected reproducibly from the current full result tables. For each pair, metric values are averaged across the model `mistralai/Mistral-7B-Instruct-v0.3` and 33 layers indexed `0..32`. Pairs are then ranked within each phenomenon by mean Frobenius shift and by absolute GPT-2 average-surprisal delta. Four diagnostic buckets are reported per phenomenon: high/high, high/low, low/high, and low/low.
 ## Surface-form diagnostics
 | Phenomenon | Pairs | Mean lexical Jaccard | Median lexical Jaccard | Mean abs length delta | Mean edit distance | Mean Frobenius shift | Mean abs avg surprisal delta |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -77,7 +77,7 @@ All cases below are selected reproducibly from the current full result tables. F
 - Interpretation: Both diagnostics are small. These cases help define the lower-sensitivity baseline and show that the pipeline is not mechanically assigning large shifts to every edit.
 
 ## Interpretation for presentation
-When presenting the results, say that Slide 14 is pooled mean magnitude across models, layers, and pairs, while the later correlation slides ask whether pair-level shifts are rank-aligned with surprisal. Negation can therefore have larger average shift while role reversal shows a cleaner shift-surprisal relationship. The qualitative examples make this distinction concrete.
+When presenting this model-specific addendum, separate magnitude from correlation. Magnitude summarizes how far this model's hidden states move on average, while correlation asks whether pair-level shifts rank-align with surprisal deltas. The qualitative examples make this distinction concrete.
 
 ## Scope boundary
 This remains a dataset-only qualitative analysis. It explains model-output artifacts and representation-shift behavior using sentence examples and surface controls. It does not introduce human-alignment claims.

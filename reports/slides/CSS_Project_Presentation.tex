@@ -96,7 +96,7 @@ Do modern decoder outputs preserve meaning-consistency under the same counterfac
 \begin{aligned}
 \text{Sentence Pair}
 &\rightarrow
-\text{Hidden States (layers 0--12)}
+\text{Hidden States (all layers)}
 \rightarrow
 \text{Shift Metrics}
 \\
@@ -133,9 +133,10 @@ Do modern decoder outputs preserve meaning-consistency under the same counterfac
   \href{https://aclanthology.org/N19-1423/}{BERT-base},
   \href{https://arxiv.org/abs/1907.11692}{RoBERTa-base},
   \href{https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf}{GPT-2},
-  plus \href{https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3}{Mistral-7B-Instruct-v0.3} as a regular-paper decoder extension.
+  plus \href{https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3}{Mistral-7B-Instruct-v0.3}
+  and \href{https://huggingface.co/google/gemma-3-4b-it}{Gemma-3-4B-IT} as regular-paper decoder extensions.
   \item Hidden-state extraction:
-  baselines use embedding + layers \(1\ldots12\); Mistral uses embedding + decoder layers \(1\ldots32\).
+  baselines use embedding + layers \(1\ldots12\); Mistral uses embedding + decoder layers \(1\ldots32\); Gemma uses embedding + decoder layers \(1\ldots34\).
   \item Primary representation units:
   mean-pooled sentence vectors and token matrices.
   \item Secondary ablations:
@@ -417,7 +418,7 @@ Interpretation: surprisal can change strongly even when averaged geometry moves 
 RQ1 & Yes. Structural sensitivity is consistent for cosine/Frobenius/L2 across many model-layer cells. \\
 RQ2 & Yes. Frobenius adds measurable value beyond cosine in most cells (\(70/78\)). \\
 RQ3 & Partly. Probe selectivity is strong, but its coupling with metric-surprisal correlation strength is weak. \\
-RQ4 & Partly. Mistral preserves identity perfectly but rejects only some counterfactual edits. \\
+RQ4 & Partly. Modern decoders preserve identity, but differ in counterfactual rejection strength. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -435,6 +436,8 @@ GPT-2 & identity control & 0.039 & 0.219 \\
 GPT-2 & counterfactual rejection & 0.976 & 0.938 \\
 Mistral-7B-Instruct & identity control & 1.000 & 1.000 \\
 Mistral-7B-Instruct & counterfactual rejection & 0.734 & 0.652 \\
+Gemma-3-4B-IT & identity control & 0.999 & 1.000 \\
+Gemma-3-4B-IT & counterfactual rejection & 0.969 & 0.814 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -444,32 +447,34 @@ Mistral-7B-Instruct & counterfactual rejection & 0.734 & 0.652 \\
   \item Identity control asks whether \(s\) and \(s\) preserve the same meaning; expected answer is ``yes''.
   \item Counterfactual condition asks whether \(s\) and \(s_{cf}\) preserve the same meaning; expected answer is ``no''.
   \item GPT-2 has a strong ``no'' bias, so its high counterfactual accuracy is not reliable.
-  \item Mistral validates the prompt with perfect identity accuracy, but still fails on many minimal edits.
+  \item Mistral validates the prompt but misses many edits; Gemma is stronger, especially on role reversal.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Regular-Paper Extension: Mistral Representation Results}
+\begin{frame}{Regular-Paper Extension: Modern Decoder Representation Results}
 \small
 \begin{table}
 \centering
-\begin{tabular}{lcccc}
+\begin{tabular}{llcccc}
 \toprule
-\textbf{Phenomenon} & \(\Delta_{\cos}\) & \(\Delta_{\text{frob}}\) & \(\Delta_{2}\) & \(\Delta_{\text{token}}\) \\
+\textbf{Model} & \textbf{Phenomenon} & \(\Delta_{\cos}\) & \(\Delta_{\text{frob}}\) & \(\Delta_{2}\) & \(\Delta_{\text{token}}\) \\
 \midrule
-Negation & 0.0943 & 0.1255 & 5.7434 & 0.0722 \\
-Role reversal & 0.0399 & 0.0675 & 3.4933 & 0.1124 \\
+Mistral & Negation & 0.0943 & 0.1255 & 5.7434 & 0.0722 \\
+Mistral & Role & 0.0399 & 0.0675 & 3.4933 & 0.1124 \\
+Gemma & Negation & 0.0058 & 0.0071 & 1555.0256 & 0.0024 \\
+Gemma & Role & 0.0014 & 0.0021 & 894.1732 & 0.0039 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \vspace{0.35em}
 \begin{itemize}
-  \item Mistral metrics cover 3000 pairs \(\times\) 33 layers \(=99000\) rows.
-  \item Frobenius warnings: 0.
+  \item Mistral covers 3000 pairs \(\times\) 33 layers \(=99000\) rows; Gemma covers 3000 pairs \(\times\) 35 layers \(=105000\) rows.
+  \item Frobenius warnings: 0 for both models.
   \item Strongest Frobenius--surprisal alignment:
-  negation layer 0, \(\rho=0.1750\);
-  role reversal layer 6, \(\rho=0.3244\).
-  \item Frobenius improves adjusted \(R^2\) beyond cosine in \(59/66\) Mistral cells.
+  Mistral role layer 6, \(\rho=0.3244\);
+  Gemma role layer 6, \(\rho=0.3190\).
+  \item Frobenius improves adjusted \(R^2\) beyond cosine in \(59/66\) Mistral cells and \(48/70\) Gemma cells.
 \end{itemize}
 \end{frame}
 
@@ -517,7 +522,7 @@ Direct claims about human cognitive processing, since this run does not include 
 \begin{itemize}
   \item End-to-end CSS pipeline is complete for role-reversal and negation counterfactuals.
   \item All three model families and all primary metrics are executed across all layers.
-  \item Regular-paper extension adds Mistral-7B output consistency and hidden-state CSS results.
+  \item Regular-paper extension adds Mistral-7B and Gemma-3-4B output consistency plus hidden-state CSS results.
   \item Frobenius-based structural shift adds measurable complementary signal in this setup.
 \end{itemize}
 \vspace{0.5em}
@@ -532,6 +537,7 @@ Direct claims about human cognitive processing, since this run does not include 
   \item \href{https://arxiv.org/abs/1907.11692}{Liu et al. (2019), RoBERTa}.
   \item \href{https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf}{Radford et al. (2019), GPT-2}.
   \item \href{https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3}{Mistral-7B-Instruct-v0.3 model card}.
+  \item \href{https://huggingface.co/google/gemma-3-4b-it}{Gemma-3-4B-IT model card}.
   \item \href{https://aclanthology.org/2020.tacl-1.25/}{Warstadt et al. (2020), BLiMP}.
   \item \href{https://aclanthology.org/D19-1275/}{Hewitt and Liang (2019), probe controls}.
   \item \href{https://link.springer.com/article/10.1007/s10988-008-9031-0}{Levy (2008), surprisal theory}.

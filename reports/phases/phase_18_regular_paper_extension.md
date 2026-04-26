@@ -1,6 +1,6 @@
 # Phase 18 Report: Regular-Paper Extension
 
-Status: complete for Mistral-7B extension
+Status: complete for Mistral-7B and Gemma-3-4B extensions
 
 Purpose:
 - Strengthen the work from a short/workshop-style CSS study toward a regular-paper submission.
@@ -14,7 +14,7 @@ Implementation changes:
 - Added configs for Mistral-7B-Instruct-v0.3, Qwen3-8B, Qwen3-4B fallback, Gemma-3-4B-IT, and Llama-3.1-8B.
 
 Access/compute notes:
-- `google/gemma-3-4b-it` is gated for the available Hugging Face token and cannot be run until access is approved.
+- `google/gemma-3-4b-it` is now accessible and completed successfully.
 - `meta-llama/Llama-3.1-8B` is also gated for the available Hugging Face token.
 - `Qwen/Qwen3-8B` is public but downloads about 16.4GB in fp16, which is too close to the 16GB GPU limit for reliable non-offloaded runs.
 - `mistralai/Mistral-7B-Instruct-v0.3` is accessible and completed successfully.
@@ -31,9 +31,17 @@ Completed results:
 - Mistral metric computation wrote `99000` rows and `0` Frobenius warnings.
 - Mistral dataset-only stats wrote `results/stats/modern_mistral_7b/`.
 - Mistral qualitative cases wrote `reports/full/QUALITATIVE_ANALYSIS_MISTRAL_7B.md`.
+- Gemma output-level consistency completed on all 3000 pairs:
+  - identity controls: `0.9993` accuracy for role reversal and `1.0000` for negation
+  - counterfactual role reversal: `0.9687` accuracy
+  - counterfactual negation: `0.8140` accuracy
+- Gemma hidden-state extraction completed for role and negation using `bfloat16` inference and float32 word-matrix caching.
+- Gemma metric computation wrote `105000` rows and `0` Frobenius warnings.
+- Gemma dataset-only stats wrote `results/stats/modern_gemma3_4b/`.
+- Gemma qualitative cases wrote `reports/full/QUALITATIVE_ANALYSIS_GEMMA3_4B.md`.
 
 Definition of done for this phase:
-- Complete output-level consistency for at least one modern decoder: done with Mistral-7B-Instruct-v0.3.
-- Run hidden-state CSS metrics for at least one modern decoder if compute permits: done with Mistral-7B-Instruct-v0.3.
-- Regenerate consistency summaries and update the paper/slides/docs with modern-model results: reports updated; slides/paper can now be revised from the generated tables.
-- Log any gated-model or OOM failures explicitly rather than silently dropping models: Gemma gating and Qwen3-8B memory boundary documented.
+- Complete output-level consistency for at least one modern decoder: done with Mistral-7B-Instruct-v0.3 and Gemma-3-4B-IT.
+- Run hidden-state CSS metrics for at least one modern decoder if compute permits: done with Mistral-7B-Instruct-v0.3 and Gemma-3-4B-IT.
+- Regenerate consistency summaries and update the paper/slides/docs with modern-model results: done for Mistral and Gemma.
+- Log any gated-model or OOM failures explicitly rather than silently dropping models: Llama gating and Qwen3-8B memory boundary documented.

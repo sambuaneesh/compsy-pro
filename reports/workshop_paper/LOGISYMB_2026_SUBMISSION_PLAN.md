@@ -109,13 +109,13 @@ Strongest current contribution:
 As a critical reviewer, I would raise these concerns:
 
 1. **Workshop fit is now substantially improved.**
-   The project is still centered on representational diagnostics, but it now includes an output-level counterfactual consistency experiment with a modern instruction model.
+   The project is still centered on representational diagnostics, but it now includes output-level counterfactual consistency experiments with modern instruction models.
 
 2. **Model suite now has a modern decoder extension.**
-   BERT, RoBERTa, and GPT-2 remain the controlled scientific baselines; `mistralai/Mistral-7B-Instruct-v0.3` is now included for regular-paper positioning.
+   BERT, RoBERTa, and GPT-2 remain the controlled scientific baselines; `mistralai/Mistral-7B-Instruct-v0.3` and `google/gemma-3-4b-it` are now included for regular-paper positioning.
 
 3. **Direct output-level consistency is now available.**
-   Mistral reaches perfect identity-control accuracy but only moderate counterfactual rejection, which gives the paper a behavioral failure mode linked to CSS diagnostics.
+   Mistral reaches perfect identity-control accuracy but only moderate counterfactual rejection, while Gemma is stronger but still imperfect on negation. This gives the paper a behavioral failure mode linked to CSS diagnostics and a cross-decoder comparison.
 
 4. **Dataset artifacts are real.**
    The qualitative audit found generated-data issues such as article mismatches, lexical substitutions, and implausible continuations. We can manage this with claim boundaries, but reviewers may still question dataset quality.
@@ -144,7 +144,7 @@ For a **Regular paper (4-10 pages)**:
 
 ### Priority 1: Add one modern decoder-only LLM
 
-Status: complete with `mistralai/Mistral-7B-Instruct-v0.3`.
+Status: complete with `mistralai/Mistral-7B-Instruct-v0.3` and `google/gemma-3-4b-it`.
 
 Rationale:
 The workshop is about LLMs. GPT-2 is useful for surprisal but weak as a 2026 LLM representative.
@@ -160,20 +160,26 @@ Practical note:
 - 7B/8B models will likely require GPU memory planning, batching, `bfloat16`/`float16`, and possibly quantization.
 - If compute is constrained, use a **500-pair qualitative/diagnostic subset** first, not all 3000 pairs.
 
-Best cost-quality choice:
-- Add **one** modern model, not many.
-- Prefer `Qwen/Qwen3-8B` or `Mistral-7B-Instruct-v0.3` for a regular paper.
-- Prefer `google/gemma-3-4b-it` if hardware is limited.
+Completed choice:
+- Mistral provides the stronger 7B instruction-model anchor.
+- Gemma provides a lighter modern decoder and confirms that the extension is not Mistral-specific.
+- Do not add more models unless writing time allows a clean comparative table.
 
 ### Priority 2: Add output-level logical consistency probes
 
-Status: complete for GPT-2 baseline and Mistral-7B-Instruct-v0.3.
+Status: complete for GPT-2 baseline, Mistral-7B-Instruct-v0.3, and Gemma-3-4B-IT.
 
 Observed Mistral results:
 - identity controls: `1.0000` accuracy for both role reversal and negation
 - counterfactual role reversal: `0.7340` accuracy
 - counterfactual negation: `0.6520` accuracy
 - interpretation: the model recognizes identical sentence preservation but fails on a meaningful fraction of controlled structural counterfactuals
+
+Observed Gemma results:
+- identity controls: `0.9993` role reversal, `1.0000` negation
+- counterfactual role reversal: `0.9687` accuracy
+- counterfactual negation: `0.8140` accuracy
+- interpretation: Gemma is substantially stronger than Mistral on the forced-choice diagnostic, but negation is still not solved.
 
 Rationale:
 This directly targets the workshop focus.
@@ -270,17 +276,17 @@ Regular paper section plan:
 
 Current state:
 - **Go for Tiny/Short paper.**
-- **Go for Regular paper**, provided the final draft foregrounds Mistral output consistency, Mistral hidden-state CSS, dataset quality controls, and conservative claim boundaries.
+- **Go for Regular paper**, provided the final draft foregrounds modern-decoder output consistency, Mistral/Gemma hidden-state CSS, dataset quality controls, and conservative claim boundaries.
 
 My recommendation:
-Submit a regular paper if there is enough writing time. The empirical package now has baseline representations, a modern decoder, output-level consistency, qualitative analysis, salience support, and dataset-only robustness framing.
+Submit a regular paper if there is enough writing time. The empirical package now has baseline representations, two modern decoders, output-level consistency, qualitative analysis, salience support, and dataset-only robustness framing.
 
 ## Immediate Draft Checklist
 
 1. Draft as a regular paper.
 2. Prepare anonymous IJCAI LaTeX template.
-3. Add Mistral output consistency as a dedicated experiment section.
-4. Add Mistral hidden-state CSS as a modern-decoder representation section.
+3. Add modern-decoder output consistency as a dedicated experiment section.
+4. Add Mistral and Gemma hidden-state CSS as a modern-decoder representation section.
 5. Include qualitative analysis as a compact table, not a long appendix.
 6. Keep title focused on logical/structural consistency, not human alignment.
 7. Mention dataset artifacts and gated-model limitations in limitations.

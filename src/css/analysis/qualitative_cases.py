@@ -43,6 +43,8 @@ def _pair_summary(metrics_path: str, surprisal_path: str, pairs_path: str) -> pd
     metrics = pd.read_csv(metrics_path)
     surprisal = pd.read_csv(surprisal_path)
     pairs = _load_pair_frame(pairs_path)
+    metric_models = sorted(str(model) for model in metrics["model"].dropna().unique())
+    metric_layers = sorted(int(layer) for layer in metrics["layer"].dropna().unique())
 
     metric_summary = (
         metrics.groupby(["pair_id", "phenomenon"], as_index=False)[METRICS]
@@ -75,6 +77,10 @@ def _pair_summary(metrics_path: str, surprisal_path: str, pairs_path: str) -> pd
     summary["surprisal_percentile_in_phenomenon"] = summary.groupby("phenomenon")[
         "abs_delta_avg_surprisal"
     ].rank(pct=True)
+    summary.attrs["metric_models"] = metric_models
+    summary.attrs["metric_layer_count"] = len(metric_layers)
+    summary.attrs["metric_layer_min"] = min(metric_layers) if metric_layers else None
+    summary.attrs["metric_layer_max"] = max(metric_layers) if metric_layers else None
     return summary
 
 
@@ -225,9 +231,24 @@ def _write_report(
     )
 
     lines.append("## How cases were selected\n")
+    metric_models = summary.attrs.get("metric_models", [])
+    layer_count = summary.attrs.get("metric_layer_count")
+    layer_min = summary.attrs.get("metric_layer_min")
+    layer_max = summary.attrs.get("metric_layer_max")
+    if len(metric_models) == 1:
+        model_scope = f"the model `{metric_models[0]}`"
+    else:
+        model_scope = f"{len(metric_models)} models: " + ", ".join(
+            f"`{model}`" for model in metric_models
+        )
+    layer_scope = (
+        f"{layer_count} layers indexed `{layer_min}..{layer_max}`"
+        if layer_count is not None and layer_min is not None and layer_max is not None
+        else "the available hidden-state layers"
+    )
     lines.append(
         "All cases below are selected reproducibly from the current full result tables. "
-        "For each pair, metric values are averaged across the three primary models and all 13 layers. "
+        f"For each pair, metric values are averaged across {model_scope} and {layer_scope}. "
         "Pairs are then ranked within each phenomenon by mean Frobenius shift and by absolute GPT-2 "
         "average-surprisal delta. Four diagnostic buckets are reported per phenomenon: high/high, "
         "high/low, low/high, and low/low.\n"
@@ -298,12 +319,21 @@ def _write_report(
             )
 
     lines.append("\n## Interpretation for presentation\n")
-    lines.append(
-        "When presenting the results, say that Slide 14 is pooled mean magnitude across models, layers, "
-        "and pairs, while the later correlation slides ask whether pair-level shifts are rank-aligned "
-        "with surprisal. Negation can therefore have larger average shift while role reversal shows a "
-        "cleaner shift-surprisal relationship. The qualitative examples make this distinction concrete.\n"
-    )
+    if len(metric_models) > 1:
+        lines.append(
+            "When presenting the baseline aggregate results, say that the pooled mean-magnitude slide "
+            "averages across models, layers, and pairs, while the later correlation slides ask whether "
+            "pair-level shifts are rank-aligned with surprisal. Negation can therefore have larger "
+            "average shift while role reversal shows a cleaner shift-surprisal relationship. The "
+            "qualitative examples make this distinction concrete.\n"
+        )
+    else:
+        lines.append(
+            "When presenting this model-specific addendum, separate magnitude from correlation. "
+            "Magnitude summarizes how far this model's hidden states move on average, while correlation "
+            "asks whether pair-level shifts rank-align with surprisal deltas. The qualitative examples "
+            "make this distinction concrete.\n"
+        )
 
     lines.append("\n## Scope boundary\n")
     lines.append(

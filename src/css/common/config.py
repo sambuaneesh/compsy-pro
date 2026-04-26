@@ -6,7 +6,7 @@ from typing import Any
 import yaml
 from dotenv import load_dotenv
 
-load_dotenv(override=False)
+load_dotenv(dotenv_path=Path.cwd() / ".env", override=False)
 
 
 def load_yaml(path: str | Path) -> dict[str, Any]:

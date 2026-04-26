@@ -101,18 +101,22 @@ Run output-level counterfactual consistency:
 bash scripts/run_counterfactual_consistency.sh
 ```
 
-Run the completed modern-decoder representation extension:
+Run the completed modern-decoder representation extensions:
 
 ```bash
 bash scripts/run_modern_mistral_7b.sh
+bash scripts/run_modern_gemma3_4b.sh
 ```
 
 Key extension outputs:
 
 - `results/consistency/summary/consistency_report.md`
 - `results/metrics/modern_mistral_7b_metrics.csv`
+- `results/metrics/modern_gemma3_4b_metrics.csv`
 - `results/stats/modern_mistral_7b/hypothesis_tests.md`
+- `results/stats/modern_gemma3_4b/hypothesis_tests.md`
 - `reports/full/QUALITATIVE_ANALYSIS_MISTRAL_7B.md`
+- `reports/full/QUALITATIVE_ANALYSIS_GEMMA3_4B.md`
 
 Future-scope note (including attachment/PP re-entry and human-eval conditions):
 

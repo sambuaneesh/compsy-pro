@@ -48,13 +48,15 @@ Representative qualitative cases:
 - High shift / low surprisal negation: `A hammer is an instrument.` -> `A hammer is not a dessert.` This shows hidden-state geometry can move strongly without a large average surprisal delta.
 - Low shift / high surprisal role reversal: `The cashier counted which bills the robber had given.` -> `The cashier counted which robber the bills had given.` This shows surprisal can change strongly even when averaged geometry moves less.
 
-## Regular-Paper Extension: Modern Decoder and Output Consistency
-To strengthen the project for a regular paper, we added `mistralai/Mistral-7B-Instruct-v0.3` as a modern instruction-tuned decoder model and evaluated both output-level counterfactual consistency and hidden-state CSS metrics.
+## Regular-Paper Extension: Modern Decoders and Output Consistency
+To strengthen the project for a regular paper, we added modern instruction-tuned decoder models and evaluated both output-level counterfactual consistency and hidden-state CSS metrics. Completed modern extensions are `mistralai/Mistral-7B-Instruct-v0.3` and `google/gemma-3-4b-it`.
 
 Output-level consistency:
 - Identical sentence controls are valid for Mistral: identity accuracy is `1.0000` for both role reversal and negation.
 - Counterfactual rejection is moderate, not saturated: role reversal accuracy is `0.7340`; negation accuracy is `0.6520`.
-- This supports a useful regular-paper claim: even a modern instruction model can recognize exact identity but still fails on a substantial fraction of minimal structural counterfactuals.
+- Gemma also validates the prompt: identity accuracy is `0.9993` for role reversal and `1.0000` for negation.
+- Gemma counterfactual rejection is stronger than Mistral: role reversal accuracy is `0.9687`; negation accuracy is `0.8140`.
+- This supports a useful regular-paper claim: modern instruction models can recognize exact identity but still differ substantially in sensitivity to minimal structural counterfactuals.
 - GPT-2 should remain a biased baseline for this experiment because its identity-control accuracy is poor (`0.0393` role reversal, `0.2187` negation).
 
 Mistral hidden-state CSS results:
@@ -66,8 +68,17 @@ Mistral hidden-state CSS results:
   - role reversal: layer `6`, Spearman rho `0.3244`, FDR q `1.15e-35`
 - Frobenius adds value beyond cosine in `59/66` Mistral layer/phenomenon cells.
 
+Gemma hidden-state CSS results:
+- Gemma metrics were computed for all 3000 pairs across 35 layers, producing `105000` layer-level metric rows with `0` Frobenius warnings.
+- Mean shifts are larger for negation under pooled metrics: `delta_cos=0.0058`, `delta_frob=0.0071`, `delta_l2=1555.0256`.
+- Token-aligned shift is larger for role reversal: `delta_token_aligned=0.0039` for role reversal versus `0.0024` for negation.
+- Strongest Gemma Frobenius-surprisal alignment:
+  - negation: layer `0`, Spearman rho `0.0851`, FDR q `0.0015`
+  - role reversal: layer `6`, Spearman rho `0.3190`, FDR q `2.25e-34`
+- Frobenius adds value beyond cosine in `48/70` Gemma layer/phenomenon cells.
+- Gemma requires `bfloat16` inference for stable yes/no scoring and float32 word-matrix caching for hidden-state CSS because intermediate activations exceed float16 range.
+
 Access and compute boundary:
-- `google/gemma-3-4b-it` is gated for the available Hugging Face token.
 - `meta-llama/Llama-3.1-8B` is gated for the available Hugging Face token.
 - `Qwen/Qwen3-8B` is public but near the 16GB GPU memory limit in fp16 and requires offload; it remains configured but was not the completed modern-model result.
 - `Qwen/Qwen3-4B` remains configured as a practical public fallback.

@@ -2,7 +2,7 @@
 
 ## Abstract
 
-We present Counterfactual Structural Sensitivity (CSS), a controlled protocol for testing whether layer-wise hidden-state shifts under minimal structural edits are systematic and model-consistent under a strict dataset-only setup. CSS targets role reversal and negation edits with paired sentences and evaluates representation shifts using cosine, Frobenius-style matrix norms, L2, and token-aligned metrics across BERT, RoBERTa, GPT-2, and a modern Mistral-7B instruction decoder extension. We combine these shifts with linear probes, GPT-2 surprisal features, qualitative audits, and an output-level counterfactual consistency experiment. The primary claim is structural sensitivity and metric behavior under controlled edits, not human-like processing.
+We present Counterfactual Structural Sensitivity (CSS), a controlled protocol for testing whether layer-wise hidden-state shifts under minimal structural edits are systematic and model-consistent under a strict dataset-only setup. CSS targets role reversal and negation edits with paired sentences and evaluates representation shifts using cosine, Frobenius-style matrix norms, L2, and token-aligned metrics across BERT, RoBERTa, GPT-2, and modern instruction-decoder extensions. We combine these shifts with linear probes, GPT-2 surprisal features, qualitative audits, and an output-level counterfactual consistency experiment. The primary claim is structural sensitivity and metric behavior under controlled edits, not human-like processing.
 
 ## 1. Introduction
 
@@ -39,11 +39,12 @@ Models:
 - `bert-base-uncased`
 - `roberta-base`
 - `gpt2`
-- regular-paper extension: `mistralai/Mistral-7B-Instruct-v0.3`
+- regular-paper extensions: `mistralai/Mistral-7B-Instruct-v0.3`, `google/gemma-3-4b-it`
 
 Layers:
 - baseline models: embedding plus transformer layers `1..12` (indexed `0..12` in code).
 - Mistral extension: embedding plus decoder layers, indexed `0..32`.
+- Gemma extension: embedding plus decoder layers, indexed `0..34`.
 
 Representations:
 - mean-pooled sentence vectors (primary)
@@ -130,14 +131,15 @@ Partially. We added a forced-choice output-level diagnostic:
 - identical sentence control: expected `yes`
 - counterfactual role/negation pair: expected `no`
 
-Mistral-7B-Instruct-v0.3 results:
-- identity controls: `1.0000` accuracy for both role reversal and negation
-- counterfactual role reversal: `0.7340` accuracy
-- counterfactual negation: `0.6520` accuracy
+Modern decoder results:
+- Mistral identity controls: `1.0000` accuracy for both role reversal and negation
+- Mistral counterfactual rejection: `0.7340` for role reversal and `0.6520` for negation
+- Gemma identity controls: `0.9993` for role reversal and `1.0000` for negation
+- Gemma counterfactual rejection: `0.9687` for role reversal and `0.8140` for negation
 
 Interpretation:
-- The identity-control result verifies that the prompt is usable for the instruction model.
-- The counterfactual results are not ceiling-level, showing that a modern decoder still fails on many minimal structural edits.
+- The identity-control results verify that the prompt is usable for instruction models.
+- Mistral is far from ceiling on counterfactual rejection, while Gemma is substantially stronger but still imperfect on negation.
 - GPT-2 is retained only as a biased baseline for this behavioral task because its identity controls are poor.
 
 ### RQ5: Does the modern decoder show CSS-style hidden-state sensitivity?
@@ -152,7 +154,17 @@ Strongest Mistral Frobenius-surprisal alignment:
 - negation: layer `0`, Spearman rho `0.1750`, FDR q `2.31e-11`
 - role reversal: layer `6`, Spearman rho `0.3244`, FDR q `1.15e-35`
 
-Frobenius complementarity remains visible in the modern decoder: adding Frobenius beyond cosine improves adjusted `R^2` in `59/66` Mistral cells.
+Gemma hidden-state metrics were also computed for all 3000 pairs across 35 layers, producing `105000` layer-level rows and `0` Frobenius warnings.
+
+Gemma mean shifts:
+- negation: `delta_cos=0.0058`, `delta_frob=0.0071`, `delta_l2=1555.0256`, `delta_token_aligned=0.0024`
+- role reversal: `delta_cos=0.0014`, `delta_frob=0.0021`, `delta_l2=894.1732`, `delta_token_aligned=0.0039`
+
+Strongest Gemma Frobenius-surprisal alignment:
+- negation: layer `0`, Spearman rho `0.0851`, FDR q `0.0015`
+- role reversal: layer `6`, Spearman rho `0.3190`, FDR q `2.25e-34`
+
+Frobenius complementarity remains visible in the modern decoders: adding Frobenius beyond cosine improves adjusted `R^2` in `59/66` Mistral cells and `48/70` Gemma cells.
 
 ## 9. Qualitative Analysis
 
@@ -189,8 +201,8 @@ Evaluation:
 - Claims are restricted to dataset-only structural sensitivity diagnostics.
 - Findings should not be interpreted as evidence of human-like language processing.
 - The qualitative audit shows that generated source data contains occasional fluency and plausibility artifacts, so item-level examples must be interpreted as diagnostic cases rather than naturalistic comprehension materials.
-- `google/gemma-3-4b-it` and `meta-llama/Llama-3.1-8B` require gated access; the available token did not permit access to these models.
-- `Qwen/Qwen3-8B` is configured but close to the 16GB GPU memory boundary in fp16; Mistral-7B-Instruct-v0.3 is the completed modern decoder result.
+- `meta-llama/Llama-3.1-8B` requires gated access; the available token did not permit access to this model.
+- `Qwen/Qwen3-8B` is configured but close to the 16GB GPU memory boundary in fp16; Mistral-7B-Instruct-v0.3 and Gemma-3-4B-IT are the completed modern decoder results.
 
 ## 12. Reproducibility
 

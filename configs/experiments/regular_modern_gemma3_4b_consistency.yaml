@@ -5,7 +5,7 @@ model: google/gemma-3-4b-it
 output_path: results/consistency/gemma3_4b_counterfactual_consistency.csv
 summary_path: results/consistency/gemma3_4b_counterfactual_consistency_summary.csv
 max_length: 256
-torch_dtype: float16
+torch_dtype: bfloat16
 trust_remote_code: false
 device_map: auto
 max_memory:

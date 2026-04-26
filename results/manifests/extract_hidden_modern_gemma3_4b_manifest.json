@@ -1,0 +1,20 @@
+{
+  "config_path": "configs/experiments/regular_modern_gemma3_4b.yaml",
+  "config_sha256": "f2be8df08accbdd1251aea89374c80392a75d1e9660d98f4998346c8fdae3995",
+  "experiment_name": "css_regular_modern_gemma3_4b_v1",
+  "runs": [
+    {
+      "cache_path": "cache/hidden/google__gemma-3-4b-it/role_1500/hidden_cache.pkl",
+      "dataset_path": "data/css_pairs/role_1500.jsonl",
+      "metadata_path": "cache/hidden/google__gemma-3-4b-it/role_1500/metadata.json",
+      "model_name": "google/gemma-3-4b-it"
+    },
+    {
+      "cache_path": "cache/hidden/google__gemma-3-4b-it/neg_1500/hidden_cache.pkl",
+      "dataset_path": "data/css_pairs/neg_1500.jsonl",
+      "metadata_path": "cache/hidden/google__gemma-3-4b-it/neg_1500/metadata.json",
+      "model_name": "google/gemma-3-4b-it"
+    }
+  ],
+  "seed": 13
+}
