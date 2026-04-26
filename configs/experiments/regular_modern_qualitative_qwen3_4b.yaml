@@ -1,0 +1,5 @@
+experiment_name: css_regular_modern_qwen3_4b_qualitative_v1
+metrics_path: results/metrics/modern_qwen3_4b_metrics.csv
+surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+output_dir: results/analysis/qualitative_qwen3_4b
+top_k: 20

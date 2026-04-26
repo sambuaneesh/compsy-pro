@@ -1,0 +1,5 @@
+model,phenomenon,condition,n,accuracy,yes_rate,mean_margin_yes_minus_no
+gpt2,negation,counterfactual,1500,0.938,0.062,-0.44680969524383546
+gpt2,negation,identity_control,1500,0.21866666666666668,0.21866666666666668,-0.2346239554087321
+gpt2,role_reversal,counterfactual,1500,0.976,0.024,-0.5579045877456665
+gpt2,role_reversal,identity_control,1500,0.03933333333333333,0.03933333333333333,-0.44266792583465575

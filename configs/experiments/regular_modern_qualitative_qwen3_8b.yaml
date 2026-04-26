@@ -1,0 +1,6 @@
+metrics_path: results/metrics/modern_qwen3_8b_metrics.csv
+surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+pairs_path: data/css_pairs/full_all_3000.jsonl
+output_dir: results/qualitative/modern_qwen3_8b
+report_path: reports/full/MODERN_QWEN3_8B_QUALITATIVE_ANALYSIS.md
+

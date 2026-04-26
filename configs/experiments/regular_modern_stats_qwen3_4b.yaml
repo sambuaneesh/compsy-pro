@@ -1,0 +1,8 @@
+experiment_name: css_regular_modern_qwen3_4b_stats_v1
+seed: 13
+metrics_path: results/metrics/modern_qwen3_4b_metrics.csv
+surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+probe_summary_path: results/probes/full/probe_summary.csv
+output_dir: results/stats/modern_qwen3_4b
+bootstrap_samples: 1000
+fdr_alpha: 0.05
