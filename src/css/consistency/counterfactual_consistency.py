@@ -77,6 +77,26 @@ def _make_prompt(sentence_a: str, sentence_b: str, phenomenon: str) -> str:
     )
 
 
+def _format_prompt(
+    *,
+    prompt: str,
+    tokenizer: PreTrainedTokenizerBase,
+    use_chat_template: bool,
+) -> str:
+    if not use_chat_template:
+        return prompt
+    chat_template = getattr(tokenizer, "chat_template", None)
+    if not chat_template:
+        return prompt
+    return str(
+        tokenizer.apply_chat_template(
+            [{"role": "user", "content": prompt}],
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+    )
+
+
 def _score_candidate(
     *,
     prompt: str,
@@ -220,6 +240,7 @@ def main() -> None:
     max_length = int(cfg.get("max_length", 256))
     output_path = Path(str(cfg["output_path"]))
     summary_path = Path(str(cfg["summary_path"]))
+    use_chat_template = bool(cfg.get("use_chat_template", False))
 
     tokenizer, model, device = _load_model(cfg)
     rows = _limit_rows(read_jsonl(dataset_path), cfg)
@@ -239,7 +260,11 @@ def main() -> None:
             },
         ]
         for ex in examples:
-            prompt = _make_prompt(str(row["s"]), ex["sentence_b"], str(row["phenomenon"]))
+            prompt = _format_prompt(
+                prompt=_make_prompt(str(row["s"]), ex["sentence_b"], str(row["phenomenon"])),
+                tokenizer=tokenizer,
+                use_chat_template=use_chat_template,
+            )
             pred = _predict_yes_no(
                 prompt=prompt,
                 tokenizer=tokenizer,

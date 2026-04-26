@@ -1,0 +1,7 @@
+experiment_name: css_regular_consistency_summary_v1
+consistency_paths:
+  - results/consistency/gpt2_counterfactual_consistency.csv
+  - results/consistency/mistral_7b_counterfactual_consistency.csv
+  - results/consistency/qwen3_4b_counterfactual_consistency.csv
+metrics_path: results/metrics/layer_metrics_full.csv
+output_dir: results/consistency/summary

@@ -1,0 +1,5 @@
+experiment_name: css_regular_modern_mistral_7b_qualitative_v1
+metrics_path: results/metrics/modern_mistral_7b_metrics.csv
+surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+output_dir: results/analysis/qualitative_mistral_7b
+top_k: 20

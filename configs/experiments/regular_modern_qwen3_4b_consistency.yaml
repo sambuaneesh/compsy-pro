@@ -12,3 +12,4 @@ max_memory:
   "0": 13GiB
   cpu: 96GiB
 low_cpu_mem_usage: true
+use_chat_template: true
