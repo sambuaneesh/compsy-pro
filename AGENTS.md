@@ -149,6 +149,19 @@ Responsibilities:
 Definition of done:
 - all figures/tables are script-generated from current result files
 
+### 9. Qualitative Analysis Agent
+
+Responsibilities:
+- `src/css/analysis/qualitative_cases.py`
+- generate representative high/low Frobenius and surprisal case studies
+- audit surface-form differences between role reversal and negation
+- update qualitative interpretation notes without introducing human-annotation claims
+
+Definition of done:
+- `results/qualitative/qualitative_cases.csv` exists
+- `reports/full/QUALITATIVE_ANALYSIS.md` explains aggregate patterns with actual sentence pairs
+- slides and presenter transcript mention the qualitative audit
+
 ## Coding standards
 
 - Python package root is `src/css/`.
@@ -211,6 +224,7 @@ bash scripts/run_full_metrics.sh
 bash scripts/run_probes.sh
 bash scripts/run_stats.sh
 bash scripts/run_salience_and_plots.sh
+bash scripts/run_qualitative_analysis.sh
 ```
 
 ## Primary vs exploratory

@@ -122,7 +122,23 @@ Interpretation:
 - Probes and metric-surprisal alignment provide complementary diagnostics.
 - Neither signal is a direct substitute for the other.
 
-## 9. Secondary Salience Experiment
+## 9. Qualitative Analysis
+
+To make the aggregate findings interpretable, we add a dataset-only qualitative audit over actual counterfactual pairs. For each pair, metric values are averaged across all three models and all 13 layers, then ranked within phenomenon by mean Frobenius shift and absolute GPT-2 average-surprisal delta. We inspect four buckets per phenomenon: high shift/high surprisal, high shift/low surprisal, low shift/high surprisal, and low shift/low surprisal.
+
+The qualitative audit explains the apparent tension between mean-shift and correlation plots. Negation has larger pooled mean shifts, but this does not imply stronger rank alignment with surprisal. Many negation examples in the source dataset combine a negation cue with a predicate or category foil, so they introduce both polarity and lexical/category changes. Role reversal examples often preserve much higher lexical overlap and near-zero length change, which can yield smaller average geometric displacement but cleaner item-level ordering against surprisal.
+
+Surface diagnostics support this reading:
+- Negation: mean lexical Jaccard `0.4853`, mean absolute length delta `1.0013`, mean Frobenius shift `0.0584`.
+- Role reversal: mean lexical Jaccard `0.7973`, mean absolute length delta `0.0467`, mean Frobenius shift `0.0197`.
+
+Representative dissociations:
+- High Frobenius / low surprisal negation: `A hammer is an instrument.` -> `A hammer is not a dessert.`
+- Low Frobenius / high surprisal role reversal: `The cashier counted which bills the robber had given.` -> `The cashier counted which robber the bills had given.`
+
+These examples show why CSS should be interpreted as a multi-diagnostic framework: representation geometry and surprisal are complementary, not interchangeable. The audit also surfaces generated-data artifacts such as article mismatches, lexical substitutions, and implausible continuations. This reinforces the conservative claim boundary: the current project supports dataset-level representational diagnostics, not human-comprehension claims.
+
+## 10. Secondary Salience Experiment
 
 Exploratory salience ranks edited spans using:
 - Frobenius cross-matrix contribution
@@ -135,13 +151,14 @@ Evaluation:
 - MRR
 - AUC (when label density permits)
 
-## 10. Limitations
+## 11. Limitations
 
 - This project does not include human annotation.
 - Claims are restricted to dataset-only structural sensitivity diagnostics.
 - Findings should not be interpreted as evidence of human-like language processing.
+- The qualitative audit shows that generated source data contains occasional fluency and plausibility artifacts, so item-level examples must be interpreted as diagnostic cases rather than naturalistic comprehension materials.
 
-## 11. Reproducibility
+## 12. Reproducibility
 
 All runs are config-driven and traceable by dataset hash, config hash, model ID, seed, and package versions. Incremental JSONL logs track all meaningful execution blocks.
 

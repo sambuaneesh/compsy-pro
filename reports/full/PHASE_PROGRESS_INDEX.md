@@ -15,6 +15,7 @@ Dataset migration note (2026-04-24):
 - Phase 14: `reports/phases/phase_14.md` (final audit)
 - Phase 15: `reports/phases/phase_15_dataset_source_migration.md` (role/negation source migration)
 - Phase 16: `reports/phases/phase_16_post_migration_full_rerun.md` (post-migration full recomputation)
+- Phase 17: `reports/phases/phase_17_qualitative_review_response.md` (qualitative review response)
 
 Dataset-only claim policy:
 - final claims use role + negation from the GitHub dataset only
@@ -25,5 +26,6 @@ Core full artifacts:
 - Surprisal: `results/surprisal/gpt2_surprisal_full.csv`
 - Probes: `results/probes/probe_results_full.csv`
 - Stats: `results/stats/full/`
+- Qualitative analysis: `results/qualitative/`
 - Salience: `results/salience/`
 - Figures: `results/figures/`

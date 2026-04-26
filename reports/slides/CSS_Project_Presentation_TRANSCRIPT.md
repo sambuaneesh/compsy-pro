@@ -386,7 +386,61 @@ Role reversal can still be semantically major while requiring subtler redistribu
 
 ---
 
-## Slide 15: Layer-Wise Correlation Curves
+## Slide 15: Qualitative Audit: Why the Patterns Differ
+
+### Core message
+The qualitative audit explains why the mean-shift slide and the correlation slides can point in different directions.
+
+### Concept explanation
+Slide 14 was a pooled magnitude summary: it asked “how large is the average representational movement?”  
+The next correlation slides ask a different question: “do pair-level shifts rank together with GPT-2 surprisal deltas?”
+
+Those are not the same statistic. A phenomenon can have large average movement but weak item-level ordering, or smaller average movement but cleaner rank alignment.
+
+### Table reading
+The table compares surface properties:
+- Negation lexical Jaccard is lower: 0.4853.
+- Role reversal lexical Jaccard is higher: 0.7973.
+- Negation average length delta is about one token.
+- Role reversal average length delta is almost zero.
+- Negation mean Frobenius shift is larger: 0.0584 vs 0.0197.
+
+### Interpretation
+Negation pairs often do more than insert `not`; many also change the predicate or category foil. So negation creates broad surface and semantic movement.  
+Role reversal preserves much more lexical content and sentence length, so it can have smaller mean magnitude while still creating a strong event-structure change.
+
+### Reviewer defense
+“This slide directly addresses the possible objection that Slide 14 and the layer-wise correlation plots contradict each other. They do not: they answer different statistical questions.”
+
+---
+
+## Slide 16: Qualitative Case Studies
+
+### Core message
+Actual sentence pairs show why representation geometry and surprisal are complementary diagnostics.
+
+### Figure/table reading
+This slide shows two dissociation examples:
+- High Frobenius / low surprisal negation.
+- Low Frobenius / high surprisal role reversal.
+
+### Example 1 interpretation
+“A hammer is an instrument” -> “A hammer is not a dessert” has high Frobenius shift but almost zero average surprisal delta.  
+This means hidden geometry moves strongly, likely because the semantic category relation changes, but the average GPT-2 predictive difficulty does not change much.
+
+### Example 2 interpretation
+“The cashier counted which bills the robber had given” -> “The cashier counted which robber the bills had given” has low average Frobenius shift but high surprisal delta.  
+This means GPT-2 finds the counterfactual probabilistically surprising, but the averaged representation geometry does not move as strongly.
+
+### Takeaway
+This is the qualitative reason for using multiple diagnostics. CSS should not collapse to only surprisal, only cosine, or only Frobenius.
+
+### Reviewer defense
+“These are not cherry-picked claims; they are selected from reproducible high/low quantile buckets generated from the full result tables.”
+
+---
+
+## Slide 17: Layer-Wise Correlation Curves
 
 ### Core message
 Correlation patterns are strongly phenomenon-dependent and layer-structured.
@@ -414,7 +468,7 @@ This suggests phenomenon-specific representational dynamics rather than one univ
 
 ---
 
-## Slide 16: Frobenius Heatmap Across Layers
+## Slide 18: Frobenius Heatmap Across Layers
 
 ### Core message
 Frobenius behavior is detailed by model/layer/phenomenon with significance overlay.
@@ -444,7 +498,7 @@ Frobenius is especially informative for role reversal and conditionally informat
 
 ---
 
-## Slide 17: Probe Selectivity Across Layers
+## Slide 19: Probe Selectivity Across Layers
 
 ### Core message
 Probe selectivity is positive and stable across models/layers/phenomena.
@@ -476,7 +530,7 @@ Selectivity is consistently positive and tightly clustered, supporting genuine r
 
 ---
 
-## Slide 18: Frobenius Shift vs Surprisal Delta
+## Slide 20: Frobenius Shift vs Surprisal Delta
 
 ### Core message
 Association between Frobenius shift and surprisal delta differs sharply by phenomenon.
@@ -514,7 +568,7 @@ This indicates heterogeneity: not all structural edit types map to surprisal in 
 
 ---
 
-## Slide 19: Incremental Value of Frobenius
+## Slide 21: Incremental Value of Frobenius
 
 ### Core message
 Adding Frobenius to cosine baseline improves explanatory performance in most cells.
@@ -539,7 +593,7 @@ Claim is complementarity, not replacement of cosine.
 
 ---
 
-## Slide 20: RQ1 Answer (Structural Sensitivity Consistency)
+## Slide 22: RQ1 Answer (Structural Sensitivity Consistency)
 
 ### Core message
 Cosine, Frobenius, and L2 show broad positive significant sensitivity; token-aligned is mixed.
@@ -567,7 +621,7 @@ Token-aligned metric is balanced positive/negative, indicating local perturbatio
 
 ---
 
-## Slide 21: RQ2 Answer (Frobenius Complementarity)
+## Slide 23: RQ2 Answer (Frobenius Complementarity)
 
 ### Core message
 Frobenius complementarity is widespread across model-phenomenon groups.
@@ -605,7 +659,7 @@ Frobenius adds value across most settings and is especially consistent in role r
 
 ---
 
-## Slide 22: RQ3 Answer (Probe vs Metric-Correlation Coupling)
+## Slide 24: RQ3 Answer (Probe vs Metric-Correlation Coupling)
 
 ### Core message
 Probe selectivity is strong, but coupling to metric-surprisal rho is weak.
@@ -632,7 +686,7 @@ These diagnostics capture related but distinct aspects of model behavior.
 
 ---
 
-## Slide 23: Research Questions Final Answers
+## Slide 25: Research Questions Final Answers
 
 ### Core message
 Concise conclusion table tied directly to RQ definitions.
@@ -647,7 +701,7 @@ RQ3: partial, probes are strong but coupling is weak, so diagnostics are complem
 
 ---
 
-## Slide 24: Key Quantitative Summary
+## Slide 26: Key Quantitative Summary
 
 ### Core message
 Single-slide numeric audit of project outcomes.
@@ -667,7 +721,7 @@ The pipeline is both statistically productive and numerically stable.
 
 ---
 
-## Slide 25: Claim Boundary and Validity
+## Slide 27: Claim Boundary and Validity
 
 ### Core message
 Strong claims inside scope, explicit non-claims outside scope.
@@ -690,7 +744,7 @@ Scientific strength is not maximum ambition; it is accurate claim-scope matching
 
 ---
 
-## Slide 26: Remaining Work
+## Slide 28: Remaining Work
 
 ### Core message
 Core experiments are done; remaining work is synthesis and packaging.
@@ -703,7 +757,7 @@ No fundamental pipeline gap is pending for this scope.
 
 ---
 
-## Slide 27: Conclusion
+## Slide 29: Conclusion
 
 ### Core message
 Project completion for dataset-only CSS scope is achieved with consistent evidence.
@@ -716,7 +770,7 @@ Project completion for dataset-only CSS scope is achieved with consistent eviden
 
 ---
 
-## Slide 28: References
+## Slide 30: References
 
 ### Core message
 Methodological components are grounded in standard literature.
@@ -782,4 +836,3 @@ Say:
 ## Fast 30-Second Summary (backup close)
 
 “We built a reproducible CSS pipeline to test representational sensitivity under minimal counterfactual edits. Across 3000 pairs, 3 models, 13 layers, and 4 metrics, we find robust structural sensitivity for cosine/Frobenius/L2, broad incremental value of Frobenius over cosine (70/78 cells), strong and stable probe selectivity (~0.51), and weak coupling between probe selectivity and metric-surprisal correlation. Claims are intentionally bounded to dataset-level representational diagnostics.”
-

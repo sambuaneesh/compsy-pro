@@ -30,3 +30,20 @@ Probe selectivity is consistently positive, while its layer-wise coupling with m
 - The results support robust dataset-level structural sensitivity claims for role reversal and negation.
 - Frobenius shift is empirically useful as a complementary metric.
 - Claims remain at representation/diagnostic level and do not imply human-cognition equivalence.
+
+## Qualitative Interpretation Addendum
+The review request for deeper qualitative analysis is addressed in `reports/full/QUALITATIVE_ANALYSIS.md`.
+
+Key qualitative conclusions:
+- Slide-level mean shift and layer-wise correlation are not contradictory. Mean shift measures average movement magnitude; correlation measures whether item-level movement ranks track GPT-2 surprisal deltas.
+- Negation has larger pooled mean shifts partly because the source pairs often include both a negation cue and a predicate/category contrast, not only a single inserted `not`.
+- Role reversal has much higher lexical overlap and near-zero length change, so its pooled shift magnitude can be smaller while its shift-surprisal ranking remains cleaner.
+- Generated-data artifacts exist in the source examples, including article mismatch, lexical substitutions, and implausible continuations. These artifacts strengthen the need for conservative dataset-only claim language.
+
+Surface-form audit:
+- Negation: mean lexical Jaccard `0.4853`, mean absolute length delta `1.0013`, mean Frobenius shift `0.0584`.
+- Role reversal: mean lexical Jaccard `0.7973`, mean absolute length delta `0.0467`, mean Frobenius shift `0.0197`.
+
+Representative qualitative cases:
+- High shift / low surprisal negation: `A hammer is an instrument.` -> `A hammer is not a dessert.` This shows hidden-state geometry can move strongly without a large average surprisal delta.
+- Low shift / high surprisal role reversal: `The cashier counted which bills the robber had given.` -> `The cashier counted which robber the bills had given.` This shows surprisal can change strongly even when averaged geometry moves less.
