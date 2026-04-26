@@ -1,6 +1,6 @@
 # Full Run Phase Progress Index
 
-Updated: `2026-04-24`
+Updated: `2026-04-26`
 
 Dataset migration note (2026-04-24):
 - Role + negation sources were switched to `extending_psycholinguistic_dataset`.
@@ -29,5 +29,6 @@ Core full artifacts:
 - Stats: `results/stats/full/`
 - Qualitative analysis: `results/qualitative/`
 - Output consistency: `results/consistency/`
+- Modern decoder extension: `results/metrics/modern_mistral_7b_metrics.csv`, `results/stats/modern_mistral_7b/`
 - Salience: `results/salience/`
 - Figures: `results/figures/`

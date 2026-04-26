@@ -1,0 +1,14 @@
+{
+  "config_path": "configs/experiments/regular_modern_mistral_7b.yaml",
+  "config_sha256": "8771b7f2db78d04f95b16077f143da0e0dcc3cb10429c8c4b500f057c9648748",
+  "experiment_name": "css_regular_modern_mistral_7b_v1",
+  "runs": [
+    {
+      "cache_path": "cache/hidden/mistralai__Mistral-7B-Instruct-v0.3/neg_1500/hidden_cache.pkl",
+      "dataset_path": "data/css_pairs/neg_1500.jsonl",
+      "metadata_path": "cache/hidden/mistralai__Mistral-7B-Instruct-v0.3/neg_1500/metadata.json",
+      "model_name": "mistralai/Mistral-7B-Instruct-v0.3"
+    }
+  ],
+  "seed": 13
+}

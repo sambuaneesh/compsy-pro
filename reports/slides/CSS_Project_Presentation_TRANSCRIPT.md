@@ -757,7 +757,28 @@ No fundamental pipeline gap is pending for this scope.
 
 ---
 
-## Slide 29: Conclusion
+## Regular-Paper Extension Slides: Output Consistency and Mistral CSS
+
+### Core message
+The project now has a modern decoder extension and a direct output-level consistency diagnostic.
+
+### Speaking script
+“For the regular-paper version, we added Mistral-7B-Instruct-v0.3. This matters because BERT, RoBERTa, and GPT-2 are scientifically useful baselines, but a 2026 logical-reasoning workshop will expect at least one modern decoder. We use Mistral in two ways: first as a behavioral forced-choice model, and second as a hidden-state CSS model.”
+
+“In the output consistency slide, the identity control is the sanity check. We give the model two identical sentences and expect ‘yes’. Mistral gets 100 percent identity accuracy for both phenomena, so the prompt format is working. GPT-2 fails identity controls because it has a strong ‘no’ bias in this forced-choice setup, so we do not overinterpret GPT-2’s high counterfactual rejection.”
+
+“For Mistral, counterfactual rejection is 73.4 percent for role reversal and 65.2 percent for negation. This is exactly the kind of result that is useful for the paper: the model is not randomly failing, but it is also not perfect. It recognizes exact identity while still missing a meaningful fraction of minimal logical or event-structural edits.”
+
+“In the Mistral representation slide, we show that the hidden-state CSS pipeline also runs on the modern decoder. We computed 99,000 rows: 3,000 pairs times 33 layers. Negation has larger pooled cosine, Frobenius, and L2 shifts, while role reversal has larger token-aligned shift. That means global sentence geometry moves more for negation, but token-local correspondences are more disrupted for role reversal.”
+
+“The strongest Frobenius-surprisal alignment appears at layer 0 for negation and layer 6 for role reversal. This matches the broader pattern: negation is strongly affected by lexical/polarity cues early, while role reversal needs a more structural representation of who did what to whom, which appears more clearly in middle layers.”
+
+### Reviewer defense
+“This extension addresses two likely reviewer objections: the original model suite was older, and the original results were only representational. Mistral adds a modern decoder and an output-level behavior measure, while the hidden-state Mistral results show that CSS is not limited to encoder-style baselines.”
+
+---
+
+## Slide 31: Conclusion
 
 ### Core message
 Project completion for dataset-only CSS scope is achieved with consistent evidence.
@@ -770,7 +791,7 @@ Project completion for dataset-only CSS scope is achieved with consistent eviden
 
 ---
 
-## Slide 30: References
+## Slide 32: References
 
 ### Core message
 Methodological components are grounded in standard literature.
@@ -817,7 +838,7 @@ Claim discipline keeps the project scientifically defensible in review.
 
 ### 7. How to answer “Why only base models?”
 Base models provide architecture diversity and reproducible compute budget with established literature baselines.  
-This is appropriate for protocol validation and diagnostic comparison.
+For the regular-paper version, we also add Mistral-7B-Instruct-v0.3, so the project is no longer limited to only older base models.
 
 ### 8. If asked whether Frobenius “wins” cosine
 Do not say “wins.” Say:
@@ -836,3 +857,7 @@ Say:
 ## Fast 30-Second Summary (backup close)
 
 “We built a reproducible CSS pipeline to test representational sensitivity under minimal counterfactual edits. Across 3000 pairs, 3 models, 13 layers, and 4 metrics, we find robust structural sensitivity for cosine/Frobenius/L2, broad incremental value of Frobenius over cosine (70/78 cells), strong and stable probe selectivity (~0.51), and weak coupling between probe selectivity and metric-surprisal correlation. Claims are intentionally bounded to dataset-level representational diagnostics.”
+
+## Fast 30-Second Summary With Regular-Paper Extension
+
+“We built CSS as a reproducible diagnostic for minimal role-reversal and negation edits. The baseline study covers 3000 pairs, BERT, RoBERTa, GPT-2, all layers, four shift metrics, probes, surprisal, qualitative analysis, and salience. For the regular-paper extension, we add Mistral-7B-Instruct-v0.3. Mistral gets perfect identity-control accuracy but only 73.4 percent role-reversal rejection and 65.2 percent negation rejection, showing real output-level counterfactual failures. We also compute Mistral hidden-state CSS across 99,000 layer-level rows, with Frobenius still adding complementary value beyond cosine in 59 of 66 cells.”

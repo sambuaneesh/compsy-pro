@@ -2,7 +2,7 @@
 
 ## Abstract
 
-We present Counterfactual Structural Sensitivity (CSS), a controlled protocol for testing whether layer-wise hidden-state shifts under minimal structural edits are systematic and model-consistent under a strict dataset-only setup. CSS targets role reversal and negation edits with paired sentences and evaluates representation shifts using cosine, Frobenius-style matrix norms, L2, and token-aligned metrics across BERT, RoBERTa, and GPT-2 layers. We combine these shifts with linear probes (including random-label selectivity controls) and GPT-2 surprisal features. The primary claim is structural sensitivity and metric behavior under controlled edits.
+We present Counterfactual Structural Sensitivity (CSS), a controlled protocol for testing whether layer-wise hidden-state shifts under minimal structural edits are systematic and model-consistent under a strict dataset-only setup. CSS targets role reversal and negation edits with paired sentences and evaluates representation shifts using cosine, Frobenius-style matrix norms, L2, and token-aligned metrics across BERT, RoBERTa, GPT-2, and a modern Mistral-7B instruction decoder extension. We combine these shifts with linear probes, GPT-2 surprisal features, qualitative audits, and an output-level counterfactual consistency experiment. The primary claim is structural sensitivity and metric behavior under controlled edits, not human-like processing.
 
 ## 1. Introduction
 
@@ -39,9 +39,11 @@ Models:
 - `bert-base-uncased`
 - `roberta-base`
 - `gpt2`
+- regular-paper extension: `mistralai/Mistral-7B-Instruct-v0.3`
 
 Layers:
-- embedding plus transformer layers `1..12` (indexed `0..12` in code).
+- baseline models: embedding plus transformer layers `1..12` (indexed `0..12` in code).
+- Mistral extension: embedding plus decoder layers, indexed `0..32`.
 
 Representations:
 - mean-pooled sentence vectors (primary)
@@ -122,6 +124,36 @@ Interpretation:
 - Probes and metric-surprisal alignment provide complementary diagnostics.
 - Neither signal is a direct substitute for the other.
 
+### RQ4: Do modern decoder outputs preserve consistency under the same counterfactual edits?
+
+Partially. We added a forced-choice output-level diagnostic:
+- identical sentence control: expected `yes`
+- counterfactual role/negation pair: expected `no`
+
+Mistral-7B-Instruct-v0.3 results:
+- identity controls: `1.0000` accuracy for both role reversal and negation
+- counterfactual role reversal: `0.7340` accuracy
+- counterfactual negation: `0.6520` accuracy
+
+Interpretation:
+- The identity-control result verifies that the prompt is usable for the instruction model.
+- The counterfactual results are not ceiling-level, showing that a modern decoder still fails on many minimal structural edits.
+- GPT-2 is retained only as a biased baseline for this behavioral task because its identity controls are poor.
+
+### RQ5: Does the modern decoder show CSS-style hidden-state sensitivity?
+
+Yes. Mistral hidden-state metrics were computed for all 3000 pairs across 33 layers, producing `99000` layer-level rows and `0` Frobenius warnings.
+
+Mistral mean shifts:
+- negation: `delta_cos=0.0943`, `delta_frob=0.1255`, `delta_l2=5.7434`, `delta_token_aligned=0.0722`
+- role reversal: `delta_cos=0.0399`, `delta_frob=0.0675`, `delta_l2=3.4933`, `delta_token_aligned=0.1124`
+
+Strongest Mistral Frobenius-surprisal alignment:
+- negation: layer `0`, Spearman rho `0.1750`, FDR q `2.31e-11`
+- role reversal: layer `6`, Spearman rho `0.3244`, FDR q `1.15e-35`
+
+Frobenius complementarity remains visible in the modern decoder: adding Frobenius beyond cosine improves adjusted `R^2` in `59/66` Mistral cells.
+
 ## 9. Qualitative Analysis
 
 To make the aggregate findings interpretable, we add a dataset-only qualitative audit over actual counterfactual pairs. For each pair, metric values are averaged across all three models and all 13 layers, then ranked within phenomenon by mean Frobenius shift and absolute GPT-2 average-surprisal delta. We inspect four buckets per phenomenon: high shift/high surprisal, high shift/low surprisal, low shift/high surprisal, and low shift/low surprisal.
@@ -157,6 +189,8 @@ Evaluation:
 - Claims are restricted to dataset-only structural sensitivity diagnostics.
 - Findings should not be interpreted as evidence of human-like language processing.
 - The qualitative audit shows that generated source data contains occasional fluency and plausibility artifacts, so item-level examples must be interpreted as diagnostic cases rather than naturalistic comprehension materials.
+- `google/gemma-3-4b-it` and `meta-llama/Llama-3.1-8B` require gated access; the available token did not permit Gemma access.
+- `Qwen/Qwen3-8B` is configured but close to the 16GB GPU memory boundary in fp16; Mistral-7B-Instruct-v0.3 is the completed modern decoder result.
 
 ## 12. Reproducibility
 

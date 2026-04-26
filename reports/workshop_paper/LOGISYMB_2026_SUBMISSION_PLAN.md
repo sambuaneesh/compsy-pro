@@ -108,14 +108,14 @@ Strongest current contribution:
 
 As a critical reviewer, I would raise these concerns:
 
-1. **Workshop fit is good but not perfect.**
-   The workshop is centered on logical question answering and logical consistency. Our project is representational probing, not output-level logical QA.
+1. **Workshop fit is now substantially improved.**
+   The project is still centered on representational diagnostics, but it now includes an output-level counterfactual consistency experiment with a modern instruction model.
 
-2. **Model suite is somewhat dated for a 2026 LLM workshop.**
-   BERT, RoBERTa, and GPT-2 are good scientific baselines, but reviewers may ask why no modern decoder-only LLM is included.
+2. **Model suite now has a modern decoder extension.**
+   BERT, RoBERTa, and GPT-2 remain the controlled scientific baselines; `mistralai/Mistral-7B-Instruct-v0.3` is now included for regular-paper positioning.
 
-3. **No direct output-level consistency result.**
-   We show hidden-state sensitivity and surprisal, but not whether models answer paired logical prompts consistently.
+3. **Direct output-level consistency is now available.**
+   Mistral reaches perfect identity-control accuracy but only moderate counterfactual rejection, which gives the paper a behavioral failure mode linked to CSS diagnostics.
 
 4. **Dataset artifacts are real.**
    The qualitative audit found generated-data issues such as article mismatches, lexical substitutions, and implausible continuations. We can manage this with claim boundaries, but reviewers may still question dataset quality.
@@ -136,12 +136,15 @@ For a **Tiny/Short paper (2-4 pages)**:
   controlled logical edits -> layer-wise hidden-state shifts -> Frobenius complementarity -> qualitative dissociations.
 
 For a **Regular paper (4-10 pages)**:
-- Borderline as-is.
-- I would not submit a full regular paper without at least one additional experiment that makes the work more clearly relevant to LogiSymb.
+- Now viable if the paper is written tightly around two additions:
+  modern decoder representation analysis and output-level counterfactual consistency.
+- Remaining risk is dataset quality/artifacts, not lack of modern-model or behavioral evidence.
 
 ## Recommended Additions Before Drafting Final Regular Paper
 
 ### Priority 1: Add one modern decoder-only LLM
+
+Status: complete with `mistralai/Mistral-7B-Instruct-v0.3`.
 
 Rationale:
 The workshop is about LLMs. GPT-2 is useful for surprisal but weak as a 2026 LLM representative.
@@ -163,6 +166,14 @@ Best cost-quality choice:
 - Prefer `google/gemma-3-4b-it` if hardware is limited.
 
 ### Priority 2: Add output-level logical consistency probes
+
+Status: complete for GPT-2 baseline and Mistral-7B-Instruct-v0.3.
+
+Observed Mistral results:
+- identity controls: `1.0000` accuracy for both role reversal and negation
+- counterfactual role reversal: `0.7340` accuracy
+- counterfactual negation: `0.6520` accuracy
+- interpretation: the model recognizes identical sentence preservation but fails on a meaningful fraction of controlled structural counterfactuals
 
 Rationale:
 This directly targets the workshop focus.
@@ -259,30 +270,22 @@ Regular paper section plan:
 
 Current state:
 - **Go for Tiny/Short paper.**
-- **Conditional go for Regular paper**, only if we add at least output-level logical consistency or one modern LLM.
+- **Go for Regular paper**, provided the final draft foregrounds Mistral output consistency, Mistral hidden-state CSS, dataset quality controls, and conservative claim boundaries.
 
 My recommendation:
-Submit a **4-page short paper** if time is tight. It will be defensible and clean.
-
-If we have 1-2 extra working days:
-- Add output-level consistency first.
-- Add a modern LLM second.
-
-If we have GPU access and more time:
-- Target a regular paper with modern model + consistency + clean-subset robustness.
+Submit a regular paper if there is enough writing time. The empirical package now has baseline representations, a modern decoder, output-level consistency, qualitative analysis, salience support, and dataset-only robustness framing.
 
 ## Immediate Draft Checklist
 
-1. Decide paper type: short vs regular.
-2. If short: compress current paper into 4 IJCAI pages.
-3. If regular: run at least output-level consistency before drafting final claims.
-4. Prepare anonymous IJCAI LaTeX template.
-5. Remove author-identifying text from submission PDF.
-6. Include qualitative analysis as a compact table, not a long appendix.
-7. Keep title focused on logical/structural consistency, not human alignment.
-8. Mention dataset artifacts in limitations.
-9. Do not claim human-like processing.
-10. Submit via OpenReview before May 31, 2026 AoE.
+1. Draft as a regular paper.
+2. Prepare anonymous IJCAI LaTeX template.
+3. Add Mistral output consistency as a dedicated experiment section.
+4. Add Mistral hidden-state CSS as a modern-decoder representation section.
+5. Include qualitative analysis as a compact table, not a long appendix.
+6. Keep title focused on logical/structural consistency, not human alignment.
+7. Mention dataset artifacts and gated-model limitations in limitations.
+8. Do not claim human-like processing.
+9. Submit via OpenReview before May 31, 2026 AoE.
 
 ## Source Notes
 
@@ -310,4 +313,3 @@ Model references checked:
 - `meta-llama/Llama-3.1-8B`: https://huggingface.co/meta-llama/Llama-3.1-8B
 - `mistralai/Mistral-7B-Instruct-v0.3`: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3
 - `google/gemma-3-4b-it`: https://huggingface.co/google/gemma-3-4b-it
-
