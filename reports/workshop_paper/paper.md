@@ -189,7 +189,7 @@ Evaluation:
 - Claims are restricted to dataset-only structural sensitivity diagnostics.
 - Findings should not be interpreted as evidence of human-like language processing.
 - The qualitative audit shows that generated source data contains occasional fluency and plausibility artifacts, so item-level examples must be interpreted as diagnostic cases rather than naturalistic comprehension materials.
-- `google/gemma-3-4b-it` and `meta-llama/Llama-3.1-8B` require gated access; the available token did not permit Gemma access.
+- `google/gemma-3-4b-it` and `meta-llama/Llama-3.1-8B` require gated access; the available token did not permit access to these models.
 - `Qwen/Qwen3-8B` is configured but close to the 16GB GPU memory boundary in fp16; Mistral-7B-Instruct-v0.3 is the completed modern decoder result.
 
 ## 12. Reproducibility

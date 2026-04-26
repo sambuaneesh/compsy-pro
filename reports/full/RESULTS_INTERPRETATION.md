@@ -68,5 +68,6 @@ Mistral hidden-state CSS results:
 
 Access and compute boundary:
 - `google/gemma-3-4b-it` is gated for the available Hugging Face token.
+- `meta-llama/Llama-3.1-8B` is gated for the available Hugging Face token.
 - `Qwen/Qwen3-8B` is public but near the 16GB GPU memory limit in fp16 and requires offload; it remains configured but was not the completed modern-model result.
 - `Qwen/Qwen3-4B` remains configured as a practical public fallback.
