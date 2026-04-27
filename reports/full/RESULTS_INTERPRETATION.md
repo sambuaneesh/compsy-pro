@@ -31,6 +31,15 @@ Probe selectivity is consistently positive, while its layer-wise coupling with m
 - Frobenius shift is empirically useful as a complementary metric.
 - Claims remain at representation/diagnostic level and do not imply human-cognition equivalence.
 
+## Round 1 Paper-Review Update: Surface-Controlled Interpretation
+The workshop-paper review pass identified that pooled shift-surprisal results were too generous because role reversal and negation differ strongly in surface form. A new rank-residualized analysis controls lexical Jaccard, absolute length delta, and edit distance.
+
+Updated interpretation:
+- Role reversal is the strongest primary result. After surface controls, Frobenius mean Spearman remains `0.2410`, with positive controlled correlations in `39/39` baseline model/layer cells.
+- Negation is weak and artifact-sensitive. After surface controls, Frobenius mean Spearman is `-0.0107`, with positive controlled correlations in only `15/39` baseline cells.
+- The paper should therefore avoid saying that both role reversal and negation show equally broad structural sensitivity. The defensible claim is that CSS robustly captures role-reversal sensitivity and exposes noisier negation consistency gaps caused partly by the public source dataset's category/predicate foils.
+- Frobenius complementarity remains useful but modest: it is an in-sample incremental association, not a universal superiority claim.
+
 ## Qualitative Interpretation Addendum
 The review request for deeper qualitative analysis is addressed in `reports/full/QUALITATIVE_ANALYSIS.md`.
 

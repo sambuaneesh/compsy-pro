@@ -15,8 +15,12 @@ Completed so far:
 - Verified expected row counts for data, metrics, surprisal, probes, consistency summaries, and metric warnings.
 - Generated paper-local figures in `reports/workshop_paper/figures/`.
 - Wrote `reports/workshop_paper/EXPERIMENT_AUDIT.md`.
+- Wrote and committed the first anonymous IJCAI-format TeX draft.
+- Completed round 1 reviewer pass with four personas.
+- Added surface-control residual analyses, output Wilson CIs, and revised paper figures.
+- Rewrote the draft around robust role-reversal results and weaker artifact-sensitive negation results.
+- Expanded references and exact modern-model citations.
 
 Next:
-- Write anonymous IJCAI-format first draft.
-- Run three review/revision cycles with separate reviewer personas.
-- Commit the final draft and review logs.
+- Run round 2 and round 3 reviewer passes with separate reviewer personas.
+- Commit the revised draft, analysis tables, figures, and review logs.
