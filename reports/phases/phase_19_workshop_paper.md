@@ -25,6 +25,8 @@ Completed so far:
 - Regenerated figures with embedded TrueType fonts instead of Type 3 fonts.
 - Completed round 3 final review pass and source-level fixes.
 - Added final compile checklist and stale-PDF warning.
+- Inspected the user-compiled PDF pages and fixed the visible problems: missing references, line-number overlap, and overly compressed method coverage.
+- Embedded references directly in the TeX source and removed stale generated PDF/aux/log artifacts.
 
 Next:
 - Rebuild the paper PDF on a machine with LaTeX installed.

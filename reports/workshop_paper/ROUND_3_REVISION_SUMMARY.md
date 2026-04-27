@@ -11,8 +11,11 @@ Round 3 was a final source-level review. The paper is now a complete first submi
 - The paper states the role/negation asymmetry conservatively.
 - Output-level results are framed as a forced-choice stress test.
 - Dataset cardinality is stated as directed CSS rows derived from source pairs.
-- Compile instructions include clean rebuild and `bbl`/`blg` checks.
+- Compile instructions include clean rebuild commands and PDF-font/log checks.
+- After inspecting the user-compiled PDF, line numbers were disabled in the clean draft because they collided with two-column text.
+- The bibliography is now embedded directly in the TeX source so the paper no longer depends on BibTeX; two `pdflatex` passes are sufficient.
+- The source now includes additional coverage and reproducibility detail so the draft is less compressed.
 
 ## Remaining Hard Blocker
 
-The currently present PDF is stale. It should be deleted and rebuilt on a machine with a working LaTeX installation before submission.
+The previously compiled PDF was stale and has been removed. Rebuild on a machine with a working LaTeX installation before submission.
