@@ -52,6 +52,8 @@ Surface-controlled revision:
 - Role-reversal Frobenius mean Spearman after controls: 0.2410, positive in 39/39 baseline cells.
 - Negation Frobenius mean Spearman after controls: -0.0107, positive in 15/39 baseline cells.
 - The paper's primary representation claim should emphasize role reversal and describe negation as artifact-sensitive.
+- Dataset counts should be reported as directed CSS rows: 1,500 rows per phenomenon derived from 750 source pairs per phenomenon.
+- Output-level results should be described as a preliminary forced-choice stress test unless non-identical positive controls are added.
 
 Modern decoder output consistency:
 - GPT-2 has poor identity-control accuracy and is treated as a biased behavioral baseline.

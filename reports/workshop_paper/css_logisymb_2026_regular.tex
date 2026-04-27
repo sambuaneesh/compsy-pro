@@ -32,7 +32,7 @@
 \maketitle
 
 \begin{abstract}
-We introduce Counterfactual Structural Sensitivity (CSS), a dataset-only protocol for testing how language-model representations react to controlled structural edits. CSS compares each sentence with a counterfactual variant, extracts layer-wise hidden states, and measures shifts with centroid cosine, Frobenius token-matrix similarity, L2 distance, and token-aligned distance. On 3,000 role-reversal and negation pairs, BERT, RoBERTa, and GPT-2 show a clear asymmetry: role-reversal shifts remain positively associated with GPT-2 surprisal after surface-control residualization, while negation effects are weaker and strongly shaped by source-data lexical foils. Frobenius provides small but consistent in-sample value beyond cosine in 70/78 baseline layer/model/phenomenon cells. Modern decoder extensions show near-perfect identity judgments but imperfect counterfactual rejection, especially for negation. CSS is therefore best interpreted as a reproducible diagnostic of structural sensitivity and consistency gaps, not as evidence of human-like language processing.
+We introduce Counterfactual Structural Sensitivity (CSS), a dataset-only protocol for testing how language-model representations react to controlled structural edits. CSS compares each sentence with a counterfactual variant, extracts layer-wise hidden states, and measures shifts with centroid cosine, Frobenius token-matrix similarity, L2 distance, and token-aligned distance. On 3,000 directed role-reversal and negation rows, BERT, RoBERTa, and GPT-2 show a sharp asymmetry: role-reversal shifts remain positively associated with GPT-2 surprisal after surface-control residualization, while negation largely collapses under the same controls because the source data mix polarity with lexical foils. Frobenius provides small but repeated in-sample value beyond cosine. Modern decoder stress tests show near-perfect identity judgments but imperfect counterfactual rejection, especially for negation. CSS is therefore best interpreted as a reproducible diagnostic of structural sensitivity and consistency gaps, not as evidence of human-like language processing.
 \end{abstract}
 
 \section{Introduction}
@@ -43,18 +43,20 @@ These edits are relevant to logical and symbolic reasoning because they probe wh
 
 We propose Counterfactual Structural Sensitivity (CSS), a protocol that asks whether layer-wise representations move systematically under controlled edits and whether different geometric metrics expose complementary structure. The study is dataset-only: it does not introduce new human annotations and does not claim human-like comprehension. Its primary target is model-internal and output-level sensitivity under public role-reversal and negation data.
 
+The study tests two hypotheses. H1: if a model is sensitive to argument-role consistency, role-reversal rows should show positive shift-surprisal association after surface controls; failure is near-zero or sign-unstable association once lexical overlap, length, and edit distance are residualized. H2: if a model robustly preserves counterfactual consistency, it should answer yes for identity controls and no for edited counterfactuals; failure is high identity accuracy but low counterfactual rejection, which indicates a consistency gap rather than a full reasoning failure.
+
 The contributions are:
 \begin{itemize}
-    \item A reproducible CSS pipeline for role reversal and negated counterfactuals: pair construction, hidden-state extraction, layer-wise metrics, probes, surprisal, output consistency, and qualitative audit.
+    \item Evidence consistent with robust role-reversal structural sensitivity across baseline and modern model families, alongside weaker artifact-sensitive negation behavior.
     \item A contextual token-matrix Frobenius metric compared directly with centroid cosine, including surface-control residual analyses.
-    \item A baseline study over BERT, RoBERTa, and GPT-2, plus modern decoder extensions with Mistral-7B-Instruct-v0.3 and Gemma-3-4B-IT.
-    \item A conservative interpretation showing strong role-reversal sensitivity, weaker and more artifact-sensitive negation results, and remaining behavioral consistency gaps in instruction-tuned decoders.
+    \item A reproducible CSS pipeline for pair construction, hidden-state extraction, layer-wise metrics, probes, surprisal, output stress tests, and qualitative audit.
+    \item A conservative interpretation of remaining consistency gaps in Mistral-7B-Instruct-v0.3 and Gemma-3-4B-IT.
 \end{itemize}
 
 \section{Related Work}
 
 \paragraph{Minimal pairs and argument roles.}
-BLiMP uses minimal pairs to evaluate grammatical knowledge \cite{warstadt2020blimp}. Ettinger shows that BERT captures some role and event cues but remains weak on negation \cite{ettinger2020bert}. Lee et al. evaluate language models' sensitivity to argument roles in psycholinguistic settings \cite{lee2024argumentroles}. Shivagunde et al. extend Ettinger-style role-reversal and negation diagnostics to larger datasets \cite{shivagunde2023larger}; we use their public data snapshot as the source for CSS pairs \cite{textmachinelab2026datasetrepo}.
+BLiMP uses minimal pairs to evaluate grammatical knowledge \cite{warstadt2020blimp}. Ettinger shows that BERT captures some role and event cues but remains weak on negation \cite{ettinger2020bert}. Lee et al. evaluate language models' sensitivity to argument roles in psycholinguistic settings \cite{lee2024argumentroles}. Shivagunde et al. extend Ettinger-style role-reversal and negation diagnostics to larger datasets \cite{shivagunde2023larger}; we use their public data snapshot as the source for CSS pairs \cite{textmachinelab2023datasetrepo}.
 
 \paragraph{Probing and representation similarity.}
 Probing studies ask whether linguistic properties are recoverable from hidden states \cite{conneau2018senteval,tenney2019bert}, but probe accuracy can reflect probe capacity or memorization, motivating control tasks and selectivity \cite{hewitt2019designing}. Our matrix analysis is also related to representational similarity analysis \cite{kriegeskorte2008rsa} and neural representation comparison methods such as CKA \cite{kornblith2019cka}, although CSS is pair-level rather than dataset-geometry-level.
@@ -107,7 +109,7 @@ Token-aligned shift uses exact lowercased word matches and falls back to positio
 \section{Experimental Setup}
 
 \paragraph{Data.}
-The final dataset contains 1,500 role-reversal pairs from ROLE-1500 and 1,500 negation pairs from NEG-1500-SIMP-GEN \cite{shivagunde2023larger,textmachinelab2026datasetrepo}. We use the public source snapshot at commit \texttt{48cc635}; source SHA-256 hashes are recorded for both imported files. The CSS schema stores sentence pair, phenomenon, edit type, edited spans, split, token lengths, lexical Jaccard, and edit distance. Role examples preserve more lexical material than negation examples; this motivates the surface-control analysis below.
+The final dataset contains 1,500 directed CSS rows derived from 750 source role-reversal pairs in ROLE-1500 and 1,500 directed rows derived from 750 source negation pairs in NEG-1500-SIMP-GEN \cite{shivagunde2023larger,textmachinelab2023datasetrepo}. We use the public source snapshot at commit \texttt{48cc635}; source SHA-256 hashes are recorded for both imported files. The CSS schema stores sentence pair, phenomenon, edit type, edited spans, split, token lengths, lexical Jaccard, and edit distance. Role examples preserve more lexical material than negation examples; this motivates the surface-control analysis below.
 
 \paragraph{Models.}
 The primary baselines are BERT-base-uncased \cite{devlin2019bert}, RoBERTa-base \cite{liu2019roberta}, and GPT-2 \cite{radford2019language}, using embedding layer plus 12 transformer layers. Extension models are Mistral-7B-Instruct-v0.3 \cite{jiang2023mistral,mistralai2024instructv03} and Gemma-3-4B-IT \cite{gemmateam2025gemma3,gemmateam2025gemma3modelcard}, using all hidden layers. Runs use seed 13, evaluation mode, hidden-state output enabled, and cached metadata for model id, package versions, dtype, dataset hash, and configuration hash.
@@ -118,7 +120,7 @@ GPT-2 token surprisal is $\mathrm{surprisal}(w_i)=-\log p(w_i|w_1,\ldots,w_{i-1}
 \paragraph{Probes.}
 Linear probes are secondary diagnostics. The role probe classifies span vectors as agent versus patient. The negation probe classifies sentence-mean vectors as affirmative versus negated. Each layer/model/phenomenon uses stratified 80/20 train/test splits, seeds $\{11,13,17,19,23\}$, standardized logistic regression with $C=1.0$, and random-label controls. Selectivity is task macro-F1 minus control macro-F1.
 
-\paragraph{Output consistency.}
+\paragraph{Output stress test.}
 For each pair we score the next-token likelihood of the candidates \texttt{ yes} and \texttt{ no}. The prompt is:
 \begin{quote}\small
 Decide whether two sentences preserve the same meaning. Criterion: They must describe [the same event with the same participant roles / the same polarity and predicate meaning]. Sentence 1: $s$. Sentence 2: $t$. Answer yes or no. Answer:
@@ -126,7 +128,7 @@ Decide whether two sentences preserve the same meaning. Criterion: They must des
 Identity controls set $t=s$ and expect yes. Counterfactual trials set $t=s'$ and expect no. Since scoring is forced-choice over two candidate strings, there are no invalid generations.
 
 \paragraph{Statistics.}
-We report Spearman correlations between shift metrics and absolute average-surprisal delta, with bootstrap confidence intervals and Benjamini-Hochberg FDR correction. A ``cell'' denotes one model, layer, phenomenon, and metric. Because cells reuse the same items across layers, cell counts are descriptive robustness summaries rather than independent evidence units. We additionally compute surface-controlled Spearman correlations by rank-residualizing both the shift metric and surprisal target against lexical Jaccard, absolute length delta, and edit distance. Frobenius incremental value is the in-sample adjusted-$R^2$ gain for target $y=$ absolute average-surprisal delta:
+We report Spearman correlations between shift metrics and absolute average-surprisal delta, with Benjamini-Hochberg FDR correction for cell-level tests. A ``cell'' denotes one model, layer, phenomenon, and metric. Because cells reuse the same items across layers, cell counts are descriptive robustness summaries rather than independent evidence units. We additionally compute surface-controlled Spearman correlations by rank-residualizing both the shift metric and surprisal target against lexical Jaccard, absolute length delta, and edit distance. Table~\ref{tab:surface_control} reports mean controlled correlations, empirical 2.5--97.5 percentile intervals over cells, positive-cell counts, and FDR-significant cell counts. Frobenius incremental value is the in-sample adjusted-$R^2$ gain for target $y=$ absolute average-surprisal delta:
 \begin{equation}
     \Delta R^2_{\mathrm{adj}} =
     R^2_{\mathrm{adj}}(y \sim \Delta^{\mathrm{cos}}+\Delta^{\mathrm{frob}})
@@ -137,42 +139,42 @@ We report Spearman correlations between shift metrics and absolute average-surpr
 
 \subsection{Representation Shifts and Surface Controls}
 
-The strongest result is role reversal. Across BERT, RoBERTa, and GPT-2, all 39 baseline Frobenius role-reversal cells are positive both before and after surface-control residualization. Mean Frobenius Spearman is 0.293 before controls and 0.241 after controls. Negation is weaker: mean Frobenius Spearman is 0.018 before controls and -0.011 after controls, with only 15/39 positive surface-controlled cells. This confirms that negation results should be interpreted as artifact-sensitive source-data behavior rather than a clean polarity-only effect.
+The strongest result is role reversal. Across BERT, RoBERTa, and GPT-2, all 39 baseline Frobenius role-reversal cells are positive both before and after surface-control residualization. Mean Frobenius Spearman is 0.293 before controls and 0.241 after controls. Negation is weaker: mean Frobenius Spearman is 0.018 before controls and -0.011 after controls, with only 15/39 positive surface-controlled cells. This is consistent with the interpretation that negation results reflect artifact-sensitive source-data behavior rather than a clean polarity-only effect.
 
 \begin{table}[t]
 \centering
 \small
-\begin{tabular}{llrrr}
+\begin{tabular}{llrrrr}
 \toprule
-Phen. & Metric & Raw $\rho$ & Ctrl. $\rho$ & Pos./cells \\
+Phen. & Metric & Ctrl. $\rho$ & Pos. & Pos. $q$ & Neg. $q$ \\
 \midrule
-Role & Cosine & 0.288 & 0.238 & 39/39 \\
-Role & Frobenius & 0.293 & 0.241 & 39/39 \\
-Role & L2 & 0.295 & 0.244 & 39/39 \\
-Role & Token & 0.145 & 0.116 & 34/39 \\
+Role & Cos. & 0.238 & 39 & 39 & 0 \\
+Role & Frob. & 0.241 & 39 & 39 & 0 \\
+Role & L2 & 0.244 & 39 & 39 & 0 \\
+Role & Tok. & 0.116 & 34 & 30 & 3 \\
 \midrule
-Neg. & Cosine & 0.012 & -0.017 & 13/39 \\
-Neg. & Frobenius & 0.018 & -0.011 & 15/39 \\
-Neg. & L2 & -0.007 & -0.030 & 10/39 \\
-Neg. & Token & -0.071 & -0.058 & 4/39 \\
+Neg. & Cos. & -0.017 & 13 & 4 & 10 \\
+Neg. & Frob. & -0.011 & 15 & 9 & 11 \\
+Neg. & L2 & -0.030 & 10 & 2 & 11 \\
+Neg. & Tok. & -0.058 & 4 & 0 & 22 \\
 \bottomrule
 \end{tabular}
-\caption{Mean baseline Spearman correlations before and after residualizing lexical Jaccard, absolute length delta, and edit distance. Role reversal remains robust; negation does not.}
+\caption{Surface-controlled baseline Spearman correlations after residualizing lexical Jaccard, absolute length delta, and edit distance. `Pos.' counts positive cells out of 39; `Pos. $q$' and `Neg. $q$' count FDR-significant positive and negative cells.}
 \label{tab:surface_control}
 \end{table}
 
-The layer profiles support the same asymmetry. For Frobenius shift, role reversal peaks in middle-to-late layers: BERT layer 7 ($\rho=0.329$), RoBERTa layer 7 ($\rho=0.368$), and GPT-2 layer 10 ($\rho=0.318$). Negation peaks early and weakly: BERT layer 0 ($\rho=0.154$), RoBERTa layer 0 ($\rho=0.118$), and GPT-2 layer 0 ($\rho=0.131$).
+The layer profiles in Figure~\ref{fig:baseline_heatmap} support the same asymmetry. For Frobenius shift, role reversal peaks in middle-to-late layers: BERT layer 7 ($\rho=0.329$), RoBERTa layer 7 ($\rho=0.368$), and GPT-2 layer 10 ($\rho=0.318$). Negation peaks early and weakly: BERT layer 0 ($\rho=0.154$), RoBERTa layer 0 ($\rho=0.118$), and GPT-2 layer 0 ($\rho=0.131$).
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.78\textwidth]{figures/baseline_frob_layer_heatmap.pdf}
-\caption{Baseline layer-wise Spearman correlations for Frobenius shift. Role reversal has broad positive mid-layer alignment; negation is weaker and more model-dependent.}
+\includegraphics[width=0.92\textwidth]{figures/baseline_frob_layer_heatmap.pdf}
+\caption{Baseline layer-wise Spearman correlations for Frobenius shift. Role reversal has consistent positive mid-layer alignment; negation is weaker and more model-dependent.}
 \label{fig:baseline_heatmap}
 \end{figure*}
 
 \subsection{Frobenius Complementarity}
 
-Adding Frobenius beyond cosine gives positive in-sample adjusted-$R^2$ gain in 70/78 baseline cells, with mean gain 0.0114. The effect is modest, so the correct claim is complementarity, not superiority. The same analysis remains mostly positive in modern decoders: 59/66 Mistral cells and 48/70 Gemma cells have positive gain.
+Figure~\ref{fig:frob_incremental} shows that adding Frobenius beyond cosine gives positive in-sample adjusted-$R^2$ gain in 70/78 baseline cells, with mean gain 0.0114. The effect is modest, so the correct claim is complementarity, not superiority. The same analysis remains mostly positive in modern decoders: 59/66 Mistral cells and 48/70 Gemma cells have positive gain.
 
 \begin{figure}[t]
 \centering
@@ -185,20 +187,20 @@ Adding Frobenius beyond cosine gives positive in-sample adjusted-$R^2$ gain in 7
 
 Probe selectivity is consistently above random-label controls, with mean selectivity 0.510 macro-F1. However, selectivity is nearly uncoupled from shift-surprisal alignment: for Frobenius, selectivity versus correlation strength has Spearman $-0.011$ and Pearson $0.013$. Thus recoverability and pair-level movement are complementary diagnostics rather than substitutes.
 
-\subsection{Output-Level Consistency}
+\subsection{Output-Level Stress Test}
 
-Instruction-tuned decoders solve identity controls but not all counterfactuals. Mistral reaches 1.000 identity accuracy for both phenomena, but only 0.734 role-reversal rejection (95\% Wilson CI 0.711--0.756) and 0.652 negation rejection (0.628--0.676). Gemma reaches 0.999 role identity and 1.000 negation identity, with 0.969 role-reversal rejection (0.959--0.976) and 0.814 negation rejection (0.794--0.833). GPT-2 is retained as the surprisal model and biased output baseline because its identity-control accuracy is poor.
+As a preliminary stress test, Figure~\ref{fig:output_consistency} shows that instruction-tuned decoders solve exact identity controls but not all counterfactuals. Mistral reaches 1.000 identity accuracy for both phenomena, but only 0.734 role-reversal rejection (95\% Wilson CI 0.711--0.756) and 0.652 negation rejection (0.628--0.676). Gemma reaches 0.999 role identity and 1.000 negation identity, with 0.969 role-reversal rejection (0.959--0.976) and 0.814 negation rejection (0.794--0.833). Because we do not include non-identical paraphrase controls, this result should be read as a counterfactual stress test rather than a complete behavioral consistency evaluation. GPT-2 is retained as the surprisal model and biased output baseline because its identity-control accuracy is poor.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/output_consistency_accuracy.pdf}
-\caption{Forced-choice output consistency. Identity controls validate prompt usability for instruction models; counterfactual rejection exposes remaining failures, especially for negation.}
+\caption{Forced-choice output stress test. Identity controls validate exact-copy behavior for instruction models; counterfactual rejection exposes failures, especially for negation. GPT-2's high rejection is not evidence of consistency because its identity-control accuracy is poor.}
 \label{fig:output_consistency}
 \end{figure}
 
 \subsection{Modern Decoder Hidden States}
 
-Mistral produces 99,000 metric rows and Gemma produces 105,000 metric rows, with zero Frobenius anomaly warnings. Mistral's strongest Frobenius-surprisal alignment is role reversal at layer 6 ($\rho=0.324$, FDR $q=1.15\times10^{-35}$); Gemma's strongest role-reversal alignment is also layer 6 ($\rho=0.319$, $q=2.25\times10^{-34}$). Negation is weaker: Mistral peaks at layer 0 ($\rho=0.175$) and Gemma at layer 4 ($\rho=0.145$).
+Mistral produces 99,000 metric rows and Gemma produces 105,000 metric rows, with zero Frobenius anomaly warnings. Figure~\ref{fig:modern_curves} shows that Mistral's strongest Frobenius-surprisal alignment is role reversal at layer 6 ($\rho=0.324$, FDR $q=1.15\times10^{-35}$ over model-specific layer tests); Gemma's strongest role-reversal alignment is also layer 6 ($\rho=0.319$, $q=2.25\times10^{-34}$). Negation is weaker: Mistral peaks at layer 0 ($\rho=0.175$) and Gemma at layer 4 ($\rho=0.145$).
 
 \begin{figure}[t]
 \centering
@@ -215,9 +217,9 @@ Concrete cases make the dissociation visible. A high-shift but low-surprisal neg
 
 \section{Discussion}
 
-CSS separates three questions: whether an edit moves hidden states, whether movement rank-aligns with a probabilistic covariate, and whether an instruction model behaviorally rejects the counterfactual as meaning-preserving. The role-reversal results are the clearest evidence of structural sensitivity: they survive surface controls and show consistent layer profiles across baseline and modern models. Negation is more cautious: the source data probe useful polarity/category contrasts, but not pure logical negation in isolation.
+CSS separates three questions: whether an edit moves hidden states, whether movement rank-aligns with a probabilistic covariate, and whether an instruction model rejects the counterfactual as meaning-preserving under a forced-choice stress test. The role-reversal results are the clearest evidence consistent with structural sensitivity: they survive surface controls and show consistent layer profiles across baseline and modern models. Negation is more cautious: the source data probe useful polarity/category contrasts, but not pure logical negation in isolation.
 
-The Frobenius result is useful because token-matrix geometry adds small, repeated in-sample signal beyond centroid cosine. It should not be overclaimed as a universal metric or as direct proof of symbolic reasoning. The output experiment is the main LogiSymb-facing bridge: identity controls are near ceiling for instruction models, yet counterfactual rejection remains imperfect, particularly for negation.
+The Frobenius result is useful because token-matrix geometry adds small, repeated in-sample signal beyond centroid cosine. It should not be overclaimed as a universal metric or as direct proof of symbolic reasoning. The output stress test provides the connection to logical-symbolic evaluation: identity controls are near ceiling for instruction models, yet counterfactual rejection remains imperfect, particularly for negation.
 
 \section{Limitations}
 

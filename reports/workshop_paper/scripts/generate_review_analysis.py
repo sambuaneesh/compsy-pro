@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm, pearsonr, spearmanr
 from sklearn.linear_model import LinearRegression
+from statsmodels.stats.multitest import multipletests
 
 OUT_DIR = Path("reports/workshop_paper/tables")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -61,14 +62,33 @@ def partial_surface_control() -> pd.DataFrame:
                 }
             )
     out = pd.DataFrame(rows).sort_values(["phenomenon", "model", "metric", "layer"])
+    out["surface_controlled_q"] = multipletests(
+        out["surface_controlled_p"].fillna(1.0), method="fdr_bh"
+    )[1]
     out.to_csv(OUT_DIR / "surface_controlled_correlations.csv", index=False)
+
+    def _ci_low(values: pd.Series) -> float:
+        return float(values.quantile(0.025))
+
+    def _ci_high(values: pd.Series) -> float:
+        return float(values.quantile(0.975))
 
     summary = (
         out.groupby(["phenomenon", "metric"], as_index=False)
         .agg(
             mean_raw_spearman=("raw_spearman", "mean"),
             mean_surface_controlled_spearman=("surface_controlled_spearman", "mean"),
+            surface_controlled_ci_lo=("surface_controlled_spearman", _ci_low),
+            surface_controlled_ci_hi=("surface_controlled_spearman", _ci_high),
             positive_surface_cells=("surface_controlled_spearman", lambda s: int((s > 0).sum())),
+            positive_fdr_sig_cells=(
+                "surface_controlled_spearman",
+                lambda s: int(((s > 0) & (out.loc[s.index, "surface_controlled_q"] < 0.05)).sum()),
+            ),
+            negative_fdr_sig_cells=(
+                "surface_controlled_spearman",
+                lambda s: int(((s < 0) & (out.loc[s.index, "surface_controlled_q"] < 0.05)).sum()),
+            ),
             cells=("surface_controlled_spearman", "size"),
         )
         .sort_values(["phenomenon", "metric"])

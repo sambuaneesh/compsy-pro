@@ -39,6 +39,8 @@ Updated interpretation:
 - Negation is weak and artifact-sensitive. After surface controls, Frobenius mean Spearman is `-0.0107`, with positive controlled correlations in only `15/39` baseline cells.
 - The paper should therefore avoid saying that both role reversal and negation show equally broad structural sensitivity. The defensible claim is that CSS robustly captures role-reversal sensitivity and exposes noisier negation consistency gaps caused partly by the public source dataset's category/predicate foils.
 - Frobenius complementarity remains useful but modest: it is an in-sample incremental association, not a universal superiority claim.
+- Dataset cardinality should be described as directed CSS rows: `1,500` role rows and `1,500` negation rows derived from `750` source pairs per phenomenon.
+- Output-level modern-decoder results should be described as a forced-choice stress test, not a complete behavioral consistency evaluation, because exact identity controls do not test non-identical positive equivalence.
 
 ## Qualitative Interpretation Addendum
 The review request for deeper qualitative analysis is addressed in `reports/full/QUALITATIVE_ANALYSIS.md`.
