@@ -54,6 +54,7 @@ Surface-controlled revision:
 - The paper's primary representation claim should emphasize role reversal and describe negation as artifact-sensitive.
 - Dataset counts should be reported as directed CSS rows: 1,500 rows per phenomenon derived from 750 source pairs per phenomenon.
 - Output-level results should be described as a preliminary forced-choice stress test unless non-identical positive controls are added.
+- The current inferential summaries do not cluster by source pair, so the final paper should describe p-values/CIs as descriptive.
 
 Modern decoder output consistency:
 - GPT-2 has poor identity-control accuracy and is treated as a biased behavioral baseline.
@@ -100,3 +101,4 @@ Baseline full figures regenerated:
 - Frame negation as polarity / negation-consistency sensitivity.
 - Present Frobenius as complementary, not as uniformly superior.
 - Keep Mistral and Gemma as regular-paper extension models, while BERT/RoBERTa/GPT-2 remain the controlled primary CSS baseline.
+- Do not submit the stale PDF in `reports/workshop_paper/`; rebuild from the TeX source using the compile checklist.

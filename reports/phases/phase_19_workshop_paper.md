@@ -23,7 +23,9 @@ Completed so far:
 - Completed round 2 reviewer pass and fixes.
 - Corrected source-dataset cardinality wording and dataset citation metadata.
 - Regenerated figures with embedded TrueType fonts instead of Type 3 fonts.
+- Completed round 3 final review pass and source-level fixes.
+- Added final compile checklist and stale-PDF warning.
 
 Next:
-- Run round 3 reviewer pass with separate reviewer personas.
-- Commit the revised draft, analysis tables, figures, and review logs.
+- Rebuild the paper PDF on a machine with LaTeX installed.
+- Inspect the rebuilt PDF visually and resolve any compile warnings.

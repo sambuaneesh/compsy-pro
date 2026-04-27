@@ -32,7 +32,7 @@
 \maketitle
 
 \begin{abstract}
-We introduce Counterfactual Structural Sensitivity (CSS), a dataset-only protocol for testing how language-model representations react to controlled structural edits. CSS compares each sentence with a counterfactual variant, extracts layer-wise hidden states, and measures shifts with centroid cosine, Frobenius token-matrix similarity, L2 distance, and token-aligned distance. On 3,000 directed role-reversal and negation rows, BERT, RoBERTa, and GPT-2 show a sharp asymmetry: role-reversal shifts remain positively associated with GPT-2 surprisal after surface-control residualization, while negation largely collapses under the same controls because the source data mix polarity with lexical foils. Frobenius provides small but repeated in-sample value beyond cosine. Modern decoder stress tests show near-perfect identity judgments but imperfect counterfactual rejection, especially for negation. CSS is therefore best interpreted as a reproducible diagnostic of structural sensitivity and consistency gaps, not as evidence of human-like language processing.
+We introduce Counterfactual Structural Sensitivity (CSS), a dataset-only protocol for testing how language-model representations react to controlled structural edits. CSS compares each sentence with a counterfactual variant, extracts layer-wise hidden states, and measures shifts with centroid cosine, Frobenius token-matrix similarity, L2 distance, and token-aligned distance. On 3,000 directed role-reversal and negation rows, BERT, RoBERTa, and GPT-2 show a sharp asymmetry: role-reversal cosine, Frobenius, and L2 shifts remain positively associated with GPT-2 surprisal after surface-control residualization, while negation largely collapses under the same controls because the source data mix polarity with lexical foils. Frobenius provides small but repeated in-sample value beyond cosine. Modern decoder stress tests show near-perfect identity judgments but imperfect counterfactual rejection, especially for negation. CSS is therefore best interpreted as a reproducible diagnostic of structural sensitivity and consistency gaps, not as evidence of human-like language processing.
 \end{abstract}
 
 \section{Introduction}
@@ -43,7 +43,7 @@ These edits are relevant to logical and symbolic reasoning because they probe wh
 
 We propose Counterfactual Structural Sensitivity (CSS), a protocol that asks whether layer-wise representations move systematically under controlled edits and whether different geometric metrics expose complementary structure. The study is dataset-only: it does not introduce new human annotations and does not claim human-like comprehension. Its primary target is model-internal and output-level sensitivity under public role-reversal and negation data.
 
-The study tests two hypotheses. H1: if a model is sensitive to argument-role consistency, role-reversal rows should show positive shift-surprisal association after surface controls; failure is near-zero or sign-unstable association once lexical overlap, length, and edit distance are residualized. H2: if a model robustly preserves counterfactual consistency, it should answer yes for identity controls and no for edited counterfactuals; failure is high identity accuracy but low counterfactual rejection, which indicates a consistency gap rather than a full reasoning failure.
+The study tests three hypotheses. H1: if a model is sensitive to argument-role consistency, role-reversal rows should show positive shift-surprisal association after surface controls; failure is near-zero or sign-unstable association once lexical overlap, length, and edit distance are residualized. H2: if negated counterfactual rows mainly reflect pure polarity sensitivity, their shifts should remain positive after the same controls; failure is collapse or sign instability, indicating that source lexical foils dominate. H3: if a model robustly preserves counterfactual consistency, it should answer yes for identity controls and no for edited counterfactuals; failure is high identity accuracy but low counterfactual rejection, which indicates a consistency gap rather than a full reasoning failure.
 
 The contributions are:
 \begin{itemize}
@@ -89,7 +89,7 @@ CSS computes four per-layer shifts. Centroid cosine is
 \end{equation}
 L2 shift is $\Delta^{\mathrm{L2}}_l=\|\bar{h}_l(s)-\bar{h}_l(s')\|_2$.
 
-For Frobenius token-matrix similarity, let $A_l$ and $B_l$ be row-L2-normalized word matrices. Unequal lengths are handled directly: $A_lB_l^\top$ is an $n \times m$ cross-similarity matrix and no token alignment is required. We clip negative cosine similarities with $K(X)=\max(X,0)$ and compute
+For Frobenius token-matrix similarity, let $A_l$ and $B_l$ be row-L2-normalized word matrices. Unequal lengths are handled directly: $A_lB_l^\top$ is an $n \times m$ cross-similarity matrix and no token alignment is required. We clip negative cosine similarities with $K(X)=\max(X,0)$ so the norm summarizes positive relational support rather than cancellation between positive and negative similarities, and compute
 \begin{equation}
     \mathrm{sim}^{\mathrm{frob}}_l =
     \frac{\|K(A_lB_l^\top)\|_F}
@@ -128,7 +128,7 @@ Decide whether two sentences preserve the same meaning. Criterion: They must des
 Identity controls set $t=s$ and expect yes. Counterfactual trials set $t=s'$ and expect no. Since scoring is forced-choice over two candidate strings, there are no invalid generations.
 
 \paragraph{Statistics.}
-We report Spearman correlations between shift metrics and absolute average-surprisal delta, with Benjamini-Hochberg FDR correction for cell-level tests. A ``cell'' denotes one model, layer, phenomenon, and metric. Because cells reuse the same items across layers, cell counts are descriptive robustness summaries rather than independent evidence units. We additionally compute surface-controlled Spearman correlations by rank-residualizing both the shift metric and surprisal target against lexical Jaccard, absolute length delta, and edit distance. Table~\ref{tab:surface_control} reports mean controlled correlations, empirical 2.5--97.5 percentile intervals over cells, positive-cell counts, and FDR-significant cell counts. Frobenius incremental value is the in-sample adjusted-$R^2$ gain for target $y=$ absolute average-surprisal delta:
+We report Spearman correlations between shift metrics and absolute average-surprisal delta, with Benjamini-Hochberg FDR correction for cell-level tests. A ``cell'' denotes one model, layer, phenomenon, and metric. Because cells reuse the same items across layers, cell counts are descriptive robustness summaries rather than independent evidence units. Directed rows derived from the same source pair are not clustered in the present inferential summaries, so p-values and CIs should be read as descriptive rather than final confirmatory tests. We additionally compute surface-controlled Spearman correlations by rank-residualizing both the shift metric and surprisal target against lexical Jaccard, absolute length delta, and edit distance. Table~\ref{tab:surface_control} reports mean controlled correlations, positive-cell counts, and sign-aware FDR-significant cell counts. Frobenius incremental value is the in-sample adjusted-$R^2$ gain for target $y=$ absolute average-surprisal delta, not held-out predictive validation:
 \begin{equation}
     \Delta R^2_{\mathrm{adj}} =
     R^2_{\mathrm{adj}}(y \sim \Delta^{\mathrm{cos}}+\Delta^{\mathrm{frob}})
@@ -174,7 +174,7 @@ The layer profiles in Figure~\ref{fig:baseline_heatmap} support the same asymmet
 
 \subsection{Frobenius Complementarity}
 
-Figure~\ref{fig:frob_incremental} shows that adding Frobenius beyond cosine gives positive in-sample adjusted-$R^2$ gain in 70/78 baseline cells, with mean gain 0.0114. The effect is modest, so the correct claim is complementarity, not superiority. The same analysis remains mostly positive in modern decoders: 59/66 Mistral cells and 48/70 Gemma cells have positive gain.
+Figure~\ref{fig:frob_incremental} shows that adding Frobenius beyond cosine gives positive in-sample adjusted-$R^2$ gain in 70/78 baseline cells, with mean gain 0.0114. The effect is modest, so the correct claim is complementarity, not superiority. The same analysis is positive for most Mistral cells (59/66) and mixed but positive on average for Gemma (48/70).
 
 \begin{figure}[t]
 \centering
@@ -217,7 +217,7 @@ Concrete cases make the dissociation visible. A high-shift but low-surprisal neg
 
 \section{Discussion}
 
-CSS separates three questions: whether an edit moves hidden states, whether movement rank-aligns with a probabilistic covariate, and whether an instruction model rejects the counterfactual as meaning-preserving under a forced-choice stress test. The role-reversal results are the clearest evidence consistent with structural sensitivity: they survive surface controls and show consistent layer profiles across baseline and modern models. Negation is more cautious: the source data probe useful polarity/category contrasts, but not pure logical negation in isolation.
+CSS separates three questions: whether an edit moves hidden states, whether movement rank-aligns with a probabilistic covariate, and whether an instruction model rejects the counterfactual as meaning-preserving under a forced-choice stress test. The role-reversal results are the clearest evidence consistent with structural sensitivity: baseline results survive surface controls, and modern decoder curves show the same qualitative role-greater-than-negation pattern. Negation is more cautious: the source data probe useful polarity/category contrasts, but not pure logical negation in isolation.
 
 The Frobenius result is useful because token-matrix geometry adds small, repeated in-sample signal beyond centroid cosine. It should not be overclaimed as a universal metric or as direct proof of symbolic reasoning. The output stress test provides the connection to logical-symbolic evaluation: identity controls are near ceiling for instruction models, yet counterfactual rejection remains imperfect, particularly for negation.
 
