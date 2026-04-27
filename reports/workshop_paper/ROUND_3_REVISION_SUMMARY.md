@@ -15,6 +15,9 @@ Round 3 was a final source-level review. The paper is now a complete first submi
 - After inspecting the user-compiled PDF, line numbers were disabled in the clean draft because they collided with two-column text.
 - The bibliography is now embedded directly in the TeX source so the paper no longer depends on BibTeX; two `pdflatex` passes are sufficient.
 - The source now includes additional coverage and reproducibility detail so the draft is less compressed.
+- Author names, affiliation, and emails were restored for the non-anonymous/camera-ready style requested by the user.
+- Prose references to figures and tables were changed to explicit numbers to avoid `??` figure/table references in partially compiled PDFs.
+- Multi-panel result plots were changed to full-width floats to improve legibility and reduce crowding.
 
 ## Remaining Hard Blocker
 

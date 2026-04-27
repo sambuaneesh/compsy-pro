@@ -12,6 +12,8 @@ pdflatex -interaction=nonstopmode css_logisymb_2026_regular.tex
 
 The bibliography is embedded directly in the TeX source, so BibTeX is not required for this draft. The second `pdflatex` pass resolves citations and cross-references.
 
+The prose avoids `Figure~\ref{...}` and `Table~\ref{...}` references, so figure/table numbering should not show `??` even if a first pass is inspected. Citations still require the second pass, as usual in LaTeX.
+
 If `latexmk` is available, this is also acceptable:
 
 ```bash

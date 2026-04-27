@@ -27,6 +27,8 @@ Completed so far:
 - Added final compile checklist and stale-PDF warning.
 - Inspected the user-compiled PDF pages and fixed the visible problems: missing references, line-number overlap, and overly compressed method coverage.
 - Embedded references directly in the TeX source and removed stale generated PDF/aux/log artifacts.
+- Added final author names, IIIT Hyderabad affiliation, and email addresses.
+- Replaced prose cross-references with explicit figure/table numbers and widened multi-panel plots.
 
 Next:
 - Rebuild the paper PDF on a machine with LaTeX installed.
