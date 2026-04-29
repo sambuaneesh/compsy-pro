@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import gc
+import os
 import random
 import sys
 from pathlib import Path
@@ -111,7 +112,7 @@ def _extract_side(
 
     layers: dict[str, Any] = {}
     for layer_idx, h in enumerate(hidden_states):
-        arr = h[0].detach().cpu().numpy().astype(np.float32)  # [seq, dim]
+        arr = h[0].detach().float().cpu().numpy().astype(np.float32)  # [seq, dim]
         word_vectors: list[np.ndarray] = []
         for word_idx in range(len(words)):
             token_idxs = [t for t, w in token_to_word.items() if w == word_idx]
@@ -120,11 +121,11 @@ def _extract_side(
             word_vectors.append(arr[token_idxs].mean(axis=0).astype(np.float32))
 
         if word_vectors:
-            word_matrix = np.vstack(word_vectors).astype(np.float16)
-            mean_vec = mean_pool(word_matrix.astype(np.float32))
+            word_matrix = np.vstack(word_vectors).astype(np.float32)
+            mean_vec = mean_pool(word_matrix)
         else:
             dim = arr.shape[-1]
-            word_matrix = np.zeros((0, dim), dtype=np.float16)
+            word_matrix = np.zeros((0, dim), dtype=np.float32)
             mean_vec = np.zeros((dim,), dtype=np.float32)
 
         cls_vec = None
@@ -168,7 +169,14 @@ def _extract_dataset_for_model(
 ) -> tuple[str, str]:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     tokenizer = AutoTokenizer.from_pretrained(
-        model_name, use_fast=True, trust_remote_code=trust_remote_code
+        model_name,
+        use_fast=True,
+        trust_remote_code=trust_remote_code,
+        **(
+            {"token": os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")}
+            if (os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN"))
+            else {}
+        ),
     )
     tokenizer = tokenizer if isinstance(tokenizer, PreTrainedTokenizerBase) else None
     if tokenizer is None:
@@ -176,8 +184,12 @@ def _extract_dataset_for_model(
     if tokenizer.pad_token_id is None and tokenizer.eos_token_id is not None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    model_config = AutoConfig.from_pretrained(model_name, trust_remote_code=trust_remote_code)
-    model_kwargs: dict[str, Any] = {"trust_remote_code": trust_remote_code}
+    hf_token = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")
+    auth_kwargs = {"token": hf_token} if hf_token else {}
+    model_config = AutoConfig.from_pretrained(
+        model_name, trust_remote_code=trust_remote_code, **auth_kwargs
+    )
+    model_kwargs: dict[str, Any] = {"trust_remote_code": trust_remote_code, **auth_kwargs}
     if torch_dtype is not None:
         model_kwargs["torch_dtype"] = torch_dtype
     if device_map is not None:

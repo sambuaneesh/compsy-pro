@@ -6,6 +6,10 @@ This report evaluates whether a causal language model assigns higher forced-choi
 
 | Model | Phenomenon | Condition | n | Accuracy | Yes-rate | Mean yes-minus-no margin |
 | --- | --- | --- | ---: | ---: | ---: | ---: |
+| google/gemma-3-4b-it | negation | counterfactual | 1500 | 0.8140 | 0.1860 | -6.2187 |
+| google/gemma-3-4b-it | negation | identity_control | 1500 | 1.0000 | 1.0000 | 24.7007 |
+| google/gemma-3-4b-it | role_reversal | counterfactual | 1500 | 0.9687 | 0.0313 | -10.0992 |
+| google/gemma-3-4b-it | role_reversal | identity_control | 1500 | 0.9993 | 0.9993 | 24.3771 |
 | gpt2 | negation | counterfactual | 1500 | 0.9380 | 0.0620 | -0.4468 |
 | gpt2 | negation | identity_control | 1500 | 0.2187 | 0.2187 | -0.2346 |
 | gpt2 | role_reversal | counterfactual | 1500 | 0.9760 | 0.0240 | -0.5579 |
@@ -21,6 +25,30 @@ For counterfactual rows, `no_margin = score(no) - score(yes)`. Positive correlat
 
 | Output model | Metric model | Phenomenon | Metric | n | Spearman r | p |
 | --- | --- | --- | --- | ---: | ---: | ---: |
+| google/gemma-3-4b-it | bert-base-uncased | negation | delta_cos | 1500 | 0.1719 | 2.05e-11 |
+| google/gemma-3-4b-it | bert-base-uncased | negation | delta_frob | 1500 | 0.1626 | 2.4e-10 |
+| google/gemma-3-4b-it | bert-base-uncased | negation | delta_l2 | 1500 | 0.2462 | 3.73e-22 |
+| google/gemma-3-4b-it | bert-base-uncased | negation | delta_token_aligned | 1500 | 0.2329 | 6.42e-20 |
+| google/gemma-3-4b-it | bert-base-uncased | role_reversal | delta_cos | 1500 | 0.2207 | 5.35e-18 |
+| google/gemma-3-4b-it | bert-base-uncased | role_reversal | delta_frob | 1500 | 0.2100 | 2.09e-16 |
+| google/gemma-3-4b-it | bert-base-uncased | role_reversal | delta_l2 | 1500 | 0.2130 | 7.55e-17 |
+| google/gemma-3-4b-it | bert-base-uncased | role_reversal | delta_token_aligned | 1500 | 0.1478 | 8.85e-09 |
+| google/gemma-3-4b-it | gpt2 | negation | delta_cos | 1500 | 0.0625 | 0.0155 |
+| google/gemma-3-4b-it | gpt2 | negation | delta_frob | 1500 | 0.1823 | 1.12e-12 |
+| google/gemma-3-4b-it | gpt2 | negation | delta_l2 | 1500 | 0.0921 | 0.000354 |
+| google/gemma-3-4b-it | gpt2 | negation | delta_token_aligned | 1500 | 0.0371 | 0.151 |
+| google/gemma-3-4b-it | gpt2 | role_reversal | delta_cos | 1500 | 0.1305 | 3.94e-07 |
+| google/gemma-3-4b-it | gpt2 | role_reversal | delta_frob | 1500 | 0.0819 | 0.0015 |
+| google/gemma-3-4b-it | gpt2 | role_reversal | delta_l2 | 1500 | 0.0542 | 0.0358 |
+| google/gemma-3-4b-it | gpt2 | role_reversal | delta_token_aligned | 1500 | -0.0086 | 0.74 |
+| google/gemma-3-4b-it | roberta-base | negation | delta_cos | 1500 | 0.2570 | 4.68e-24 |
+| google/gemma-3-4b-it | roberta-base | negation | delta_frob | 1500 | 0.2526 | 2.83e-23 |
+| google/gemma-3-4b-it | roberta-base | negation | delta_l2 | 1500 | 0.3182 | 1.23e-36 |
+| google/gemma-3-4b-it | roberta-base | negation | delta_token_aligned | 1500 | 0.3314 | 8.92e-40 |
+| google/gemma-3-4b-it | roberta-base | role_reversal | delta_cos | 1500 | 0.1700 | 3.43e-11 |
+| google/gemma-3-4b-it | roberta-base | role_reversal | delta_frob | 1500 | 0.1682 | 5.49e-11 |
+| google/gemma-3-4b-it | roberta-base | role_reversal | delta_l2 | 1500 | 0.1689 | 4.62e-11 |
+| google/gemma-3-4b-it | roberta-base | role_reversal | delta_token_aligned | 1500 | 0.1193 | 3.61e-06 |
 | gpt2 | bert-base-uncased | negation | delta_cos | 1500 | -0.0359 | 0.165 |
 | gpt2 | bert-base-uncased | negation | delta_frob | 1500 | -0.0042 | 0.872 |
 | gpt2 | bert-base-uncased | negation | delta_l2 | 1500 | -0.0253 | 0.328 |

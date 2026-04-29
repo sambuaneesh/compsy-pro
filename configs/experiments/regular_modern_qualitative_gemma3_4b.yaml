@@ -1,0 +1,7 @@
+experiment_name: css_regular_modern_gemma3_4b_qualitative_v1
+metrics_path: results/metrics/modern_gemma3_4b_metrics.csv
+surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+pairs_path: data/css_pairs/full_all_3000.jsonl
+output_dir: results/analysis/qualitative_gemma3_4b
+report_path: reports/full/QUALITATIVE_ANALYSIS_GEMMA3_4B.md
+top_k: 20

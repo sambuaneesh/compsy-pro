@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import random
 from pathlib import Path
 from typing import Any
@@ -171,8 +172,11 @@ def _load_model(cfg: dict[str, Any]) -> tuple[PreTrainedTokenizerBase, Any, torc
     dtype = _dtype_from_name(str(cfg.get("torch_dtype", "default")))
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+    hf_token = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")
+    auth_kwargs = {"token": hf_token} if hf_token else {}
+
     tokenizer = AutoTokenizer.from_pretrained(
-        model_name, use_fast=True, trust_remote_code=trust_remote_code
+        model_name, use_fast=True, trust_remote_code=trust_remote_code, **auth_kwargs
     )
     tokenizer = tokenizer if isinstance(tokenizer, PreTrainedTokenizerBase) else None
     if tokenizer is None:
@@ -180,7 +184,7 @@ def _load_model(cfg: dict[str, Any]) -> tuple[PreTrainedTokenizerBase, Any, torc
     if tokenizer.pad_token_id is None and tokenizer.eos_token_id is not None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    kwargs: dict[str, Any] = {"trust_remote_code": trust_remote_code}
+    kwargs: dict[str, Any] = {"trust_remote_code": trust_remote_code, **auth_kwargs}
     if dtype is not None:
         kwargs["torch_dtype"] = dtype
     if cfg.get("device_map") is not None:

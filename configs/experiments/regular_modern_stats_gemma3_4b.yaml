@@ -1,0 +1,8 @@
+experiment_name: css_regular_modern_gemma3_4b_stats_v1
+seed: 13
+metrics_path: results/metrics/modern_gemma3_4b_metrics.csv
+surprisal_path: results/surprisal/gpt2_surprisal_full.csv
+probe_path: results/probes/probe_results_full.csv
+output_dir: results/stats/modern_gemma3_4b
+bootstrap_samples: 1000
+fdr_alpha: 0.05
