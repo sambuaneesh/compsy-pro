@@ -15,6 +15,7 @@ Implementation changes:
 
 Access/compute notes:
 - `google/gemma-3-4b-it` is gated for the available Hugging Face token and cannot be run until access is approved.
+- `meta-llama/Llama-3.1-8B` is also gated for the available Hugging Face token.
 - `Qwen/Qwen3-8B` is public but downloads about 16.4GB in fp16, which is too close to the 16GB GPU limit for reliable non-offloaded runs.
 - `mistralai/Mistral-7B-Instruct-v0.3` is accessible and completed successfully.
 - `Qwen/Qwen3-4B` is configured as a practical fallback if 7B/8B extraction is too slow.
