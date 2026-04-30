@@ -47,6 +47,12 @@ Baseline representation diagnostics:
 - Mean Frobenius incremental gain: 0.0114 adjusted R2.
 - Mean probe selectivity: 0.5096.
 
+Surface-controlled revision:
+- After rank-residualizing lexical Jaccard, absolute length delta, and edit distance, role reversal remains robust.
+- Role-reversal Frobenius mean Spearman after controls: 0.2410, positive in 39/39 baseline cells.
+- Negation Frobenius mean Spearman after controls: -0.0107, positive in 15/39 baseline cells.
+- The paper's primary representation claim should emphasize role reversal and describe negation as artifact-sensitive.
+
 Modern decoder output consistency:
 - GPT-2 has poor identity-control accuracy and is treated as a biased behavioral baseline.
 - Mistral identity-control accuracy: 1.0000 for role and negation.

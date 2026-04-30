@@ -9,11 +9,11 @@ import seaborn as sns
 OUT_DIR = Path("reports/workshop_paper/figures")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-sns.set_theme(style="whitegrid", context="paper", font_scale=1.05)
+sns.set_theme(style="whitegrid", context="paper", font_scale=0.9)
 
 
 def savefig(fig: plt.Figure, name: str) -> None:
-    fig.tight_layout()
+    fig.tight_layout(pad=0.35)
     fig.savefig(OUT_DIR / name, bbox_inches="tight")
     plt.close(fig)
 
@@ -37,7 +37,7 @@ def plot_consistency() -> None:
         {"identity_control": "Identity control", "counterfactual": "Counterfactual rejection"}
     )
 
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.8), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.35), sharey=True)
     for ax, condition in zip(axes, ["Identity control", "Counterfactual rejection"], strict=True):
         sub = df[df["condition"] == condition].copy()
         sns.barplot(
@@ -51,13 +51,21 @@ def plot_consistency() -> None:
         ax.set_title(condition)
         ax.set_xlabel("")
         ax.set_ylabel("Accuracy" if condition == "Identity control" else "")
-        ax.set_ylim(0, 1.05)
+        ax.set_ylim(0, 1.08)
         ax.tick_params(axis="x", rotation=20)
         ax.legend_.remove()
+        for container in ax.containers:
+            ax.bar_label(container, fmt="%.2f", fontsize=6, padding=1)
 
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False)
-    fig.suptitle("Output-level consistency under identical vs. counterfactual pairs", y=1.08)
+    fig.legend(
+        handles,
+        labels,
+        loc="lower center",
+        ncol=2,
+        frameon=False,
+        bbox_to_anchor=(0.5, -0.18),
+    )
     savefig(fig, "output_consistency_accuracy.pdf")
 
 
@@ -76,7 +84,7 @@ def plot_modern_decoder_frob_curves() -> None:
         {"role_reversal": "Role reversal", "negation": "Negation"}
     )
 
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.8), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.35), sharey=True)
     for ax, phen in zip(axes, ["Role reversal", "Negation"], strict=True):
         sub = corr[corr["phenomenon"] == phen].sort_values("layer")
         sns.lineplot(
@@ -97,8 +105,14 @@ def plot_modern_decoder_frob_curves() -> None:
         ax.legend_.remove()
 
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False)
-    fig.suptitle("Modern decoder Frobenius-shift correlation with GPT-2 surprisal", y=1.08)
+    fig.legend(
+        handles,
+        labels,
+        loc="lower center",
+        ncol=2,
+        frameon=False,
+        bbox_to_anchor=(0.5, -0.18),
+    )
     savefig(fig, "modern_decoder_frob_curves.pdf")
 
 
@@ -122,7 +136,7 @@ def plot_incremental_comparison() -> None:
     out["positive_rate"] = out["positive_cells"] / out["cells"]
     out.to_csv(OUT_DIR / "frob_incremental_comparison.csv", index=False)
 
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.8))
+    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.35))
     sns.barplot(data=out, x="group", y="positive_rate", color="#2A9D8F", ax=axes[0])
     axes[0].set_ylim(0, 1.05)
     axes[0].set_xlabel("")
@@ -130,7 +144,11 @@ def plot_incremental_comparison() -> None:
     axes[0].set_title(r"Cells with $\Delta$adj-$R^2 > 0$")
     for i, row in out.iterrows():
         axes[0].text(
-            i, row["positive_rate"] + 0.03, f"{row['positive_cells']}/{row['cells']}", ha="center"
+            i,
+            row["positive_rate"] + 0.03,
+            f"{row['positive_cells']}/{row['cells']}",
+            ha="center",
+            fontsize=7,
         )
 
     sns.barplot(data=out, x="group", y="mean_delta_adj_r2", color="#DD8452", ax=axes[1])
@@ -141,11 +159,38 @@ def plot_incremental_comparison() -> None:
 
 
 def plot_baseline_heatmap_copy() -> None:
-    # Keep a paper-local copy so the TeX source is self-contained under reports/workshop_paper.
-    src = Path("results/figures/frob_layer_heatmap.pdf")
-    dst = OUT_DIR / "baseline_frob_layer_heatmap.pdf"
-    if src.exists():
-        dst.write_bytes(src.read_bytes())
+    corr = pd.read_csv("results/stats/full/correlations.csv")
+    corr = corr[corr["metric"] == "delta_frob"].copy()
+    corr["model_label"] = corr["model"].map(
+        {"bert-base-uncased": "BERT", "roberta-base": "RoBERTa", "gpt2": "GPT-2"}
+    )
+    corr["phenomenon"] = corr["phenomenon"].map(
+        {"role_reversal": "Role reversal", "negation": "Negation"}
+    )
+    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.35), sharey=True)
+    for ax, phenomenon in zip(axes, ["Role reversal", "Negation"], strict=True):
+        sub = corr[corr["phenomenon"] == phenomenon].pivot(
+            index="model_label", columns="layer", values="spearman_rho"
+        )
+        sub = sub.reindex(["BERT", "RoBERTa", "GPT-2"])
+        sns.heatmap(
+            sub,
+            ax=ax,
+            cmap="vlag",
+            center=0,
+            vmin=-0.15,
+            vmax=0.38,
+            cbar=phenomenon == "Negation",
+            cbar_kws={"label": r"Spearman $\rho$", "shrink": 0.8},
+            linewidths=0.2,
+            linecolor="white",
+        )
+        ax.set_title(phenomenon)
+        ax.set_xlabel("Layer")
+        ax.set_ylabel("")
+        ax.tick_params(axis="x", rotation=0, labelsize=6)
+        ax.tick_params(axis="y", rotation=0)
+    savefig(fig, "baseline_frob_layer_heatmap.pdf")
 
 
 def main() -> None:
