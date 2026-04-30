@@ -20,7 +20,10 @@ Completed so far:
 - Added surface-control residual analyses, output Wilson CIs, and revised paper figures.
 - Rewrote the draft around robust role-reversal results and weaker artifact-sensitive negation results.
 - Expanded references and exact modern-model citations.
+- Completed round 2 reviewer pass and fixes.
+- Corrected source-dataset cardinality wording and dataset citation metadata.
+- Regenerated figures with embedded TrueType fonts instead of Type 3 fonts.
 
 Next:
-- Run round 2 and round 3 reviewer passes with separate reviewer personas.
+- Run round 3 reviewer pass with separate reviewer personas.
 - Commit the revised draft, analysis tables, figures, and review logs.
