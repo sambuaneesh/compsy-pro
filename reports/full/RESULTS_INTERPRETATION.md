@@ -41,6 +41,7 @@ Updated interpretation:
 - Frobenius complementarity remains useful but modest: it is an in-sample incremental association, not a universal superiority claim.
 - Dataset cardinality should be described as directed CSS rows: `1,500` role rows and `1,500` negation rows derived from `750` source pairs per phenomenon.
 - Output-level modern-decoder results should be described as a forced-choice stress test, not a complete behavioral consistency evaluation, because exact identity controls do not test non-identical positive equivalence.
+- Directed rows derived from the same source pair are not clustered in the current inferential summaries, so p-values and confidence intervals should be treated as descriptive rather than final confirmatory tests.
 
 ## Qualitative Interpretation Addendum
 The review request for deeper qualitative analysis is addressed in `reports/full/QUALITATIVE_ANALYSIS.md`.
