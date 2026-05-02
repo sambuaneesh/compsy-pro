@@ -16,8 +16,13 @@
 \usepackage{multirow}
 \usepackage[switch]{lineno}
 
-\linenumbers
+% Enable line numbers only if the submission system explicitly requires them.
+% The clean draft keeps them disabled because they collide with two-column text
+% and figures in the IJCAI style on some TeX installations.
+% \linenumbers
 \urlstyle{same}
+\sloppy
+\raggedbottom
 
 \pdfinfo{
 /TemplateVersion (IJCAI.2026.0)
@@ -114,6 +119,9 @@ The final dataset contains 1,500 directed CSS rows derived from 750 source role-
 \paragraph{Models.}
 The primary baselines are BERT-base-uncased \cite{devlin2019bert}, RoBERTa-base \cite{liu2019roberta}, and GPT-2 \cite{radford2019language}, using embedding layer plus 12 transformer layers. Extension models are Mistral-7B-Instruct-v0.3 \cite{jiang2023mistral,mistralai2024instructv03} and Gemma-3-4B-IT \cite{gemmateam2025gemma3,gemmateam2025gemma3modelcard}, using all hidden layers. Runs use seed 13, evaluation mode, hidden-state output enabled, and cached metadata for model id, package versions, dtype, dataset hash, and configuration hash.
 
+\paragraph{Coverage.}
+The baseline representation study contains 117,000 metric rows: 3,000 directed rows, three baseline models, and 13 layers including the embedding layer. The Mistral extension contains 99,000 rows over 33 layers, and the Gemma extension contains 105,000 rows over 35 layers. GPT-2 surprisal is computed for every directed row. Probe summaries cover three baseline models, two phenomena, 13 layers, and five random seeds.
+
 \paragraph{Surprisal.}
 GPT-2 token surprisal is $\mathrm{surprisal}(w_i)=-\log p(w_i|w_1,\ldots,w_{i-1})$. We use absolute average-surprisal delta as the main probabilistic covariate. This measures alignment with GPT-2 predictive difficulty, not the larger decoder's own uncertainty.
 
@@ -126,6 +134,9 @@ For each pair we score the next-token likelihood of the candidates \texttt{ yes}
 Decide whether two sentences preserve the same meaning. Criterion: They must describe [the same event with the same participant roles / the same polarity and predicate meaning]. Sentence 1: $s$. Sentence 2: $t$. Answer yes or no. Answer:
 \end{quote}
 Identity controls set $t=s$ and expect yes. Counterfactual trials set $t=s'$ and expect no. Since scoring is forced-choice over two candidate strings, there are no invalid generations.
+
+\paragraph{Reproducibility.}
+All scripts are configuration-driven. Cached artifacts record dataset hash, configuration hash, model identifier, layer range, seed, dtype, package versions, and hardware notes. The public source dataset snapshot is pinned to commit \texttt{48cc635} from 2023-10-13; the imported ROLE-1500 and NEG-1500-SIMP-GEN files have SHA-256 hashes recorded in the run manifest. The study uses seed 13 for extraction and fixed probe seeds $\{11,13,17,19,23\}$.
 
 \paragraph{Statistics.}
 We report Spearman correlations between shift metrics and absolute average-surprisal delta, with Benjamini-Hochberg FDR correction for cell-level tests. A ``cell'' denotes one model, layer, phenomenon, and metric. Because cells reuse the same items across layers, cell counts are descriptive robustness summaries rather than independent evidence units. Directed rows derived from the same source pair are not clustered in the present inferential summaries, so p-values and CIs should be read as descriptive rather than final confirmatory tests. We additionally compute surface-controlled Spearman correlations by rank-residualizing both the shift metric and surprisal target against lexical Jaccard, absolute length delta, and edit distance. Table~\ref{tab:surface_control} reports mean controlled correlations, positive-cell counts, and sign-aware FDR-significant cell counts. Frobenius incremental value is the in-sample adjusted-$R^2$ gain for target $y=$ absolute average-surprisal delta, not held-out predictive validation:
@@ -229,7 +240,122 @@ This study has no new human annotations and therefore makes no human-alignment c
 
 Counterfactual Structural Sensitivity provides a reproducible way to test how language-model representations react to controlled structural edits. The strongest current finding is robust role-reversal sensitivity across layers and models. Negation exposes useful but noisier consistency gaps because source pairs combine polarity with lexical and category changes. Frobenius token-matrix geometry adds modest complementary signal beyond centroid cosine, and modern instruction models still fail on nontrivial fractions of counterfactual consistency judgments.
 
-\bibliographystyle{named}
-\bibliography{css_logisymb_2026_regular}
+\begin{thebibliography}{}
+
+\bibitem[Conneau et al., 2018]{conneau2018senteval}
+Conneau, A.; Kruszewski, G.; Lample, G.; Barrault, L.; and Baroni, M. 2018.
+What you can cram into a single vector: Probing sentence embeddings for linguistic properties.
+In \emph{Proceedings of ACL}, 2126--2136.
+
+\bibitem[Devlin et al., 2019]{devlin2019bert}
+Devlin, J.; Chang, M.-W.; Lee, K.; and Toutanova, K. 2019.
+BERT: Pre-training of deep bidirectional transformers for language understanding.
+In \emph{Proceedings of NAACL-HLT}, 4171--4186.
+
+\bibitem[Ettinger, 2020]{ettinger2020bert}
+Ettinger, A. 2020.
+What BERT is not: Lessons from a new suite of psycholinguistic diagnostics for language models.
+\emph{Transactions of the Association for Computational Linguistics}, 8:34--48.
+
+\bibitem[Gemma Team, 2025]{gemmateam2025gemma3}
+Gemma Team. 2025.
+Gemma 3 technical report.
+\emph{arXiv preprint arXiv:2503.19786}.
+
+\bibitem[Google, 2025]{gemmateam2025gemma3modelcard}
+Google. 2025.
+google/gemma-3-4b-it model card.
+\url{https://huggingface.co/google/gemma-3-4b-it}.
+Accessed 2026-04-26.
+
+\bibitem[Hewitt and Liang, 2019]{hewitt2019designing}
+Hewitt, J., and Liang, P. 2019.
+Designing and interpreting probes with control tasks.
+In \emph{Proceedings of EMNLP-IJCNLP}, 2733--2743.
+
+\bibitem[Jiang et al., 2023]{jiang2023mistral}
+Jiang, A. Q.; Sablayrolles, A.; Mensch, A.; Bamford, C.; Chaplot, D. S.; Casas, D. de las; Bressand, F.; Lengyel, G.; Lample, G.; Saulnier, L.; Renard Lavaud, L.; Lachaux, M.-A.; Stock, P.; Le Scao, T.; Lavril, T.; Wang, T.; Lacroix, T.; and El Sayed, W. 2023.
+Mistral 7B.
+\emph{arXiv preprint arXiv:2310.06825}.
+
+\bibitem[Kornblith et al., 2019]{kornblith2019cka}
+Kornblith, S.; Norouzi, M.; Lee, H.; and Hinton, G. 2019.
+Similarity of neural network representations revisited.
+In \emph{Proceedings of ICML}, 3519--3529.
+
+\bibitem[Kriegeskorte et al., 2008]{kriegeskorte2008rsa}
+Kriegeskorte, N.; Mur, M.; and Bandettini, P. 2008.
+Representational similarity analysis: Connecting the branches of systems neuroscience.
+\emph{Frontiers in Systems Neuroscience}, 2:4.
+
+\bibitem[Lee et al., 2024]{lee2024argumentroles}
+Lee, E.-K. R.; Nair, S.; and Feldman, N. 2024.
+A psycholinguistic evaluation of language models' sensitivity to argument roles.
+In \emph{Findings of EMNLP}, 3262--3274.
+
+\bibitem[Levy, 2008]{levy2008expectation}
+Levy, R. 2008.
+Expectation-based syntactic comprehension.
+\emph{Cognition}, 106(3):1126--1177.
+
+\bibitem[Liu et al., 2019]{liu2019roberta}
+Liu, Y.; Ott, M.; Goyal, N.; Du, J.; Joshi, M.; Chen, D.; Levy, O.; Lewis, M.; Zettlemoyer, L.; and Stoyanov, V. 2019.
+RoBERTa: A robustly optimized BERT pretraining approach.
+\emph{arXiv preprint arXiv:1907.11692}.
+
+\bibitem[McCoy et al., 2019]{mccoy2019hans}
+McCoy, R. T.; Pavlick, E.; and Linzen, T. 2019.
+Right for the wrong reasons: Diagnosing syntactic heuristics in natural language inference.
+In \emph{Proceedings of ACL}, 3428--3448.
+
+\bibitem[Mistral AI, 2024]{mistralai2024instructv03}
+Mistral AI. 2024.
+Mistral-7B-Instruct-v0.3 model card.
+\url{https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3}.
+Accessed 2026-04-26.
+
+\bibitem[Radford et al., 2019]{radford2019language}
+Radford, A.; Wu, J.; Child, R.; Luan, D.; Amodei, D.; and Sutskever, I. 2019.
+Language models are unsupervised multitask learners.
+OpenAI technical report.
+
+\bibitem[Ribeiro et al., 2020]{ribeiro2020checklist}
+Ribeiro, M. T.; Wu, T.; Guestrin, C.; and Singh, S. 2020.
+Beyond accuracy: Behavioral testing of NLP models with CheckList.
+In \emph{Proceedings of ACL}, 4902--4912.
+
+\bibitem[Salazar et al., 2020]{salazar2020masked}
+Salazar, J.; Liang, D.; Nguyen, T. Q.; and Kirchhoff, K. 2020.
+Masked language model scoring.
+In \emph{Proceedings of ACL}, 2699--2712.
+
+\bibitem[Shivagunde et al., 2023]{shivagunde2023larger}
+Shivagunde, N.; Lialin, V.; and Rumshisky, A. 2023.
+Larger probes tell a different story: Extending psycholinguistic datasets via in-context learning.
+In \emph{Proceedings of EMNLP}, 2094--2107.
+
+\bibitem[Tenney et al., 2019]{tenney2019bert}
+Tenney, I.; Das, D.; and Pavlick, E. 2019.
+BERT rediscovers the classical NLP pipeline.
+In \emph{Proceedings of ACL}, 4593--4601.
+
+\bibitem[Text Machine Lab, 2023]{textmachinelab2023datasetrepo}
+Text Machine Lab. 2023.
+text-machine-lab/extending\_psycholinguistic\_dataset.
+GitHub repository, commit 48cc63569da3fa9c67fdd427b1cee7b4ca7dae3f.
+\url{https://github.com/text-machine-lab/extending_psycholinguistic_dataset}.
+Accessed 2026-04-26.
+
+\bibitem[vor der Br{\"u}ck and Pouly, 2019]{vonderbruck2019matrix}
+vor der Br{\"u}ck, T., and Pouly, M. 2019.
+Text similarity estimation based on word embeddings and matrix norms for targeted marketing.
+In \emph{Proceedings of NAACL-HLT}, 1827--1836.
+
+\bibitem[Warstadt et al., 2020]{warstadt2020blimp}
+Warstadt, A.; Parrish, A.; Liu, H.; Mohananey, A.; Peng, W.; Wang, S.-F.; and Bowman, S. R. 2020.
+BLiMP: The benchmark of linguistic minimal pairs for English.
+\emph{Transactions of the Association for Computational Linguistics}, 8:377--392.
+
+\end{thebibliography}
 
 \end{document}

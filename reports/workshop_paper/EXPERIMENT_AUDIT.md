@@ -55,6 +55,8 @@ Surface-controlled revision:
 - Dataset counts should be reported as directed CSS rows: 1,500 rows per phenomenon derived from 750 source pairs per phenomenon.
 - Output-level results should be described as a preliminary forced-choice stress test unless non-identical positive controls are added.
 - The current inferential summaries do not cluster by source pair, so the final paper should describe p-values/CIs as descriptive.
+- The latest TeX embeds the reference list directly, avoiding BibTeX-related missing-reference failures during quick two-pass `pdflatex` builds.
+- Line numbers are disabled in the clean draft because the user-compiled PDF showed line-number/text overlap.
 
 Modern decoder output consistency:
 - GPT-2 has poor identity-control accuracy and is treated as a biased behavioral baseline.
