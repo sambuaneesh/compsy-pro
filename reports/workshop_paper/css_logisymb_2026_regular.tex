@@ -30,7 +30,16 @@
 
 \title{Counterfactual Structural Sensitivity for Negation and Argument-Role Consistency}
 
-\author{Anonymous Submission}
+\author{
+Vidhi Rathore$^1$
+\and
+Sambu Aneesh$^1$\\
+\affiliations
+$^1$International Institute of Information Technology Hyderabad (IIIT Hyderabad), India\\
+\emails
+vidhi.rathore@research.iiit.ac.in,
+sambu.aneesh@research.iiit.ac.in
+}
 
 \begin{document}
 
@@ -139,7 +148,7 @@ Identity controls set $t=s$ and expect yes. Counterfactual trials set $t=s'$ and
 All scripts are configuration-driven. Cached artifacts record dataset hash, configuration hash, model identifier, layer range, seed, dtype, package versions, and hardware notes. The public source dataset snapshot is pinned to commit \texttt{48cc635} from 2023-10-13; the imported ROLE-1500 and NEG-1500-SIMP-GEN files have SHA-256 hashes recorded in the run manifest. The study uses seed 13 for extraction and fixed probe seeds $\{11,13,17,19,23\}$.
 
 \paragraph{Statistics.}
-We report Spearman correlations between shift metrics and absolute average-surprisal delta, with Benjamini-Hochberg FDR correction for cell-level tests. A ``cell'' denotes one model, layer, phenomenon, and metric. Because cells reuse the same items across layers, cell counts are descriptive robustness summaries rather than independent evidence units. Directed rows derived from the same source pair are not clustered in the present inferential summaries, so p-values and CIs should be read as descriptive rather than final confirmatory tests. We additionally compute surface-controlled Spearman correlations by rank-residualizing both the shift metric and surprisal target against lexical Jaccard, absolute length delta, and edit distance. Table~\ref{tab:surface_control} reports mean controlled correlations, positive-cell counts, and sign-aware FDR-significant cell counts. Frobenius incremental value is the in-sample adjusted-$R^2$ gain for target $y=$ absolute average-surprisal delta, not held-out predictive validation:
+We report Spearman correlations between shift metrics and absolute average-surprisal delta, with Benjamini-Hochberg FDR correction for cell-level tests. A ``cell'' denotes one model, layer, phenomenon, and metric. Because cells reuse the same items across layers, cell counts are descriptive robustness summaries rather than independent evidence units. Directed rows derived from the same source pair are not clustered in the present inferential summaries, so p-values and CIs should be read as descriptive rather than final confirmatory tests. We additionally compute surface-controlled Spearman correlations by rank-residualizing both the shift metric and surprisal target against lexical Jaccard, absolute length delta, and edit distance. Table 1 reports mean controlled correlations, positive-cell counts, and sign-aware FDR-significant cell counts. Frobenius incremental value is the in-sample adjusted-$R^2$ gain for target $y=$ absolute average-surprisal delta, not held-out predictive validation:
 \begin{equation}
     \Delta R^2_{\mathrm{adj}} =
     R^2_{\mathrm{adj}}(y \sim \Delta^{\mathrm{cos}}+\Delta^{\mathrm{frob}})
@@ -174,7 +183,7 @@ Neg. & Tok. & -0.058 & 4 & 0 & 22 \\
 \label{tab:surface_control}
 \end{table}
 
-The layer profiles in Figure~\ref{fig:baseline_heatmap} support the same asymmetry. For Frobenius shift, role reversal peaks in middle-to-late layers: BERT layer 7 ($\rho=0.329$), RoBERTa layer 7 ($\rho=0.368$), and GPT-2 layer 10 ($\rho=0.318$). Negation peaks early and weakly: BERT layer 0 ($\rho=0.154$), RoBERTa layer 0 ($\rho=0.118$), and GPT-2 layer 0 ($\rho=0.131$).
+The layer profiles in Figure 1 support the same asymmetry. For Frobenius shift, role reversal peaks in middle-to-late layers: BERT layer 7 ($\rho=0.329$), RoBERTa layer 7 ($\rho=0.368$), and GPT-2 layer 10 ($\rho=0.318$). Negation peaks early and weakly: BERT layer 0 ($\rho=0.154$), RoBERTa layer 0 ($\rho=0.118$), and GPT-2 layer 0 ($\rho=0.131$).
 
 \begin{figure*}[t]
 \centering
@@ -185,14 +194,14 @@ The layer profiles in Figure~\ref{fig:baseline_heatmap} support the same asymmet
 
 \subsection{Frobenius Complementarity}
 
-Figure~\ref{fig:frob_incremental} shows that adding Frobenius beyond cosine gives positive in-sample adjusted-$R^2$ gain in 70/78 baseline cells, with mean gain 0.0114. The effect is modest, so the correct claim is complementarity, not superiority. The same analysis is positive for most Mistral cells (59/66) and mixed but positive on average for Gemma (48/70).
+Figure 2 shows that adding Frobenius beyond cosine gives positive in-sample adjusted-$R^2$ gain in 70/78 baseline cells, with mean gain 0.0114. The effect is modest, so the correct claim is complementarity, not superiority. The same analysis is positive for most Mistral cells (59/66) and mixed but positive on average for Gemma (48/70).
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/frob_incremental_comparison.pdf}
+\includegraphics[width=0.76\textwidth]{figures/frob_incremental_comparison.pdf}
 \caption{Frobenius incremental association beyond cosine. Gains are small but usually positive.}
 \label{fig:frob_incremental}
-\end{figure}
+\end{figure*}
 
 \subsection{Probes and Surprisal}
 
@@ -200,25 +209,25 @@ Probe selectivity is consistently above random-label controls, with mean selecti
 
 \subsection{Output-Level Stress Test}
 
-As a preliminary stress test, Figure~\ref{fig:output_consistency} shows that instruction-tuned decoders solve exact identity controls but not all counterfactuals. Mistral reaches 1.000 identity accuracy for both phenomena, but only 0.734 role-reversal rejection (95\% Wilson CI 0.711--0.756) and 0.652 negation rejection (0.628--0.676). Gemma reaches 0.999 role identity and 1.000 negation identity, with 0.969 role-reversal rejection (0.959--0.976) and 0.814 negation rejection (0.794--0.833). Because we do not include non-identical paraphrase controls, this result should be read as a counterfactual stress test rather than a complete behavioral consistency evaluation. GPT-2 is retained as the surprisal model and biased output baseline because its identity-control accuracy is poor.
+As a preliminary stress test, Figure 3 shows that instruction-tuned decoders solve exact identity controls but not all counterfactuals. Mistral reaches 1.000 identity accuracy for both phenomena, but only 0.734 role-reversal rejection (95\% Wilson CI 0.711--0.756) and 0.652 negation rejection (0.628--0.676). Gemma reaches 0.999 role identity and 1.000 negation identity, with 0.969 role-reversal rejection (0.959--0.976) and 0.814 negation rejection (0.794--0.833). Because we do not include non-identical paraphrase controls, this result should be read as a counterfactual stress test rather than a complete behavioral consistency evaluation. GPT-2 is retained as the surprisal model and biased output baseline because its identity-control accuracy is poor.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/output_consistency_accuracy.pdf}
+\includegraphics[width=0.78\textwidth]{figures/output_consistency_accuracy.pdf}
 \caption{Forced-choice output stress test. Identity controls validate exact-copy behavior for instruction models; counterfactual rejection exposes failures, especially for negation. GPT-2's high rejection is not evidence of consistency because its identity-control accuracy is poor.}
 \label{fig:output_consistency}
-\end{figure}
+\end{figure*}
 
 \subsection{Modern Decoder Hidden States}
 
-Mistral produces 99,000 metric rows and Gemma produces 105,000 metric rows, with zero Frobenius anomaly warnings. Figure~\ref{fig:modern_curves} shows that Mistral's strongest Frobenius-surprisal alignment is role reversal at layer 6 ($\rho=0.324$, FDR $q=1.15\times10^{-35}$ over model-specific layer tests); Gemma's strongest role-reversal alignment is also layer 6 ($\rho=0.319$, $q=2.25\times10^{-34}$). Negation is weaker: Mistral peaks at layer 0 ($\rho=0.175$) and Gemma at layer 4 ($\rho=0.145$).
+Mistral produces 99,000 metric rows and Gemma produces 105,000 metric rows, with zero Frobenius anomaly warnings. Figure 4 shows that Mistral's strongest Frobenius-surprisal alignment is role reversal at layer 6 ($\rho=0.324$, FDR $q=1.15\times10^{-35}$ over model-specific layer tests); Gemma's strongest role-reversal alignment is also layer 6 ($\rho=0.319$, $q=2.25\times10^{-34}$). Negation is weaker: Mistral peaks at layer 0 ($\rho=0.175$) and Gemma at layer 4 ($\rho=0.145$).
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/modern_decoder_frob_curves.pdf}
+\includegraphics[width=0.82\textwidth]{figures/modern_decoder_frob_curves.pdf}
 \caption{Modern decoder Frobenius-shift correlations with GPT-2 surprisal. Role reversal shows clearer early-to-middle layer peaks than negation.}
 \label{fig:modern_curves}
-\end{figure}
+\end{figure*}
 
 \section{Qualitative Analysis}
 

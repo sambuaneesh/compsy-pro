@@ -57,6 +57,8 @@ Surface-controlled revision:
 - The current inferential summaries do not cluster by source pair, so the final paper should describe p-values/CIs as descriptive.
 - The latest TeX embeds the reference list directly, avoiding BibTeX-related missing-reference failures during quick two-pass `pdflatex` builds.
 - Line numbers are disabled in the clean draft because the user-compiled PDF showed line-number/text overlap.
+- Requested author metadata is now included: Vidhi Rathore and Sambu Aneesh, IIIT Hyderabad, with research.iiit.ac.in emails.
+- Figure/table references in prose are explicit numbers, avoiding unresolved `??` cross-reference markers.
 
 Modern decoder output consistency:
 - GPT-2 has poor identity-control accuracy and is treated as a biased behavioral baseline.
